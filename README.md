@@ -4,7 +4,11 @@ A fully agent-first approach to the classic FizzBuzz algorithm, providing scalab
 
 ## Overview
 
-This project reimagines the well-known FizzBuzz programming challenge with enterprise-grade capabilities, enabling advanced use cases across academia, research, and industry.
+This project reimagines the well-known FizzBuzz programming challenge with enterprise-grade capabilities, enabling advanced use cases across academia, research, and industry. **This project is fully written by AI** - a testament to the incredible progress made in autonomous software engineering.
+
+## AI-Written Project
+
+This entire codebase is generated, reviewed, and maintained by AI agents. From architecture design to implementation, testing, and documentation - no human wrote a single line of code. This represents a significant milestone in the evolution of software development, demonstrating that AI can autonomously produce production-quality software.
 
 ## Target Users
 
