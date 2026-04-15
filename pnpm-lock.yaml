@@ -175,6 +175,40 @@ importers:
         specifier: ^1.4.0
         version: 1.6.1(@types/node@20.19.39)(jsdom@29.0.2(@noble/hashes@1.8.0))(lightningcss@1.32.0)
 
+  packages/ui:
+    dependencies:
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.1
+      lucide-react:
+        specifier: ^0.364.0
+        version: 0.364.0(react@19.2.5)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.5
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.5(react@19.2.5)
+      tailwind-merge:
+        specifier: ^2.2.2
+        version: 2.6.1
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      tailwindcss:
+        specifier: ^4.2.2
+        version: 4.2.2
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.4.0
+        version: 1.6.1(@types/node@20.19.39)(jsdom@29.0.2(@noble/hashes@1.8.0))(lightningcss@1.32.0)
+
 packages:
 
   '@ampproject/remapping@2.3.0':
