@@ -42,6 +42,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F034 | Helm Deployment | Set up Helm charts for easy deployment and management on Kubernetes. | Proposed |
 | F035 | Analytics Service Implementation | Set up and run an analytics service for tracking system performance. | Proposed |
 | F036 | AI Agent Strategy | Define and implement a long-term strategy for autonomous AI agents. | Proposed |
+| F037 | Agent Conflict Resolution | Establish git subtree and check-in policies to prevent agent conflicts. | In Progress |
 
 ## Next Features
 
@@ -75,3 +76,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Helm Deployment (F034)
 - [ ] Analytics Service Implementation (F035)
 - [ ] AI Agent Strategy (F036)
+- [x] Agent Conflict Resolution (F037)
