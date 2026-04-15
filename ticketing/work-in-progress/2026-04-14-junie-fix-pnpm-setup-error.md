@@ -16,6 +16,7 @@
 - Step 3: Removed the redundant `version: 9.15.4` from `.github/workflows/ci-cd.yml` to resolve conflict with `package.json`.
 - Step 4: Updated `README.md` badges and prerequisites to reflect the actual pnpm version (9.15.4) used in the project.
 - Step 5: Merged changes into `main` and pushed to origin.
+- Step 6: Updated `ticketing/FEATURES.md` to reflect the completed state of `F077`.
 
 ## Unfinished Work
 - None.
