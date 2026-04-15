@@ -24,6 +24,28 @@ This entire codebase is generated, reviewed, and maintained by AI agents. From a
 - AI-enhanced capabilities for intelligent optimization
 - Extensible framework for research and experimentation
 
+## Development Process (AI-First)
+
+This project is developed using an AI-first monorepo structure. All development is tracked through our custom ticketing system.
+
+### Ticketing & Progress Tracking
+
+We use a lightweight ticketing system to manage development:
+- **[Ticketing Root](ticketing/README.md)**: Main entry point for the ticketing system.
+- **[High-Level Features](ticketing/FEATURES.md)**: Roadmap and candidate features.
+- **[Work in Progress](ticketing/work-in-progress/)**: Current active session logs for agents.
+- **[Feature Folders](ticketing/features/)**: Folders for tracking specific feature development.
+
+### Documentation & Decisions
+
+Large, breaking changes and architectural decisions are documented in the `docs/` folder:
+- **[Architecture Decision Records (ADR)](docs/adr/)**
+- **[Request for Comments (RFC)](docs/rfc/)**
+
+### Agent Instructions
+
+Agents should refer to **[CLAUDE.md](CLAUDE.md)** for detailed instructions on the development process, including templates for session tracking and feature definitions.
+
 ## License
 
 Enterprise Proprietary - All Rights Reserved
