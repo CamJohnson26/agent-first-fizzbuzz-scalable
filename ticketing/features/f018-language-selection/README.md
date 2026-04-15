@@ -4,9 +4,9 @@
 Research and choose the primary programming language for the project's core services. This decision should consider performance, ecosystem, developer productivity, and scalability.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Evaluate potential languages (e.g., Go, Rust, TypeScript).
-- [ ] Document the decision in an ADR.
-- [ ] Update project configuration for the chosen language.
+- [x] Evaluate potential languages (e.g., Go, Rust, TypeScript).
+- [x] Document the decision in an ADR.
+- [x] Update project configuration for the chosen language.

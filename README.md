@@ -77,6 +77,7 @@ We use a lightweight ticketing system to manage development:
 Large, breaking changes and architectural decisions are documented in the `docs/` folder:
 - **[Architecture Decision Records (ADR)](docs/adr/)**
 - **[Request for Comments (RFC)](docs/rfc/)**
+- **[Code Conventions & Style Guide](docs/CODE_CONVENTIONS.md)**
 
 ### Agent Instructions
 

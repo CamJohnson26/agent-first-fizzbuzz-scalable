@@ -103,7 +103,3 @@ Place in `docs/rfc/RFC-XXX-name.md`:
 ## Alternatives Considered
 [What else did we think of?]
 ```
-
-## Code Conventions
-
-Refer to **[CODE_CONVENTIONS.md](docs/CODE_CONVENTIONS.md)** for detailed coding standards, naming conventions, and formatting rules. All agents and developers must adhere to these standards to ensure consistency across the codebase.

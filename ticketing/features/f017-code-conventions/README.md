@@ -4,10 +4,10 @@
 Define coding standards and conventions for the project. This includes naming conventions, file structure, and language-specific style guides to ensure consistency across the codebase.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Define core architectural patterns.
-- [ ] Establish naming conventions for files, classes, and functions.
-- [ ] Document indentation and formatting rules.
-- [ ] Add style guide to documentation.
+- [x] Define core architectural patterns.
+- [x] Establish naming conventions for files, classes, and functions.
+- [x] Document indentation and formatting rules.
+- [x] Add style guide to documentation.
