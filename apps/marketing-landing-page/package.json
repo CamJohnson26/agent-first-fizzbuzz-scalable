@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.14",
@@ -30,11 +31,11 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
+    "@fizzbuzz/ui": "workspace:*",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.364.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "@fizzbuzz/ui": "workspace:*",
-    "lucide-react": "^0.364.0",
-    "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.2"
   }
 }

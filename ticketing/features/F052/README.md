@@ -4,8 +4,8 @@
 Update the marketing page style to use Tailwind CSS for a modern, responsive design.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Install Tailwind CSS
-- [ ] Rebuild marketing page with Tailwind
+- [x] Install Tailwind CSS
+- [x] Rebuild marketing page with Tailwind

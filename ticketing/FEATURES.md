@@ -57,7 +57,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F049 | Visual Regression Testing | Implement visual regression testing for UI components. | Proposed |
 | F050 | Next.js Integration | Integrate Next.js for the frontend application. | Proposed |
 | F051 | React Server Components | Implement React Server Components. | Proposed |
-| F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Proposed |
+| F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Done |
 | F053 | Architectural Recommendations | Create recommendations for project architecture improvements. | Done |
 | F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Proposed |
 | F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Proposed |
