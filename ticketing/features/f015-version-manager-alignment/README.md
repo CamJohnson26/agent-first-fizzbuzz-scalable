@@ -1,0 +1,1 @@
+# Feature: Version Manager Alignment\n\n## Description\nAdded .nvmrc file and updated documentation to ensure better compatibility with Node Version Manager (nvm) and other version managers, preventing developer onboarding friction.\n\n## Status\nDone\n\n## Next Features (Todo)\n- [x] Create .nvmrc file\n- [x] Update README.md\n- [x] Update ticketing system

@@ -22,9 +22,9 @@ To ensure you are using the correct Node.js version, we recommend using a versio
 #### Using NVM (Node Version Manager)
 1. Install the required version:
    ```bash
-   nvm install 25.9.0
+   nvm install
    ```
-2. Use the version (or let nvm detect `.node-version`):
+2. Use the version (nvm will automatically detect `.nvmrc` or `.node-version` if configured, or run manually):
    ```bash
    nvm use
    ```
