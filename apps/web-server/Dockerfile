@@ -13,7 +13,9 @@ RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh -s -- 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN pnpm --filter @fizzbuzz/web-server... build
+RUN --mount=type=cache,target=/root/.cargo/registry \
+    --mount=type=cache,target=/root/.cargo/git \
+    pnpm --filter @fizzbuzz/web-server... build
 RUN pnpm deploy --filter @fizzbuzz/web-server --prod /prod/web-server
 
 FROM node:25.9.0-slim
