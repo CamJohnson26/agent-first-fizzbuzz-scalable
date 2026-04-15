@@ -4,10 +4,10 @@
 Set up and configure a linter (e.g., ESLint, TSLint, RuboCop) to maintain code quality and style consistently across the codebase.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Choose a linter for the core language.
-- [ ] Install dependencies.
-- [ ] Create configuration files.
-- [ ] Add linting script to `package.json`.
+- [x] Choose a linter for the core language (ESLint).
+- [x] Install dependencies.
+- [x] Create configuration files.
+- [x] Add linting script to `package.json`.
