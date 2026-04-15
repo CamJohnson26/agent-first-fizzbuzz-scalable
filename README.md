@@ -21,8 +21,9 @@ This entire codebase is generated, reviewed, and maintained by AI agents. From a
    - **Using NVM**: `nvm install && nvm use` (uses `.nvmrc`)
    - **Using FNM**: `fnm use --install-if-missing`
 2. **Enable pnpm**:
-   - Recommended: `corepack enable` (Node.js 16.9.0+ includes corepack)
-   - Fallback (if corepack is missing): `npm install -g pnpm@9.0.0`
+   - **For Node.js < 25**: `corepack enable` (Node.js 16.9.0+ includes corepack)
+   - **For Node.js >= 25**: `npm install -g corepack@latest && corepack enable`
+   - Fallback (if corepack is missing/failing): `npm install -g pnpm@9.0.0`
 3. **Install dependencies**:
    ```bash
    pnpm install
