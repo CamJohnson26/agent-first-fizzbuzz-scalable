@@ -13,4 +13,8 @@ Done
 - [x] Create a professional hero section, features list, and target audience section.
 - [x] Set up Vite 8, React 19, and Tailwind 4.
 - [x] Add unit tests for the landing page.
-- [ ] Deploy the landing page.
+- [x] Deploy the landing page.
+- [x] Fix padding and layout spacing issues.
+- [x] Add animations and smooth scrolling.
+- [x] Fix Dr. Algernon's image.
+- [x] Improve enterprise marketing copy and funnel.
