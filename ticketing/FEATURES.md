@@ -48,7 +48,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F040 | FizzBuzz MCP | Implement a Model Context Protocol (MCP) server for FizzBuzz. | Proposed |
 | F041 | SQLite Integration | Add SQLite for local data storage and persistence. | Proposed |
 | F042 | Lean Theorem Solver Verification | Create a version of FizzBuzz verified by the Lean theorem solver. | Done |
-| F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Proposed |
+| F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Done |
 | F044 | TSConfig Lockdown | Enforce strict TypeScript configurations for better type safety. | Proposed |
 | F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | Done |
 | F046 | Analytics & Coverage Reporting | Add code coverage and build size analytics, commenting on every action run. | Proposed |
@@ -121,7 +121,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] FizzBuzz MCP (F040)
 - [ ] SQLite Integration (F041)
 - [x] Lean Theorem Solver Verification (F042)
-- [ ] Rust Implementation (F043)
+- [x] Rust Implementation (F043)
 - [ ] TSConfig Lockdown (F044)
 - [x] Security Scanner Installation (F045)
 - [ ] Analytics & Coverage Reporting (F046)

@@ -15,7 +15,7 @@ describe('Web Server Integration Tests', () => {
   it('GET /compute/:n should return 200 and correct result for valid input', async () => {
     const response = await request(app).get('/compute/15');
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ n: 15, result: 'FizzBuzz' });
+    expect(response.body).toEqual({ n: 15, result: 'FizzBuzz', engine: 'js' });
   });
 
   it('GET /compute/:n should return 400 for invalid input', async () => {
@@ -31,6 +31,7 @@ describe('Web Server Integration Tests', () => {
       start: 1,
       end: 5,
       results: ['1', '2', 'Fizz', '4', 'Buzz'],
+      engine: 'js',
     });
   });
 

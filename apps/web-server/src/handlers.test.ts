@@ -26,7 +26,14 @@ describe('Web Server Handlers Unit Tests', () => {
       const req = { params: { n: '15' } } as unknown as Request;
       const res = mockResponse();
       computeHandler(req, res);
-      expect(res.json).toHaveBeenCalledWith({ n: 15, result: 'FizzBuzz' });
+      expect(res.json).toHaveBeenCalledWith({ n: 15, result: 'FizzBuzz', engine: 'js' });
+    });
+
+    it('should return correct result for valid input with rust engine', () => {
+      const req = { params: { n: '15' }, query: { engine: 'rust' } } as unknown as Request;
+      const res = mockResponse();
+      computeHandler(req, res);
+      expect(res.json).toHaveBeenCalledWith({ n: 15, result: 'FizzBuzz', engine: 'rust' });
     });
 
     it('should return 400 for invalid input', () => {
@@ -34,9 +41,7 @@ describe('Web Server Handlers Unit Tests', () => {
       const res = mockResponse();
       computeHandler(req, res);
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith(
-        expect.objectContaining({ error: expect.any(String) }),
-      );
+      expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: expect.any(Array) }));
     });
   });
 
@@ -49,6 +54,19 @@ describe('Web Server Handlers Unit Tests', () => {
         start: 1,
         end: 3,
         results: ['1', '2', 'Fizz'],
+        engine: 'js',
+      });
+    });
+
+    it('should return correct results for valid range with rust engine', () => {
+      const req = { query: { start: '1', end: '3', engine: 'rust' } } as unknown as Request;
+      const res = mockResponse();
+      rangeHandler(req, res);
+      expect(res.json).toHaveBeenCalledWith({
+        start: 1,
+        end: 3,
+        results: ['1', '2', 'Fizz'],
+        engine: 'rust',
       });
     });
 
