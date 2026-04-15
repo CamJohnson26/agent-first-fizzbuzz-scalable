@@ -31,7 +31,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F023 | Contributing Guidelines | Create a contributing.md file to guide new contributors. | Done |
 | F024 | Linter Setup & Configuration | Set up and configure a linter to enforce code style. | Done |
 | F025 | Webserver Unit Test Suite | Develop a comprehensive unit test suite for the demo webserver. | Done |
-| F026 | CI Unit Test Integration | Integrate and run unit tests automatically in the CI/CD pipeline. | Proposed |
+| F026 | CI Unit Test Integration | Integrate and run unit tests automatically in the CI/CD pipeline. | Done |
 | F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Done |
 | F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Proposed |
 | F029 | Ticketing System UI | Develop a user interface for the project's ticketing system. | Proposed |
@@ -104,7 +104,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Contributing Guidelines (F023)
 - [x] Linter Setup & Configuration (F024)
 - [x] Webserver Unit Test Suite (F025)
-- [ ] CI Unit Test Integration (F026)
+- [x] CI Unit Test Integration (F026)
 - [x] Marketing Landing Page (F027)
 - [ ] Component Library & Design System (F028)
 - [ ] Ticketing System UI (F029)

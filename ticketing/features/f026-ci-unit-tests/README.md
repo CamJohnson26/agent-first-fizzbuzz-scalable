@@ -4,9 +4,9 @@
 Integrate the unit test suite into the CI pipeline to ensure all tests pass before changes are merged.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Add test step to GitHub Actions.
-- [ ] Ensure the CI fails if any tests are not passing.
-- [ ] Automate test reporting in GitHub.
+- [x] Add test step to GitHub Actions.
+- [x] Ensure the CI fails if any tests are not passing.
+- [x] Automate test reporting in GitHub.
