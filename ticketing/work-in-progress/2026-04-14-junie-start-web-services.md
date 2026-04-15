@@ -6,15 +6,17 @@
 
 ## Objectives
 - [x] Create session progress tracking file
-- [ ] Inspect turbo.json and services setup
-- [ ] Start web server (@fizzbuzz/web-server)
-- [ ] Start web dashboard (@fizzbuzz/web-dashboard)
-- [ ] Verify both services are running
+- [x] Inspect turbo.json and services setup
+- [x] Start web server (@fizzbuzz/web-server)
+- [x] Start web dashboard (@fizzbuzz/web-dashboard)
+- [x] Verify both services are running
 
 ## Progress Summary
 - Step 1: Created session tracking file.
 - Step 2: Inspected `turbo.json` and package configurations.
-- Step 3: Starting services...
+- Step 3: Started Web Server on port 3000.
+- Step 4: Started Web Dashboard on port 5173.
+- Step 5: Verified both services via curl.
 
 ## Unfinished Work
-- Finalize verification and document endpoints.
+- None.

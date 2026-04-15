@@ -13,7 +13,8 @@
     "build": "pnpm run check-node && turbo run build",
     "dev": "pnpm run check-node && turbo run dev",
     "lint": "pnpm run check-node && turbo run lint",
-    "test": "pnpm run check-node && turbo run test"
+    "test": "pnpm run check-node && turbo run test",
+    "test:services": "pnpm run check-node && turbo run dev --filter=@fizzbuzz/web-server --filter=@fizzbuzz/web-dashboard"
   },
   "devDependencies": {
     "turbo": "^2.0.0"
