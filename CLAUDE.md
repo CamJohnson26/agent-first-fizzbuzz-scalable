@@ -5,7 +5,7 @@ This guide describes the AI-first development process and how agents should inte
 ## Runtime & Tooling
 
 - **Node.js**: Use version specified in `.node-version`. This version is strictly enforced by `scripts/check-node-version.js` across all core operations.
-- **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm` or `fnm`. **Agents MUST NEVER downgrade project version requirements to match an outdated local environment.**
+- **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm` or `fnm`. **Agents MUST NEVER downgrade project version requirements to match an outdated local environment.** If the environment does not match, run `nvm install` (or equivalent) using the provided `.nvmrc` before executing any core operations.
 - **Package Manager**: Use `pnpm`.
 
 ## Agent Policy & Core Principles
@@ -118,6 +118,7 @@ It runs on every push to `master` and pull request.
 - **CD**: Deploys `apps/marketing-landing-page/dist` to the `gh-pages` branch on push to `master`.
 
 ### Local Build Commands
+- Environment setup: `nvm install && nvm use` (uses `.nvmrc`)
 - Full project build: `pnpm build`
 - Full project test: `pnpm test`
 - Filtered build: `pnpm --filter <package-name> build`

@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import App from './App';
-import React from 'react';
 
 describe('Web Dashboard App', () => {
   it('renders the dashboard title', () => {
     render(<App />);
-    const titleElement = screen.getByText(/FizzBuzz/i);
-    const dashboardElement = screen.getByText(/Dashboard/i);
+    const titleElement = screen.getAllByText(/FizzBuzz/i)[0];
+    const dashboardElement = screen.getAllByText(/Dashboard/i)[0];
     expect(titleElement).toBeDefined();
     expect(dashboardElement).toBeDefined();
   });
