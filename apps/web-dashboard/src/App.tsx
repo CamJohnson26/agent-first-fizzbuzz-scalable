@@ -219,7 +219,7 @@ export default function App() {
                 </div>
                 <CardTitle className="text-lg">Live Analytics</CardTitle>
               </div>
-            </Header>
+            </CardHeader>
             <CardContent className="space-y-4">
               <div>
                 <label className="text-sm text-muted-foreground block mb-1">
