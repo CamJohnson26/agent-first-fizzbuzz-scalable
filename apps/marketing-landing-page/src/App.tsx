@@ -18,53 +18,58 @@ import {
   Lightbulb,
 } from 'lucide-react';
 
+interface ComingSoonModalProps {
+  isModalOpen: boolean;
+  closeModal: () => void;
+}
+
+const ComingSoonModal = ({ isModalOpen, closeModal }: ComingSoonModalProps) => (
+  <AnimatePresence>
+    {isModalOpen && (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeModal}
+          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-md w-full"
+        >
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <Rocket className="w-8 h-8" />
+            </div>
+            <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
+            <p className="text-muted-foreground mb-8">
+              We&apos;re putting the finishing touches on this feature. Join our waitlist to be the first to know when we launch!
+            </p>
+            <Button onClick={closeModal} className="w-full rounded-xl py-6">
+              Got it
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    )}
+  </AnimatePresence>
+);
+
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs'>('home');
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const ComingSoonModal = () => (
-    <AnimatePresence>
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-md w-full"
-          >
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Rocket className="w-8 h-8" />
-              </div>
-              <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-              <p className="text-muted-foreground mb-8">
-                We're putting the finishing touches on this feature. Join our waitlist to be the first to know when we launch!
-              </p>
-              <Button onClick={closeModal} className="w-full rounded-xl py-6">
-                Got it
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
 
   if (activeSection === 'case-studies') {
     return (
@@ -205,7 +210,7 @@ export default function App() {
           </div>
         </section>
         
-        <ComingSoonModal />
+        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
       </div>
     );
   }
@@ -310,7 +315,7 @@ export default function App() {
             </main>
           </div>
         </div>
-        <ComingSoonModal />
+        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
       </div>
     );
   }
@@ -728,7 +733,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-      <ComingSoonModal />
+      <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 }

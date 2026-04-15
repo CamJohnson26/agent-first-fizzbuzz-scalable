@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
@@ -47,12 +47,13 @@ describe('App', () => {
     const startFreeTrialButtons = screen.getAllByRole('button', { name: /Coming Soon|Start Free Trial/i });
     await user.click(startFreeTrialButtons[0]);
     
-    expect(screen.getByText(/We're putting the finishing touches/i)).toBeDefined();
+    const modalText = screen.getByText(/We're putting the finishing touches/i);
+    expect(modalText).toBeDefined();
     
     const closeButton = screen.getByRole('button', { name: /Got it/i });
     await user.click(closeButton);
     
-    expect(screen.queryByText(/We're putting the finishing touches/i)).toBeNull();
+    await waitForElementToBeRemoved(() => screen.queryByText(/We're putting the finishing touches/i));
   });
 
   it('has a Twitter link that points to #', () => {
