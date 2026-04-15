@@ -3,7 +3,7 @@
 [![CI/CD](https://github.com/CamJohnson26/agent-first-fizzbuzz-scalable/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/CamJohnson26/agent-first-fizzbuzz-scalable/actions/workflows/ci-cd.yml)
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE.md)
 [![Node.js](https://img.shields.io/badge/Node.js-25.9.0-green.svg)](https://nodejs.org/)
-[![pnpm](https://img.shields.io/badge/pnpm-9.0.0-orange.svg)](https://pnpm.io/)
+[![pnpm](https://img.shields.io/badge/pnpm-9.15.4-orange.svg)](https://pnpm.io/)
 
 > **A fully agent-first approach to the classic FizzBuzz algorithm, providing scalability, high fidelity, and AI features to enterprise users.**
 
@@ -87,7 +87,7 @@ graph TD
 ## 🛠 Prerequisites
 
 - **Node.js**: `25.9.0` (Strictly enforced via `.node-version`)
-- **pnpm**: `>= 9.0.0` (Managed via Corepack)
+- **pnpm**: `>= 9.15.4` (Managed via Corepack)
 - **Docker**: For running the complete service stack.
 
 ---
@@ -108,7 +108,7 @@ We recommend using a Node.js version manager to ensure you match our strict requ
 ```bash
 npm install -g corepack@latest && corepack enable
 # Or as a fallback
-npm install -g pnpm@9.0.0
+npm install -g pnpm@9.15.4
 ```
 
 ### 3. Install Dependencies
