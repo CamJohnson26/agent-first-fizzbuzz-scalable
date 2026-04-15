@@ -9,6 +9,7 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+      - ANALYTICS_SERVICE_URL=http://analytics-service:3001/api/logs
     networks:
       - fizzbuzz-network
 
@@ -35,6 +36,19 @@ services:
       - "8080:80"
     depends_on:
       - web-server
+    networks:
+      - fizzbuzz-network
+
+  analytics-service:
+    image: fizzbuzz-analytics-service:local
+    build:
+      context: .
+      dockerfile: apps/analytics-service/Dockerfile
+    pull_policy: build
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
     networks:
       - fizzbuzz-network
 
