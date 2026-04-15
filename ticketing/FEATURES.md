@@ -88,6 +88,14 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F080 | Verified Algorithms Documentation | Detailed documentation and code comments for the Lean-verified FizzBuzz implementation. | Done |
 | F081 | WASM Deployment Fix | Fix missing WASM files in production Docker images by removing auto-generated .gitignore. | Done |
 | F082 | Lean Service & Multi-engine UI | Expose Lean as a service and add engine selection to the dashboard. | Done |
+| F083 | Company blog | Implement a blog for company updates. | Proposed |
+| F084 | More precise math package | Enhance the system's precision for mathematical operations. | Proposed |
+| F085 | Frontend forms library | A shared library for consistent form management and validation. | Proposed |
+| F086 | Websocket server | Enable real-time communication with a dedicated WebSocket server. | Proposed |
+| F087 | Install a fuzzer for error catching | Use fuzz testing to find edge cases and potential bugs. | Proposed |
+| F088 | Web Assembly | Integrate Web Assembly for performance-critical components. | Proposed |
+| F089 | Recommendations | Build an intelligent recommendation engine. | Proposed |
+| F090 | Targetted ads | Support targeted advertising and analytics. | Proposed |
 
 ## Next Features
 
@@ -164,5 +172,14 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] App-level Documentation (F077)
 - [x] Project Roadmap (F078)
 - [x] CI & Build Reliability (F079)
+- [x] Verified Algorithms Documentation (F080)
 - [x] WASM Deployment Fix (F081)
 - [x] Lean Service & Multi-engine UI (F082)
+- [ ] Company blog (F083)
+- [ ] More precise math package (F084)
+- [ ] Frontend forms library (F085)
+- [ ] Websocket server (F086)
+- [ ] Install a fuzzer for error catching (F087)
+- [ ] Web Assembly (F088)
+- [ ] Recommendations (F089)
+- [ ] Targetted ads (F090)
