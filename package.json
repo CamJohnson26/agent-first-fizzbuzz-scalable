@@ -1,0 +1,18 @@
+{
+  "name": "agent-first-fizzbuzz-scalable",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
