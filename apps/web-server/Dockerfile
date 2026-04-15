@@ -1,7 +1,7 @@
 FROM node:25.9.0-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install -g corepack@latest && corepack enable
+RUN npm install -g corepack@latest --force && corepack enable
 
 FROM base AS build
 COPY . /usr/src/app
