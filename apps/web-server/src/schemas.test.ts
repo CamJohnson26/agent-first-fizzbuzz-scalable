@@ -32,7 +32,9 @@ describe('Web Server Schemas Unit Tests', () => {
       const result = rangeSchema.safeParse({ start: 10, end: 5 });
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.errors[0].message).toBe('Start must be less than or equal to end');
+        expect(result.error.errors[0].message).toBe(
+          'Start must be less than or equal to end',
+        );
       }
     });
 

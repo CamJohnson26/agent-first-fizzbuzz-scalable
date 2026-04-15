@@ -15,7 +15,8 @@ export function Button({
   const variants = {
     primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90',
-    outline: 'border border-border bg-transparent hover:bg-muted text-foreground',
+    outline:
+      'border border-border bg-transparent hover:bg-muted text-foreground',
     ghost: 'bg-transparent hover:bg-muted text-foreground',
   };
 
@@ -31,7 +32,7 @@ export function Button({
         'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 cursor-pointer',
         variants[variant],
         sizes[size],
-        className
+        className,
       )}
       {...props}
     />

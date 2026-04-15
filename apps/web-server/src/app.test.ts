@@ -37,6 +37,8 @@ describe('Web Server Integration Tests', () => {
   it('GET /range should return 400 for invalid query (start > end)', async () => {
     const response = await request(app).get('/range?start=10&end=5');
     expect(response.status).toBe(400);
-    expect(response.body.error[0].message).toBe('Start must be less than or equal to end');
+    expect(response.body.error[0].message).toBe(
+      'Start must be less than or equal to end',
+    );
   });
 });

@@ -15,7 +15,9 @@ describe('Web Server Handlers Unit Tests', () => {
       const req = {} as Request;
       const res = mockResponse();
       healthHandler(req, res);
-      expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ status: 'ok' }));
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({ status: 'ok' }),
+      );
     });
   });
 
@@ -32,7 +34,9 @@ describe('Web Server Handlers Unit Tests', () => {
       const res = mockResponse();
       computeHandler(req, res);
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: expect.any(String) }));
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({ error: expect.any(String) }),
+      );
     });
   });
 
@@ -53,7 +57,9 @@ describe('Web Server Handlers Unit Tests', () => {
       const res = mockResponse();
       rangeHandler(req, res);
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: expect.any(Array) }));
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({ error: expect.any(Array) }),
+      );
     });
   });
 });

@@ -13,6 +13,8 @@
     "build": "pnpm run check-node && turbo run build",
     "dev": "pnpm run check-node && turbo run dev",
     "lint": "pnpm run check-node && turbo run lint",
+    "format": "pnpm run check-node && turbo run format",
+    "type-check": "pnpm run check-node && turbo run type-check",
     "test": "pnpm run check-node && turbo run test",
     "test:services": "pnpm run check-node && (docker info > /dev/null 2>&1 || (echo 'Error: Docker daemon not accessible. If you are on Linux, try adding your user to the docker group: sudo usermod -aG docker $USER && newgrp docker' && exit 1)) && docker compose up --build --abort-on-container-exit",
     "security-check": "pnpm audit --audit-level high && (trivy fs . || echo 'Trivy not found or failed, please install it locally')"
@@ -20,9 +22,11 @@
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.5.0",
+    "prettier": "^3.8.3",
     "turbo": "^2.0.0",
     "typescript-eslint": "^8.58.2"
   }

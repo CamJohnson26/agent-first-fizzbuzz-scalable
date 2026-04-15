@@ -61,7 +61,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F053 | Architectural Recommendations | Create recommendations for project architecture improvements. | Done |
 | F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Proposed |
 | F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Proposed |
-| F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | In Progress |
+| F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | Done |
 | F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Proposed |
 | F058 | Global Error Handling | Centralized middleware and custom error classes for consistent API responses. | Proposed |
 | F059 | Streamed Responses | Implement NDJSON/SSE for large range computations to prevent OOM. | Proposed |
@@ -134,7 +134,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Architectural Recommendations (F053)
 - [ ] Centralized Configuration (F054)
 - [ ] Shared Type Definitions (F055)
-- [ ] Standardized Workspace Scripts (F056)
+- [x] Standardized Workspace Scripts (F056)
 - [ ] Backend Dependency Injection (F057)
 - [ ] Global Error Handling (F058)
 - [ ] Streamed Responses (F059)

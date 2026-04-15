@@ -5,7 +5,11 @@ interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'destructive' | 'success' | 'warning';
 }
 
-export function Alert({ className, variant = 'default', ...props }: AlertProps) {
+export function Alert({
+  className,
+  variant = 'default',
+  ...props
+}: AlertProps) {
   const variants = {
     default: 'bg-surface text-foreground border-border',
     destructive: 'bg-error/10 text-error border-error/50',
@@ -19,7 +23,7 @@ export function Alert({ className, variant = 'default', ...props }: AlertProps) 
       className={cn(
         'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
         variants[variant],
-        className
+        className,
       )}
       {...props}
     />

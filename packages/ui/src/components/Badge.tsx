@@ -2,10 +2,20 @@ import React from 'react';
 import { cn } from '../utils.js';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'success' | 'warning' | 'error';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'outline'
+    | 'success'
+    | 'warning'
+    | 'error';
 }
 
-export function Badge({ className, variant = 'primary', ...props }: BadgeProps) {
+export function Badge({
+  className,
+  variant = 'primary',
+  ...props
+}: BadgeProps) {
   const variants = {
     primary: 'bg-primary/20 text-primary border-primary/30',
     secondary: 'bg-secondary/20 text-secondary border-secondary/30',
@@ -20,7 +30,7 @@ export function Badge({ className, variant = 'primary', ...props }: BadgeProps) 
       className={cn(
         'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors',
         variants[variant],
-        className
+        className,
       )}
       {...props}
     />

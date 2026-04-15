@@ -16,7 +16,9 @@ export const computeHandler = (req: Request, res: Response) => {
     res.json({ n, result });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: 'Invalid input. Please provide a positive integer.' });
+      return res
+        .status(400)
+        .json({ error: 'Invalid input. Please provide a positive integer.' });
     }
     res.status(500).json({ error: 'Internal server error' });
   }

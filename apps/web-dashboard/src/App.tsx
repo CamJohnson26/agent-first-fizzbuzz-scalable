@@ -1,9 +1,31 @@
 import { useState, useEffect } from 'react';
-import { Activity, Calculator, List, RefreshCw, Terminal, CheckCircle, XCircle } from 'lucide-react';
-import { Button, Card, CardHeader, CardTitle, CardContent, Input, Badge, Alert, AlertTitle, AlertDescription } from '@fizzbuzz/ui';
+import {
+  Activity,
+  Calculator,
+  List,
+  RefreshCw,
+  Terminal,
+  CheckCircle,
+  XCircle,
+} from 'lucide-react';
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Input,
+  Badge,
+  Alert,
+  AlertTitle,
+  AlertDescription,
+} from '@fizzbuzz/ui';
 
 export default function App() {
-  const [health, setHealth] = useState<{ status: string; timestamp: string } | null>(null);
+  const [health, setHealth] = useState<{
+    status: string;
+    timestamp: string;
+  } | null>(null);
   const [loadingHealth, setLoadingHealth] = useState(false);
   const [computeValue, setComputeValue] = useState<number>(15);
   const [computeResult, setComputeResult] = useState<string | null>(null);
@@ -51,12 +73,18 @@ export default function App() {
   const handleRangeCompute = async () => {
     setError(null);
     try {
-      const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}`);
+      const res = await fetch(
+        `${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}`,
+      );
       const data = await res.json();
       if (res.ok) {
         setRangeResults(data.results);
       } else {
-        setError(Array.isArray(data.error) ? data.error[0].message : data.error || 'Failed to compute range');
+        setError(
+          Array.isArray(data.error)
+            ? data.error[0].message
+            : data.error || 'Failed to compute range',
+        );
       }
     } catch (_err) {
       setError('Connection refused. Is the web-server running?');
@@ -71,24 +99,32 @@ export default function App() {
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 transition-transform hover:scale-105">
               <Terminal className="text-primary-foreground w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight">FizzBuzz <span className="text-primary">Dashboard</span></h1>
+            <h1 className="text-2xl font-bold tracking-tight">
+              FizzBuzz <span className="text-primary">Dashboard</span>
+            </h1>
           </div>
           <div className="flex items-center gap-4">
-            <Badge 
+            <Badge
               variant={health?.status === 'ok' ? 'success' : 'error'}
               className="px-3 py-1 gap-1.5"
             >
-              {health?.status === 'ok' ? <CheckCircle className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
+              {health?.status === 'ok' ? (
+                <CheckCircle className="w-3.5 h-3.5" />
+              ) : (
+                <XCircle className="w-3.5 h-3.5" />
+              )}
               Server: {health?.status || 'checking...'}
             </Badge>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="sm"
               onClick={checkHealth}
               disabled={loadingHealth}
               className="p-2 rounded-lg"
             >
-              <RefreshCw className={`w-5 h-5 ${loadingHealth ? 'animate-spin' : ''}`} />
+              <RefreshCw
+                className={`w-5 h-5 ${loadingHealth ? 'animate-spin' : ''}`}
+              />
             </Button>
           </div>
         </div>
@@ -116,16 +152,30 @@ export default function App() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="text-sm text-muted-foreground block mb-1">Status</label>
-                <p className="font-semibold capitalize text-foreground">{health?.status || 'Unknown'}</p>
+                <label className="text-sm text-muted-foreground block mb-1">
+                  Status
+                </label>
+                <p className="font-semibold capitalize text-foreground">
+                  {health?.status || 'Unknown'}
+                </p>
               </div>
               <div>
-                <label className="text-sm text-muted-foreground block mb-1">Last Checked</label>
-                <p className="text-sm font-mono text-foreground">{health?.timestamp ? new Date(health.timestamp).toLocaleString() : 'Never'}</p>
+                <label className="text-sm text-muted-foreground block mb-1">
+                  Last Checked
+                </label>
+                <p className="text-sm font-mono text-foreground">
+                  {health?.timestamp
+                    ? new Date(health.timestamp).toLocaleString()
+                    : 'Never'}
+                </p>
               </div>
               <div className="pt-4 border-t border-border">
                 <p className="text-xs text-muted-foreground">
-                  Dashboard connected to <code className="bg-muted px-1 rounded text-accent"> {API_BASE} </code>
+                  Dashboard connected to{' '}
+                  <code className="bg-muted px-1 rounded text-accent">
+                    {' '}
+                    {API_BASE}{' '}
+                  </code>
                 </p>
               </div>
             </CardContent>
@@ -144,27 +194,30 @@ export default function App() {
             <CardContent className="space-y-6">
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
-                  <label className="text-sm text-muted-foreground block mb-2">Input Number (n)</label>
-                  <Input 
-                    type="number" 
+                  <label className="text-sm text-muted-foreground block mb-2">
+                    Input Number (n)
+                  </label>
+                  <Input
+                    type="number"
                     value={computeValue}
                     onChange={(e) => setComputeValue(parseInt(e.target.value))}
                     placeholder="Enter a number..."
                   />
                 </div>
                 <div className="flex items-end">
-                  <Button 
-                    onClick={handleCompute}
-                    className="w-full sm:w-auto"
-                  >
+                  <Button onClick={handleCompute} className="w-full sm:w-auto">
                     Compute
                   </Button>
                 </div>
               </div>
               {computeResult && (
                 <div className="p-6 bg-primary/5 rounded-xl border border-primary/20 flex items-center justify-between">
-                  <span className="text-muted-foreground font-medium">Result:</span>
-                  <span className="text-3xl font-black text-primary animate-in zoom-in-50 duration-300">{computeResult}</span>
+                  <span className="text-muted-foreground font-medium">
+                    Result:
+                  </span>
+                  <span className="text-3xl font-black text-primary animate-in zoom-in-50 duration-300">
+                    {computeResult}
+                  </span>
                 </div>
               )}
             </CardContent>
@@ -183,23 +236,27 @@ export default function App() {
             <CardContent>
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
                 <div>
-                  <label className="text-sm text-muted-foreground block mb-2">Start</label>
-                  <Input 
-                    type="number" 
+                  <label className="text-sm text-muted-foreground block mb-2">
+                    Start
+                  </label>
+                  <Input
+                    type="number"
                     value={rangeStart}
                     onChange={(e) => setRangeStart(parseInt(e.target.value))}
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted-foreground block mb-2">End</label>
-                  <Input 
-                    type="number" 
+                  <label className="text-sm text-muted-foreground block mb-2">
+                    End
+                  </label>
+                  <Input
+                    type="number"
                     value={rangeEnd}
                     onChange={(e) => setRangeEnd(parseInt(e.target.value))}
                   />
                 </div>
                 <div className="sm:col-span-2 flex items-end">
-                  <Button 
+                  <Button
                     variant="secondary"
                     onClick={handleRangeCompute}
                     className="w-full"
@@ -212,13 +269,16 @@ export default function App() {
               {rangeResults.length > 0 && (
                 <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 gap-3">
                   {rangeResults.map((res, i) => (
-                    <Badge 
-                      key={i} 
+                    <Badge
+                      key={i}
                       variant={
-                        res === 'Fizz' ? 'warning' :
-                        res === 'Buzz' ? 'secondary' :
-                        res === 'FizzBuzz' ? 'primary' :
-                        'outline'
+                        res === 'Fizz'
+                          ? 'warning'
+                          : res === 'Buzz'
+                            ? 'secondary'
+                            : res === 'FizzBuzz'
+                              ? 'primary'
+                              : 'outline'
                       }
                       className="justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
                     >

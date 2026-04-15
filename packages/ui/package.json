@@ -14,9 +14,12 @@
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
     "build": "tsc",
     "test": "vitest run",
-    "lint": "eslint ."
+    "dev": "vitest"
   },
   "peerDependencies": {
     "react": "^19.0.0",
