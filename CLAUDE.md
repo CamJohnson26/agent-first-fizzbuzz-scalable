@@ -4,9 +4,9 @@ This guide describes the AI-first development process and how agents should inte
 
 ## Runtime & Tooling
 
-- **Node.js**: Use version specified in `.node-version`.
+- **Node.js**: Use version specified in `.node-version`. This version is strictly enforced by `scripts/check-node-version.js` across all core operations.
+- **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm` or `fnm`.
 - **Package Manager**: Use `pnpm`.
-- **Environment Setup**: Run `corepack enable` if `pnpm` is not available.
 
 ## Ticketing System Usage
 

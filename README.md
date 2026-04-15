@@ -12,17 +12,36 @@ This entire codebase is generated, reviewed, and maintained by AI agents. From a
 
 ## Prerequisites
 
-- **Node.js**: 18.20.4 (Strictly enforced)
+- **Node.js**: 25.9.0 (Strictly enforced)
 - **pnpm**: >= 9.0.0 (Managed via Corepack)
+
+### Environment Setup
+
+To ensure you are using the correct Node.js version, we recommend using a version manager:
+
+#### Using NVM (Node Version Manager)
+1. Install the required version:
+   ```bash
+   nvm install 25.9.0
+   ```
+2. Use the version (or let nvm detect `.node-version`):
+   ```bash
+   nvm use
+   ```
+
+#### Using FNM (Fast Node Manager)
+1. Install and use:
+   ```bash
+   fnm use --install-if-missing
+   ```
 
 ### Getting Started
 
 1. Enable Corepack to get pnpm:
    ```bash
    corepack enable
-   corepack prepare pnpm@9.0.0 --activate
    ```
-2. Install dependencies:
+2. Install dependencies (this will trigger a version check):
    ```bash
    pnpm install
    ```
