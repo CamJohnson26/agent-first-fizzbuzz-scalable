@@ -18,6 +18,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F010 | AI Agent Service | Optimization and automation service. | Proposed |
 | F011 | Tooling & Runtime Upgrade | Fix Node.js version mismatch and ensure pnpm availability. | Done |
 | F012 | Node.js Runtime Upgrade | Upgrade Node.js to the latest stable version (v24.x). | Done |
+| F013 | RCA Node Mismatch | Root Cause Analysis and permanent fix for Node version mismatch. | Done |
 
 ## Next Features
 
@@ -27,3 +28,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] AI Agent Service (F010)
  - [x] Tooling & Runtime Upgrade (F011)
 - [x] Node.js Runtime Upgrade (F012)
+- [ ] RCA Node Mismatch (F013)

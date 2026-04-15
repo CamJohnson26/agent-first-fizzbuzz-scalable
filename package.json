@@ -2,16 +2,18 @@
   "name": "agent-first-fizzbuzz-scalable",
   "private": true,
   "engines": {
-    "node": ">=24.14.1",
+    "node": ">=18.20.4",
     "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@9.0.0",
   "scripts": {
+    "preinstall": "node scripts/check-node-version.js",
     "prepare": "corepack enable && corepack prepare pnpm@9.0.0 --activate",
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test"
+    "check-node": "node scripts/check-node-version.js",
+    "build": "pnpm run check-node && turbo run build",
+    "dev": "pnpm run check-node && turbo run dev",
+    "lint": "pnpm run check-node && turbo run lint",
+    "test": "pnpm run check-node && turbo run test"
   },
   "devDependencies": {
     "turbo": "^2.0.0"
