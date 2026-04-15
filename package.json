@@ -2,7 +2,7 @@
   "name": "agent-first-fizzbuzz-scalable",
   "private": true,
   "engines": {
-    "node": ">=18.20.0",
+    "node": ">=24.14.1",
     "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@9.0.0",

@@ -12,7 +12,7 @@ This entire codebase is generated, reviewed, and maintained by AI agents. From a
 
 ## Prerequisites
 
-- **Node.js**: >= 18.20.0 (Recommended: 20.x or higher)
+- **Node.js**: >= 24.14.1 (Latest LTS: Krypton)
 - **pnpm**: >= 9.0.0 (Managed via Corepack)
 
 ### Getting Started
