@@ -4,10 +4,10 @@
 A React-based web dashboard to monitor and manage the FizzBuzz engine. It will provide a user interface to call the FizzBuzz services and view results in a more user-friendly way.
 
 ## Status
-In Progress
+Done
 
 ## Next Features (Todo)
-- [ ] Initialize React/Vite project in `apps/web-dashboard`.
-- [ ] Implement monitoring view for health status.
-- [ ] Add basic interactive FizzBuzz testing interface.
-- [ ] Configure `turbo` for dashboard builds.
+- [x] Initialize React/Vite project in `apps/web-dashboard`.
+- [x] Implement monitoring view for health status.
+- [x] Add basic interactive FizzBuzz testing interface.
+- [x] Configure `turbo` for dashboard builds.

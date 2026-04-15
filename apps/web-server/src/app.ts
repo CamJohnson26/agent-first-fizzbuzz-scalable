@@ -1,46 +1,18 @@
 import express from 'express';
-import { z } from 'zod';
-import { FizzBuzzService } from '@fizzbuzz/core-logic';
-import { computeSchema, rangeSchema } from './schemas.js';
+import { healthHandler, computeHandler, rangeHandler } from './handlers.js';
 
 export const createApp = () => {
   const app = express();
   app.use(express.json());
 
-  const fizzBuzzService = new FizzBuzzService();
-
   // Health check endpoint
-  app.get('/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-  });
+  app.get('/health', healthHandler);
 
   // FizzBuzz compute endpoint
-  app.get('/compute/:n', (req, res) => {
-    try {
-      const { n } = computeSchema.parse(req.params);
-      const result = fizzBuzzService.compute(n);
-      res.json({ n, result });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        return res.status(400).json({ error: 'Invalid input. Please provide a positive integer.' });
-      }
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  app.get('/compute/:n', computeHandler);
 
   // FizzBuzz range compute endpoint
-  app.get('/range', (req, res) => {
-    try {
-      const { start, end } = rangeSchema.parse(req.query);
-      const results = fizzBuzzService.computeRange(start, end);
-      res.json({ start, end, results });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        return res.status(400).json({ error: error.errors });
-      }
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+  app.get('/range', rangeHandler);
 
   return app;
 };

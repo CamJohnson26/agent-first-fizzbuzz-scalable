@@ -4,10 +4,10 @@
 Develop a comprehensive suite of unit tests for the demo webserver to ensure core functionality and prevent regressions.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Choose a testing framework.
-- [ ] Write tests for core routing and logic.
-- [ ] Implement code coverage reports.
-- [ ] Ensure all tests pass.
+- [x] Choose a testing framework (Vitest).
+- [x] Write tests for core routing and logic.
+- [x] Implement code coverage reports.
+- [x] Ensure all tests pass.

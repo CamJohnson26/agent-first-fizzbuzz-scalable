@@ -14,7 +14,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F006 | Monorepo Foundation | Scalable monorepo base for the project. | Done |
 | F007 | Core FizzBuzz Service | Core logic and service implementation. | Done |
 | F008 | Distributed Engine Service | Service for distributed processing. | Proposed |
-| F009 | Web Dashboard App | Frontend dashboard for monitoring. | Proposed |
+| F009 | Web Dashboard App | Frontend dashboard for monitoring. | Done |
 | F010 | AI Agent Service | Optimization and automation service. | Proposed |
 | F011 | Tooling & Runtime Upgrade | Fix Node.js version mismatch and ensure pnpm availability. | Done |
 | F012 | Node.js Runtime Upgrade | Upgrade Node.js to the latest stable version (v24.x). | Done |
@@ -30,7 +30,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F022 | License Documentation | Create a license.md file to define the project's license. | Done |
 | F023 | Contributing Guidelines | Create a contributing.md file to guide new contributors. | Done |
 | F024 | Linter Setup & Configuration | Set up and configure a linter to enforce code style. | Proposed |
-| F025 | Webserver Unit Test Suite | Develop a comprehensive unit test suite for the demo webserver. | Proposed |
+| F025 | Webserver Unit Test Suite | Develop a comprehensive unit test suite for the demo webserver. | Done |
 | F026 | CI Unit Test Integration | Integrate and run unit tests automatically in the CI/CD pipeline. | Proposed |
 | F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Done |
 | F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Proposed |
@@ -63,7 +63,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 
 - [x] Core FizzBuzz Service (F007)
 - [ ] Distributed Engine Service (F008)
-- [ ] Web Dashboard App (F009)
+- [x] Web Dashboard App (F009)
 - [ ] AI Agent Service (F010)
 - [x] Tooling & Runtime Upgrade (F011)
 - [x] Node.js Runtime Upgrade (F012)
@@ -79,7 +79,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] License Documentation (F022)
 - [x] Contributing Guidelines (F023)
 - [ ] Linter Setup & Configuration (F024)
-- [ ] Webserver Unit Test Suite (F025)
+- [x] Webserver Unit Test Suite (F025)
 - [ ] CI Unit Test Integration (F026)
 - [x] Marketing Landing Page (F027)
 - [ ] Component Library & Design System (F028)
