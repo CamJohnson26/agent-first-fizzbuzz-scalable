@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Rocket,
   ShieldCheck,
@@ -12,9 +13,308 @@ import {
   Lock,
   Workflow,
   Server,
+  X,
+  BarChart,
+  Lightbulb,
 } from 'lucide-react';
 
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs'>('home');
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const ComingSoonModal = () => (
+    <AnimatePresence>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-md w-full"
+          >
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                <Rocket className="w-8 h-8" />
+              </div>
+              <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
+              <p className="text-muted-foreground mb-8">
+                We're putting the finishing touches on this feature. Join our waitlist to be the first to know when we launch!
+              </p>
+              <Button onClick={closeModal} className="w-full rounded-xl py-6">
+                Got it
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+
+  if (activeSection === 'case-studies') {
+    return (
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => setActiveSection('home')}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => setActiveSection('home')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Back to Home
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                  Coming Soon
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <header className="py-24 bg-surface/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Badge variant="secondary" className="mb-6 px-4 py-1">
+              Success Stories
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
+              Enterprise <span className="text-primary">Case Studies</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Discover how world-leading organizations are scaling their algorithmic operations with FizzBuzz Scalable.
+            </p>
+          </div>
+        </header>
+
+        <section className="py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12">
+              {[
+                {
+                  company: 'Global Bank of America',
+                  industry: 'Finance',
+                  title: 'Optimizing Global Transaction Logic',
+                  stats: '40% reduction in latency',
+                  desc: 'How the world\'s largest bank migrated their legacy FizzBuzz implementations to our scalable engine, resulting in unprecedented transaction speeds.',
+                  icon: <BarChart className="w-8 h-8 text-primary" />,
+                },
+                {
+                  company: 'SpaceXperience',
+                  industry: 'Aerospace',
+                  title: 'Mission-Critical Orbital Calculations',
+                  stats: '100% fidelity guaranteed',
+                  desc: 'Zero-room for error in orbital mechanics. SpaceXperience relies on our SOC2 compliant infrastructure for their mission-critical algorithmic needs.',
+                  icon: <Rocket className="w-8 h-8 text-secondary" />,
+                },
+                {
+                  company: 'HealthScale Global',
+                  industry: 'Healthcare',
+                  title: 'Genomic Sequencing Orchestration',
+                  stats: '2.5PB of data processed monthly',
+                  desc: 'Orchestrating complex genomic analysis requires massive scale. Our distributed engine provides the necessary throughput for modern life sciences.',
+                  icon: <Microscope className="w-8 h-8 text-accent" />,
+                },
+                {
+                  company: 'ShopifyPlus Extreme',
+                  industry: 'E-commerce',
+                  title: 'Black Friday Scalability',
+                  stats: '10M+ operations per second',
+                  desc: 'Handling peak traffic during major sales events. ShopifyPlus Extreme uses our Edge Orchestration to ensure zero downtime during global flash sales.',
+                  icon: <Zap className="w-8 h-8 text-primary" />,
+                },
+              ].map((study, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Card className="h-full overflow-hidden hover:border-primary/50 transition-colors group">
+                    <CardContent className="p-0">
+                      <div className="flex flex-col h-full">
+                        <div className="bg-surface/50 p-8 border-b border-border group-hover:bg-primary/5 transition-colors">
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="w-12 h-12 bg-background border border-border rounded-xl flex items-center justify-center">
+                              {study.icon}
+                            </div>
+                            <Badge variant="outline">{study.industry}</Badge>
+                          </div>
+                          <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                            {study.company}
+                          </h3>
+                          <div className="text-primary font-bold text-lg mb-4">
+                            {study.stats}
+                          </div>
+                        </div>
+                        <div className="p-8">
+                          <h4 className="text-xl font-semibold mb-4">{study.title}</h4>
+                          <p className="text-muted-foreground leading-relaxed mb-8">
+                            {study.desc}
+                          </p>
+                          <Button variant="outline" className="rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-all" onClick={openModal}>
+                            Read Full Case Study
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 bg-primary text-primary-foreground text-center">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-4xl font-bold mb-8">Ready to be our next success story?</h2>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Button variant="secondary" size="lg" className="rounded-2xl px-10 py-8 text-xl bg-white text-primary hover:bg-slate-100" onClick={openModal}>
+                Coming Soon
+              </Button>
+              <Button variant="outline" size="lg" className="rounded-2xl px-10 py-8 text-xl border-2 border-white text-white hover:bg-white/10" onClick={openModal}>
+                Coming Soon
+              </Button>
+            </div>
+          </div>
+        </section>
+        
+        <ComingSoonModal />
+      </div>
+    );
+  }
+
+  if (activeSection === 'docs') {
+    return (
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => setActiveSection('home')}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => setActiveSection('home')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Back to Home
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                  Coming Soon
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="flex flex-col md:flex-row gap-12">
+            <aside className="md:w-64 space-y-8">
+              <div>
+                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">Getting Started</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="hover:text-primary cursor-pointer transition-colors">Introduction</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">Installation</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">Quick Start Guide</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">Core Concepts</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="hover:text-primary cursor-pointer transition-colors">Distributed Engine</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">Fidelity Guarantees</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">SOC2 Compliance</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">API Reference</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="hover:text-primary cursor-pointer transition-colors">Authentication</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">Endpoints</li>
+                  <li className="hover:text-primary cursor-pointer transition-colors">Webhooks</li>
+                </ul>
+              </div>
+            </aside>
+            <main className="flex-1 max-w-3xl">
+              <Badge variant="secondary" className="mb-4">Documentation</Badge>
+              <h1 className="text-4xl font-extrabold mb-8">Introduction to FizzBuzz Scalable</h1>
+              <div className="prose prose-slate prose-invert max-w-none">
+                <p className="text-xl text-muted-foreground mb-8">
+                  Welcome to the official documentation for FizzBuzz Scalable. Our platform provides the infrastructure needed to run algorithmic logic at any scale.
+                </p>
+                <h2 className="text-2xl font-bold mb-4">Why FizzBuzz Scalable?</h2>
+                <p className="mb-6">
+                  In modern enterprise environments, simple logic needs to be distributed, audited, and secured. FizzBuzz Scalable provides:
+                </p>
+                <ul className="space-y-4 mb-8 list-disc pl-6">
+                  <li><strong>Zero Latency:</strong> Optimized Node.js v25.9 engine for sub-millisecond execution.</li>
+                  <li><strong>Infinite Scale:</strong> Edge orchestration that grows with your business needs.</li>
+                  <li><strong>Compliance:</strong> Built-in SOC2, HIPAA, and GDPR compliance features.</li>
+                </ul>
+                <div className="bg-surface border border-border p-6 rounded-2xl mb-8">
+                  <div className="flex items-center gap-3 mb-4 text-primary font-bold">
+                    <Lightbulb className="w-5 h-5" />
+                    Pro Tip
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    For production environments, always use our Edge Orchestration feature to minimize latency for global users.
+                  </p>
+                </div>
+                <h2 className="text-2xl font-bold mb-4">Next Steps</h2>
+                <div className="grid sm:grid-cols-2 gap-4 not-prose">
+                  <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={openModal}>
+                    <h3 className="font-bold mb-2">Installation Guide</h3>
+                    <p className="text-sm text-muted-foreground">Get the FizzBuzz engine running in minutes.</p>
+                  </div>
+                  <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={openModal}>
+                    <h3 className="font-bold mb-2">API Reference</h3>
+                    <p className="text-sm text-muted-foreground">Integrate our logic directly into your apps.</p>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+        <ComingSoonModal />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       {/* Navigation */}
@@ -36,26 +336,26 @@ export default function App() {
               >
                 Features
               </a>
-              <a
-                href="#use-cases"
+              <button
+                onClick={() => setActiveSection('case-studies')}
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
-                Solutions
-              </a>
+                Case Studies
+              </button>
               <a
                 href="#pricing"
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
                 Pricing
               </a>
-              <a
-                href="#about"
+              <button
+                onClick={() => setActiveSection('docs')}
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
-                Company
-              </a>
-              <Button variant="primary" size="sm" className="rounded-full shadow-lg shadow-primary/30">
-                Contact Sales
+                Docs
+              </button>
+              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                Coming Soon
               </Button>
             </div>
           </div>
@@ -87,18 +387,20 @@ export default function App() {
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button
                 size="lg"
-                className="rounded-2xl px-10 py-8 text-xl shadow-2xl shadow-primary/25 bg-primary hover:bg-primary/90 transition-all hover:scale-105"
+                onClick={openModal}
+                className="rounded-2xl px-10 py-8 text-xl shadow-2xl shadow-primary/25 bg-primary hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center gap-3"
               >
-                <Rocket className="mr-3 h-6 w-6" />
-                Start Free Trial
+                <Rocket className="h-6 w-6" />
+                <span>Start Free Trial</span>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-2xl px-10 py-8 text-xl border-2 hover:bg-surface transition-all"
+                onClick={openModal}
+                className="rounded-2xl px-10 py-8 text-xl border-2 hover:bg-surface transition-all flex items-center justify-center gap-3"
               >
-                <Terminal className="mr-3 h-6 w-6" />
-                Schedule Demo
+                <Terminal className="h-6 w-6" />
+                <span>Schedule Demo</span>
               </Button>
             </div>
           </motion.div>
@@ -183,7 +485,7 @@ export default function App() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Card className="bg-surface/50 border-border hover:border-primary/50 transition-all h-full group">
-                <CardContent className="pt-8">
+                <CardContent className="p-8 pt-8">
                   <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/10">
                     <Server className="w-7 h-7" />
                   </div>
@@ -203,7 +505,7 @@ export default function App() {
               transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
             >
               <Card className="bg-surface/50 border-border hover:border-secondary/50 transition-all h-full group">
-                <CardContent className="pt-8">
+                <CardContent className="p-8 pt-8">
                   <div className="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-lg shadow-secondary/10">
                     <Lock className="w-7 h-7" />
                   </div>
@@ -313,7 +615,7 @@ export default function App() {
                 price: '$0',
                 desc: 'Perfect for individual researchers.',
                 features: ['Local execution', 'Basic community support', 'v25.9 Engine access'],
-                cta: 'Start Now',
+                cta: 'Coming Soon',
                 variant: 'outline' as const,
               },
               {
@@ -321,7 +623,7 @@ export default function App() {
                 price: '$499',
                 desc: 'For growing teams and startups.',
                 features: ['Cloud orchestration', 'Priority email support', 'Advanced analytics', 'Custom plugins'],
-                cta: 'Get Started',
+                cta: 'Coming Soon',
                 variant: 'primary' as const,
                 popular: true,
               },
@@ -330,7 +632,7 @@ export default function App() {
                 price: 'Custom',
                 desc: 'Mission-critical deployments.',
                 features: ['Dedicated support engineer', 'SLA guarantees', 'SOC2/HIPAA compliance', 'Unlimited nodes'],
-                cta: 'Talk to Sales',
+                cta: 'Coming Soon',
                 variant: 'outline' as const,
               },
             ].map((plan, i) => (
@@ -362,7 +664,7 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.variant} className="w-full rounded-xl py-6">
+                <Button variant={plan.variant} className="w-full rounded-xl py-6" onClick={openModal}>
                   {plan.cta}
                 </Button>
               </motion.div>
@@ -389,7 +691,7 @@ export default function App() {
             </div>
             <div className="flex space-x-8">
               <a
-                href="https://twitter.com/fizzbuzz_scalable"
+                href="#"
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Twitter
@@ -401,7 +703,11 @@ export default function App() {
                 GitHub
               </a>
               <a
-                href="#docs"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveSection('docs');
+                }}
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Documentation
@@ -422,6 +728,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <ComingSoonModal />
     </div>
   );
 }
