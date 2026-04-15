@@ -33,8 +33,13 @@ export default function App() {
   const [rangeEnd, setRangeEnd] = useState<number>(15);
   const [rangeResults, setRangeResults] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [stats, setStats] = useState<{
+    totalLogs: number;
+    logsByService: Record<string, number>;
+  } | null>(null);
 
   const API_BASE = 'http://localhost:3000';
+  const ANALYTICS_BASE = 'http://localhost:3001';
 
   const checkHealth = async () => {
     setLoadingHealth(true);
@@ -51,8 +56,21 @@ export default function App() {
     }
   };
 
+  const fetchStats = async () => {
+    try {
+      const res = await fetch(`${ANALYTICS_BASE}/stats`);
+      const data = await res.json();
+      setStats(data);
+    } catch (_err) {
+      console.error('Failed to fetch stats:', _err);
+    }
+  };
+
   useEffect(() => {
     checkHealth();
+    fetchStats();
+    const interval = setInterval(fetchStats, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleCompute = async () => {
@@ -177,6 +195,45 @@ export default function App() {
                     {API_BASE}{' '}
                   </code>
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Analytics Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-accent/10 text-accent rounded-lg">
+                  <Activity className="w-5 h-5" />
+                </div>
+                <CardTitle className="text-lg">Live Analytics</CardTitle>
+              </div>
+            </Header>
+            <CardContent className="space-y-4">
+              <div>
+                <label className="text-sm text-muted-foreground block mb-1">
+                  Total Logs
+                </label>
+                <p className="text-2xl font-black text-foreground">
+                  {stats?.totalLogs ?? '0'}
+                </p>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm text-muted-foreground block">
+                  Logs by Service
+                </label>
+                {stats &&
+                  Object.entries(stats.logsByService).map(([service, count]) => (
+                    <div
+                      key={service}
+                      className="flex justify-between items-center text-sm"
+                    >
+                      <span className="font-mono text-muted-foreground">
+                        {service}
+                      </span>
+                      <Badge variant="outline">{count}</Badge>
+                    </div>
+                  ))}
               </div>
             </CardContent>
           </Card>
