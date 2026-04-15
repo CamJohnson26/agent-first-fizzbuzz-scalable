@@ -17,8 +17,8 @@
     "test:services": "pnpm run check-node && (docker info > /dev/null 2>&1 || (echo 'Error: Docker daemon not accessible. If you are on Linux, try adding your user to the docker group: sudo usermod -aG docker $USER && newgrp docker' && exit 1)) && docker compose up --build --abort-on-container-exit"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "eslint": "^9.39.4",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.5.0",

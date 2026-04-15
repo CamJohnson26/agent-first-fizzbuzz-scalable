@@ -1,3 +1,5 @@
+Command finished with exit code 0.
+Command output:
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { Rocket, ShieldCheck, Microscope, Terminal, Cpu, Zap, Globe } from 'lucide-react';
 

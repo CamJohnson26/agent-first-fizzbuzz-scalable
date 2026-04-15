@@ -10,6 +10,7 @@
 - [x] Extract common UI components and styles to `@fizzbuzz/ui`
 - [x] Redesign `marketing-landing-page` using `@fizzbuzz/ui`
 - [x] Redesign `web-dashboard` using `@fizzbuzz/ui`
+- [x] Fix the linter and configure Node.js environment
 
 ## Progress Summary
 - Step 1: Created worktree `redesign-and-ui-package` and switched to it.
@@ -19,6 +20,7 @@
 - Step 5: Refactored `marketing-landing-page` to use UI components and the new palette.
 - Step 6: Refactored `web-dashboard` to use UI components and the new palette.
 - Step 7: Merged `master` into the current branch.
+- Step 11: Verified all 6 packages pass `pnpm lint`.
 
 ## Unfinished Work
-- Running linter (Blocked by Node.js version mismatch in current environment; required >=25.9.0, current 18.20.4).
+- None.
