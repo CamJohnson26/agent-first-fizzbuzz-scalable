@@ -50,7 +50,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F042 | Lean Theorem Solver Verification | Create a version of FizzBuzz verified by the Lean theorem solver. | Proposed |
 | F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Proposed |
 | F044 | TSConfig Lockdown | Enforce strict TypeScript configurations for better type safety. | Proposed |
-| F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | In Progress |
+| F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | Done |
 | F046 | Analytics & Coverage Reporting | Add code coverage and build size analytics, commenting on every action run. | Proposed |
 | F047 | FizzBuzz Chat | Implement a chat interface for the FizzBuzz system. | Proposed |
 | F048 | Playwright Integration | Add Playwright for end-to-end testing. | Proposed |
@@ -123,7 +123,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Lean Theorem Solver Verification (F042)
 - [ ] Rust Implementation (F043)
 - [ ] TSConfig Lockdown (F044)
-- [ ] Security Scanner Installation (F045)
+- [x] Security Scanner Installation (F045)
 - [ ] Analytics & Coverage Reporting (F046)
 - [ ] FizzBuzz Chat (F047)
 - [ ] Playwright Integration (F048)
