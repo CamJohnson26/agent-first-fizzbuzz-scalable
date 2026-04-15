@@ -20,6 +20,17 @@ While the project is AI-driven, human oversight and contributions are welcome. H
 - Provide clear instructions for AI agents in task descriptions.
 - Ensure that the AI-first principles are maintained.
 
+## Prerequisites
+
+- **Node.js**: Check `.node-version` for the required version. Use `nvm` or `fnm` for management.
+- **pnpm**: Our primary package manager.
+- **Docker**: For running services and tests. Ensure your user has permissions to the Docker daemon:
+  ```bash
+  sudo usermod -aG docker $USER
+  newgrp docker
+  ```
+  *Note: Running `newgrp docker` fixes it for the current shell session. For a permanent fix, you may need to log out and back in.*
+
 ## Development Workflow
 
 1. **Pick a Task**: Tasks are tracked in **[FEATURES.md](ticketing/FEATURES.md)**.

@@ -5,14 +5,18 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/styles.css"
+  ],
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
-    "lint": "eslint .",
     "build": "tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "eslint ."
   },
   "peerDependencies": {
     "react": "^19.0.0",

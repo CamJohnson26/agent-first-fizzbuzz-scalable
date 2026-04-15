@@ -1,10 +1,10 @@
-version: '3.8'
-
 services:
   web-server:
+    image: fizzbuzz-web-server:local
     build:
       context: .
       dockerfile: apps/web-server/Dockerfile
+    pull_policy: build
     ports:
       - "3000:3000"
     environment:
@@ -13,9 +13,11 @@ services:
       - fizzbuzz-network
 
   web-dashboard:
+    image: fizzbuzz-web-dashboard:local
     build:
       context: .
       dockerfile: apps/web-dashboard/Dockerfile
+    pull_policy: build
     ports:
       - "5173:80"
     depends_on:
