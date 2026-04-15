@@ -4,9 +4,10 @@
 Implementation of the core FizzBuzz algorithm and basic service logic.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Implement core logic
-- [ ] Add unit tests
-- [ ] Configure package.json for monorepo
+- [x] Implement core logic
+- [x] Add unit tests
+- [x] Configure package.json for monorepo
+- [x] Create CLI service in `apps/core`

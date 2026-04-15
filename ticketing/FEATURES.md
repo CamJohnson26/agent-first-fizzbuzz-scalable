@@ -12,7 +12,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F004 | AI Optimization Agent | An agent that optimizes the implementation for different architectures. | Proposed |
 | F005 | Ticketing System | A basic ticketing system for tracking development progress. | Done |
 | F006 | Monorepo Foundation | Scalable monorepo base for the project. | Done |
-| F007 | Core FizzBuzz Service | Core logic and service implementation. | Proposed |
+| F007 | Core FizzBuzz Service | Core logic and service implementation. | Done |
 | F008 | Distributed Engine Service | Service for distributed processing. | Proposed |
 | F009 | Web Dashboard App | Frontend dashboard for monitoring. | Proposed |
 | F010 | AI Agent Service | Optimization and automation service. | Proposed |
@@ -24,7 +24,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F016 | Incident RCA & Agent Policy Update | Document regression RCA and update agent policy in CLAUDE.md. | Done |
 | F017 | Code Conventions & Style Guide | Define coding standards and conventions for the project. | Done |
 | F018 | Language Selection for Services | Choose the primary programming language for our core services. | Done |
-| F019 | Demo Webserver Implementation | Implement a basic webserver in the chosen core language. | Proposed |
+| F019 | Demo Webserver Implementation | Implement a basic webserver in the chosen core language. | Done |
 | F020 | GitHub Actions CI/CD Pipeline | Set up GitHub Actions for CI/CD, running on every commit to master. | Proposed |
 | F021 | Branch Renaming: Master to Main | Rename the master branch to main for DEI compliance. | Proposed |
 | F022 | License Documentation | Create a license.md file to define the project's license. | Done |
@@ -32,7 +32,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F024 | Linter Setup & Configuration | Set up and configure a linter to enforce code style. | Proposed |
 | F025 | Webserver Unit Test Suite | Develop a comprehensive unit test suite for the demo webserver. | Proposed |
 | F026 | CI Unit Test Integration | Integrate and run unit tests automatically in the CI/CD pipeline. | Proposed |
-| F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Proposed |
+| F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Done |
 | F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Proposed |
 | F029 | Ticketing System UI | Develop a user interface for the project's ticketing system. | Proposed |
 | F030 | Dockerize Webserver | Create Docker configuration for the core services and demo webserver. | Proposed |
@@ -46,7 +46,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 
 ## Next Features
 
-- [ ] Core FizzBuzz Service (F007)
+- [x] Core FizzBuzz Service (F007)
 - [ ] Distributed Engine Service (F008)
 - [ ] Web Dashboard App (F009)
 - [ ] AI Agent Service (F010)
@@ -58,7 +58,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Incident RCA & Agent Policy Update (F016)
 - [x] Code Conventions & Style Guide (F017)
 - [x] Language Selection for Services (F018)
-- [ ] Demo Webserver Implementation (F019)
+- [x] Demo Webserver Implementation (F019)
 - [ ] GitHub Actions CI/CD Pipeline (F020)
 - [ ] Branch Renaming: Master to Main (F021)
 - [x] License Documentation (F022)
@@ -66,7 +66,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Linter Setup & Configuration (F024)
 - [ ] Webserver Unit Test Suite (F025)
 - [ ] CI Unit Test Integration (F026)
-- [ ] Marketing Landing Page (F027)
+- [x] Marketing Landing Page (F027)
 - [ ] Component Library & Design System (F028)
 - [ ] Ticketing System UI (F029)
 - [ ] Dockerize Webserver (F030)
