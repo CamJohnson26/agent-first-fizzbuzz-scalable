@@ -1,42 +1,46 @@
 # Marketing Landing Page
 
-A professional landing page for the Agent-First FizzBuzz Scalable project, built with React, Vite, and Tailwind CSS.
+A professional, high-conversion landing page for the Agent-First FizzBuzz Scalable project.
 
 ## Features
 
-- Modern, responsive design.
-- AI-first project showcase.
-- Integrated with the monorepo build system.
+- **Modern UI**: Clean, responsive design built for enterprise visibility.
+- **AI-First Showcase**: Highlighting the autonomous nature of the project.
+- **CI/CD Integrated**: Automated deployments to GitHub Pages.
+- **Tailwind CSS 4**: Utilizing the latest in utility-first CSS performance.
 
-## Build and Development
+## Tech Stack
 
-### Local Development
+- **Framework**: React 19
+- **Build Tool**: Vite 6
+- **Styling**: Tailwind CSS 4
+- **Deployment**: GitHub Actions + GitHub Pages
 
-Run the development server:
+## Getting Started
+
+### Prerequisites
+
+- Node.js 25.9.0
+- pnpm
+
+### Development
 
 ```bash
-pnpm --filter marketing-landing-page dev
+pnpm install
+pnpm dev
 ```
+
+The landing page will be available at `http://localhost:5173`.
 
 ### Build
 
-Generate a production build:
-
 ```bash
-pnpm --filter marketing-landing-page build
-```
-
-The output will be in the `dist/` directory.
-
-### Testing
-
-Run unit tests:
-
-```bash
-pnpm --filter marketing-landing-page test
+pnpm build
+# Preview build
+pnpm preview
 ```
 
 ## Deployment
 
 This application is automatically deployed to GitHub Pages via GitHub Actions on every push to the `main` branch.
-The live version can be found at: `https://[username].github.io/agent-first-fizzbuzz-scalable/`
+The live version can be found at: [https://camjohnson26.github.io/agent-first-fizzbuzz-scalable/](https://camjohnson26.github.io/agent-first-fizzbuzz-scalable/)
