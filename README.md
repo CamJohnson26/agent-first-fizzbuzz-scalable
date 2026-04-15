@@ -67,6 +67,7 @@ graph TD
     subgraph Service_Layer [Service Layer]
         WS[Web Server - Express]
         AS[Analytics Service - Express]
+        LS[Lean Service - Express/Lean 4]
     end
 
     subgraph Logic_Layer [Logic Layer]
@@ -77,8 +78,10 @@ graph TD
     WD -- REST API --> WS
     WS -- Uses --> CL
     WS -- Async Logs --> AS
+    WS -- Verified Compute --> LS
     CLI -- Uses --> CL
     VA -- Proves --> CL
+    LS -- Executes --> VA
 ```
 
 ### Component Breakdown
@@ -86,6 +89,7 @@ graph TD
 - **`/apps`**:
   - `web-dashboard`: User-facing monitoring and computation interface.
   - `web-server`: Enterprise API serving FizzBuzz results.
+  - `lean-service`: Formal verification service wrapping the Lean 4 binary.
   - `analytics-service`: Centralized log collection and metrics engine.
   - `marketing-landing-page`: High-conversion project showcase.
   - `core`: Command-line interface for direct interaction.
@@ -156,6 +160,7 @@ This will launch:
 - **Web Dashboard**: [http://localhost:5173](http://localhost:5173)
 - **Web Server**: [http://localhost:3000](http://localhost:3000)
 - **Analytics Service**: [http://localhost:3001](http://localhost:3001)
+- **Lean Service**: [http://localhost:3002](http://localhost:3002)
 - **Marketing Page**: [http://localhost:8080](http://localhost:8080)
 
 ### 5. Running for Development

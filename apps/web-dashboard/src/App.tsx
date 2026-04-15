@@ -32,7 +32,7 @@ export default function App() {
   const [rangeStart, setRangeStart] = useState<number>(1);
   const [rangeEnd, setRangeEnd] = useState<number>(15);
   const [rangeResults, setRangeResults] = useState<string[]>([]);
-  const [engine, setEngine] = useState<'js' | 'rust'>('js');
+  const [engine, setEngine] = useState<'js' | 'rust' | 'lean'>('js');
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<{
     totalLogs: number;
@@ -126,11 +126,12 @@ export default function App() {
               <select 
                 id="engine-select"
                 value={engine}
-                onChange={(e) => setEngine(e.target.value as 'js' | 'rust')}
+                onChange={(e) => setEngine(e.target.value as 'js' | 'rust' | 'lean')}
                 className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
               >
                 <option value="js">JavaScript (Standard)</option>
                 <option value="rust">Rust (Lightning Fast)</option>
+                <option value="lean">Lean (Formal Verification)</option>
               </select>
             </div>
             <Badge 

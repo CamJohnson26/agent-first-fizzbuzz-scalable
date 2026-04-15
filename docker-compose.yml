@@ -10,6 +10,7 @@ services:
     environment:
       - PORT=3000
       - ANALYTICS_SERVICE_URL=http://analytics-service:3001/api/logs
+      - LEAN_SERVICE_URL=http://lean-service:3002
     networks:
       - fizzbuzz-network
 
@@ -49,6 +50,19 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
+    networks:
+      - fizzbuzz-network
+
+  lean-service:
+    image: fizzbuzz-lean-service:local
+    build:
+      context: .
+      dockerfile: apps/lean-service/Dockerfile
+    pull_policy: build
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
     networks:
       - fizzbuzz-network
 
