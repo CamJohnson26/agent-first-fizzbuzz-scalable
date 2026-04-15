@@ -82,6 +82,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F074 | Technical Support | Integrated technical support and ticketing features. | Proposed |
 | F075 | Pricing Plans | Tiered pricing and subscription management. | Proposed |
 | F076 | White Label Theming | Custom branding and theming for third-party clients. | Proposed |
+| F077 | App-level Documentation | Add detailed README files to all applications and improve the project-wide getting started guide. | Done |
 
 ## Next Features
 
@@ -155,3 +156,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Technical Support (F074)
 - [ ] Pricing Plans (F075)
 - [ ] White Label Theming (F076)
+- [x] App-level Documentation (F077)
