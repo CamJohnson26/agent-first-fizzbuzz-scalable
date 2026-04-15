@@ -79,7 +79,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Why Choose FizzBuzz Scalable?</h2>
-            <p className="mt-4 text-xl text-gray-600">The most advanced implementation of the world's most famous algorithm.</p>
+            <p className="mt-4 text-xl text-gray-600">The most advanced implementation of the world&apos;s most famous algorithm.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-12">
@@ -138,7 +138,7 @@ export default function App() {
             <div className="md:w-1/2 w-full aspect-square bg-indigo-600 rounded-3xl shadow-2xl overflow-hidden relative group">
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-transparent z-10" />
               <div className="p-12 h-full flex flex-col justify-end text-white relative z-20">
-                <div className="text-6xl font-serif italic mb-4">"</div>
+                <div className="text-6xl font-serif italic mb-4">&quot;</div>
                 <p className="text-2xl font-medium leading-tight mb-6">
                   Finally, a FizzBuzz solution that matches the scale of our global research efforts.
                 </p>

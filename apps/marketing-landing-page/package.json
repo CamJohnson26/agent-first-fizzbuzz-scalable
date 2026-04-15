@@ -6,6 +6,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",

@@ -17,6 +17,13 @@
     "test:services": "pnpm run check-node && turbo run dev --filter=@fizzbuzz/web-server --filter=@fizzbuzz/web-dashboard"
   },
   "devDependencies": {
-    "turbo": "^2.0.0"
+    "@eslint/js": "^9.39.4",
+    "@types/eslint__js": "^9.14.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.5.0",
+    "turbo": "^2.0.0",
+    "typescript-eslint": "^8.58.2"
   }
 }

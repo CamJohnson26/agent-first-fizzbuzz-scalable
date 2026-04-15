@@ -48,7 +48,7 @@ export default function App() {
       } else {
         setError(data.error || 'Failed to compute');
       }
-    } catch (err) {
+    } catch {
       setError('Connection refused. Is the web-server running?');
     }
   };
@@ -63,7 +63,7 @@ export default function App() {
       } else {
         setError(Array.isArray(data.error) ? data.error[0].message : data.error || 'Failed to compute range');
       }
-    } catch (err) {
+    } catch {
       setError('Connection refused. Is the web-server running?');
     }
   };
