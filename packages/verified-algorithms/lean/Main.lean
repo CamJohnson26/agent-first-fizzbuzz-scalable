@@ -1,3 +1,8 @@
+/--
+The main entry point for the FizzBuzz executable.
+This script demonstrates the usage of the verified `fizzbuzz` function
+by applying it to a sample list of natural numbers.
+--/
 import Fizzbuzz
 
 def main : IO Unit := do

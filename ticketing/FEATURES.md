@@ -85,6 +85,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F077 | App-level Documentation | Add detailed README files to all applications and improve the project-wide getting started guide. | Done |
 | F078 | Project Roadmap | Add a clear and amazing roadmap to the root README to show project velocity and future plans. | Done |
 | F079 | CI & Build Reliability | Fix CI toolchain issues and improve Docker build stability with cache mounts. | Done |
+| F080 | Verified Algorithms Documentation | Detailed documentation and code comments for the Lean-verified FizzBuzz implementation. | Done |
 
 ## Next Features
 
