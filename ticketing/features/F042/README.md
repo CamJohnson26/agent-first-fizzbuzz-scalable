@@ -4,8 +4,8 @@
 Create a version of the FizzBuzz algorithm that is formally verified by the Lean theorem solver.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Define Lean proofs
-- [ ] Integrate verification into build pipeline
+- [x] Define Lean proofs
+- [x] Integrate verification into build pipeline

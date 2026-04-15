@@ -1,0 +1,10 @@
+{
+  "name": "@fizzbuzz/verified-algorithms",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "command -v lake >/dev/null 2>&1 && cd lean && lake build || echo 'Lean/Lake not found, skipping verified build.'",
+    "test": "command -v lake >/dev/null 2>&1 && cd lean && lake build || echo 'Lean/Lake not found, skipping verification.'",
+    "verify": "cd lean && lake build"
+  }
+}

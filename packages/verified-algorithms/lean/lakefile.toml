@@ -1,0 +1,10 @@
+name = "fizzbuzz"
+version = "0.1.0"
+defaultTargets = ["fizzbuzz"]
+
+[[lean_lib]]
+name = "Fizzbuzz"
+
+[[lean_exe]]
+name = "fizzbuzz"
+root = "Main"
