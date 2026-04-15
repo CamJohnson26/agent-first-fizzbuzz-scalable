@@ -10,6 +10,12 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm --filter marketing-landing-page... build
 
 FROM nginx:stable-alpine
-COPY --from=build /usr/src/app/apps/marketing-landing-page/dist /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=build /usr/src/app/apps/marketing-landing-page/dist ./agent-first-fizzbuzz-scalable
+RUN ln -sf agent-first-fizzbuzz-scalable/index.html index.html && \
+    ln -sf agent-first-fizzbuzz-scalable/assets assets && \
+    ln -sf agent-first-fizzbuzz-scalable/favicon.ico favicon.ico && \
+    ln -sf agent-first-fizzbuzz-scalable/vite.svg vite.svg
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
