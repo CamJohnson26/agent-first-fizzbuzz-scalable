@@ -58,6 +58,19 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F050 | Next.js Integration | Integrate Next.js for the frontend application. | Proposed |
 | F051 | React Server Components | Implement React Server Components. | Proposed |
 | F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Proposed |
+| F053 | Architectural Recommendations | Create recommendations for project architecture improvements. | Done |
+| F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Proposed |
+| F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Proposed |
+| F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | Proposed |
+| F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Proposed |
+| F058 | Global Error Handling | Centralized middleware and custom error classes for consistent API responses. | Proposed |
+| F059 | Streamed Responses | Implement NDJSON/SSE for large range computations to prevent OOM. | Proposed |
+| F060 | UI Component Library | Extract reusable components from apps into a shared UI package. | Proposed |
+| F061 | State Management & Data Fetching | Adopt TanStack Query for robust frontend state and caching. | Proposed |
+| F062 | Root Multi-stage Dockerfile | Optimized production builds using Turborepo's prune command. | Proposed |
+| F063 | Observability & Tracing | Integrate OpenTelemetry and metrics for distributed monitoring. | Proposed |
+| F064 | Machine-Readable ADRs/RFCs | Enhance documentation with metadata and explicit agent rules. | Proposed |
+| F065 | Automated Agent Guardrails | CI scripts to validate architecture and prevent illegal imports. | Proposed |
 
 ## Next Features
 
@@ -107,3 +120,16 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Next.js Integration (F050)
 - [ ] React Server Components (F051)
 - [ ] Tailwind CSS for Marketing (F052)
+- [x] Architectural Recommendations (F053)
+- [ ] Centralized Configuration (F054)
+- [ ] Shared Type Definitions (F055)
+- [ ] Standardized Workspace Scripts (F056)
+- [ ] Backend Dependency Injection (F057)
+- [ ] Global Error Handling (F058)
+- [ ] Streamed Responses (F059)
+- [ ] UI Component Library (F060)
+- [ ] State Management & Data Fetching (F061)
+- [ ] Root Multi-stage Dockerfile (F062)
+- [ ] Observability & Tracing (F063)
+- [ ] Machine-Readable ADRs/RFCs (F064)
+- [ ] Automated Agent Guardrails (F065)
