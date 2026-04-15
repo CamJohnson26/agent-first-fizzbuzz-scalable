@@ -50,7 +50,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F042 | Lean Theorem Solver Verification | Create a version of FizzBuzz verified by the Lean theorem solver. | Proposed |
 | F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Proposed |
 | F044 | TSConfig Lockdown | Enforce strict TypeScript configurations for better type safety. | Proposed |
-| F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | Proposed |
+| F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | In Progress |
 | F046 | Analytics & Coverage Reporting | Add code coverage and build size analytics, commenting on every action run. | Proposed |
 | F047 | FizzBuzz Chat | Implement a chat interface for the FizzBuzz system. | Proposed |
 | F048 | Playwright Integration | Add Playwright for end-to-end testing. | Proposed |
@@ -71,6 +71,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F063 | Observability & Tracing | Integrate OpenTelemetry and metrics for distributed monitoring. | Proposed |
 | F064 | Machine-Readable ADRs/RFCs | Enhance documentation with metadata and explicit agent rules. | Proposed |
 | F065 | Automated Agent Guardrails | CI scripts to validate architecture and prevent illegal imports. | Proposed |
+| F066 | README Enhancement | Modernized README with live site link and status badges. | Done |
+| F067 | Linter Stabilization | Fix broken linting rules in tests and ensure build passes. | Done |
 
 ## Next Features
 
@@ -133,3 +135,5 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Observability & Tracing (F063)
 - [ ] Machine-Readable ADRs/RFCs (F064)
 - [ ] Automated Agent Guardrails (F065)
+- [x] README Enhancement (F066)
+- [x] Linter Stabilization (F067)

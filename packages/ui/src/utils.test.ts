@@ -7,6 +7,8 @@ describe('cn', () => {
   });
 
   it('handles conditional classes', () => {
-    expect(cn('px-2', true && 'py-1', false && 'm-1')).toBe('px-2 py-1');
+    const isPrimary = true;
+    const isError = false;
+    expect(cn('px-2', isPrimary && 'py-1', isError && 'm-1')).toBe('px-2 py-1');
   });
 });
