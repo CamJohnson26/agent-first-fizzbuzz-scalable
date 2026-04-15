@@ -10,6 +10,7 @@
 - [x] Extract common UI components and styles to `@fizzbuzz/ui`
 - [x] Redesign `marketing-landing-page` using `@fizzbuzz/ui`
 - [x] Redesign `web-dashboard` using `@fizzbuzz/ui`
+- [x] Fix the linter and configure Node.js environment
 
 ## Progress Summary
 - Step 1: Created worktree `redesign-and-ui-package` and switched to it.
@@ -19,7 +20,10 @@
 - Step 5: Refactored `marketing-landing-page` to use UI components and the new palette.
 - Step 6: Refactored `web-dashboard` to use UI components and the new palette.
 - Step 7: Merged `master` into the current branch.
-- Step 8: Verified linter state. Project lacks `eslint` configuration in all packages.
+- Step 8: Switched to Node.js v25.9.0 using `nvm use` as specified in `.nvmrc`.
+- Step 9: Configured ESLint across the project, including root dependencies and local configurations.
+- Step 10: Fixed all linting errors in UI package, marketing-landing-page, and web-dashboard.
+- Step 11: Verified all 6 packages pass `pnpm lint`.
 
 ## Unfinished Work
-- None. (Linter couldn't be run due to missing project-wide configuration and local Node.js version mismatch).
+- None.

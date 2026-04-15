@@ -21,8 +21,8 @@ export default function App() {
       const res = await fetch(`${API_BASE}/health`);
       const data = await res.json();
       setHealth(data);
-    } catch (err) {
-      console.error('Failed to fetch health:', err);
+    } catch (_err) {
+      console.error('Failed to fetch health:', _err);
       setHealth({ status: 'offline', timestamp: new Date().toISOString() });
     } finally {
       setLoadingHealth(false);
@@ -43,7 +43,7 @@ export default function App() {
       } else {
         setError(data.error || 'Failed to compute');
       }
-    } catch (err) {
+    } catch (_err) {
       setError('Connection refused. Is the web-server running?');
     }
   };
@@ -58,7 +58,7 @@ export default function App() {
       } else {
         setError(Array.isArray(data.error) ? data.error[0].message : data.error || 'Failed to compute range');
       }
-    } catch (err) {
+    } catch (_err) {
       setError('Connection refused. Is the web-server running?');
     }
   };
