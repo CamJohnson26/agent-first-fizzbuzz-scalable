@@ -18,3 +18,6 @@ Done
 - [x] Add animations and smooth scrolling.
 - [x] Fix Dr. Algernon's image.
 - [x] Improve enterprise marketing copy and funnel.
+- [x] Add "Coming Soon" modal and update button labels.
+- [x] Create Case Studies and Documentation sections.
+- [x] Fix icon alignment and card padding issues.
