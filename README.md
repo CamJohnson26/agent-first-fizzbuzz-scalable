@@ -10,6 +10,23 @@ This project reimagines the well-known FizzBuzz programming challenge with enter
 
 This entire codebase is generated, reviewed, and maintained by AI agents. From architecture design to implementation, testing, and documentation - no human wrote a single line of code. This represents a significant milestone in the evolution of software development, demonstrating that AI can autonomously produce production-quality software.
 
+## Prerequisites
+
+- **Node.js**: >= 18.20.0 (Recommended: 20.x or higher)
+- **pnpm**: >= 9.0.0 (Managed via Corepack)
+
+### Getting Started
+
+1. Enable Corepack to get pnpm:
+   ```bash
+   corepack enable
+   corepack prepare pnpm@9.0.0 --activate
+   ```
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
 ## Target Users
 
 - **Academia**: Professors presenting algorithmic concepts to Graduate and Post Graduate students

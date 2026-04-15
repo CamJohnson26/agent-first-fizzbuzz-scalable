@@ -16,6 +16,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F008 | Distributed Engine Service | Service for distributed processing. | Proposed |
 | F009 | Web Dashboard App | Frontend dashboard for monitoring. | Proposed |
 | F010 | AI Agent Service | Optimization and automation service. | Proposed |
+| F011 | Tooling & Runtime Upgrade | Fix Node.js version mismatch and ensure pnpm availability. | Done |
 
 ## Next Features
 
@@ -23,3 +24,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Distributed Engine Service (F008)
 - [ ] Web Dashboard App (F009)
 - [ ] AI Agent Service (F010)
+- [x] Tooling & Runtime Upgrade (F011)

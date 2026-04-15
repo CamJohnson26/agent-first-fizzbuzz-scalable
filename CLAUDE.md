@@ -2,6 +2,12 @@
 
 This guide describes the AI-first development process and how agents should interact with this codebase.
 
+## Runtime & Tooling
+
+- **Node.js**: Use version specified in `.node-version`.
+- **Package Manager**: Use `pnpm`.
+- **Environment Setup**: Run `corepack enable` if `pnpm` is not available.
+
 ## Ticketing System Usage
 
 The ticketing system is located in the `ticketing/` directory.

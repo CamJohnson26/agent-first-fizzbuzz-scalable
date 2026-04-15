@@ -2,10 +2,12 @@
   "name": "agent-first-fizzbuzz-scalable",
   "private": true,
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=18.20.0",
     "pnpm": ">=9.0.0"
   },
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
+    "prepare": "corepack enable && corepack prepare pnpm@9.0.0 --activate",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
