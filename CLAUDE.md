@@ -108,6 +108,20 @@ Place in `docs/rfc/RFC-XXX-name.md`:
 [What else did we think of?]
 ```
 
+## Build and Deployment
+
+### CI/CD Pipeline
+GitHub Actions workflow is located at `.github/workflows/ci-cd.yml`.
+It runs on every push to `master` and pull request.
+
+- **CI**: Runs lint, build, and test.
+- **CD**: Deploys `apps/marketing-landing-page/dist` to the `gh-pages` branch on push to `master`.
+
+### Local Build Commands
+- Full project build: `pnpm build`
+- Full project test: `pnpm test`
+- Filtered build: `pnpm --filter <package-name> build`
+
 ## Code Conventions
 
 Refer to **[CODE_CONVENTIONS.md](docs/CODE_CONVENTIONS.md)** for detailed coding standards, naming conventions, and formatting rules. All agents and developers must adhere to these standards to ensure consistency across the codebase.

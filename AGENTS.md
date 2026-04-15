@@ -21,6 +21,20 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
    - **Mandatory Code Check-in**: Agents MUST always check in their code at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
    - **Branch Isolation**: When possible, work on dedicated feature branches before merging to `main`.
 
+## Build and Deployment
+
+### CI/CD Pipeline
+GitHub Actions workflow is located at `.github/workflows/ci-cd.yml`.
+It runs on every push to `master` and pull request.
+
+- **CI**: Runs lint, build, and test.
+- **CD**: Deploys `apps/marketing-landing-page/dist` to the `gh-pages` branch on push to `master`.
+
+### Local Build Commands
+- Full project build: `pnpm build`
+- Full project test: `pnpm test`
+- Filtered build: `pnpm --filter <package-name> build`
+
 ## Ticketing System Usage
 
 The ticketing system is located in the `ticketing/` directory.

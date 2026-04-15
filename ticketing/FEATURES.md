@@ -25,7 +25,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F017 | Code Conventions & Style Guide | Define coding standards and conventions for the project. | Done |
 | F018 | Language Selection for Services | Choose the primary programming language for our core services. | Done |
 | F019 | Demo Webserver Implementation | Implement a basic webserver in the chosen core language. | Done |
-| F020 | GitHub Actions CI/CD Pipeline | Set up GitHub Actions for CI/CD, running on every commit to master. | Proposed |
+| F020 | GitHub Actions CI/CD Pipeline | Set up GitHub Actions for CI/CD, running on every commit to master. | Done |
 | F021 | Branch Renaming: Master to Main | Rename the master branch to main for DEI compliance. | Proposed |
 | F022 | License Documentation | Create a license.md file to define the project's license. | Done |
 | F023 | Contributing Guidelines | Create a contributing.md file to guide new contributors. | Done |
@@ -43,6 +43,21 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F035 | Analytics Service Implementation | Set up and run an analytics service for tracking system performance. | Proposed |
 | F036 | AI Agent Strategy | Define and implement a long-term strategy for autonomous AI agents. | Proposed |
 | F037 | Agent Conflict Resolution | Establish git subtree and check-in policies to prevent agent conflicts. | In Progress |
+| F038 | Accessibility Compliance | Ensure the system meets accessibility standards. | Proposed |
+| F039 | OO vs Functional Implementations | Split implementations into object-oriented and functional versions. | Proposed |
+| F040 | FizzBuzz MCP | Implement a Model Context Protocol (MCP) server for FizzBuzz. | Proposed |
+| F041 | SQLite Integration | Add SQLite for local data storage and persistence. | Proposed |
+| F042 | Lean Theorem Solver Verification | Create a version of FizzBuzz verified by the Lean theorem solver. | Proposed |
+| F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Proposed |
+| F044 | TSConfig Lockdown | Enforce strict TypeScript configurations for better type safety. | Proposed |
+| F045 | Security Scanner Installation | Integrate a security scanner to identify vulnerabilities. | Proposed |
+| F046 | Analytics & Coverage Reporting | Add code coverage and build size analytics, commenting on every action run. | Proposed |
+| F047 | FizzBuzz Chat | Implement a chat interface for the FizzBuzz system. | Proposed |
+| F048 | Playwright Integration | Add Playwright for end-to-end testing. | Proposed |
+| F049 | Visual Regression Testing | Implement visual regression testing for UI components. | Proposed |
+| F050 | Next.js Integration | Integrate Next.js for the frontend application. | Proposed |
+| F051 | React Server Components | Implement React Server Components. | Proposed |
+| F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Proposed |
 
 ## Next Features
 
@@ -59,7 +74,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Code Conventions & Style Guide (F017)
 - [x] Language Selection for Services (F018)
 - [x] Demo Webserver Implementation (F019)
-- [ ] GitHub Actions CI/CD Pipeline (F020)
+- [x] GitHub Actions CI/CD Pipeline (F020)
 - [ ] Branch Renaming: Master to Main (F021)
 - [x] License Documentation (F022)
 - [x] Contributing Guidelines (F023)
@@ -77,3 +92,18 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Analytics Service Implementation (F035)
 - [ ] AI Agent Strategy (F036)
 - [x] Agent Conflict Resolution (F037)
+- [ ] Accessibility Compliance (F038)
+- [ ] OO vs Functional Implementations (F039)
+- [ ] FizzBuzz MCP (F040)
+- [ ] SQLite Integration (F041)
+- [ ] Lean Theorem Solver Verification (F042)
+- [ ] Rust Implementation (F043)
+- [ ] TSConfig Lockdown (F044)
+- [ ] Security Scanner Installation (F045)
+- [ ] Analytics & Coverage Reporting (F046)
+- [ ] FizzBuzz Chat (F047)
+- [ ] Playwright Integration (F048)
+- [ ] Visual Regression Testing (F049)
+- [ ] Next.js Integration (F050)
+- [ ] React Server Components (F051)
+- [ ] Tailwind CSS for Marketing (F052)

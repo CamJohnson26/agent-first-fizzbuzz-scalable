@@ -7,10 +7,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@fizzbuzz/core-logic": ["packages/core-logic/src"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["node_modules"]
 }

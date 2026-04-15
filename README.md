@@ -15,36 +15,47 @@ This entire codebase is generated, reviewed, and maintained by AI agents. From a
 - **Node.js**: 25.9.0 (Strictly enforced)
 - **pnpm**: >= 9.0.0 (Managed via Corepack)
 
-### Environment Setup
-
-To ensure you are using the correct Node.js version, we recommend using a version manager:
-
-#### Using NVM (Node Version Manager)
-1. Install the required version:
-   ```bash
-   nvm install
-   ```
-2. Use the version (nvm will automatically detect `.nvmrc` or `.node-version` if configured, or run manually):
-   ```bash
-   nvm use
-   ```
-
-#### Using FNM (Fast Node Manager)
-1. Install and use:
-   ```bash
-   fnm use --install-if-missing
-   ```
-
 ### Getting Started
 
-1. Enable Corepack to get pnpm:
-   ```bash
-   corepack enable
-   ```
-2. Install dependencies (this will trigger a version check):
+1. **Environment Setup**: Ensure you have Node.js 25.9.0 installed.
+   - **Using NVM**: `nvm install && nvm use` (uses `.nvmrc`)
+   - **Using FNM**: `fnm use --install-if-missing`
+2. **Enable pnpm**:
+   - Recommended: `corepack enable` (Node.js 16.9.0+ includes corepack)
+   - Fallback (if corepack is missing): `npm install -g pnpm@9.0.0`
+3. **Install dependencies**:
    ```bash
    pnpm install
    ```
+### Build and Test
+
+Full project build and test:
+```bash
+pnpm build
+pnpm test
+```
+
+For individual packages:
+```bash
+pnpm --filter <package-name> build
+pnpm --filter <package-name> test
+```
+
+## CI/CD and Deployment
+
+This project uses **GitHub Actions** for continuous integration and deployment.
+
+### Continuous Integration (CI)
+On every push and pull request to the `master` branch, the following steps are executed:
+1. Environment setup (Node.js 25.9.0 and pnpm).
+2. Dependency installation.
+3. Linting and static analysis.
+4. Full project build using Turborepo.
+5. Unit and integration test suites execution.
+
+### Continuous Deployment (CD)
+The **Marketing Landing Page** is automatically deployed to **GitHub Pages** on every successful push to the `master` branch.
+The live site is accessible at: `https://[username].github.io/agent-first-fizzbuzz-scalable/`
 
 ## Target Users
 
