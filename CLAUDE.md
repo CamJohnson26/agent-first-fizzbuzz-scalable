@@ -17,8 +17,8 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
 3. **Mandatory RCAs for Critical Bugs**: Any critical bug, regression, or high-severity incident MUST have a Root Cause Analysis (RCA) written in the `RCAs/` folder (e.g., `RCA-XXX-name.md`). This RCA should identify the root cause, create a timeline, and list permanent action items.
 4. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
 5. **Conflict Prevention & Git Strategy**:
-   - **Git Subtrees**: Agents MUST use `git subtree` or isolated subdirectories for their work to minimize merge conflicts when multiple agents are active. Ensure changes are scoped to the specific feature's subtree.
-   - **Mandatory Code Check-in**: Agents MUST always check in their code at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
+   - **Git Worktrees**: Agents MUST always create a new `git worktree` before doing any work to minimize merge conflicts and ensure clean session isolation.
+   - **Mandatory Code Commit**: Agents MUST always commit their work when finished at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
    - **Branch Isolation**: When possible, work on dedicated feature branches before merging to `main`.
 
 ## Ticketing System Usage

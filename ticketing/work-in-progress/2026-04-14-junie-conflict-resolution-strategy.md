@@ -5,7 +5,7 @@
 - Task: F037 - Agent Conflict Resolution & Git Strategy
 
 ## Objectives
-- [x] Update `CLAUDE.md` and `AGENTS.md` with git subtree and check-in policies.
+- [x] Update `CLAUDE.md` and `AGENTS.md` with git worktree and check-in policies.
 - [x] Create/Update F037 feature ticket.
 - [x] Ensure all documentation is consistent.
 

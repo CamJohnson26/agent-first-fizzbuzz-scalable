@@ -42,7 +42,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F034 | Helm Deployment | Set up Helm charts for easy deployment and management on Kubernetes. | Proposed |
 | F035 | Analytics Service Implementation | Set up and run an analytics service for tracking system performance. | Proposed |
 | F036 | AI Agent Strategy | Define and implement a long-term strategy for autonomous AI agents. | Proposed |
-| F037 | Agent Conflict Resolution | Establish git subtree and check-in policies to prevent agent conflicts. | In Progress |
+| F037 | Agent Conflict Resolution | Establish git worktree and commit policies to prevent agent conflicts. | Done |
 | F038 | Accessibility Compliance | Ensure the system meets accessibility standards. | Proposed |
 | F039 | OO vs Functional Implementations | Split implementations into object-oriented and functional versions. | Proposed |
 | F040 | FizzBuzz MCP | Implement a Model Context Protocol (MCP) server for FizzBuzz. | Proposed |
