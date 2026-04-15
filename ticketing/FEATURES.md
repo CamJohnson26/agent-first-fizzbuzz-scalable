@@ -83,6 +83,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F075 | Pricing Plans | Tiered pricing and subscription management. | Proposed |
 | F076 | White Label Theming | Custom branding and theming for third-party clients. | Proposed |
 | F077 | App-level Documentation | Add detailed README files to all applications and improve the project-wide getting started guide. | Done |
+| F078 | Project Roadmap | Add a clear and amazing roadmap to the root README to show project velocity and future plans. | Done |
 
 ## Next Features
 
@@ -157,3 +158,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Pricing Plans (F075)
 - [ ] White Label Theming (F076)
 - [x] App-level Documentation (F077)
+- [x] Project Roadmap (F078)
