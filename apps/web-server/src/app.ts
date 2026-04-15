@@ -1,6 +1,7 @@
 import express from 'express';
 import { z } from 'zod';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
+import { computeSchema, rangeSchema } from './schemas.js';
 
 export const createApp = () => {
   const app = express();
@@ -14,10 +15,6 @@ export const createApp = () => {
   });
 
   // FizzBuzz compute endpoint
-  const computeSchema = z.object({
-    n: z.coerce.number().int().positive(),
-  });
-
   app.get('/compute/:n', (req, res) => {
     try {
       const { n } = computeSchema.parse(req.params);
@@ -32,14 +29,6 @@ export const createApp = () => {
   });
 
   // FizzBuzz range compute endpoint
-  const rangeSchema = z.object({
-    start: z.coerce.number().int().positive(),
-    end: z.coerce.number().int().positive(),
-  }).refine((data) => data.start <= data.end, {
-    message: 'Start must be less than or equal to end',
-    path: ['start'],
-  });
-
   app.get('/range', (req, res) => {
     try {
       const { start, end } = rangeSchema.parse(req.query);
