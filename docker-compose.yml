@@ -25,6 +25,19 @@ services:
     networks:
       - fizzbuzz-network
 
+  marketing-landing-page:
+    image: fizzbuzz-marketing-landing-page:local
+    build:
+      context: .
+      dockerfile: apps/marketing-landing-page/Dockerfile
+    pull_policy: build
+    ports:
+      - "8080:80"
+    depends_on:
+      - web-server
+    networks:
+      - fizzbuzz-network
+
 networks:
   fizzbuzz-network:
     driver: bridge
