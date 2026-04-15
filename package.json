@@ -14,7 +14,7 @@
     "dev": "pnpm run check-node && turbo run dev",
     "lint": "pnpm run check-node && turbo run lint",
     "test": "pnpm run check-node && turbo run test",
-    "test:services": "pnpm run check-node && turbo run dev --filter=@fizzbuzz/web-server --filter=@fizzbuzz/web-dashboard"
+    "test:services": "pnpm run check-node && docker compose up --build"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

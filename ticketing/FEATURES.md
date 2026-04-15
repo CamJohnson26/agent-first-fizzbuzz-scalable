@@ -35,7 +35,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Done |
 | F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Proposed |
 | F029 | Ticketing System UI | Develop a user interface for the project's ticketing system. | Proposed |
-| F030 | Dockerize Webserver | Create Docker configuration for the core services and demo webserver. | Proposed |
+| F030 | Dockerize Webserver | Create Docker configuration for the core services and demo webserver. | Done |
 | F031 | Terraform Infrastructure | Set up Infrastructure as Code (IaC) using Terraform for deployment. | Proposed |
 | F032 | Local Secrets Management | Run a HashiCorp Vault or similar secrets management service locally. | Proposed |
 | F033 | Kubernetes Migration & Autoscaling | Migrate the services to Kubernetes and configure HPA (Horizontal Pod Autoscaling). | Proposed |
@@ -97,7 +97,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Marketing Landing Page (F027)
 - [ ] Component Library & Design System (F028)
 - [ ] Ticketing System UI (F029)
-- [ ] Dockerize Webserver (F030)
+- [x] Dockerize Webserver (F030)
 - [ ] Terraform Infrastructure (F031)
 - [ ] Local Secrets Management (F032)
 - [ ] Kubernetes Migration & Autoscaling (F033)
