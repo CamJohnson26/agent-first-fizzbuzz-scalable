@@ -5,8 +5,17 @@ This guide describes the AI-first development process and how agents should inte
 ## Runtime & Tooling
 
 - **Node.js**: Use version specified in `.node-version`. This version is strictly enforced by `scripts/check-node-version.js` across all core operations.
-- **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm` or `fnm`.
+- **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm` or `fnm`. **Agents MUST NEVER downgrade project version requirements to match an outdated local environment.**
 - **Package Manager**: Use `pnpm`.
+
+## Agent Policy & Core Principles
+
+To maintain a scalable and high-fidelity project, all agents must adhere to the following principles:
+
+1. **Always Use Latest Packages**: Always upgrade to and use the latest stable LTS (Long Term Support) versions of all packages, tools, and runtimes for security, performance, and modern feature access. NEVER revert a package to an older version without an explicit RFC and approval.
+2. **Full Implementation (No Skipping Steps)**: When implementing features or technologies, do not oversimplify or skip steps (e.g., skip tests, documentation, or proper project structuring). Follow the full standard lifecycle for each technology being introduced.
+3. **Mandatory RCAs for Critical Bugs**: Any critical bug, regression, or high-severity incident MUST have a Root Cause Analysis (RCA) written in the `RCAs/` folder (e.g., `RCA-XXX-name.md`). This RCA should identify the root cause, create a timeline, and list permanent action items.
+4. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
 
 ## Ticketing System Usage
 
