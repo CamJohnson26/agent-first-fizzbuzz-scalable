@@ -25,8 +25,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F017 | Code Conventions & Style Guide | Define coding standards and conventions for the project. | Done |
 | F018 | Language Selection for Services | Choose the primary programming language for our core services. | Done |
 | F019 | Demo Webserver Implementation | Implement a basic webserver in the chosen core language. | Done |
-| F020 | GitHub Actions CI/CD Pipeline | Set up GitHub Actions for CI/CD, running on every commit to master. | Done |
-| F021 | Branch Renaming: Master to Main | Rename the master branch to main for DEI compliance. | Proposed |
+| F020 | GitHub Actions CI/CD Pipeline | Set up GitHub Actions for CI/CD, running on every commit to main. | Done |
+| F021 | Branch Renaming: Master to Main | Rename the master branch to main for DEI compliance. | Done |
 | F022 | License Documentation | Create a license.md file to define the project's license. | Done |
 | F023 | Contributing Guidelines | Create a contributing.md file to guide new contributors. | Done |
 | F024 | Linter Setup & Configuration | Set up and configure a linter to enforce code style. | Done |
@@ -99,7 +99,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Language Selection for Services (F018)
 - [x] Demo Webserver Implementation (F019)
 - [x] GitHub Actions CI/CD Pipeline (F020)
-- [ ] Branch Renaming: Master to Main (F021)
+- [x] Branch Renaming: Master to Main (F021)
 - [x] License Documentation (F022)
 - [x] Contributing Guidelines (F023)
 - [x] Linter Setup & Configuration (F024)

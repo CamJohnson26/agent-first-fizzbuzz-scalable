@@ -38,5 +38,5 @@ pnpm --filter marketing-landing-page test
 
 ## Deployment
 
-This application is automatically deployed to GitHub Pages via GitHub Actions on every push to the `master` branch.
+This application is automatically deployed to GitHub Pages via GitHub Actions on every push to the `main` branch.
 The live version can be found at: `https://[username].github.io/agent-first-fizzbuzz-scalable/`
