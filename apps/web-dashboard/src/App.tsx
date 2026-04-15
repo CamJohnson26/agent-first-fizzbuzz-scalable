@@ -10,6 +10,7 @@ export default function App() {
   const [rangeStart, setRangeStart] = useState<number>(1);
   const [rangeEnd, setRangeEnd] = useState<number>(15);
   const [rangeResults, setRangeResults] = useState<string[]>([]);
+  const [engine, setEngine] = useState<'js' | 'rust'>('js');
   const [error, setError] = useState<string | null>(null);
 
   const API_BASE = 'http://localhost:3000';
@@ -36,7 +37,7 @@ export default function App() {
   const handleCompute = async () => {
     setError(null);
     try {
-      const res = await fetch(`${API_BASE}/compute/${computeValue}`);
+      const res = await fetch(`${API_BASE}/compute/${computeValue}?engine=${engine}`);
       const data = await res.json();
       if (res.ok) {
         setComputeResult(data.result);
@@ -51,7 +52,7 @@ export default function App() {
   const handleRangeCompute = async () => {
     setError(null);
     try {
-      const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}`);
+      const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}&engine=${engine}`);
       const data = await res.json();
       if (res.ok) {
         setRangeResults(data.results);
@@ -74,6 +75,18 @@ export default function App() {
             <h1 className="text-2xl font-bold tracking-tight">FizzBuzz <span className="text-primary">Dashboard</span></h1>
           </div>
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 bg-surface border border-border px-3 py-1.5 rounded-lg">
+              <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Engine:</label>
+              <select 
+                id="engine-select"
+                value={engine}
+                onChange={(e) => setEngine(e.target.value as 'js' | 'rust')}
+                className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
+              >
+                <option value="js">JavaScript (Standard)</option>
+                <option value="rust">Rust (Lightning Fast)</option>
+              </select>
+            </div>
             <Badge 
               variant={health?.status === 'ok' ? 'success' : 'error'}
               className="px-3 py-1 gap-1.5"

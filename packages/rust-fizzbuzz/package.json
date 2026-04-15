@@ -1,0 +1,13 @@
+{
+  "name": "@fizzbuzz/rust-engine",
+  "version": "0.1.0",
+  "description": "Rust implementation of FizzBuzz",
+  "main": "./dist/node/rust_fizzbuzz.js",
+  "types": "./dist/node/rust_fizzbuzz.d.ts",
+  "scripts": {
+    "build": "wasm-pack build --target nodejs --out-dir dist/node"
+  },
+  "files": [
+    "dist"
+  ]
+}
