@@ -7,18 +7,23 @@ import { computeSchema, rangeSchema } from './schemas.js';
 const require = createRequire(import.meta.url);
 const rustEngine = require('@fizzbuzz/rust-engine');
 const fizzBuzzService = new FizzBuzzService();
+const LEAN_SERVICE_URL = process.env.LEAN_SERVICE_URL || 'http://lean-service:3002';
 
 export const healthHandler = (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 };
 
-export const computeHandler = (req: Request, res: Response) => {
+export const computeHandler = async (req: Request, res: Response) => {
   try {
     const { n, engine } = computeSchema.parse({ ...req.params, ...req.query });
     
     let result: string;
     if (engine === 'rust') {
       result = rustEngine.compute(n);
+    } else if (engine === 'lean') {
+      const response = await fetch(`${LEAN_SERVICE_URL}/compute/${n}`);
+      const data = (await response.json()) as { result: string };
+      result = data.result;
     } else {
       result = fizzBuzzService.compute(n);
     }
@@ -28,17 +33,22 @@ export const computeHandler = (req: Request, res: Response) => {
     if (error instanceof z.ZodError) {
       return res.status(400).json({ error: error.errors });
     }
+    console.error('Compute error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-export const rangeHandler = (req: Request, res: Response) => {
+export const rangeHandler = async (req: Request, res: Response) => {
   try {
     const { start, end, engine } = rangeSchema.parse(req.query);
     
     let results: string[];
     if (engine === 'rust') {
       results = rustEngine.compute_range(start, end);
+    } else if (engine === 'lean') {
+      const response = await fetch(`${LEAN_SERVICE_URL}/range?start=${start}&end=${end}`);
+      const data = (await response.json()) as { results: string[] };
+      results = data.results;
     } else {
       results = fizzBuzzService.computeRange(start, end);
     }
@@ -48,6 +58,7 @@ export const rangeHandler = (req: Request, res: Response) => {
     if (error instanceof z.ZodError) {
       return res.status(400).json({ error: error.errors });
     }
+    console.error('Range error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

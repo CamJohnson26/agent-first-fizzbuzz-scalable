@@ -87,6 +87,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F079 | CI & Build Reliability | Fix CI toolchain issues and improve Docker build stability with cache mounts. | Done |
 | F080 | Verified Algorithms Documentation | Detailed documentation and code comments for the Lean-verified FizzBuzz implementation. | Done |
 | F081 | WASM Deployment Fix | Fix missing WASM files in production Docker images by removing auto-generated .gitignore. | Done |
+| F082 | Lean Service & Multi-engine UI | Expose Lean as a service and add engine selection to the dashboard. | Done |
 
 ## Next Features
 
@@ -164,3 +165,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Project Roadmap (F078)
 - [x] CI & Build Reliability (F079)
 - [x] WASM Deployment Fix (F081)
+- [x] Lean Service & Multi-engine UI (F082)
