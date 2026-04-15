@@ -27,34 +27,123 @@ This represents a significant milestone in the evolution of software development
 
 ## 🏛 Architecture Overview
 
-Built on a robust, scalable monorepo architecture using **Turborepo** and **pnpm**.
+Built on a robust, scalable monorepo architecture using **Turborepo** and **pnpm**. Our system follows a layered approach to ensure separation of concerns and scalability.
 
-- **`/apps`**: High-performance applications (Landing Page, Dashboard, Core Service)
-- **`/packages`**: Shared libraries and core logic engines
-- **`/scripts`**: Tooling for environment enforcement and automation
-- **`/ticketing`**: Autonomous task management and progress tracking
+### System Diagram
+
+```mermaid
+graph TD
+    subgraph Client_Layer [Client Layer]
+        WD[Web Dashboard - React 19]
+        LP[Marketing Landing Page - React 19]
+        CLI[Core CLI - Node.js 25]
+    end
+
+    subgraph Service_Layer [Service Layer]
+        WS[Web Server - Express]
+        AS[Analytics Service - Express]
+    end
+
+    subgraph Logic_Layer [Logic Layer]
+        CL[Core Logic - Shared Package]
+        VA[Verified Algorithms - Lean 4]
+    end
+
+    WD -- REST API --> WS
+    WS -- Uses --> CL
+    WS -- Async Logs --> AS
+    CLI -- Uses --> CL
+    VA -- Proves --> CL
+```
+
+### Component Breakdown
+
+- **`/apps`**:
+  - `web-dashboard`: User-facing monitoring and computation interface.
+  - `web-server`: Enterprise API serving FizzBuzz results.
+  - `analytics-service`: Centralized log collection and metrics engine.
+  - `marketing-landing-page`: High-conversion project showcase.
+  - `core`: Command-line interface for direct interaction.
+- **`/packages`**:
+  - `core-logic`: The heart of the system, shared across all services.
+  - `ui`: Shared React component library and design system.
+  - `verified-algorithms`: Formally verified implementations in Lean 4.
+- **`/scripts`**: Tooling for environment enforcement, build automation, and security.
+- **`/ticketing`**: Our autonomous task management system.
+
+---
+
+## ✨ Features Overview
+
+- 🚀 **High-Performance Computation**: Optimized FizzBuzz logic capable of handling massive ranges with minimal latency.
+- 📊 **Real-Time Observability**: Integrated analytics service that monitors system usage and performance metrics.
+- 🛡️ **Formal Verification**: Core algorithms are verified using the Lean 4 theorem solver for mission-critical reliability.
+- 🤖 **Autonomous Development**: 100% of the codebase is managed by AI agents, ensuring a consistent and high-fidelity implementation.
+- 📦 **Modern Monorepo**: Built with Turborepo for lightning-fast builds and pnpm for efficient dependency management.
+- 🎨 **Enterprise UI**: A unified design system using Tailwind CSS 4 and React 19 Server Components.
 
 ---
 
 ## 🛠 Prerequisites
 
-- **Node.js**: `25.9.0` (Strictly enforced)
+- **Node.js**: `25.9.0` (Strictly enforced via `.node-version`)
 - **pnpm**: `>= 9.0.0` (Managed via Corepack)
+- **Docker**: For running the complete service stack.
 
-### 🚀 Getting Started
+---
 
-1.  **Environment Setup**:
-    - **NVM**: `nvm install && nvm use` (uses `.nvmrc`)
-    - **FNM**: `fnm use --install-if-missing`
+## 🚀 Getting Started
 
-2.  **Enable pnpm**:
-    - `npm install -g corepack@latest && corepack enable`
-    - *Fallback*: `npm install -g pnpm@9.0.0`
+Follow these steps to get the entire FizzBuzz ecosystem running on your local machine.
 
-3.  **Install dependencies**:
-    ```bash
-    pnpm install
-    ```
+### 1. Environment Setup
+
+We recommend using a Node.js version manager to ensure you match our strict requirements.
+
+- **NVM**: `nvm install && nvm use` (uses `.nvmrc`)
+- **FNM**: `fnm use --install-if-missing`
+
+### 2. Enable pnpm
+
+```bash
+npm install -g corepack@latest && corepack enable
+# Or as a fallback
+npm install -g pnpm@9.0.0
+```
+
+### 3. Install Dependencies
+
+From the project root, run:
+
+```bash
+pnpm install
+```
+
+### 4. Running the Complete Stack (Docker)
+
+The easiest way to see the system in action is via Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+This will launch:
+- **Web Dashboard**: [http://localhost:5173](http://localhost:5173)
+- **Web Server**: [http://localhost:3000](http://localhost:3000)
+- **Analytics Service**: [http://localhost:3001](http://localhost:3001)
+- **Marketing Page**: [http://localhost:8080](http://localhost:8080)
+
+### 5. Running for Development
+
+If you want to run individual apps in development mode:
+
+```bash
+# Start the web server
+pnpm --filter @fizzbuzz/web-server dev
+
+# Start the dashboard
+pnpm --filter @fizzbuzz/web-dashboard dev
+```
 
 ---
 
