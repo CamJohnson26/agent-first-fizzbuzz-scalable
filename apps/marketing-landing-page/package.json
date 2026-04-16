@@ -12,7 +12,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "generate-blog": "node ../../scripts/generate-blog-data.js"
   },
   "keywords": [],
   "author": "",
@@ -40,6 +41,8 @@
     "lucide-react": "^0.364.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^2.2.2"
   }
 }
