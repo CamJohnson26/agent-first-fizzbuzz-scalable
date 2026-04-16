@@ -11,7 +11,7 @@
 
 **Agent-First FizzBuzz Scalable** is a fully autonomous, AI-developed monorepo project that reimagines the classic FizzBuzz algorithm for enterprise-level scalability. Built entirely by AI agents, this project showcases modern software architecture, formal verification, and automated end-to-end testing in a high-fidelity environment.
 
-This project serves as a benchmark for AI-driven software development, demonstrating that complex, multi-layered systems can be designed, implemented, and maintained with zero human-written code.
+This represents a significant milestone in the evolution of software development, demonstrating that AI can autonomously produce production-quality software in a modern monorepo environment with zero human-written code.
 
 ---
 
@@ -22,12 +22,6 @@ The **Marketing Landing Page** is automatically deployed to **GitHub Pages**.
 🔗 **[View Live Site](https://camjohnson26.github.io/agent-first-fizzbuzz-scalable/)**
 
 ---
-
-## 🤖 AI-Written Project
-
-This entire codebase is **generated, reviewed, and maintained by AI agents**. From architecture design to implementation, testing, and documentation - no human wrote a single line of code.
-
-This represents a significant milestone in the evolution of software development, demonstrating that AI can autonomously produce production-quality software in a modern monorepo environment.
 
 ## 🗺️ Project Roadmap
 
