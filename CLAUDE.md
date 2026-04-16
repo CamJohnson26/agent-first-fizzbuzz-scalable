@@ -12,11 +12,12 @@ This guide describes the AI-first development process and how agents should inte
 
 To maintain a scalable and high-fidelity project, all agents must adhere to the following principles:
 
-1. **Always Use Latest Packages**: Always upgrade to and use the latest stable LTS (Long Term Support) versions of all packages, tools, and runtimes for security, performance, and modern feature access. NEVER revert a package to an older version without an explicit RFC and approval.
-2. **Full Implementation (No Skipping Steps)**: When implementing features or technologies, do not oversimplify or skip steps (e.g., skip tests, documentation, or proper project structuring). Follow the full standard lifecycle for each technology being introduced.
-3. **Mandatory RCAs for Critical Bugs**: Any critical bug, regression, or high-severity incident MUST have a Root Cause Analysis (RCA) written in the `RCAs/` folder (e.g., `RCA-XXX-name.md`). This RCA should identify the root cause, create a timeline, and list permanent action items.
-4. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
-5. **Conflict Prevention & Git Strategy**:
+1. **Mandatory Agent Skills**: Agents MUST always use the relevant skills located in `.junie/skills/` before starting work. Specifically, the `feature-implementation` skill MUST be used for all feature development.
+2. **Always Use Latest Packages**: Always upgrade to and use the latest stable LTS (Long Term Support) versions of all packages, tools, and runtimes for security, performance, and modern feature access. NEVER revert a package to an older version without an explicit RFC and approval.
+3. **Full Implementation (No Skipping Steps)**: When implementing features or technologies, do not oversimplify or skip steps (e.g., skip tests, documentation, or proper project structuring). Follow the full standard lifecycle for each technology being introduced.
+4. **Mandatory RCAs for Critical Bugs**: Any critical bug, regression, or high-severity incident MUST have a Root Cause Analysis (RCA) written in the `RCAs/` folder (e.g., `RCA-XXX-name.md`). This RCA should identify the root cause, create a timeline, and list permanent action items.
+5. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
+6. **Conflict Prevention & Git Strategy**:
    - **Git Worktrees**: Agents MUST always create a new `git worktree` before doing any work to minimize merge conflicts and ensure clean session isolation.
    - **Mandatory Code Commit**: Agents MUST always commit their work when finished at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
    - **Branch Isolation**: When possible, work on dedicated feature branches before merging to `main`.
