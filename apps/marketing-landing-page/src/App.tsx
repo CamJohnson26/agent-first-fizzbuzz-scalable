@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
+import { blogPosts } from './data/blogPosts';
 import {
   Rocket,
   ShieldCheck,
@@ -16,6 +17,10 @@ import {
   X,
   BarChart,
   Lightbulb,
+  Calendar,
+  User,
+  Tag,
+  ArrowLeft,
 } from 'lucide-react';
 
 interface ComingSoonModalProps {
@@ -66,10 +71,13 @@ const ComingSoonModal = ({ isModalOpen, closeModal }: ComingSoonModalProps) => (
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs'>('home');
+  const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const selectedPost = blogPosts.find(p => p.id === selectedPostId);
 
   if (activeSection === 'case-studies') {
     return (
@@ -94,6 +102,12 @@ export default function App() {
                   className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   Back to Home
+                </button>
+                <button
+                  onClick={() => setActiveSection('blog')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Blog
                 </button>
                 <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
                   Coming Soon
@@ -215,6 +229,177 @@ export default function App() {
     );
   }
 
+  if (activeSection === 'blog') {
+    return (
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => {
+                  setActiveSection('home');
+                  setSelectedPostId(null);
+                }}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => {
+                    setActiveSection('home');
+                    setSelectedPostId(null);
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveSection('blog');
+                    setSelectedPostId(null);
+                  }}
+                  className={`${!selectedPostId ? 'text-primary' : 'text-muted-foreground'} hover:text-primary transition-colors font-medium`}
+                >
+                  Blog
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                  Coming Soon
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <AnimatePresence mode="wait">
+            {!selectedPostId ? (
+              <motion.div
+                key="list"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+              >
+                <header className="mb-16 text-center">
+                  <Badge variant="secondary" className="mb-4">Company Blog</Badge>
+                  <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-6">
+                    Inside <span className="text-primary">FizzBuzz Scalable</span>
+                  </h1>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Engineering excellence, product innovation, and our journey to build the gold standard for enterprise logic.
+                  </p>
+                </header>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  {blogPosts.map((post) => (
+                    <Card 
+                      key={post.id} 
+                      className="overflow-hidden hover:border-primary/50 transition-all cursor-pointer group flex flex-col"
+                      onClick={() => setSelectedPostId(post.id)}
+                    >
+                      <div className="aspect-video overflow-hidden">
+                        <img 
+                          src={post.image} 
+                          alt={post.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <CardContent className="p-8 flex-1 flex flex-col">
+                        <div className="flex items-center gap-4 mb-4">
+                          <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">
+                            {post.category}
+                          </Badge>
+                          <span className="text-sm text-muted-foreground flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {post.date}
+                          </span>
+                        </div>
+                        <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                          {post.title}
+                        </h2>
+                        <p className="text-muted-foreground mb-6 flex-1">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center text-primary font-bold gap-2">
+                          Read More <ArrowLeft className="w-4 h-4 rotate-180" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="post"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="max-w-3xl mx-auto"
+              >
+                <button 
+                  onClick={() => setSelectedPostId(null)}
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
+                >
+                  <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                  Back to all posts
+                </button>
+
+                {selectedPost && (
+                  <article>
+                    <header className="mb-12">
+                      <div className="flex items-center gap-4 mb-6">
+                        <Badge variant="secondary">{selectedPost.category}</Badge>
+                        <span className="text-muted-foreground flex items-center gap-1 text-sm">
+                          <Calendar className="w-4 h-4" />
+                          {selectedPost.date}
+                        </span>
+                        <span className="text-muted-foreground flex items-center gap-1 text-sm">
+                          <User className="w-4 h-4" />
+                          {selectedPost.author}
+                        </span>
+                      </div>
+                      <h1 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
+                        {selectedPost.title}
+                      </h1>
+                      <div className="aspect-video rounded-3xl overflow-hidden mb-12 shadow-2xl">
+                        <img 
+                          src={selectedPost.image} 
+                          alt={selectedPost.title} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </header>
+                    <div 
+                      className="prose prose-slate prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-3xl"
+                      dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                    />
+                    <footer className="mt-16 pt-8 border-t border-border">
+                      <div className="flex flex-wrap gap-2">
+                        {selectedPost.tags.map(tag => (
+                          <span key={tag} className="flex items-center gap-1 px-3 py-1 bg-surface border border-border rounded-full text-xs text-muted-foreground">
+                            <Tag className="w-3 h-3" />
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </footer>
+                  </article>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </main>
+
+        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      </div>
+    );
+  }
+
   if (activeSection === 'docs') {
     return (
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
@@ -238,6 +423,12 @@ export default function App() {
                   className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   Back to Home
+                </button>
+                <button
+                  onClick={() => setActiveSection('blog')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Blog
                 </button>
                 <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
                   Coming Soon
@@ -346,6 +537,12 @@ export default function App() {
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
                 Case Studies
+              </button>
+              <button
+                onClick={() => setActiveSection('blog')}
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Blog
               </button>
               <a
                 href="#pricing"
@@ -716,6 +913,17 @@ export default function App() {
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Documentation
+              </a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveSection('blog');
+                  setSelectedPostId(null);
+                }}
+                className="text-muted-foreground hover:text-primary transition-colors text-sm"
+              >
+                Blog
               </a>
               <a
                 href="#privacy"

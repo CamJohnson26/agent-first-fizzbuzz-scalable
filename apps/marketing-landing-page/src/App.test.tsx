@@ -40,6 +40,36 @@ describe('App', () => {
     expect(screen.getAllByText(/Gold Standard/i)).toBeDefined();
   });
 
+  it('navigates to blog and back', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    
+    const blogLink = screen.getByRole('button', { name: /^Blog$/i });
+    await user.click(blogLink);
+    
+    expect(screen.getByText(/Inside FizzBuzz Scalable/i)).toBeDefined();
+    
+    // Check if blog posts are rendered
+    expect(screen.getByText(/Building for Scale/i)).toBeDefined();
+    
+    // Click a post
+    const postTitle = screen.getByText(/Building for Scale/i);
+    await user.click(postTitle);
+    
+    // Check if post content is rendered
+    expect(screen.getByText(/The Monorepo Challenge/i)).toBeDefined();
+    
+    const backToAllPosts = screen.getByRole('button', { name: /Back to all posts/i });
+    await user.click(backToAllPosts);
+    
+    expect(screen.getByText(/Inside FizzBuzz Scalable/i)).toBeDefined();
+    
+    const backHomeButton = screen.getByRole('button', { name: /Back to Home/i });
+    await user.click(backHomeButton);
+    
+    expect(screen.getAllByText(/Gold Standard/i)).toBeDefined();
+  });
+
   it('opens "Coming Soon" modal when clicking relevant buttons', async () => {
     const user = userEvent.setup();
     render(<App />);
