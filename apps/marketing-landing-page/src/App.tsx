@@ -3,6 +3,7 @@ import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
 import { blogPosts } from './data/blogPosts';
+import { docPages, DocPage } from './data/docs';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
@@ -76,6 +77,7 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -408,6 +410,9 @@ export default function App() {
   }
 
   if (activeSection === 'docs') {
+    const selectedDoc = docPages.find(p => p.id === selectedDocId) || docPages[0];
+    const categories = ['Getting Started', 'Core Concepts', 'API Reference', 'Legal'] as const;
+
     return (
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
         <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
@@ -448,67 +453,69 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col md:flex-row gap-12">
             <aside className="md:w-64 space-y-8">
-              <div>
-                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">Getting Started</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="hover:text-primary cursor-pointer transition-colors">Introduction</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">Installation</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">Quick Start Guide</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">Core Concepts</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="hover:text-primary cursor-pointer transition-colors">Distributed Engine</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">Fidelity Guarantees</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">SOC2 Compliance</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">API Reference</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="hover:text-primary cursor-pointer transition-colors">Authentication</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">Endpoints</li>
-                  <li className="hover:text-primary cursor-pointer transition-colors">Webhooks</li>
-                </ul>
-              </div>
+              {categories.map(category => (
+                <div key={category}>
+                  <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground mb-4">{category}</h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    {docPages
+                      .filter(p => p.category === category)
+                      .map(page => (
+                        <li 
+                          key={page.id}
+                          onClick={() => setSelectedDocId(page.id)}
+                          className={`hover:text-primary cursor-pointer transition-colors ${selectedDocId === page.id ? 'text-primary font-bold' : ''}`}
+                        >
+                          {page.title}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              ))}
             </aside>
             <main className="flex-1 max-w-3xl">
               <Badge variant="secondary" className="mb-4">Documentation</Badge>
-              <h1 className="text-4xl font-extrabold mb-8">Introduction to FizzBuzz Scalable</h1>
               <div className="prose prose-slate prose-invert max-w-none">
-                <p className="text-xl text-muted-foreground mb-8">
-                  Welcome to the official documentation for FizzBuzz Scalable. Our platform provides the infrastructure needed to run algorithmic logic at any scale.
-                </p>
-                <h2 className="text-2xl font-bold mb-4">Why FizzBuzz Scalable?</h2>
-                <p className="mb-6">
-                  In modern enterprise environments, simple logic needs to be distributed, audited, and secured. FizzBuzz Scalable provides:
-                </p>
-                <ul className="space-y-4 mb-8 list-disc pl-6">
-                  <li><strong>Zero Latency:</strong> Optimized Node.js v25.9 engine for sub-millisecond execution.</li>
-                  <li><strong>Infinite Scale:</strong> Edge orchestration that grows with your business needs.</li>
-                  <li><strong>Compliance:</strong> Built-in SOC2, HIPAA, and GDPR compliance features.</li>
-                </ul>
-                <div className="bg-surface border border-border p-6 rounded-2xl mb-8">
-                  <div className="flex items-center gap-3 mb-4 text-primary font-bold">
-                    <Lightbulb className="w-5 h-5" />
-                    Pro Tip
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    a: ({ node, ...props }) => {
+                      const href = props.href || '';
+                      if (href.startsWith('http')) {
+                        return <a {...props} target="_blank" rel="noopener noreferrer" />;
+                      }
+                      return (
+                        <a 
+                          {...props} 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const id = href.replace('.md', '').toLowerCase();
+                            if (docPages.find(p => p.id === id)) {
+                              setSelectedDocId(id);
+                            }
+                          }}
+                        />
+                      );
+                    }
+                  }}
+                >
+                  {selectedDoc.content}
+                </ReactMarkdown>
+
+                {selectedDocId === 'introduction' && (
+                  <div className="mt-12">
+                    <h2 className="text-2xl font-bold mb-4">Next Steps</h2>
+                    <div className="grid sm:grid-cols-2 gap-4 not-prose">
+                      <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={() => setSelectedDocId('installation')}>
+                        <h3 className="font-bold mb-2">Installation Guide</h3>
+                        <p className="text-sm text-muted-foreground">Get the FizzBuzz engine running in minutes.</p>
+                      </div>
+                      <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={() => setSelectedDocId('endpoints')}>
+                        <h3 className="font-bold mb-2">API Reference</h3>
+                        <p className="text-sm text-muted-foreground">Integrate our logic directly into your apps.</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    For production environments, always use our Edge Orchestration feature to minimize latency for global users.
-                  </p>
-                </div>
-                <h2 className="text-2xl font-bold mb-4">Next Steps</h2>
-                <div className="grid sm:grid-cols-2 gap-4 not-prose">
-                  <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={openModal}>
-                    <h3 className="font-bold mb-2">Installation Guide</h3>
-                    <p className="text-sm text-muted-foreground">Get the FizzBuzz engine running in minutes.</p>
-                  </div>
-                  <div className="p-6 border border-border rounded-2xl hover:border-primary transition-colors cursor-pointer" onClick={openModal}>
-                    <h3 className="font-bold mb-2">API Reference</h3>
-                    <p className="text-sm text-muted-foreground">Integrate our logic directly into your apps.</p>
-                  </div>
-                </div>
+                )}
               </div>
             </main>
           </div>
@@ -907,7 +914,7 @@ export default function App() {
                 Twitter
               </a>
               <a
-                href="https://github.com/cameron/agent-first-fizzbuzz-scalable"
+                href="https://github.com/CamJohnson26/agent-first-fizzbuzz-scalable"
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 GitHub
@@ -934,13 +941,23 @@ export default function App() {
                 Blog
               </a>
               <a
-                href="#privacy"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveSection('docs');
+                  setSelectedDocId('privacy');
+                }}
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Privacy Policy
               </a>
               <a
-                href="#terms"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveSection('docs');
+                  setSelectedDocId('terms');
+                }}
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Terms of Service
