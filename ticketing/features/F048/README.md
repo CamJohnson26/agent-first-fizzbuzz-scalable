@@ -4,8 +4,10 @@
 Add Playwright for comprehensive end-to-end testing of the web applications.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Install Playwright
-- [ ] Write initial E2E tests
+- [x] Install Playwright
+- [x] Write initial E2E tests
+- [x] Configure for monorepo
+- [x] Integrate into root CI/CD pipeline
