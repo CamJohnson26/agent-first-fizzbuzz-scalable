@@ -1,0 +1,58 @@
+import { test, expect } from '@playwright/test';
+
+test.describe('Web Dashboard', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:5184');
+  });
+
+  test('should show server status as ok', async ({ page }) => {
+    // Wait for the server status to be 'ok'
+    await expect(page.getByText('Server: ok')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('should perform single computation', async ({ page }) => {
+    const input = page.getByPlaceholder('Enter a number...');
+    await input.fill('15');
+    await page.getByRole('button', { name: 'Compute' }).click();
+    
+    await expect(page.getByText('Result:')).toBeVisible();
+    await expect(page.getByText('FizzBuzz', { exact: true })).toBeVisible();
+  });
+
+  test('should perform range computation', async ({ page }) => {
+    // Fill start and end
+    await page.locator('label:has-text("Start") + input').fill('1');
+    await page.locator('label:has-text("End") + input').fill('5');
+    
+    await page.getByRole('button', { name: 'Generate Range Results' }).click();
+    
+    // Check results (1, 2, Fizz, 4, Buzz)
+    await expect(page.getByText('1', { exact: true })).toBeVisible();
+    await expect(page.getByText('2', { exact: true })).toBeVisible();
+    await expect(page.getByText('Fizz', { exact: true })).toBeVisible();
+    await expect(page.getByText('4', { exact: true })).toBeVisible();
+    await expect(page.getByText('Buzz', { exact: true })).toBeVisible();
+  });
+
+  test('should switch engines', async ({ page }) => {
+    const select = page.locator('#engine-select');
+    await select.selectOption('rust');
+    
+    // Perform computation with rust engine
+    await page.getByPlaceholder('Enter a number...').fill('3');
+    await page.getByRole('button', { name: 'Compute' }).click();
+    await expect(page.getByText('Fizz', { exact: true })).toBeVisible();
+    
+    await select.selectOption('lean');
+    await page.getByPlaceholder('Enter a number...').fill('5');
+    await page.getByRole('button', { name: 'Compute' }).click();
+    await expect(page.getByText('Buzz', { exact: true })).toBeVisible();
+  });
+
+  test('should show live analytics', async ({ page }) => {
+    await expect(page.getByText('Live Analytics')).toBeVisible();
+    // Total logs should be at least 1 after previous actions (if running sequentially)
+    // but better to just check it's present
+    await expect(page.getByText('Total Logs')).toBeVisible();
+  });
+});
