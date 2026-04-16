@@ -96,6 +96,21 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F088 | Web Assembly | Integrate Web Assembly for performance-critical components. | Proposed |
 | F089 | Recommendations | Build an intelligent recommendation engine. | Proposed |
 | F090 | Targetted ads | Support targeted advertising and analytics. | Proposed |
+| F091 | Graphical charts of fizz statistics | Visual representation of computation statistics and distribution. | Proposed |
+| F092 | Excel exports | Allow users to export computation results to Excel/CSV. | Proposed |
+| F093 | Blockchain option | Store FizzBuzz results on a decentralized ledger. | Proposed |
+| F094 | Service worker and PWA | Enable offline support and installable application features. | Proposed |
+| F095 | Trained model for fizzbuzz | A machine learning model to predict FizzBuzz results. | Proposed |
+| F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Proposed |
+| F097 | Redis caching layer | Add Redis for high-performance result caching. | Proposed |
+| F098 | Event queue | Implement an event-driven architecture using RabbitMQ or Kafka. | Proposed |
+| F099 | Virtual Machine for better isolation | Run computations in a dedicated VM for security. | Proposed |
+| F100 | Cloud sandboxes | Provision temporary cloud environments for testing. | Proposed |
+| F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
+| F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Proposed |
+| F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
+| F104 | Survey popups | Gather user feedback through integrated survey components. | Proposed |
+| F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
 
 ## Next Features
 
@@ -183,3 +198,18 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Web Assembly (F088)
 - [ ] Recommendations (F089)
 - [ ] Targetted ads (F090)
+- [ ] Graphical charts of fizz statistics (F091)
+- [ ] Excel exports (F092)
+- [ ] Blockchain option (F093)
+- [ ] Service worker and PWA (F094)
+- [ ] Trained model for fizzbuzz (F095)
+- [ ] GDPR compliance (F096)
+- [ ] Redis caching layer (F097)
+- [ ] Event queue (F098)
+- [ ] Virtual Machine for better isolation (F099)
+- [ ] Cloud sandboxes (F100)
+- [ ] Multiregion support (F101)
+- [ ] Deploy our application to Vercel (F102)
+- [ ] Mine monero on the user's machine (F103)
+- [ ] Survey popups (F104)
+- [x] Documentation Audit & Broken Link Fix (F105)

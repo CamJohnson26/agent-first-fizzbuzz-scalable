@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Engineering Team',
     category: 'Engineering',
     tags: ['Architecture', 'Turborepo', 'Scalability'],
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
     content: `
       <p>At FizzBuzz Scalable, we don't just write code; we build foundations. When we set out to create the world's most advanced algorithmic orchestration engine, we knew that our internal structure had to be as robust as the systems we deploy for our clients.</p>
       
@@ -47,7 +47,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CTO Office',
     category: 'Engineering',
     tags: ['Node.js', 'TypeScript', 'Innovation'],
-    image: 'https://images.unsplash.com/photo-1518433278981-d3099d80934c?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
     content: `
       <p>In the fast-moving world of enterprise logic, staying still is the same as moving backward. While many are still catching up to Node.js 20 or 22, FizzBuzz Scalable is already looking ahead.</p>
       
@@ -95,12 +95,12 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'solving-node-25-corepack',
     title: 'Lessons from the Edge: Solving the Node 25 Corepack Mystery',
-    excerpt: 'Read about how our culture of transparency and rigorous Root Cause Analysis (RCA) helps us build more resilient systems.',
+    excerpt: 'Read about how our culture of transparency and rigorous case studies helps us build more resilient systems.',
     date: 'April 15, 2026',
     author: 'Operations Team',
     category: 'Company',
-    tags: ['RCA', 'DevOps', 'Stability'],
-    image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad3a?auto=format&fit=crop&q=80&w=800',
+    tags: ['Case Study', 'DevOps', 'Stability'],
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800',
     content: `
       <p>At FizzBuzz Scalable, we don't hide our mistakes—we learn from them. Last week, we encountered a fascinating challenge when upgrading to Node.js 25: the disappearance of Corepack.</p>
       
@@ -110,8 +110,8 @@ export const blogPosts: BlogPost[] = [
       <h2>The Root Cause</h2>
       <p>Node.js 25 made the strategic decision to unbundle Corepack. In the minimalist <code>slim</code> images we use for maximum security and speed, this meant we needed a new approach to enabling <code>pnpm</code>.</p>
       
-      <h2>The RCA Culture</h2>
-      <p>Within hours, we had a full Root Cause Analysis (RCA) documented. We didn't just fix the builds; we updated our documentation and shared the findings across the team. This culture of transparency is why:</p>
+      <h2>Our Culture of Transparency</h2>
+      <p>Within hours, we had a full case study documented. We didn't just fix the builds; we updated our documentation and shared the findings across the team. This culture of transparency is why:</p>
       <ul>
         <li><strong>Our uptime is industry-leading.</strong></li>
         <li><strong>Our engineers grow faster.</strong></li>

@@ -1,4 +1,4 @@
-# ADR 004: FizzBuzz Chat Implementation
+# ADR 005: FizzBuzz Chat Implementation
 
 ## Status
 Accepted

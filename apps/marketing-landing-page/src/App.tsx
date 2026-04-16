@@ -3,7 +3,7 @@ import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
 import { blogPosts } from './data/blogPosts';
-import { docPages, DocPage } from './data/docs';
+import { docPages } from './data/docs';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
@@ -20,7 +20,6 @@ import {
   Server,
   X,
   BarChart,
-  Lightbulb,
   Calendar,
   User,
   Tag,
@@ -263,7 +262,7 @@ export default function App() {
                   }}
                   className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
-                  Home
+                  Back to Home
                 </button>
                 <button
                   onClick={() => {
@@ -478,7 +477,7 @@ export default function App() {
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
-                    a: ({ node, ...props }) => {
+                    a: ({ node: _node, ...props }) => {
                       const href = props.href || '';
                       if (href.startsWith('http')) {
                         return <a {...props} target="_blank" rel="noopener noreferrer" />;

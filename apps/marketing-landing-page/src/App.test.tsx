@@ -47,7 +47,7 @@ describe('App', () => {
     const blogLink = screen.getByRole('button', { name: /^Blog$/i });
     await user.click(blogLink);
     
-    expect(screen.getByText(/Inside FizzBuzz Scalable/i)).toBeDefined();
+    expect(await screen.findByRole('heading', { level: 1, name: /Inside/i })).toBeDefined();
     
     // Check if blog posts are rendered
     expect(screen.getByText(/Building for Scale/i)).toBeDefined();
@@ -57,12 +57,12 @@ describe('App', () => {
     await user.click(postTitle);
     
     // Check if post content is rendered
-    expect(screen.getByText(/The Monorepo Challenge/i)).toBeDefined();
+    expect(await screen.findByText(/The Monorepo Challenge/i)).toBeDefined();
     
     const backToAllPosts = screen.getByRole('button', { name: /Back to all posts/i });
     await user.click(backToAllPosts);
     
-    expect(screen.getByText(/Inside FizzBuzz Scalable/i)).toBeDefined();
+    expect(await screen.findByRole('heading', { level: 1, name: /Inside/i })).toBeDefined();
     
     const backHomeButton = screen.getByRole('button', { name: /Back to Home/i });
     await user.click(backHomeButton);
