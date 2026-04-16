@@ -16,6 +16,7 @@
     "format": "pnpm run check-node && turbo run format",
     "type-check": "pnpm run check-node && turbo run type-check",
     "test": "pnpm run check-node && turbo run test",
+    "test:e2e": "pnpm run check-node && turbo run test:e2e",
     "test:services": "pnpm run check-node && (docker info > /dev/null 2>&1 || (echo 'Error: Docker daemon not accessible. If you are on Linux, try adding your user to the docker group: sudo usermod -aG docker $USER && newgrp docker' && exit 1)) && docker compose up --build --abort-on-container-exit",
     "security-check": "pnpm audit --audit-level high && (trivy fs . || echo 'Trivy not found or failed, please install it locally')"
   },

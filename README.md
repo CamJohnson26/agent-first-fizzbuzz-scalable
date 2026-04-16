@@ -5,7 +5,13 @@
 [![Node.js](https://img.shields.io/badge/Node.js-25.9.0-green.svg)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-9.15.4-orange.svg)](https://pnpm.io/)
 
-> **A fully agent-first approach to the classic FizzBuzz algorithm, providing scalability, high fidelity, and AI features to enterprise users.**
+---
+
+## 📖 About
+
+**Agent-First FizzBuzz Scalable** is a fully autonomous, AI-developed monorepo project that reimagines the classic FizzBuzz algorithm for enterprise-level scalability. Built entirely by AI agents, this project showcases modern software architecture, formal verification, and automated end-to-end testing in a high-fidelity environment.
+
+This project serves as a benchmark for AI-driven software development, demonstrating that complex, multi-layered systems can be designed, implemented, and maintained with zero human-written code.
 
 ---
 
@@ -106,6 +112,7 @@ graph TD
 
 - 🚀 **High-Performance Computation**: Optimized FizzBuzz logic capable of handling massive ranges with minimal latency.
 - 📊 **Real-Time Observability**: Integrated analytics service that monitors system usage and performance metrics.
+- 🧪 **Comprehensive E2E Testing**: Integrated Playwright test suite for cross-application verification of user flows and backend integration.
 - 🛡️ **Formal Verification**: Core algorithms are verified using the Lean 4 theorem solver for mission-critical reliability.
 - 🤖 **Autonomous Development**: 100% of the codebase is managed by AI agents, ensuring a consistent and high-fidelity implementation.
 - 📦 **Modern Monorepo**: Built with Turborepo for lightning-fast builds and pnpm for efficient dependency management.
