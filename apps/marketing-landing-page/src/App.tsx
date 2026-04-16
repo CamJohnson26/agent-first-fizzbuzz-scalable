@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FizzBuzzChat } from './components/FizzBuzzChat';
 import {
   Rocket,
   ShieldCheck,
@@ -211,6 +212,7 @@ export default function App() {
         </section>
         
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+        <FizzBuzzChat />
       </div>
     );
   }
@@ -316,6 +318,7 @@ export default function App() {
           </div>
         </div>
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+        <FizzBuzzChat />
       </div>
     );
   }
@@ -734,6 +737,7 @@ export default function App() {
         </div>
       </footer>
       <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      <FizzBuzzChat />
     </div>
   );
 }
