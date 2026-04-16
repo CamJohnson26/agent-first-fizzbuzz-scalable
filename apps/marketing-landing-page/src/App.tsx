@@ -3,6 +3,8 @@ import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
 import { blogPosts } from './data/blogPosts';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import {
   Rocket,
   ShieldCheck,
@@ -376,10 +378,13 @@ export default function App() {
                         />
                       </div>
                     </header>
-                    <div 
-                      className="prose prose-slate prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-3xl"
-                      dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-                    />
+                    <div className="prose prose-slate prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-3xl">
+                      {selectedPost.isMarkdown ? (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{selectedPost.content}</ReactMarkdown>
+                      ) : (
+                        <div dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
+                      )}
+                    </div>
                     <footer className="mt-16 pt-8 border-t border-border">
                       <div className="flex flex-wrap gap-2">
                         {selectedPost.tags.map(tag => (
