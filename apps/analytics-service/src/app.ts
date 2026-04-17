@@ -24,6 +24,10 @@ export const createApp = () => {
     res.json({ status: 'ok' });
   });
 
+  app.get('/', (req: express.Request, res: express.Response) => {
+    res.json({ status: 'ok', service: 'analytics-service' });
+  });
+
   app.get('/stats', (req: express.Request, res: express.Response) => {
     res.json(stats);
   });
