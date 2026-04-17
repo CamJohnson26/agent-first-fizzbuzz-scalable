@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const { z } = require('zod');
+import express from 'express';
+import cors from 'cors';
+import { z } from 'zod';
 
 const LogSchema = z.object({
   level: z.string().optional(),
@@ -20,7 +20,7 @@ const stats = {
 };
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', source: 'api/index.js (Self-Contained)' });
+  res.json({ status: 'ok', source: 'api/index.js (ESM)' });
 });
 
 app.get('/stats', (req, res) => {
@@ -42,4 +42,4 @@ app.post('/api/logs', (req, res) => {
   res.status(202).json({ status: 'received' });
 });
 
-module.exports = app;
+export default app;

@@ -29,7 +29,7 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@fizzbuzz/ui';
-import { NPSFeedback } from './components/NPSFeedback.js';
+import { NPSFeedback } from './components/NPSFeedback';
 import { 
   HealthResponse, 
   ComputeResponse, 

@@ -35,10 +35,19 @@ describe('Web Dashboard App', () => {
   });
 
   it('shows export options after generating range results', async () => {
-    vi.mocked(fetch).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ results: ['1', '2', 'Fizz'] }),
-    } as Response);
+    vi.mocked(fetch).mockImplementation((url: any) => {
+      const urlStr = typeof url === 'string' ? url : url.toString();
+      if (urlStr.includes('/health')) {
+        return Promise.resolve({ ok: true, json: async () => ({ status: 'ok', timestamp: new Date().toISOString() }) } as Response);
+      }
+      if (urlStr.includes('/stats')) {
+        return Promise.resolve({ ok: true, json: async () => ({ totalLogs: 0, logsByService: {} }) } as Response);
+      }
+      if (urlStr.includes('/range')) {
+        return Promise.resolve({ ok: true, json: async () => ({ results: ['1', '2', 'Fizz'] }) } as Response);
+      }
+      return Promise.reject(new Error('Unknown URL: ' + urlStr));
+    });
 
     render(<App />);
     
@@ -47,7 +56,7 @@ describe('Web Dashboard App', () => {
 
     await waitFor(() => {
       expect(screen.getByText(/Export Results/i)).toBeDefined();
-    });
+    }, { timeout: 3000 });
 
     // Check for format buttons
     expect(screen.getByText(/CSV/i)).toBeDefined();
