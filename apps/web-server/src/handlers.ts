@@ -26,8 +26,8 @@ export const computeHandler = async (req: Request, res: Response<ComputeResponse
     if (engine === 'rust') {
       result = rustEngine.compute(n);
     } else if (engine === 'lean') {
-      const response = await fetch(`${LEAN_SERVICE_URL}/compute/${n}`);
-      const data = (await response.json()) as { result: string };
+      const leanRes = await fetch(`${LEAN_SERVICE_URL}/compute/${n}`);
+      const data = (await leanRes.json()) as { result: string };
       result = data.result;
     } else {
       result = fizzBuzzService.compute(n);
@@ -51,8 +51,8 @@ export const rangeHandler = async (req: Request, res: Response<RangeResponse | {
     if (engine === 'rust') {
       results = rustEngine.compute_range(start, end);
     } else if (engine === 'lean') {
-      const response = await fetch(`${LEAN_SERVICE_URL}/range?start=${start}&end=${end}`);
-      const data = (await response.json()) as { results: string[] };
+      const leanRes = await fetch(`${LEAN_SERVICE_URL}/range?start=${start}&end=${end}`);
+      const data = (await leanRes.json()) as { results: string[] };
       results = data.results;
     } else {
       results = fizzBuzzService.computeRange(start, end);
