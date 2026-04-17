@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
+import { CookieBanner } from './components/CookieBanner';
 import { blogPosts } from './data/blogPosts';
 import { docPages } from './data/docs';
 import ReactMarkdown from 'react-markdown';
@@ -230,6 +231,14 @@ export default function App() {
         
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
         <FizzBuzzChat />
+        <CookieBanner 
+          onAccept={() => console.log('Cookies accepted')}
+          onDecline={() => console.log('Cookies declined')}
+          onPrivacyPolicyClick={() => {
+            setActiveSection('docs');
+            setSelectedDocId('privacy');
+          }}
+        />
       </div>
     );
   }
@@ -404,6 +413,14 @@ export default function App() {
         </main>
 
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+        <CookieBanner 
+          onAccept={() => console.log('Cookies accepted')}
+          onDecline={() => console.log('Cookies declined')}
+          onPrivacyPolicyClick={() => {
+            setActiveSection('docs');
+            setSelectedDocId('privacy');
+          }}
+        />
       </div>
     );
   }
@@ -521,6 +538,14 @@ export default function App() {
         </div>
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
         <FizzBuzzChat />
+        <CookieBanner 
+          onAccept={() => console.log('Cookies accepted')}
+          onDecline={() => console.log('Cookies declined')}
+          onPrivacyPolicyClick={() => {
+            setActiveSection('docs');
+            setSelectedDocId('privacy');
+          }}
+        />
       </div>
     );
   }
@@ -967,6 +992,14 @@ export default function App() {
       </footer>
       <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
       <FizzBuzzChat />
+      <CookieBanner 
+        onAccept={() => console.log('Cookies accepted')}
+        onDecline={() => console.log('Cookies declined')}
+        onPrivacyPolicyClick={() => {
+          setActiveSection('docs');
+          setSelectedDocId('privacy');
+        }}
+      />
     </div>
   );
 }
