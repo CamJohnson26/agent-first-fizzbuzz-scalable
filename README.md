@@ -85,6 +85,9 @@ graph TD
             CL[Core Logic - TS]
             RE[Rust Engine - WASM]
         end
+        subgraph Machine_Learning [AI & Machine Learning]
+            TF[FizzBuzz Transformer - Python/PyTorch]
+        end
         subgraph Assurance_Layer [Assurance & Precision]
             ASV[Arithmetic Service]
             RL[Resilience Layer]
@@ -96,9 +99,10 @@ graph TD
         DI[tsyringe Container]
     end
 
-    WD -- REST API --> WS
+    WD -- REST API/Chat --> WS
     LP -- Docs --> WS
     WS -- Persistence --> DB
+    WS -- Inference --> TF
     WS -- Resolves --> DI
     DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS

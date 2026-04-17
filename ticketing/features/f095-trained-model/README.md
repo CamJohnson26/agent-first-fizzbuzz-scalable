@@ -13,3 +13,7 @@ Done
 - [x] Develop training script.
 - [x] Develop inference script.
 - [x] Add usage documentation.
+- [x] Implement API endpoint in web-server for model inference.
+- [x] Integrate AI Assistant chat feature into the dashboard.
+- [x] Update system architecture diagram.
+- [x] Write promotional blog post.
