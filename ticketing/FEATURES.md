@@ -109,9 +109,14 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
 | F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Proposed |
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
-| F104 | Survey popups | Gather user feedback through integrated survey components. | Proposed |
+| F104 | Survey popups | Gather user feedback through integrated survey components. | Done |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
 | F106 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
+| F107 | [BUG] Security - Update Vite and esbuild | Fix moderate security vulnerabilities in vite and esbuild. | Proposed |
+| F108 | [BUG] Stability - Range Computation Limit | Add protection against large ranges to prevent OOM/DoS. | Proposed |
+| F109 | [BUG] UI/UX - Numeric Input NaN Handling | Handle empty numeric inputs gracefully in the dashboard. | Proposed |
+| F110 | Architecture - Env Configurable API URLs | Use environment variables for API endpoints in the dashboard. | Proposed |
+| F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Proposed |
 
 ## Next Features
 
@@ -212,6 +217,11 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Multiregion support (F101)
 - [ ] Deploy our application to Vercel (F102)
 - [ ] Mine monero on the user's machine (F103)
-- [ ] Survey popups (F104)
+- [x] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
 - [x] Remove fnm References (F106)
+- [ ] [BUG] Security - Update Vite and esbuild (F107)
+- [ ] [BUG] Stability - Range Computation Limit (F108)
+- [ ] [BUG] UI/UX - Numeric Input NaN Handling (F109)
+- [ ] Architecture - Env Configurable API URLs (F110)
+- [ ] Code Quality - Remove 'any' types (F111)
