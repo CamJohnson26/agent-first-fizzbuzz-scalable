@@ -123,6 +123,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F115 | Enforce Mandatory PRs and Forbid Direct Commits | Strictly forbid direct commits to `main` and local merges; enforce GitHub PRs and auto-merge. | Done |
 | F116 | Fix Vercel Deployment Runtime | Remove invalid vercel-node runtime from vercel.json files. | Done |
 | F117 | Document agent-browser Usage | Document the requirement for agents to use `npx agent-browser` for browsing websites. | Done |
+| F118 | Standardize Vercel Entry Points | Standardize all services to use `api/index.ts` and fix Vite base URL issues. | Done |
 
 ## Next Features
 
@@ -237,3 +238,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Enforce Mandatory PRs and Forbid Direct Commits (F115)
 - [x] Fix Vercel Deployment Runtime (F116)
 - [x] Document agent-browser Usage (F117)
+- [x] Standardize Vercel Entry Points (F118)
