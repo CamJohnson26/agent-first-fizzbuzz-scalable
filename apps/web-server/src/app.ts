@@ -47,6 +47,10 @@ export const createApp = () => {
   // Health check endpoint
   app.get('/health', healthHandler);
 
+  app.get('/', (req, res) => {
+    res.json({ status: 'ok', service: 'web-server' });
+  });
+
   // FizzBuzz compute endpoint
   app.get('/compute/:n', computeHandler);
 
