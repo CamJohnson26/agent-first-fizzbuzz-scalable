@@ -111,13 +111,14 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
 | F104 | Survey popups | Gather user feedback through integrated survey components. | Done |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
-| F106 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
-| F107 | [BUG] Security - Update Vite and esbuild | Fix moderate security vulnerabilities in vite and esbuild. | Proposed |
+| F106 | Node 24 LTS Alignment | Update the project to use Node 24 instead of 25. | Done |
+| F107 | [BUG] Security - Update Vite and esbuild | Fix moderate security vulnerabilities in vite and esbuild. | Done |
 | F108 | [BUG] Stability - Range Computation Limit | Add protection against large ranges to prevent OOM/DoS. | Proposed |
 | F109 | [BUG] UI/UX - Numeric Input NaN Handling | Handle empty numeric inputs gracefully in the dashboard. | Proposed |
 | F110 | Architecture - Env Configurable API URLs | Use environment variables for API endpoints in the dashboard. | Proposed |
-| F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Proposed |
+| F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Done |
 | F112 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | Done |
+| F113 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
 
 ## Next Features
 
@@ -220,10 +221,11 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Mine monero on the user's machine (F103)
 - [x] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
-- [x] Remove fnm References (F106)
-- [ ] [BUG] Security - Update Vite and esbuild (F107)
+- [x] Node 24 LTS Alignment (F106)
+- [x] [BUG] Security - Update Vite and esbuild (F107)
 - [ ] [BUG] Stability - Range Computation Limit (F108)
 - [ ] [BUG] UI/UX - Numeric Input NaN Handling (F109)
 - [ ] Architecture - Env Configurable API URLs (F110)
-- [ ] Code Quality - Remove 'any' types (F111)
+- [x] Code Quality - Remove 'any' types (F111)
 - [x] Prefer Turbo in Documentation (F112)
+- [x] Remove fnm References (F113)
