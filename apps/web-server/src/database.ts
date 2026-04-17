@@ -9,14 +9,34 @@ export class DatabaseService {
   private db: Database.Database;
 
   constructor() {
-    const dbPath = process.env.DATABASE_PATH || path.join(process.cwd(), 'data', 'fizzbuzz.db');
-    const dbDir = path.dirname(dbPath);
-
-    if (!fs.existsSync(dbDir)) {
-      fs.mkdirSync(dbDir, { recursive: true });
+    let dbPath = process.env.DATABASE_PATH;
+    
+    if (!dbPath) {
+      if (process.env.VERCEL === '1') {
+        dbPath = ':memory:';
+      } else {
+        dbPath = path.join(process.cwd(), 'data', 'fizzbuzz.db');
+      }
     }
 
-    this.db = new Database(dbPath);
+    if (dbPath !== ':memory:') {
+      const dbDir = path.dirname(dbPath);
+      if (!fs.existsSync(dbDir)) {
+        try {
+          fs.mkdirSync(dbDir, { recursive: true });
+        } catch (error) {
+          console.warn(`Failed to create database directory: ${dbDir}`, error);
+          dbPath = ':memory:';
+        }
+      }
+    }
+
+    try {
+      this.db = new Database(dbPath);
+    } catch (error) {
+      console.error(`Failed to open database at ${dbPath}, falling back to :memory:`, error);
+      this.db = new Database(':memory:');
+    }
     this.initialize();
   }
 
