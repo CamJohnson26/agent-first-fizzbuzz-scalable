@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
 import { blogPosts } from './data/blogPosts';
 import { docPages } from './data/docs';
+import { caseStudies, CaseStudy } from './data/caseStudies';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
@@ -46,6 +47,8 @@ const ComingSoonModal = ({ isModalOpen, closeModal }: ComingSoonModalProps) => (
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          role="dialog"
+          aria-modal="true"
           className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-md w-full"
         >
           <button
@@ -72,8 +75,67 @@ const ComingSoonModal = ({ isModalOpen, closeModal }: ComingSoonModalProps) => (
   </AnimatePresence>
 );
 
+const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; closeModal: () => void }) => (
+  <AnimatePresence>
+    {study && (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeModal}
+          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          role="dialog"
+          aria-label="Case Study"
+          className="relative bg-surface border border-border rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        >
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors z-10 p-2 bg-surface/80 rounded-full backdrop-blur-sm"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          
+          <div className="p-8 md:p-12">
+            <header className="mb-12">
+              <div className="flex items-center gap-4 mb-6">
+                <Badge variant="secondary" className="px-4 py-1.5">{study.industry}</Badge>
+                <span className="text-primary font-bold">{study.stats}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">
+                {study.title}
+              </h1>
+              <p className="text-2xl text-muted-foreground">
+                {study.company}
+              </p>
+            </header>
+
+            <div className="prose prose-slate prose-invert max-w-none">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {study.content}
+              </ReactMarkdown>
+            </div>
+            
+            <footer className="mt-12 pt-8 border-t border-border">
+              <Button onClick={closeModal} className="rounded-xl px-8">
+                Close Case Study
+              </Button>
+            </footer>
+          </div>
+        </motion.div>
+      </div>
+    )}
+  </AnimatePresence>
+);
+
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
@@ -82,6 +144,7 @@ export default function App() {
   const closeModal = () => setIsModalOpen(false);
 
   const selectedPost = blogPosts.find(p => p.id === selectedPostId);
+  const selectedCaseStudy = caseStudies.find(s => s.id === selectedCaseStudyId);
 
   if (activeSection === 'case-studies') {
     return (
@@ -138,78 +201,63 @@ export default function App() {
         <section className="py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12">
-              {[
-                {
-                  company: 'Global Bank of America',
-                  industry: 'Finance',
-                  title: 'Optimizing Global Transaction Logic',
-                  stats: '40% reduction in latency',
-                  desc: 'How the world\'s largest bank migrated their legacy FizzBuzz implementations to our scalable engine, resulting in unprecedented transaction speeds.',
-                  icon: <BarChart className="w-8 h-8 text-primary" />,
-                },
-                {
-                  company: 'SpaceXperience',
-                  industry: 'Aerospace',
-                  title: 'Mission-Critical Orbital Calculations',
-                  stats: '100% fidelity guaranteed',
-                  desc: 'Zero-room for error in orbital mechanics. SpaceXperience relies on our SOC2 compliant infrastructure for their mission-critical algorithmic needs.',
-                  icon: <Rocket className="w-8 h-8 text-secondary" />,
-                },
-                {
-                  company: 'HealthScale Global',
-                  industry: 'Healthcare',
-                  title: 'Genomic Sequencing Orchestration',
-                  stats: '2.5PB of data processed monthly',
-                  desc: 'Orchestrating complex genomic analysis requires massive scale. Our distributed engine provides the necessary throughput for modern life sciences.',
-                  icon: <Microscope className="w-8 h-8 text-accent" />,
-                },
-                {
-                  company: 'ShopifyPlus Extreme',
-                  industry: 'E-commerce',
-                  title: 'Black Friday Scalability',
-                  stats: '10M+ operations per second',
-                  desc: 'Handling peak traffic during major sales events. ShopifyPlus Extreme uses our Edge Orchestration to ensure zero downtime during global flash sales.',
-                  icon: <Zap className="w-8 h-8 text-primary" />,
-                },
-              ].map((study, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full overflow-hidden hover:border-primary/50 transition-colors group">
-                    <CardContent className="p-0">
-                      <div className="flex flex-col h-full">
-                        <div className="bg-surface/50 p-8 border-b border-border group-hover:bg-primary/5 transition-colors">
-                          <div className="flex items-center justify-between mb-6">
-                            <div className="w-12 h-12 bg-background border border-border rounded-xl flex items-center justify-center">
-                              {study.icon}
+              {caseStudies.map((study, i) => {
+                const IconComponent = {
+                  BarChart,
+                  Rocket,
+                  Microscope,
+                  Zap
+                }[study.icon] || BarChart;
+
+                return (
+                  <motion.div
+                    key={study.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <Card className="h-full overflow-hidden hover:border-primary/50 transition-colors group">
+                      <CardContent className="p-0">
+                        <div className="flex flex-col h-full">
+                          <div className="bg-surface/50 p-8 border-b border-border group-hover:bg-primary/5 transition-colors">
+                            <div className="flex items-center justify-between mb-6">
+                              <div className="w-12 h-12 bg-background border border-border rounded-xl flex items-center justify-center">
+                                <IconComponent className={`w-8 h-8 ${
+                                  study.icon === 'BarChart' ? 'text-primary' :
+                                  study.icon === 'Rocket' ? 'text-secondary' :
+                                  study.icon === 'Microscope' ? 'text-accent' :
+                                  'text-primary'
+                                }`} />
+                              </div>
+                              <Badge variant="outline">{study.industry}</Badge>
                             </div>
-                            <Badge variant="outline">{study.industry}</Badge>
+                            <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                              {study.company}
+                            </h3>
+                            <div className="text-primary font-bold text-lg mb-4">
+                              {study.stats}
+                            </div>
                           </div>
-                          <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                            {study.company}
-                          </h3>
-                          <div className="text-primary font-bold text-lg mb-4">
-                            {study.stats}
+                          <div className="p-8">
+                            <h4 className="text-xl font-semibold mb-4">{study.title}</h4>
+                            <p className="text-muted-foreground leading-relaxed mb-8">
+                              {study.desc}
+                            </p>
+                            <Button 
+                              variant="outline" 
+                              className="rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-all" 
+                              onClick={() => setSelectedCaseStudyId(study.id)}
+                            >
+                              Read Full Case Study
+                            </Button>
                           </div>
                         </div>
-                        <div className="p-8">
-                          <h4 className="text-xl font-semibold mb-4">{study.title}</h4>
-                          <p className="text-muted-foreground leading-relaxed mb-8">
-                            {study.desc}
-                          </p>
-                          <Button variant="outline" className="rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-all" onClick={openModal}>
-                            Read Full Case Study
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -229,6 +277,10 @@ export default function App() {
         </section>
         
         <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+        <CaseStudyModal 
+          study={selectedCaseStudy} 
+          closeModal={() => setSelectedCaseStudyId(null)} 
+        />
         <FizzBuzzChat />
       </div>
     );
@@ -291,7 +343,7 @@ export default function App() {
                 exit={{ opacity: 0, y: -20 }}
               >
                 <header className="mb-16 text-center">
-                  <Badge variant="secondary" className="mb-4">Company Blog</Badge>
+                  <Badge variant="secondary" className="mb-4 px-4 py-1.5">Company Blog</Badge>
                   <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-6">
                     Inside <span className="text-primary">FizzBuzz Scalable</span>
                   </h1>
@@ -764,7 +816,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="md:w-1/2">
-              <Badge variant="primary" className="mb-4">
+              <Badge variant="primary" className="mb-4 px-4 py-1.5">
                 Use Cases
               </Badge>
               <h2 className="text-3xl font-bold text-foreground mb-6">
@@ -862,7 +914,7 @@ export default function App() {
                 }`}
               >
                 {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-none">
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-none px-4 py-1.5">
                     Most Popular
                   </Badge>
                 )}

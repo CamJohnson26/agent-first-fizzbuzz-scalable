@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
@@ -23,6 +23,30 @@ describe('App', () => {
     await user.click(backHomeButton);
     
     expect(screen.getAllByText(/Gold Standard/i)).toBeDefined();
+  });
+
+  it('opens a case study modal when clicking a case study', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    
+    // Navigate to case studies
+    const caseStudiesLink = screen.getByRole('button', { name: /Case Studies/i });
+    await user.click(caseStudiesLink);
+    
+    // Find and click a case study button
+    const readFullCaseStudyButtons = screen.getAllByRole('button', { name: /Read Full Case Study/i });
+    await user.click(readFullCaseStudyButtons[0]);
+    
+    // Verify modal content using within(dialog)
+    const modal = screen.getByRole('dialog', { name: /Case Study/i });
+    expect(within(modal).getByText(/Scaling Financial Logic/i)).toBeDefined();
+    expect(within(modal).getAllByText(/Global Bank of America/i).length).toBeGreaterThan(0);
+    
+    // Close the modal
+    const closeButton = screen.getByRole('button', { name: /Close Case Study/i });
+    await user.click(closeButton);
+    
+    await waitForElementToBeRemoved(() => screen.queryByText(/Scaling Financial Logic/i));
   });
 
   it('navigates to documentation and back', async () => {
