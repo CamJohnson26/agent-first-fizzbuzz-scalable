@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const { z } = require('zod');
+import express from 'express';
+import cors from 'cors';
+import { z } from 'zod';
 
 const LogSchema = z.object({
   level: z.string().optional(),
@@ -10,14 +10,14 @@ const LogSchema = z.object({
   metadata: z.record(z.unknown()).optional(),
 });
 
-const createApp = () => {
+export const createApp = () => {
   const app = express();
   app.use(cors());
   app.use(express.json());
 
   const stats = {
     totalLogs: 0,
-    logsByService: {},
+    logsByService: {} as Record<string, number>,
   };
 
   app.get('/health', (req, res) => {
@@ -46,5 +46,3 @@ const createApp = () => {
 
   return app;
 };
-
-module.exports = { createApp };
