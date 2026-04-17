@@ -109,7 +109,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
 | F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Proposed |
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
-| F104 | Survey popups | Gather user feedback through integrated survey components. | Proposed |
+| F104 | Survey popups | Gather user feedback through integrated survey components. | In Progress |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
 
 ## Next Features
