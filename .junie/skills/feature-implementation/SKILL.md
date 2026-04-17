@@ -30,10 +30,11 @@ This skill provides mandatory steps and templates for implementing features in t
 - Ensure the project builds (`turbo build`) and tests pass (`turbo test`) before finishing.
 
 ### 7. Completion & Commitment
-- **Mandatory Commit**: Always commit your work at the end of the session.
+- **Mandatory Commit**: Always commit your work at the end of the session to your feature branch.
 - **Co-authored-by**: Include the `Co-authored-by: Junie <junie@jetbrains.com>` trailer in your commit message.
-- **Pull Request**: Open a GitHub PR using the `gh` command (e.g., `gh pr create`) when the feature is ready.
-- **Review & Merge**: Verify that the build (`turbo build`) and tests (`turbo test`) pass. Merge the PR directly to `main` after verification. You may review and respond to your own feedback to ensure quality.
+- **Pull Request**: Push your branch to origin and open a GitHub PR using the `gh` command (e.g., `gh pr create --fill`) when the feature is ready.
+- **Review & Merge**: Verify that the build (`turbo build`) and tests (`turbo test`) pass. **NEVER merge the PR locally to `main`.** Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI passes, or wait for human review. You may review and respond to your own feedback to ensure quality.
+- **Direct Commits Prohibited**: Direct commits to the `main` branch are strictly forbidden. All development must occur on feature branches.
 - If a critical bug was fixed, write an **RCA** (Root Cause Analysis) in `RCAs/`.
 
 ## Reference Files

@@ -20,9 +20,10 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
 6. **Conflict Prevention & Git Strategy**:
    - **Git Worktrees**: Agents MUST always create a new `git worktree` before doing any work to minimize merge conflicts and ensure clean session isolation.
    - **Mandatory Code Commit**: Agents MUST always commit their work when finished at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
-   - **Branch Isolation**: When possible, work on dedicated feature branches.
-   - **PR Workflow**: When a task is complete, open a GitHub Pull Request using the `gh` command (e.g., `gh pr create`).
-   - **Validation & Merging**: Ensure the full build (`turbo build`) and all tests (`turbo test`) pass. Agents MUST verify that the build passes before merging their PR directly to `main`.
+   - **Direct Commits Prohibited**: Agents MUST NEVER commit directly to the `main` branch. All work must be done on feature branches.
+   - **Branch Isolation**: Work on dedicated feature branches (e.g., `feature/FXXX-description`).
+   - **PR Workflow**: When a task is complete, push your branch to origin and open a GitHub Pull Request using the `gh` command (e.g., `gh pr create --fill`).
+   - **Validation & Merging**: Ensure the full build (`turbo build`) and all tests (`turbo test`) pass. Agents MUST NOT merge their PRs locally. Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI requirements are met, or wait for human review.
    - **Review Feedback**: Agents are permitted to review and respond to their own review feedback to ensure high quality and resolve any lingering issues before final merge.
 
 ## Ticketing System Usage

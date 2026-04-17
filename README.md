@@ -195,6 +195,22 @@ turbo test --filter <package-name>
 
 ---
 
+## 🚢 Deployment
+
+The applications in this monorepo are designed for high-availability and scalable deployment.
+
+### Vercel (All Services)
+We use **Vercel** for hosting both our frontend applications and serverless backend services. Each application in the `apps/` directory can be deployed as an independent project.
+
+Detailed instructions can be found in the **[Vercel Deployment Guide](docs/VERCEL_DEPLOYMENT_GUIDE.md)**.
+
+> **Note**: We are planning to migrate our infrastructure management to **Terraform** in the near future to automate project creation and environment variable configuration.
+
+### GitHub Pages (Marketing Site)
+The marketing landing page is also automatically deployed to GitHub Pages via GitHub Actions.
+
+---
+
 ## 🎯 Target Users
 
 - 🎓 **Academia**: Presenting complex algorithmic concepts to graduate students.

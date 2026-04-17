@@ -21,7 +21,15 @@ Each application in the `apps/` directory is configured to be deployable as a st
         -   For Vite apps: `dist`
         -   For Express services: Leave default (Vercel will use the serverless functions defined in `vercel.json`)
     -   **Install Command**: `pnpm install`
-4.  **Environment Variables**: Add any required environment variables (e.g., `ANALYTICS_SERVICE_URL`).
+4.  **Environment Variables**: Add any required environment variables.
+    -   **For `web-server`**:
+        -   `ANALYTICS_SERVICE_URL`: URL of the deployed `analytics-service` (e.g., `https://analytics.vercel.app/api/logs`)
+        -   `LEAN_SERVICE_URL`: URL of the deployed `lean-service` (e.g., `https://lean.vercel.app`)
+    -   **For `web-dashboard`**:
+        -   `VITE_API_BASE`: URL of the deployed `web-server` (e.g., `https://api.vercel.app`)
+        -   `VITE_ANALYTICS_BASE`: URL of the deployed `analytics-service` (e.g., `https://analytics.vercel.app`)
+    -   **For `lean-service`**:
+        -   `LEAN_BINARY_PATH`: (Optional) Path to the lean binary if not in default location.
 
 ## Service-Specific Notes
 
@@ -36,3 +44,12 @@ The `marketing-landing-page` and `web-dashboard` use Vite and are configured wit
 
 ## Automated Deployments
 Each pull request will automatically trigger a preview deployment for all configured Vercel projects. Merging to `main` will trigger production deployments.
+
+## Future Improvements: Infrastructure as Code (Terraform)
+
+Currently, the Vercel projects and their environment variables are configured manually via the Vercel Dashboard. To improve scalability, reproducibility, and security, we should move this infrastructure configuration to **Terraform** using the [Vercel Provider](https://registry.terraform.io/providers/vercel/vercel/latest/docs).
+
+This will allow us to:
+-   Define projects, domains, and environment variables in code.
+-   Track infrastructure changes via Git.
+-   Ensure consistency across different environments (staging, production).
