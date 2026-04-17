@@ -79,13 +79,19 @@ graph TD
         VA[Verified Algorithms - Lean 4]
     end
 
+    subgraph DI_IoC [DI/IoC Framework]
+        DI[tsyringe Container]
+    end
+
     WD -- REST API --> WS
     LP -- Docs --> WS
-    WS -- Uses --> CL
+    WS -- Resolves --> DI
+    DI -- Injects --> CL
     WS -- Uses --> RE
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
-    CLI -- Uses --> CL
+    CLI -- Resolves --> DI
+    DI -- Injects --> CL
     VA -- Proves --> CL
     LS -- Executes --> VA
 ```

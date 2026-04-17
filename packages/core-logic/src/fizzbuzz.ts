@@ -1,3 +1,5 @@
+import { injectable, inject } from 'tsyringe';
+
 /**
  * Configuration options for the FizzBuzz service.
  */
@@ -7,6 +9,11 @@ export interface FizzBuzzConfig {
   fizzWord: string;
   buzzWord: string;
 }
+
+/**
+ * Token for injecting FizzBuzzConfig.
+ */
+export const FIZZ_BUZZ_CONFIG = Symbol('FizzBuzzConfig');
 
 /**
  * Default configuration for the FizzBuzz service.
@@ -19,12 +26,21 @@ export const DEFAULT_CONFIG: FizzBuzzConfig = {
 };
 
 /**
+ * Interface for the FizzBuzz service.
+ */
+export interface IFizzBuzzService {
+  compute(n: number): string;
+  computeRange(start: number, end: number): string[];
+}
+
+/**
  * Service for computing FizzBuzz sequences.
  */
-export class FizzBuzzService {
+@injectable()
+export class FizzBuzzService implements IFizzBuzzService {
   private config: FizzBuzzConfig;
 
-  constructor(config: Partial<FizzBuzzConfig> = {}) {
+  constructor(@inject(FIZZ_BUZZ_CONFIG) config: Partial<FizzBuzzConfig> = {}) {
     this.config = { ...DEFAULT_CONFIG, ...config };
   }
 

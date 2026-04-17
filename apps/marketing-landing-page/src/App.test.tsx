@@ -96,11 +96,11 @@ describe('App', () => {
 
   it('redirects to dashboard when clicking relevant buttons', async () => {
     const user = userEvent.setup();
-    // @ts-ignore
+    // @ts-expect-error - mocking window.location
     const originalLocation = window.location;
-    // @ts-ignore
+    // @ts-expect-error - deleting window.location for mock
     delete window.location;
-    // @ts-ignore
+    // @ts-expect-error - setting mocked window.location
     window.location = { ...originalLocation, href: '' };
 
     render(<App />);
@@ -110,7 +110,7 @@ describe('App', () => {
     
     expect(window.location.href).toBe('https://agent-first-fizzbuzz-scalable-web-d.vercel.app/');
     
-    // @ts-ignore
+    // @ts-expect-error - restoring original window.location
     window.location = originalLocation;
   });
 

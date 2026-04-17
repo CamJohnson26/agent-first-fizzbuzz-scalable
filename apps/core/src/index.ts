@@ -1,8 +1,13 @@
+import 'reflect-metadata';
+import { container } from 'tsyringe';
 import { Command } from 'commander';
-import { FizzBuzzService } from '@fizzbuzz/core-logic';
+import { FizzBuzzService, FIZZ_BUZZ_CONFIG, DEFAULT_CONFIG } from '@fizzbuzz/core-logic';
+
+// Register dependencies
+container.register(FIZZ_BUZZ_CONFIG, { useValue: DEFAULT_CONFIG });
 
 const program = new Command();
-const fizzBuzzService = new FizzBuzzService();
+const fizzBuzzService = container.resolve(FizzBuzzService);
 
 program
   .name('fizzbuzz-core')

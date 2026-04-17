@@ -20,26 +20,29 @@ export const exportResults = (
   const filename = `fizzbuzz-results-${start}-${start + results.length - 1}`;
 
   switch (format) {
-    case 'json':
+    case 'json': {
       const jsonContent = orientation === 'vertical' 
         ? JSON.stringify(data, null, 2)
         : JSON.stringify({ range: { start, end: start + results.length - 1 }, results }, null, 2);
       saveAs(new Blob([jsonContent], { type: 'application/json' }), `${filename}.json`);
       break;
+    }
 
-    case 'txt':
+    case 'txt': {
       const txtContent = orientation === 'vertical'
         ? data.map(d => `${d.index}: ${d.value}`).join('\n')
         : results.join(', ');
       saveAs(new Blob([txtContent], { type: 'text/plain' }), `${filename}.txt`);
       break;
+    }
 
-    case 'csv':
+    case 'csv': {
       const csvContent = orientation === 'vertical'
         ? 'Index,Value\n' + data.map(d => `${d.index},${d.value}`).join('\n')
         : 'Index,' + data.map(d => d.index).join(',') + '\nValue,' + results.join(',');
       saveAs(new Blob([csvContent], { type: 'text/csv' }), `${filename}.csv`);
       break;
+    }
 
     case 'excel': {
       const ws = orientation === 'vertical'

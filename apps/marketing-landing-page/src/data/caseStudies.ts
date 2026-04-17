@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface CaseStudy {
   id: string;
   company: string;

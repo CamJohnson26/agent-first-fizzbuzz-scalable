@@ -222,5 +222,55 @@ While many companies wait weeks or months to patch secondary dependencies, FizzB
 
 *#Security #CyberSecurity #SheetJS #VulnerabilityManagement #EnterpriseGrade #RapidResponse #ZeroTrust*
     `
+  },
+  {
+    id: 'dependency-injection-scaling',
+    title: 'Architecting for Infinity: Implementing Dependency Injection in Core Services',
+    excerpt: 'Manual instantiation is for startups. Discover how our shift to tsyringe-powered Dependency Injection is preparing FizzBuzz Scalable for global-scale orchestration.',
+    date: 'April 18, 2026',
+    author: 'Architecture Team',
+    category: 'Engineering',
+    tags: ['Architecture', 'DI', 'TypeScript', 'tsyringe', 'Scalability'],
+    isMarkdown: true,
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800',
+    content: `
+# 🏗️ Architecting for Infinity: The Power of Dependency Injection
+
+As **FizzBuzz Scalable** transitions from a series of high-performance components to a unified global orchestration platform, our internal architecture must evolve. Today, we're proud to announce the successful implementation of a robust **Dependency Injection (DI)** framework across our core services.
+
+## 🚀 The Problem: The "Manual Instantiation" Bottleneck
+
+In the early days of our monorepo, manual instantiation of services was sufficient. However, as we added Rust engines, Lean-verified algorithms, and complex analytics pipelines, our "wiring" became tangled. Testing required complex mocks, and sharing services between our CLI and Web Server became a maintenance headache.
+
+## 💡 The Solution: tsyringe and Inversion of Control
+
+We've adopted **tsyringe**, a lightweight and powerful DI container from Microsoft. By moving to an **Inversion of Control (IoC)** pattern, we've achieved several critical engineering milestones:
+
+1.  **Decoupled Logic:** Our services no longer need to know how to create their dependencies. They simply "ask" the container for what they need.
+2.  **Seamless Testing:** Unit testing is now a breeze. We can inject mock implementations of our high-performance engines without changing a single line of application code.
+3.  **Monorepo Harmony:** The same \`FizzBuzzService\` logic is now consistently injected into our Node.js CLI and our Express-based Web Server, ensuring 100% behavioral parity.
+
+## 🛠️ Technical Deep Dive: Decorators and Metadata
+
+By leveraging TypeScript's experimental decorators and \`reflect-metadata\`, we've created a self-documenting architecture:
+
+\`\`\`typescript
+@injectable()
+export class FizzBuzzService implements IFizzBuzzService {
+  constructor(
+    @inject(FIZZ_BUZZ_CONFIG) private config: FizzBuzzConfig
+  ) {}
+  // ...
+}
+\`\`\`
+
+This move isn't just a refactor—it's a statement. We are building a system that is modular, extensible, and ready for any challenge the enterprise can throw at us.
+
+## 📈 What This Means for You
+
+For our partners and developers, this means faster feature rollouts, even higher reliability, and a codebase that is a joy to work in. We're not just scaling numbers; we're scaling excellence.
+
+*#Architecture #SoftwareEngineering #TypeScript #DI #tsyringe #CleanCode #EnterpriseArchitecture #Scalability*
+    `
   }
 ];
