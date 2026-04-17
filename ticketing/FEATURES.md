@@ -131,6 +131,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F123 | Dashboard Navigation Improvements | Improve navigation between marketing page and web dashboard. | Done |
 | F124 | Generalized FizzBuzz ADRs | Research and document the architectural shift to a generalized, scalable, and resilient rule evaluation system. | Done |
 | F125 | xlsx Security Upgrade | High severity security fix for SheetJS (CVE-2023-30533, CVE-2024-22363). | Done |
+| F126 | Favicon Synchronization | Sync favicons with marketing logo and colorize for each app. | In Progress |
 
 ## Next Features
 

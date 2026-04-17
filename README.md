@@ -74,9 +74,15 @@ graph TD
     end
 
     subgraph Logic_Layer [Logic Layer]
-        CL[Core Logic - Shared Package]
-        RE[Rust Engine - WASM]
-        VA[Verified Algorithms - Lean 4]
+        subgraph Generalized_Engine [Generalized Rule Engine]
+            CL[Core Logic - TS]
+            RE[Rust Engine - WASM]
+        end
+        subgraph Assurance_Layer [Assurance & Precision]
+            ASV[Arithmetic Service]
+            RL[Resilience Layer]
+            VA[Verified Algorithms - Lean 4]
+        end
     end
 
     subgraph DI_IoC [DI/IoC Framework]
@@ -86,12 +92,12 @@ graph TD
     WD -- REST API --> WS
     LP -- Docs --> WS
     WS -- Resolves --> DI
-    DI -- Injects --> CL
-    WS -- Uses --> RE
+    DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
     CLI -- Resolves --> DI
-    DI -- Injects --> CL
+    DI -- Injects --> Generalized_Engine
+    Generalized_Engine -- Uses --> Assurance_Layer
     VA -- Proves --> CL
     LS -- Executes --> VA
 ```
@@ -119,7 +125,10 @@ graph TD
 
 ## ✨ Features Overview
 
-- 🚀 **High-Performance Multi-Engine Computation**: Optimized FizzBuzz logic with TypeScript, Rust (WASM), and Lean 4 engines.
+- 🚀 **Generalized Rule-Based Computation**: A modular engine (ADR 008) that decouples rules, predicates, and renderers for ultimate flexibility.
+- 🧮 **Precision Arithmetic Services**: Pluggable arithmetic backends (ADR 009) including BigInt and Checked 64-bit to prevent silent failures.
+- 🛡️ **Resilient & Fault-Tolerant**: Integrated rule integrity checks (SHA-256), state resynchronization, and cross-checking evaluators (ADR 010).
+- 🏎️ **High-Performance Multi-Engine**: Optimized FizzBuzz logic with TypeScript, Rust (WASM), and Lean 4 engines.
 - 📊 **Real-Time Observability**: Integrated analytics service that monitors system usage and performance metrics.
 - 🧪 **Comprehensive E2E Testing**: Integrated Playwright test suite for cross-application verification of user flows and backend integration.
 - 🛡️ **Formal Verification**: Core algorithms are verified using the Lean 4 theorem solver for mission-critical reliability.

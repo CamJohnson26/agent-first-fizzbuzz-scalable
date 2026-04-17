@@ -1,4 +1,13 @@
 import { injectable, inject } from 'tsyringe';
+import { 
+  Rule, 
+  Composer, 
+  Fallback, 
+  Validator 
+} from './types.js';
+import { CheckedArithmetic } from './arithmetic.js';
+import { ResilientEngine } from './engine.js';
+import { RuleCompiler } from './compiler.js';
 
 /**
  * Configuration options for the FizzBuzz service.
@@ -34,14 +43,51 @@ export interface IFizzBuzzService {
 }
 
 /**
- * Service for computing FizzBuzz sequences.
+ * Service for computing FizzBuzz sequences using the Generalized Rule Model (ADR 008)
+ * and Dependency Injection (ADR 011).
  */
 @injectable()
 export class FizzBuzzService implements IFizzBuzzService {
-  private config: FizzBuzzConfig;
+  private engine: ResilientEngine<number>;
 
   constructor(@inject(FIZZ_BUZZ_CONFIG) config: Partial<FizzBuzzConfig> = {}) {
-    this.config = { ...DEFAULT_CONFIG, ...config };
+    const fullConfig = { ...DEFAULT_CONFIG, ...config };
+    
+    // Define rules based on ADR 008
+    const rules: Rule<number>[] = [
+      RuleCompiler.compile({
+        id: 'fizz',
+        priority: 2,
+        predicate: (n, a) => a.isDivisible(n, fullConfig.fizzNumber),
+        renderer: () => fullConfig.fizzWord,
+        metadata: { divisor: fullConfig.fizzNumber }
+      }),
+      RuleCompiler.compile({
+        id: 'buzz',
+        priority: 1,
+        predicate: (n, a) => a.isDivisible(n, fullConfig.buzzNumber),
+        renderer: () => fullConfig.buzzWord,
+        metadata: { divisor: fullConfig.buzzNumber }
+      })
+    ];
+
+    const composer: Composer = (outputs) => outputs.join('');
+    const fallback: Fallback<number> = (n) => n.toString();
+    const arithmetic = new CheckedArithmetic();
+    const validators: Validator<number>[] = [
+      (input, output) => {
+        if (!output) throw new Error("Output invariant violated: result cannot be empty");
+      }
+    ];
+
+    this.engine = new ResilientEngine({
+      rules,
+      arithmetic,
+      composer,
+      fallback,
+      validators,
+      enableCrossCheck: true
+    });
   }
 
   /**
@@ -50,17 +96,7 @@ export class FizzBuzzService implements IFizzBuzzService {
    * @returns The FizzBuzz string or the number as a string.
    */
   public compute(n: number): string {
-    let result = '';
-
-    if (n % this.config.fizzNumber === 0) {
-      result += this.config.fizzWord;
-    }
-
-    if (n % this.config.buzzNumber === 0) {
-      result += this.config.buzzWord;
-    }
-
-    return result || n.toString();
+    return this.engine.evaluate(n);
   }
 
   /**
@@ -70,10 +106,6 @@ export class FizzBuzzService implements IFizzBuzzService {
    * @returns An array of FizzBuzz results.
    */
   public computeRange(start: number, end: number): string[] {
-    const results: string[] = [];
-    for (let i = start; i <= end; i++) {
-      results.push(this.compute(i));
-    }
-    return results;
+    return this.engine.evaluateRange(start, end);
   }
 }

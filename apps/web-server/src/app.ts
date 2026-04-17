@@ -22,7 +22,7 @@ const forwardLog = async (message: string, metadata?: Record<string, unknown>) =
         metadata,
         timestamp: new Date().toISOString(),
       }),
-    });
+    }) as any;
     if (!res.ok) {
       console.warn(`Analytics service responded with status ${res.status}`);
     }
