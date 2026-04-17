@@ -10,6 +10,7 @@ import {
   XCircle,
   CheckCircle2,
   Download,
+  Home,
   FileJson,
   FileText,
   FileSpreadsheet,
@@ -141,9 +142,11 @@ export default function App() {
         }
       } else {
         setError(data.error || 'Failed to compute');
+        setComputeResult(null);
       }
     } catch (_err) {
       setError('Connection refused. Is the web-server running?');
+      setComputeResult(null);
     }
   };
 
@@ -166,9 +169,11 @@ export default function App() {
             ? (data.error[0] as { message: string }).message
             : data.error || 'Failed to compute range',
         );
+        setRangeResults([]);
       }
     } catch (_err) {
       setError('Connection refused. Is the web-server running?');
+      setRangeResults([]);
     }
   };
 
@@ -185,6 +190,15 @@ export default function App() {
             </h1>
           </div>
           <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.location.href = 'https://agent-first-fizzbuzz-scalable-marke.vercel.app/'}
+              className="gap-2 rounded-lg"
+            >
+              <Home className="w-4 h-4" />
+              <span className="hidden sm:inline">Back to Marketing</span>
+            </Button>
             <div className="flex items-center gap-2 bg-surface border border-border px-3 py-1.5 rounded-lg">
               <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Engine:</label>
               <select 
@@ -358,7 +372,7 @@ export default function App() {
                   <span className="text-muted-foreground font-medium">
                     Result:
                   </span>
-                  <span className="text-3xl font-black text-primary animate-in zoom-in-50 duration-300">
+                  <span data-testid="single-result" className="text-3xl font-black text-primary animate-in zoom-in-50 duration-300">
                     {computeResult}
                   </span>
                 </div>
@@ -495,7 +509,7 @@ export default function App() {
                         className="justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
                       >
                         <span className="text-xs opacity-50 mr-1.5 font-mono">{rangeStart + i}</span>
-                        {res}
+                        <span data-testid="result-text">{res}</span>
                       </Badge>
                     ))}
                   </div>

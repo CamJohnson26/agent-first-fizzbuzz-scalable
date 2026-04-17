@@ -128,6 +128,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F120 | Marketing Site Improvements | Fix button padding, implement case studies, shuffle blog images, and open chat by default. | Done |
 | F121 | Data Exports and UI Enhancements | Support exporting results to CSV, JSON, PDF, TXT, Excel and improve dashboard UX. | Done |
 | F122 | Create Agent Skills | Create automated agent skills for issue scanning, cleanup, releases, and marketing. | Done |
+| F123 | Dashboard Navigation Improvements | Improve navigation between marketing page and web dashboard. | Done |
 
 ## Next Features
 
@@ -245,4 +246,6 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Standardize Vercel Entry Points (F118)
 - [x] Dashboard Link & Crypto Disclosure (F119)
 - [x] Marketing Site Improvements (F120)
+- [x] Data Exports and UI Enhancements (F121)
 - [x] Create Agent Skills (F122)
+- [x] Dashboard Navigation Improvements (F123)

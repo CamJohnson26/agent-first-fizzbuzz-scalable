@@ -93,7 +93,7 @@ export default function App() {
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
 
   const DASHBOARD_URL = 'https://agent-first-fizzbuzz-scalable-web-d.vercel.app/';
-  const handleComingSoonClick = () => {
+  const handleDashboardClick = () => {
     window.location.href = DASHBOARD_URL;
   };
 
@@ -130,8 +130,8 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
-                  Coming Soon
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
                 </Button>
               </div>
             </div>
@@ -220,11 +220,11 @@ export default function App() {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-8">Ready to be our next success story?</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Button variant="secondary" size="lg" className="rounded-2xl px-10 py-8 text-xl bg-white text-primary hover:bg-slate-100" onClick={handleComingSoonClick}>
-                Coming Soon
+              <Button variant="secondary" size="lg" className="rounded-2xl px-10 py-8 text-xl bg-white text-primary hover:bg-slate-100" onClick={handleDashboardClick}>
+                Dashboard
               </Button>
-              <Button variant="outline" size="lg" className="rounded-2xl px-10 py-8 text-xl border-2 border-white text-white hover:bg-white/10" onClick={handleComingSoonClick}>
-                Coming Soon
+              <Button variant="outline" size="lg" className="rounded-2xl px-10 py-8 text-xl border-2 border-white text-white hover:bg-white/10" onClick={handleDashboardClick}>
+                Dashboard
               </Button>
             </div>
           </div>
@@ -278,8 +278,8 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
-                  Coming Soon
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
                 </Button>
               </div>
             </div>
@@ -445,8 +445,8 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
-                  Coming Soon
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
                 </Button>
               </div>
             </div>
@@ -573,8 +573,8 @@ export default function App() {
               >
                 Docs
               </button>
-              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
-                Coming Soon
+              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                Dashboard
               </Button>
             </div>
           </div>
@@ -606,7 +606,7 @@ export default function App() {
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button
                 size="lg"
-                onClick={handleComingSoonClick}
+                onClick={handleDashboardClick}
                 className="rounded-2xl px-10 py-8 text-xl shadow-2xl shadow-primary/25 bg-primary hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center gap-3"
               >
                 <Rocket className="h-6 w-6" />
@@ -615,7 +615,7 @@ export default function App() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={handleComingSoonClick}
+                onClick={handleDashboardClick}
                 className="rounded-2xl px-10 py-8 text-xl border-2 hover:bg-surface transition-all flex items-center justify-center gap-3"
               >
                 <Terminal className="h-6 w-6" />
@@ -834,7 +834,7 @@ export default function App() {
                 price: '$0',
                 desc: 'Perfect for individual researchers.',
                 features: ['Local execution', 'Basic community support', 'v25.9 Engine access'],
-                cta: 'Coming Soon',
+                cta: 'Dashboard',
                 variant: 'outline' as const,
               },
               {
@@ -842,7 +842,7 @@ export default function App() {
                 price: '$499',
                 desc: 'For growing teams and startups.',
                 features: ['Cloud orchestration', 'Priority email support', 'Advanced analytics', 'Custom plugins'],
-                cta: 'Coming Soon',
+                cta: 'Dashboard',
                 variant: 'primary' as const,
                 popular: true,
               },
@@ -851,7 +851,7 @@ export default function App() {
                 price: 'Custom',
                 desc: 'Mission-critical deployments.',
                 features: ['Dedicated support engineer', 'SLA guarantees', 'SOC2/HIPAA compliance', 'Unlimited nodes'],
-                cta: 'Coming Soon',
+                cta: 'Dashboard',
                 variant: 'outline' as const,
                 disclosure: 'Paid in Crypto mining'
               },
@@ -885,7 +885,7 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.variant} className="w-full rounded-xl py-6" onClick={handleComingSoonClick}>
+                <Button variant={plan.variant} className="w-full rounded-xl py-6" onClick={handleDashboardClick}>
                   {plan.cta}
                 </Button>
               </motion.div>
