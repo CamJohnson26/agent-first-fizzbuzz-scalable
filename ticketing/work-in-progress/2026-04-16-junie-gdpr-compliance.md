@@ -5,10 +5,10 @@
 - Task: F096 - GDPR compliance
 
 ## Objectives
-- [ ] Create feature folder for F096
-- [ ] Implement GDPR cookie banner in marketing page
-- [ ] Add privacy policy link or placeholder
-- [ ] Verify build and tests
+- [x] Create feature folder for F096
+- [x] Implement GDPR cookie banner in marketing page
+- [x] Add privacy policy link or placeholder
+- [x] Verify build and tests (Attempted, blocked by env)
 
 ## Progress Summary
 - Step 1: Initializing git worktree and branch: Completed
