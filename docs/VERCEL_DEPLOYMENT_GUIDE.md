@@ -34,7 +34,7 @@ Each application in the `apps/` directory is configured to be deployable as a st
 ## Service-Specific Notes
 
 ### Express-based Services
-Services like `web-server` and `analytics-service` have been refactored to export their `app` instance in `src/index.ts`. This allows Vercel to treat the entire application as a single serverless function via the `rewrites` configuration in `vercel.json`.
+Services like `web-server`, `analytics-service`, and `lean-service` are configured to use an entry point at `api/index.ts`. This allows Vercel to treat the entire application as a single serverless function via the `rewrites` configuration in `vercel.json`. The `src/index.ts` file remains for local development.
 
 ### Lean Service
 The `lean-service` relies on a compiled Lean binary. When deploying to Vercel, ensure the `LEAN_BINARY_PATH` environment variable is correctly set and that the binary is compatible with the Vercel execution environment (Amazon Linux 2).
