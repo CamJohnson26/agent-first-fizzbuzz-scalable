@@ -1,4 +1,4 @@
-FROM node:25.9.0-slim AS base
+FROM node:24.14.1-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g corepack@latest --force && corepack enable
@@ -27,7 +27,7 @@ COPY --from=prune /usr/src/app/out/full/ .
 RUN pnpm --filter @fizzbuzz/analytics-service... build
 RUN pnpm deploy --filter @fizzbuzz/analytics-service --prod /prod/analytics-service
 
-FROM node:25.9.0-slim
+FROM node:24.14.1-slim
 WORKDIR /app
 COPY --from=build /prod/analytics-service /app
 

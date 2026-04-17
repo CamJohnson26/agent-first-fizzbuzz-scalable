@@ -11,8 +11,8 @@
 - [x] Ensure full integration with Turborepo via `test:e2e` script
 
 ## Progress Summary
-- Step 1: Investigated existing Playwright setup and found environment issue (Node 18 vs Node 25).
-- Step 2: Switched to Node.js v25.9.0 using the pre-installed version in `/home/cameron/.nvm`.
+- Step 1: Investigated existing Playwright setup and found environment issue (Node 18 vs Node 24).
+- Step 2: Switched to Node.js v24.14.1 using the pre-installed version in `/home/cameron/.nvm`.
 - Step 3: Verified existing 10 tests pass.
 - Step 4: Created `packages/e2e/tests/chat.spec.ts` with 4 new tests.
 - Step 5: Updated `packages/e2e/tests/dashboard.spec.ts` with 2 new tests.

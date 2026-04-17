@@ -22,7 +22,7 @@ A modern, responsive web application for monitoring and interacting with the Fiz
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

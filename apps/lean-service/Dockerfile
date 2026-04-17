@@ -1,4 +1,4 @@
-FROM node:25.9.0-slim AS base
+FROM node:24.14.1-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN apt-get update && apt-get install -y curl gcc libc6-dev libgmp-dev && rm -rf /var/lib/apt/lists/*
@@ -32,7 +32,7 @@ COPY --from=prune /usr/src/app/out/full/ .
 RUN pnpm --filter @fizzbuzz/lean-service... build
 RUN pnpm deploy --filter @fizzbuzz/lean-service --prod /prod/lean-service
 
-FROM node:25.9.0-slim
+FROM node:24.14.1-slim
 # Install libgmp10 for Lean runtime
 RUN apt-get update && apt-get install -y libgmp10 && rm -rf /var/lib/apt/lists/*
 WORKDIR /app

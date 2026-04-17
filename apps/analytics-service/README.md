@@ -11,7 +11,7 @@ A lightweight service for collecting and analyzing logs from other services in t
 
 ## Tech Stack
 
-- **Runtime**: Node.js 25.9.0
+- **Runtime**: Node.js 24.14.1
 - **Framework**: Express.js
 - **Validation**: Zod
 - **Testing**: Vitest (planned)
@@ -20,7 +20,7 @@ A lightweight service for collecting and analyzing logs from other services in t
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

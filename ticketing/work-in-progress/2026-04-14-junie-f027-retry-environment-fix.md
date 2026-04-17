@@ -11,7 +11,7 @@
 - [x] Ensure all monorepo tests pass (F007, F019, F027)
 
 ## Progress Summary
-- Step 1: Activated Node v25.9.0 via `nvm` and installed `pnpm@9.0.0` as required.
+- Step 1: Activated Node v24.14.1 via `nvm` and installed `pnpm@9.0.0` as required.
 - Step 2: Cleaned up `package.json` duplicates and removed redundant `package-lock.json`.
 - Step 3: Revised `README.md` to provide accurate and robust setup instructions for developers and agents.
 - Step 4: Fixed TypeScript configuration to ensure `@fizzbuzz/core-logic` can be properly consumed by other packages.

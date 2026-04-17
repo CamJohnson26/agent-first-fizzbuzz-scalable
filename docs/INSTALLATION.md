@@ -6,7 +6,7 @@ This guide will walk you through the process of installing and setting up the Fi
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js**: v25.9.0 (Strictly enforced)
+- **Node.js**: v24.14.1 (Strictly enforced)
 - **pnpm**: v9.15.4 or higher
 - **Docker**: Optional, for running the full containerized stack
 - **Lean 4**: Optional, for running formal verification locally

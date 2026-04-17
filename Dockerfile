@@ -1,7 +1,7 @@
 # This is a template Dockerfile that can be used to build any service in the monorepo.
 # Usage: docker build --build-arg APP=@fizzbuzz/analytics-service -t analytics-service .
 
-FROM node:25.9.0-slim AS base
+FROM node:24.14.1-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN apt-get update && apt-get install -y curl gcc libc6-dev libgmp-dev && rm -rf /var/lib/apt/lists/*
@@ -42,7 +42,7 @@ RUN --mount=type=cache,target=/root/.cargo/registry \
     pnpm --filter $APP... build
 
 # Production target (default to node)
-FROM node:25.9.0-slim AS production
+FROM node:24.14.1-slim AS production
 ARG APP
 RUN apt-get update && apt-get install -y libgmp10 && rm -rf /var/lib/apt/lists/*
 WORKDIR /app

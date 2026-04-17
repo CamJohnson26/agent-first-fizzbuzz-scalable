@@ -613,7 +613,7 @@ export default function App() {
             className="text-center"
           >
             <Badge variant="secondary" className="mb-6 px-4 py-1">
-              v25.9.0 Engine • Enterprise Grade
+              v24.14.1 Engine • Enterprise Grade
             </Badge>
             <h1 className="text-6xl md:text-8xl font-extrabold text-foreground tracking-tighter mb-8 leading-[1.1]">
               The Gold Standard for <br />

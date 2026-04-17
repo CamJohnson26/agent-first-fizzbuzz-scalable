@@ -12,14 +12,14 @@ A shared UI component library and design system used across the entire FizzBuzz 
 
 - **Framework**: React 19
 - **Styling**: Tailwind CSS 4
-- **Runtime**: Node.js 25.9.0
+- **Runtime**: Node.js 24.14.1
 - **Testing**: Vitest
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

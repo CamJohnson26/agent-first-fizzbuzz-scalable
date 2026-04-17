@@ -17,4 +17,4 @@
 - Step 4: Verification: Blocked by environment (Node.js version mismatch)
 
 ## Unfinished Work
-- Verification: Unable to build or test due to Node.js 18.20.4 being used while project requires 25.9.0. Vite 8 and Rolldown require at least Node.js 20/22.
+- Verification: Unable to build or test due to Node.js 18.20.4 being used while project requires 24.14.1. Vite 8 and Rolldown require at least Node.js 20/22.

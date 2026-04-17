@@ -20,7 +20,7 @@ A professional, high-conversion landing page for the Agent-First FizzBuzz Scalab
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

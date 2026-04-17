@@ -41,8 +41,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 'future-of-node-js-25',
-    title: 'Living at the Edge: Why Node.js 25.9.0 is Our Competitive Advantage',
-    excerpt: 'While others are stuck in the past, we\'re building the future. Discover how our standardized Node.js 25 stack delivers the sub-millisecond latency our enterprise clients demand.',
+    title: 'Living at the Edge: Why Node.js 24.14.1 is Our Competitive Advantage',
+    excerpt: 'While others are stuck in the past, we\'re building the future. Discover how our standardized Node.js 24 stack delivers the sub-millisecond latency our enterprise clients demand.',
     date: 'April 12, 2026',
     author: 'CTO Office',
     category: 'Engineering',
@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
       <p>In the high-stakes world of enterprise logic, "safe" is the most dangerous word in the dictionary. While our competitors are still catching up to Node.js 20, FizzBuzz Scalable is already leveraging the raw power of the latest runtime innovations.</p>
       
       <h2>Standardizing on Absolute Excellence</h2>
-      <p>We've standardized on <strong>Node.js 25.9.0</strong> and <strong>TypeScript</strong> across every core service. This isn't just about having the latest version; it's about unlocking performance capabilities that were previously impossible.</p>
+      <p>We've standardized on <strong>Node.js 24.14.1</strong> and <strong>TypeScript</strong> across every core service. This isn't just about having the latest version; it's about unlocking performance capabilities that were previously impossible.</p>
       
       <h2>The Competitive Edge of the Edge</h2>
       <p>By leveraging the latest V8 engine breakthroughs and native ESM, we deliver results that others simply can't match:</p>
@@ -95,7 +95,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'solving-node-25-corepack',
     title: 'The Transparency Edge: Turning a "Breaking" Update into an Engineering Masterclass',
-    excerpt: 'When Node.js 25 broke our builds, we didn\'t just fix it—we documented it for the world. Discover how our culture of radical transparency builds more resilient systems and unbreakable trust.',
+    excerpt: 'When Node.js 24 broke our builds, we didn\'t just fix it—we documented it for the world. Discover how our culture of radical transparency builds more resilient systems and unbreakable trust.',
     date: 'April 15, 2026',
     author: 'Operations Team',
     category: 'Company',
@@ -104,8 +104,8 @@ export const blogPosts: BlogPost[] = [
     content: `
       <p>At FizzBuzz Scalable, we don't fear complexity—we conquer it. When a major runtime update threatened our build pipeline, we didn't just find a workaround; we turned the challenge into an opportunity for growth.</p>
       
-      <h2>The Incident: Node.js 25 vs. The World</h2>
-      <p>The transition to Node.js 25 introduced a significant shift: the unbundling of Corepack. For teams using minimalist, high-security <code>slim</code> Docker images, this was a breaking change. While others scrambled to downgrade, we chose to lead.</p>
+      <h2>The Incident: Node.js 24 vs. The World</h2>
+      <p>The transition to Node.js 24 introduced a significant shift: the unbundling of Corepack. For teams using minimalist, high-security <code>slim</code> Docker images, this was a breaking change. While others scrambled to downgrade, we chose to lead.</p>
       
       <h2>The Solution: Rapid Response, Permanent Fix</h2>
       <p>Within hours, our elite operations team had diagnosed the issue, implemented a robust new deployment strategy, and codified the solution. We didn't just fix a bug; we reinforced our entire infrastructure.</p>

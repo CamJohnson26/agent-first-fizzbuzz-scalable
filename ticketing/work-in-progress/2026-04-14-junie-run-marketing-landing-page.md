@@ -11,7 +11,7 @@
 
 ## Progress Summary
 - Step 1: Located `apps/marketing-landing-page` and checked `package.json`.
-- Step 2: Found Node.js v25.9.0 available via `nvm`.
+- Step 2: Found Node.js v24.14.1 available via `nvm`.
 - Step 3: Successfully started the dev server at `http://localhost:5173/`.
 - Step 4: Verified the server is serving the landing page with `curl`.
 

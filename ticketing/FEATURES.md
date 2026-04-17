@@ -19,7 +19,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F011 | Tooling & Runtime Upgrade | Fix Node.js version mismatch and ensure pnpm availability. | Done |
 | F012 | Node.js Runtime Upgrade | Upgrade Node.js to the latest stable version (v24.x). | Done |
 | F013 | RCA Node Mismatch | Root Cause Analysis and permanent fix for Node version mismatch. | Done |
-| F014 | High Severity Node.js Upgrade | Escalated project upgrade to Node.js v25.9.0 and environment sync docs. | Done |
+| F014 | High Severity Node.js Upgrade | Escalated project upgrade to Node.js v24.14.1 and environment sync docs. | Done |
 | F015 | Version Manager Alignment | Add .nvmrc and update documentation for better developer experience. | Done |
 | F016 | Incident RCA & Agent Policy Update | Document regression RCA and update agent policy in CLAUDE.md. | Done |
 | F017 | Code Conventions & Style Guide | Define coding standards and conventions for the project. | Done |
@@ -111,7 +111,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
 | F104 | Survey popups | Gather user feedback through integrated survey components. | In Progress |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
-| F106 | Node 24 LTS Alignment | Update the project to use Node 24 instead of 25. | In Progress |
+| F106 | Node 24 LTS Alignment | Update the project to use Node 24 instead of 25. | Done |
 
 ## Next Features
 
@@ -214,3 +214,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Mine monero on the user's machine (F103)
 - [ ] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
+- [x] Node 24 LTS Alignment (F106)

@@ -1,4 +1,4 @@
-FROM node:25.9.0-slim AS base
+FROM node:24.14.1-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN apt-get update && apt-get install -y curl gcc libc6-dev && rm -rf /var/lib/apt/lists/*
@@ -35,7 +35,7 @@ RUN --mount=type=cache,target=/root/.cargo/registry \
     pnpm --filter @fizzbuzz/web-server... build
 RUN pnpm deploy --filter @fizzbuzz/web-server --prod /prod/web-server
 
-FROM node:25.9.0-slim
+FROM node:24.14.1-slim
 WORKDIR /app
 COPY --from=build /prod/web-server /app
 

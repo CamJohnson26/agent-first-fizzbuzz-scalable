@@ -13,7 +13,7 @@
 ## Progress Summary
 - Step 1: Created git worktree `../agent-first-fizzbuzz-scalable-f042`.
 - Step 2: Created session progress tracking file.
-- Step 3: Upgraded Node to 25.9.0 and installed Lean 4 via elan.
+- Step 3: Upgraded Node to 24.14.1 and installed Lean 4 via elan.
 - Step 4: Created `@fizzbuzz/verified-algorithms` package with Lean implementation and proofs.
 - Step 5: Integrated Lean build with `pnpm build`.
 - Step 6: Verified proofs by building Lean project successfully.
