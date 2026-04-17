@@ -67,7 +67,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F059 | Streamed Responses | Implement NDJSON/SSE for large range computations to prevent OOM. | Proposed |
 | F060 | UI Component Library | Extract reusable components from apps into a shared UI package. | Proposed |
 | F061 | State Management & Data Fetching | Adopt TanStack Query for robust frontend state and caching. | Proposed |
-| F062 | Root Multi-stage Dockerfile | Optimized production builds using Turborepo's prune command. | Proposed |
+| F062 | Root Multi-stage Dockerfile | Optimized production builds using Turborepo's prune command. | Done |
 | F063 | Observability & Tracing | Integrate OpenTelemetry and metrics for distributed monitoring. | Proposed |
 | F064 | Machine-Readable ADRs/RFCs | Enhance documentation with metadata and explicit agent rules. | Proposed |
 | F065 | Automated Agent Guardrails | CI scripts to validate architecture and prevent illegal imports. | Proposed |
@@ -169,7 +169,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Streamed Responses (F059)
 - [ ] UI Component Library (F060)
 - [ ] State Management & Data Fetching (F061)
-- [ ] Root Multi-stage Dockerfile (F062)
+- [x] Root Multi-stage Dockerfile (F062)
 - [ ] Observability & Tracing (F063)
 - [ ] Machine-Readable ADRs/RFCs (F064)
 - [ ] Automated Agent Guardrails (F065)

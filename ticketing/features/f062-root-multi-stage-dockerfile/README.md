@@ -4,9 +4,9 @@
 Create an optimized, centralized Dockerfile at the root using Turborepo's prune command for efficient CI/CD.
 
 ## Status
-Proposed
+Done
 
 ## Next Features (Todo)
-- [ ] Implement root Dockerfile with multi-stage builds
-- [ ] Use `turbo prune` for minimal images
-- [ ] Update CI workflows to build and push images
+- [x] Implement root Dockerfile with multi-stage builds
+- [x] Use `turbo prune` for minimal images
+- [x] Update CI workflows to build and push images (optimized individual Dockerfiles used in CI/CD)
