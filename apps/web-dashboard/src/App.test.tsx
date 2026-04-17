@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import App from './App';
 
 // Mock fetch
-global.fetch = vi.fn();
+globalThis.fetch = vi.fn() as any;
 
 // Mock canvas-confetti
 vi.mock('canvas-confetti', () => ({
