@@ -127,6 +127,17 @@ const Nav = ({ activeSection, setActiveSection, handleDashboardClick, isMenuOpen
         </div>
 
         <div className="hidden md:flex items-center space-x-8">
+          {activeSection !== 'home' && (
+            <button
+              onClick={() => {
+                setActiveSection('home');
+                setIsMenuOpen(false);
+              }}
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              Back to Home
+            </button>
+          )}
           <button
             onClick={() => {
               setActiveSection('home');
@@ -186,6 +197,17 @@ const Nav = ({ activeSection, setActiveSection, handleDashboardClick, isMenuOpen
           className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
         >
           <div className="px-4 pt-2 pb-6 space-y-2">
+            {activeSection !== 'home' && (
+              <button
+                onClick={() => {
+                  setActiveSection('home');
+                  setIsMenuOpen(false);
+                }}
+                className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
+              >
+                Back to Home
+              </button>
+            )}
             <button
               onClick={() => {
                 setActiveSection('home');
