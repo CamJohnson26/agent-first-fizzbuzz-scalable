@@ -2,7 +2,8 @@
   "extends": "@fizzbuzz/config/typescript/node",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "lib": ["ESNext", "DOM"]
   },
   "include": ["src/**/*"]
 }
