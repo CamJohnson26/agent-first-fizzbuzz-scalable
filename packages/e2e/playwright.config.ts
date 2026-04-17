@@ -50,5 +50,12 @@ export default defineConfig({
       stdout: 'pipe',
       stderr: 'pipe',
     },
+    {
+      command: 'pnpm --filter @fizzbuzz/lean-service dev',
+      url: 'http://localhost:3002/health',
+      reuseExistingServer: true,
+      stdout: 'pipe',
+      stderr: 'pipe',
+    },
   ],
 });

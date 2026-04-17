@@ -12,7 +12,7 @@ import { computeSchema, rangeSchema } from './schemas.js';
 const require = createRequire(import.meta.url);
 const rustEngine = require('@fizzbuzz/rust-engine');
 const fizzBuzzService = new FizzBuzzService();
-const LEAN_SERVICE_URL = process.env.LEAN_SERVICE_URL || 'http://lean-service:3002';
+const LEAN_SERVICE_URL = process.env.LEAN_SERVICE_URL || 'http://localhost:3002';
 
 export const healthHandler = (req: Request, res: Response<HealthResponse>) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
