@@ -4,10 +4,10 @@
 Add SQLite to the webserver so that it is available for a future event queue system. This involves integrating `better-sqlite3` and exposing it via dependency injection.
 
 ## Status
-In Progress
+Done
 
 ## Next Features (Todo)
-- [ ] Initialize Database Service
-- [ ] Add better-sqlite3 dependency
-- [ ] Register with Tsyringe
-- [ ] Update documentation
+- [x] Initialize Database Service
+- [x] Add better-sqlite3 dependency
+- [x] Register with Tsyringe
+- [x] Update documentation
