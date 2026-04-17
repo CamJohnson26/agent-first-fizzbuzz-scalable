@@ -18,17 +18,30 @@ interface TokenizerMapping {
 export class AIInferenceService {
   private session: ort.InferenceSession | null = null;
   private tokenizer: TokenizerMapping | null = null;
-  private readonly modelPath = path.resolve(__dirname, '../data/fizzbuzz_model.onnx');
-  private readonly tokenizerPath = path.resolve(__dirname, '../data/tokenizer_mapping.json');
+  private readonly modelPath = path.join(process.cwd(), 'data/fizzbuzz_model.onnx');
+  private readonly tokenizerPath = path.join(process.cwd(), 'data/tokenizer_mapping.json');
   private readonly blockSize = 256;
 
   private async init() {
     if (this.session && this.tokenizer) return;
 
     try {
-      // Configure WASM paths for onnxruntime-web in Node.js
-      ort.env.wasm.wasmPaths = path.dirname(this.modelPath) + '/';
+      console.log(`[AI Service] Initializing with model at: ${this.modelPath}`);
+      console.log(`[AI Service] Current working directory: ${process.cwd()}`);
+      console.log(`[AI Service] __dirname: ${__dirname}`);
       
+      // Configure WASM paths for onnxruntime-web in Node.js
+      const wasmDir = path.dirname(this.modelPath);
+      console.log(`[AI Service] Setting WASM path to: ${wasmDir}`);
+      ort.env.wasm.wasmPaths = wasmDir + '/';
+      
+      if (!fs.existsSync(this.modelPath)) {
+        throw new Error(`Model file not found at ${this.modelPath}`);
+      }
+      if (!fs.existsSync(this.tokenizerPath)) {
+        throw new Error(`Tokenizer file not found at ${this.tokenizerPath}`);
+      }
+
       const modelBuffer = fs.readFileSync(this.modelPath);
       this.session = await ort.InferenceSession.create(modelBuffer);
       const tokenizerData = fs.readFileSync(this.tokenizerPath, 'utf8');
