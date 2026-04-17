@@ -117,6 +117,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F109 | [BUG] UI/UX - Numeric Input NaN Handling | Handle empty numeric inputs gracefully in the dashboard. | Proposed |
 | F110 | Architecture - Env Configurable API URLs | Use environment variables for API endpoints in the dashboard. | Proposed |
 | F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Proposed |
+| F112 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | Done |
 
 ## Next Features
 
@@ -225,3 +226,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] [BUG] UI/UX - Numeric Input NaN Handling (F109)
 - [ ] Architecture - Env Configurable API URLs (F110)
 - [ ] Code Quality - Remove 'any' types (F111)
+- [x] Prefer Turbo in Documentation (F112)

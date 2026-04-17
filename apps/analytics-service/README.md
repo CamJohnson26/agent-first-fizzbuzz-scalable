@@ -27,7 +27,7 @@ A lightweight service for collecting and analyzing logs from other services in t
 
 ```bash
 pnpm install
-pnpm dev
+turbo dev
 ```
 
 The service will be available at `http://localhost:3001`.
@@ -35,8 +35,8 @@ The service will be available at `http://localhost:3001`.
 ### Build
 
 ```bash
-pnpm build
-pnpm start
+turbo build
+turbo start
 ```
 
 ## API Reference
