@@ -1,7 +1,11 @@
 import * as ort from 'onnxruntime-node';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { injectable, singleton } from 'tsyringe';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 interface TokenizerMapping {
   chars: string[];
@@ -14,15 +18,16 @@ interface TokenizerMapping {
 export class AIInferenceService {
   private session: ort.InferenceSession | null = null;
   private tokenizer: TokenizerMapping | null = null;
-  private readonly modelPath = path.resolve(process.cwd(), './data/fizzbuzz_model.onnx');
-  private readonly tokenizerPath = path.resolve(process.cwd(), './data/tokenizer_mapping.json');
+  private readonly modelPath = path.resolve(__dirname, '../data/fizzbuzz_model.onnx');
+  private readonly tokenizerPath = path.resolve(__dirname, '../data/tokenizer_mapping.json');
   private readonly blockSize = 256;
 
   private async init() {
     if (this.session && this.tokenizer) return;
 
     try {
-      this.session = await ort.InferenceSession.create(this.modelPath);
+      const modelBuffer = fs.readFileSync(this.modelPath);
+      this.session = await ort.InferenceSession.create(modelBuffer);
       const tokenizerData = fs.readFileSync(this.tokenizerPath, 'utf8');
       this.tokenizer = JSON.parse(tokenizerData);
     } catch (error) {
@@ -62,7 +67,7 @@ export class AIInferenceService {
     await this.init();
     if (!this.session) throw new Error('Inference session not initialized');
 
-    let tokens = this.encode(prompt);
+    const tokens = this.encode(prompt);
     
     for (let i = 0; i < maxNewTokens; i++) {
       const inputTokens = tokens.slice(-this.blockSize);
