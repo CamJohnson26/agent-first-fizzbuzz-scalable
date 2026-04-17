@@ -5,6 +5,7 @@ This feature adds the ability to export FizzBuzz computation results into variou
 
 ## Status
 <<<<<<< HEAD
+<<<<<<< HEAD
 Done
 
 ## Next Features (Todo)
@@ -15,6 +16,8 @@ Done
 - [x] Add confetti animation on success
 - [x] Add unit and integration tests for export logic
 =======
+=======
+>>>>>>> origin/main
 In Progress
 
 ## Next Features (Todo)
@@ -24,4 +27,7 @@ In Progress
 - [ ] Update dashboard UI for better "generate" button visibility
 - [ ] Add confetti animation on success
 - [ ] Add unit and integration tests for export logic
+<<<<<<< HEAD
+>>>>>>> origin/main
+=======
 >>>>>>> origin/main

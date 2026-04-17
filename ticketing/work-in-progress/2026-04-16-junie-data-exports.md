@@ -6,22 +6,29 @@
 
 ## Objectives
 <<<<<<< HEAD
+<<<<<<< HEAD
 - [x] Implement data exports (CSV, JSON, PDF, TXT, Excel)
 - [x] Support horizontal and vertical layouts for exports
 - [x] Make "generate range" button more prominent
 - [x] Add confetti effect on successful generation
 - [x] Write comprehensive tests
 =======
+=======
+>>>>>>> origin/main
 - [ ] Implement data exports (CSV, JSON, PDF, TXT, Excel)
 - [ ] Support horizontal and vertical layouts for exports
 - [ ] Make "generate range" button more prominent
 - [ ] Add confetti effect on successful generation
 - [ ] Write comprehensive tests
+<<<<<<< HEAD
+>>>>>>> origin/main
+=======
 >>>>>>> origin/main
 
 ## Progress Summary
 - Initialized session and branch `feature/F121-data-exports`.
 - Switched to Node v24.14.1.
+<<<<<<< HEAD
 <<<<<<< HEAD
 - Implemented `exportResults` utility in `apps/web-dashboard/src/utils/export.ts`.
 - Integrated export UI and layout selection in `App.tsx`.
@@ -31,6 +38,11 @@
 
 ## Unfinished Work
 - None.
+=======
+
+## Unfinished Work
+- All implementation tasks remaining.
+>>>>>>> origin/main
 =======
 
 ## Unfinished Work
