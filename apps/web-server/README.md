@@ -11,7 +11,7 @@ A robust, enterprise-grade web server providing FizzBuzz computation services vi
 
 ## Tech Stack
 
-- **Runtime**: Node.js 25.9.0
+- **Runtime**: Node.js 24.14.1
 - **Framework**: Express.js
 - **Validation**: Zod (via `@fizzbuzz/web-server` internal logic)
 - **Logic Engine**: `@fizzbuzz/core-logic`
@@ -20,7 +20,7 @@ A robust, enterprise-grade web server providing FizzBuzz computation services vi
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

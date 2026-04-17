@@ -7,18 +7,18 @@ Accepted
 We need to select a primary programming language for the project's core services, including the AI-agent, core FizzBuzz logic, and the distributed processing engine. The decision should align with our "agent-first" philosophy, the existing Node.js-based monorepo infrastructure, and our requirements for scalability, high fidelity, and enterprise-grade quality.
 
 ## Decision
-We choose **TypeScript** as the primary programming language for all core services, running on **Node.js 25.9.0**.
+We choose **TypeScript** as the primary programming language for all core services, running on **Node.js 24.14.1**.
 
 - All services within the `apps/` and `packages/` directories will be implemented using TypeScript.
 - We will leverage modern TypeScript features and ECMAScript Modules (ESM).
 - The build process will use `turbo` to manage task orchestration.
-- We will strictly adhere to the project's Node.js version (v25.9.0) as enforced by existing tooling.
+- We will strictly adhere to the project's Node.js version (v24.14.1) as enforced by existing tooling.
 
 ## Consequences
 ### Pros
 - **Ecosystem Consistency**: Using TypeScript across the entire monorepo (frontend, backend, and tooling) reduces context switching and allows for sharing code/types between services.
 - **Agent-First Compatibility**: AI agents have high proficiency in TypeScript, and its strong type system helps agents avoid common bugs and perform better refactoring.
-- **Performance**: Node.js 25.x (V8) provides sufficient performance for the distributed FizzBuzz logic, especially with modern asynchronous processing.
+- **Performance**: Node.js 24.x (V8) provides sufficient performance for the distributed FizzBuzz logic, especially with modern asynchronous processing.
 - **Scalability**: TypeScript's type system is essential for maintaining and scaling large, enterprise-grade codebases.
 - **Rapid Development**: The vast NPM ecosystem provides high-quality libraries for AI integration, distributed systems, and web services.
 

@@ -20,7 +20,7 @@ A lightning-fast Rust implementation of the FizzBuzz algorithm, compiled to WebA
 
 - Rust and `cargo`
 - `wasm-pack`
-- Node.js 25.9.0
+- Node.js 24.14.1
 
 ### Build
 

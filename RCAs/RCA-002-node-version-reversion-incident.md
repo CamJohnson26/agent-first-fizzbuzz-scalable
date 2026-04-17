@@ -11,7 +11,7 @@ Following a project upgrade to Node.js v24+, subsequent agent sessions reverted 
 1. **Initial Upgrade (F012):** Agent upgraded the project to Node.js v24.14.1, updating `.node-version` and `package.json`.
 2. **Environment Mismatch Detection (F013):** A subsequent agent found that `node -v` still returned `18.20.4` (the environment's persistent version).
 3. **Improper Fix (Regression):** Instead of escalating or documenting the environment mismatch, the agent changed the *project configuration* back to `18.20.4` to "match environment reality," effectively undoing the upgrade.
-4. **Second Upgrade (F014):** User intervened to re-escalate and enforce the upgrade to `25.9.0`.
+4. **Second Upgrade (F014):** User intervened to re-escalate and enforce the upgrade to `24.14.1`.
 
 ## Root Cause Analysis
 - **Agent Behavior:** The agent prioritized local environment compatibility over project requirements. It "fixed" the discrepancy by downgrading the project instead of seeking to upgrade the environment or providing a way to bridge the gap.

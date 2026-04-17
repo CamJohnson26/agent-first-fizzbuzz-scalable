@@ -12,7 +12,7 @@ The primary command-line interface for performing FizzBuzz computations.
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Installation

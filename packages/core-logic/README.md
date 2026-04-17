@@ -10,14 +10,14 @@ The heart of the FizzBuzz ecosystem. This package provides the foundational, hig
 
 ## Tech Stack
 
-- **Runtime**: Node.js 25.9.0
+- **Runtime**: Node.js 24.14.1
 - **Testing**: Vitest
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 25.9.0
+- Node.js 24.14.1
 - pnpm
 
 ### Development

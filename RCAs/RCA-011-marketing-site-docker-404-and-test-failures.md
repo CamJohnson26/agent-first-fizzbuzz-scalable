@@ -18,13 +18,13 @@ When the browser requested assets at `/agent-first-fizzbuzz-scalable/assets/...`
 The `@fizzbuzz/ui` package was configured to run `vitest run`, but it contained no `*.test.ts` or `*.test.tsx` files. Vitest by default exits with code 1 if no test files are found, causing the entire `turbo run test` pipeline to fail.
 
 ### 3. Node.js Version Mismatch
-The project required Node.js 25.9.0 (enforced by `scripts/check-node-version.js`), but the environment was initially using 18.20.4. This prevented the tests from running until the environment was correctly configured using `nvm`.
+The project required Node.js 24.14.1 (enforced by `scripts/check-node-version.js`), but the environment was initially using 18.20.4. This prevented the tests from running until the environment was correctly configured using `nvm`.
 
 ## Action Items
 
 - [x] **Docker Fix**: Updated `apps/marketing-landing-page/Dockerfile` to serve from the `/agent-first-fizzbuzz-scalable` subdirectory and added symlinks to the root to support both access patterns.
 - [x] **Test Fix**: Added a basic utility test `packages/ui/src/utils.test.ts` to satisfy the vitest requirement for at least one test file in the package.
-- [x] **Node.js**: Correctly configured the session to use `nvm use 25.9.0` per project guidelines.
+- [x] **Node.js**: Correctly configured the session to use `nvm use 24.14.1` per project guidelines.
 
 ## Next Steps
 1. Verify Docker build with the updated path structure. ✓

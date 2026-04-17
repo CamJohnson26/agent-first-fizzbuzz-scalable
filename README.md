@@ -2,7 +2,7 @@
 
 [![CI/CD](https://github.com/CamJohnson26/agent-first-fizzbuzz-scalable/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/CamJohnson26/agent-first-fizzbuzz-scalable/actions/workflows/ci-cd.yml)
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE.md)
-[![Node.js](https://img.shields.io/badge/Node.js-25.9.0-green.svg)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-24.14.1-green.svg)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-9.15.4-orange.svg)](https://pnpm.io/)
 
 ---
@@ -61,7 +61,7 @@ graph TD
     subgraph Client_Layer [Client Layer]
         WD[Web Dashboard - React 19]
         LP[Marketing Landing Page - React 19]
-        CLI[Core CLI - Node.js 25]
+        CLI[Core CLI - Node.js 24]
     end
 
     subgraph Service_Layer [Service Layer]
@@ -116,7 +116,7 @@ graph TD
 
 ## 🛠 Prerequisites
 
-- **Node.js**: `25.9.0` (Strictly enforced via `.node-version`)
+- **Node.js**: `24.14.1` (Strictly enforced via `.node-version`)
 - **pnpm**: `>= 9.15.4` (Managed via Corepack)
 - **Docker**: For running the complete service stack.
 
@@ -209,7 +209,7 @@ turbo test --filter <package-name>
 - ✅ **Scalable Architecture**: Designed for enterprise-scale distribution.
 - ✅ **High-Fidelity**: Precision logic verified by comprehensive test suites.
 - ✅ **AI-Enhanced**: Optimized by autonomous agents for various targets.
-- ✅ **Modern Tech Stack**: React 19, Tailwind 4, Vite 6, and Node.js 25.
+- ✅ **Modern Tech Stack**: React 19, Tailwind 4, Vite 6, and Node.js 24.
 
 ---
 

@@ -13,5 +13,5 @@
 ## Progress Summary
 - Step 1: Initial exploration of `package.json` completed.
 - Step 2: Creating git worktree completed.
-- Step 3: Root caused the issue. The `EEXIST` error is due to `corepack` conflict with existing shims in `node:25.9.0-slim`.
+- Step 3: Root caused the issue. The `EEXIST` error is due to `corepack` conflict with existing shims in `node:24.14.1-slim`.
 - Step 4: Fixed the error by adding `--force` to `npm install -g corepack@latest` in `Dockerfile`s.

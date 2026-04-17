@@ -19,7 +19,7 @@
 - Implemented `localStorage` safety checks in `CookieBanner.tsx`.
 - Mocked `localStorage` in `src/test/setup.ts`.
 - Updated `FizzBuzzChat.test.tsx` and `App.test.tsx` to reflect behavior and content changes.
-- Verified all tests (10/10) pass using Node.js 25.9.0.
+- Verified all tests (10/10) pass using Node.js 24.14.1.
 
 ## Unfinished Work
 - None. All tasks completed and verified.

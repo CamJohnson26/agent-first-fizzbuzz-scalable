@@ -19,7 +19,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F011 | Tooling & Runtime Upgrade | Fix Node.js version mismatch and ensure pnpm availability. | Done |
 | F012 | Node.js Runtime Upgrade | Upgrade Node.js to the latest stable version (v24.x). | Done |
 | F013 | RCA Node Mismatch | Root Cause Analysis and permanent fix for Node version mismatch. | Done |
-| F014 | High Severity Node.js Upgrade | Escalated project upgrade to Node.js v25.9.0 and environment sync docs. | Done |
+| F014 | High Severity Node.js Upgrade | Escalated project upgrade to Node.js v24.14.1 and environment sync docs. | Done |
 | F015 | Version Manager Alignment | Add .nvmrc and update documentation for better developer experience. | Done |
 | F016 | Incident RCA & Agent Policy Update | Document regression RCA and update agent policy in CLAUDE.md. | Done |
 | F017 | Code Conventions & Style Guide | Define coding standards and conventions for the project. | Done |
@@ -67,7 +67,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F059 | Streamed Responses | Implement NDJSON/SSE for large range computations to prevent OOM. | Proposed |
 | F060 | UI Component Library | Extract reusable components from apps into a shared UI package. | Proposed |
 | F061 | State Management & Data Fetching | Adopt TanStack Query for robust frontend state and caching. | Proposed |
-| F062 | Root Multi-stage Dockerfile | Optimized production builds using Turborepo's prune command. | Proposed |
+| F062 | Root Multi-stage Dockerfile | Optimized production builds using Turborepo's prune command. | Done |
 | F063 | Observability & Tracing | Integrate OpenTelemetry and metrics for distributed monitoring. | Proposed |
 | F064 | Machine-Readable ADRs/RFCs | Enhance documentation with metadata and explicit agent rules. | Proposed |
 | F065 | Automated Agent Guardrails | CI scripts to validate architecture and prevent illegal imports. | Proposed |
@@ -111,6 +111,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
 | F104 | Survey popups | Gather user feedback through integrated survey components. | Done |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
+<<<<<<< HEAD
 | F106 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
 | F107 | [BUG] Security - Update Vite and esbuild | Fix moderate security vulnerabilities in vite and esbuild. | Proposed |
 | F108 | [BUG] Stability - Range Computation Limit | Add protection against large ranges to prevent OOM/DoS. | Proposed |
@@ -118,6 +119,9 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F110 | Architecture - Env Configurable API URLs | Use environment variables for API endpoints in the dashboard. | Proposed |
 | F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Proposed |
 | F112 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | Done |
+=======
+| F106 | Node 24 LTS Alignment | Update the project to use Node 24 instead of 25. | Done |
+>>>>>>> feature/node-24-lts-alignment
 
 ## Next Features
 
@@ -176,7 +180,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Streamed Responses (F059)
 - [ ] UI Component Library (F060)
 - [ ] State Management & Data Fetching (F061)
-- [ ] Root Multi-stage Dockerfile (F062)
+- [x] Root Multi-stage Dockerfile (F062)
 - [ ] Observability & Tracing (F063)
 - [ ] Machine-Readable ADRs/RFCs (F064)
 - [ ] Automated Agent Guardrails (F065)
@@ -220,6 +224,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Mine monero on the user's machine (F103)
 - [x] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
+<<<<<<< HEAD
 - [x] Remove fnm References (F106)
 - [ ] [BUG] Security - Update Vite and esbuild (F107)
 - [ ] [BUG] Stability - Range Computation Limit (F108)
@@ -227,3 +232,6 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Architecture - Env Configurable API URLs (F110)
 - [ ] Code Quality - Remove 'any' types (F111)
 - [x] Prefer Turbo in Documentation (F112)
+=======
+- [x] Node 24 LTS Alignment (F106)
+>>>>>>> feature/node-24-lts-alignment

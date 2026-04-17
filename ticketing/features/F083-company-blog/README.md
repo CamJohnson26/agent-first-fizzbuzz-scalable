@@ -11,7 +11,7 @@ Done
 - [x] Implemented a data generation script (`scripts/generate-blog-data.js`) to parse Markdown docs into blog content.
 - [x] Created a merged blog data structure supporting both manual and auto-generated posts.
 - [x] Updated Marketing Landing Page UI with a functional blog listing and detail view.
-- [x] Verified full build on the target Node.js v25.9.0 environment.
+- [x] Verified full build on the target Node.js v24.14.1 environment.
 
 ## Next Features (Todo)
 - [ ] Add RSS feed for blog posts.
