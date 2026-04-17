@@ -27,7 +27,7 @@ A professional, high-conversion landing page for the Agent-First FizzBuzz Scalab
 
 ```bash
 pnpm install
-pnpm dev
+turbo dev
 ```
 
 The landing page will be available at `http://localhost:5173`.
@@ -35,9 +35,9 @@ The landing page will be available at `http://localhost:5173`.
 ### Build
 
 ```bash
-pnpm build
+turbo build
 # Preview build
-pnpm preview
+turbo preview
 ```
 
 ## Deployment

@@ -26,13 +26,13 @@ A shared UI component library and design system used across the entire FizzBuzz 
 
 ```bash
 pnpm install
-pnpm dev
+turbo dev
 ```
 
 ### Build
 
 ```bash
-pnpm build
+turbo build
 ```
 
 ## Usage

@@ -7,6 +7,7 @@ import {
   Terminal,
   CheckCircle,
   XCircle,
+  CheckCircle2,
 } from 'lucide-react';
 import {
   Button,
@@ -20,6 +21,7 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@fizzbuzz/ui';
+import { NPSFeedback } from './components/NPSFeedback.js';
 import { 
   HealthResponse, 
   ComputeResponse, 
@@ -39,9 +41,38 @@ export default function App() {
   const [engine, setEngine] = useState<FizzBuzzEngine>('js');
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
+  const [computeCount, setComputeCount] = useState(0);
+  const [showNPS, setShowNPS] = useState(false);
+  const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
+  const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
 
   const API_BASE = 'http://localhost:3000';
   const ANALYTICS_BASE = 'http://localhost:3001';
+
+  const handleNPSSubmit = async (score: number, comment: string) => {
+    setShowNPS(false);
+    setHasSubmittedNPS(true);
+    try {
+      await fetch(`${ANALYTICS_BASE}/api/logs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: 'web-dashboard',
+          message: 'NPS Submission',
+          level: 'info',
+          metadata: { score, comment },
+        }),
+      });
+      setNpsFeedbackSent(true);
+      setTimeout(() => setNpsFeedbackSent(false), 5000);
+    } catch (_err) {
+      console.error('Failed to submit NPS:', _err);
+    }
+  };
+
+  const handleNPSDismiss = () => {
+    setShowNPS(false);
+  };
 
   const checkHealth = async () => {
     setLoadingHealth(true);
@@ -82,6 +113,11 @@ export default function App() {
       const data = (await res.json()) as ComputeResponse & { error?: string };
       if (res.ok) {
         setComputeResult(data.result);
+        const nextCount = computeCount + 1;
+        setComputeCount(nextCount);
+        if (nextCount >= 3 && !hasSubmittedNPS) {
+          setShowNPS(true);
+        }
       } else {
         setError(data.error || 'Failed to compute');
       }
@@ -167,6 +203,16 @@ export default function App() {
             <XCircle className="w-4 h-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {npsFeedbackSent && (
+          <Alert variant="default" className="mb-8 bg-primary/10 border-primary/20">
+            <CheckCircle2 className="w-4 h-4 text-primary" />
+            <AlertTitle>Feedback Received</AlertTitle>
+            <AlertDescription>
+              Thank you for helping us make FizzBuzz more enterprise-ready!
+            </AlertDescription>
           </Alert>
         )}
 
@@ -365,6 +411,10 @@ export default function App() {
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-muted-foreground text-sm border-t border-border mt-12">
         <p>© 2026 FizzBuzz Scalable Enterprise. All Rights Reserved.</p>
       </footer>
+
+      {showNPS && (
+        <NPSFeedback onSubmit={handleNPSSubmit} onDismiss={handleNPSDismiss} />
+      )}
     </div>
   );
 }

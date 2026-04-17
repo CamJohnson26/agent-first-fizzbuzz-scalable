@@ -23,13 +23,13 @@ pnpm install
 
 ### Usage
 
-You can run the CLI directly using `tsx`:
+You can run the CLI directly using Turbo:
 
 ```bash
-pnpm dev compute 15
+turbo dev -- compute 15
 # Output: FizzBuzz
 
-pnpm dev range 1 15
+turbo dev -- range 1 15
 # Output:
 # 1: 1
 # 2: 2
@@ -40,8 +40,8 @@ pnpm dev range 1 15
 Or build and run:
 
 ```bash
-pnpm build
-pnpm start compute 15
+turbo build
+turbo start -- compute 15
 ```
 
 ## Commands

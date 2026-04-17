@@ -19,11 +19,24 @@
       "cache": false,
       "persistent": true
     },
+    "start": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
+    "preview": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
     "test": {
       "dependsOn": ["build"]
     },
     "test:e2e": {
       "dependsOn": ["build"],
+      "cache": false
+    },
+    "verify": {
       "cache": false
     }
   }

@@ -27,7 +27,7 @@ A robust, enterprise-grade web server providing FizzBuzz computation services vi
 
 ```bash
 pnpm install
-pnpm dev
+turbo dev
 ```
 
 The server will be available at `http://localhost:3000`.
@@ -35,8 +35,8 @@ The server will be available at `http://localhost:3000`.
 ### Build
 
 ```bash
-pnpm build
-pnpm start
+turbo build
+turbo start
 ```
 
 ## API Reference

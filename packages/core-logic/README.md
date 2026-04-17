@@ -24,13 +24,13 @@ The heart of the FizzBuzz ecosystem. This package provides the foundational, hig
 
 ```bash
 pnpm install
-pnpm dev
+turbo dev
 ```
 
 ### Build
 
 ```bash
-pnpm build
+turbo build
 ```
 
 ## Usage

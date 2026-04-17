@@ -23,7 +23,7 @@ Formally verified implementations of core FizzBuzz algorithms using the Lean 4 t
 ### Verification
 
 ```bash
-pnpm verify
+turbo verify
 ```
 
 This will run the Lean compiler and verify the proofs in the `lean` directory.

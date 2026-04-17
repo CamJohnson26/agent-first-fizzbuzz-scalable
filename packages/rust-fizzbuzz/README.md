@@ -25,7 +25,7 @@ A lightning-fast Rust implementation of the FizzBuzz algorithm, compiled to WebA
 ### Build
 
 ```bash
-pnpm build
+turbo build
 ```
 
 The output will be generated in `dist/node`.
