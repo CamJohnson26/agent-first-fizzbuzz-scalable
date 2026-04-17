@@ -24,6 +24,7 @@ While the project is AI-driven, human oversight and contributions are welcome. H
 
 - **Node.js**: Check `.node-version` for the required version. Use `nvm` for management.
 - **pnpm**: Our primary package manager.
+- **Turbo**: Our build system and task runner for all operations.
 - **Docker**: For running services and tests. Ensure your user has permissions to the Docker daemon:
   ```bash
   sudo usermod -aG docker $USER

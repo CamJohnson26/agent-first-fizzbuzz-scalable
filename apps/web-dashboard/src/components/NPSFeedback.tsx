@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Card,
@@ -78,7 +78,7 @@ export function NPSFeedback({ onSubmit, onDismiss }: NPSFeedbackProps) {
             <Textarea
               placeholder="Tell us more..."
               value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
               className="resize-none"
               autoFocus
             />

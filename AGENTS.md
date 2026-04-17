@@ -33,9 +33,9 @@ It runs on every push to `main` and pull request.
 
 ### Local Build Commands
 - Environment setup: `nvm install && nvm use` (uses `.nvmrc`)
-- Full project build: `pnpm build`
-- Full project test: `pnpm test`
-- Filtered build: `pnpm --filter <package-name> build`
+- Full project build: `turbo build`
+- Full project test: `turbo test`
+- Filtered build: `turbo build --filter <package-name>`
 
 ## Ticketing System Usage
 
