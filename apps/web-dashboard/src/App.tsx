@@ -46,8 +46,8 @@ export default function App() {
   const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
   const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
 
-  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
-  const ANALYTICS_BASE = import.meta.env.VITE_ANALYTICS_BASE || 'http://localhost:3001';
+  const API_BASE = import.meta.env.VITE_API_BASE || 'https://agent-first-fizzbuzz-scalable-web-s.vercel.app';
+  const ANALYTICS_BASE = import.meta.env.VITE_ANALYTICS_BASE || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app';
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);
