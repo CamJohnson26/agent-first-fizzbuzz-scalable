@@ -3,7 +3,8 @@ import { describe, it, expect, vi } from 'vitest';
 import App from './App';
 
 // Mock fetch
-global.fetch = vi.fn();
+const fetchSpy = vi.fn();
+vi.stubGlobal('fetch', fetchSpy);
 
 // Mock canvas-confetti
 vi.mock('canvas-confetti', () => ({
@@ -33,9 +34,8 @@ describe('Web Dashboard App', () => {
     render(<App />);
     expect(screen.getByText(/Range Computation/i)).toBeDefined();
   });
-
   it('shows export options after generating range results', async () => {
-    vi.mocked(fetch).mockImplementation((url: any) => {
+    fetchSpy.mockImplementation((url: any) => {
       const urlStr = typeof url === 'string' ? url : url.toString();
       if (urlStr.includes('/health')) {
         return Promise.resolve({ ok: true, json: async () => ({ status: 'ok', timestamp: new Date().toISOString() }) } as Response);
