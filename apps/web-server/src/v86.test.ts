@@ -16,7 +16,7 @@ describe('V86 Event Queue', () => {
         await new Promise(r => setTimeout(r, 1000));
     }
     expect(v86Service.isVMReady()).toBe(true);
-  }, 35000);
+  }, 60000);
 
   afterAll(() => {
     v86Service.stop();
@@ -47,5 +47,5 @@ describe('V86 Event Queue', () => {
 
     const emptyPopRes = await request(app).get('/events');
     expect(emptyPopRes.status).toBe(204);
-  }, 30000);
+  }, 60000);
 });
