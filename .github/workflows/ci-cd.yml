@@ -56,6 +56,9 @@ jobs:
     - name: Run Lint
       run: pnpm run lint
 
+    - name: Install Playwright Browsers
+      run: pnpm --filter @fizzbuzz/e2e exec playwright install --with-deps
+
     - name: Run Build
       run: pnpm run build
 
