@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { exportResults } from './export';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import { jsPDF } from 'jspdf';
 
 vi.mock('file-saver', () => ({
   saveAs: vi.fn(),
@@ -18,19 +19,20 @@ vi.mock('xlsx', () => ({
 }));
 
 vi.mock('jspdf', () => {
-  const jsPDF = vi.fn(() => ({
-    text: vi.fn(),
-    save: vi.fn(),
-    internal: {
+  const MockjsPDF = vi.fn().mockImplementation(function (this: any) {
+    this.text = vi.fn();
+    this.save = vi.fn();
+    this.internal = {
       pageSize: {
         getWidth: () => 210,
         getHeight: () => 297,
       },
       scaleFactor: 1,
-    },
-    setFontSize: vi.fn(),
-  }));
-  return { jsPDF };
+    };
+    this.setFontSize = vi.fn();
+    return this;
+  });
+  return { jsPDF: MockjsPDF };
 });
 
 vi.mock('jspdf-autotable', () => ({
@@ -75,7 +77,6 @@ describe('exportResults', () => {
   it('exports to PDF', () => {
     exportResults(results, start, 'pdf', 'vertical');
     // jsPDF should have been called as a constructor
-    const { jsPDF } = require('jspdf');
     expect(jsPDF).toHaveBeenCalled();
   });
 });
