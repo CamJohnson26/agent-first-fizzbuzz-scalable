@@ -11,6 +11,8 @@ AI agents must adhere to the **[CLAUDE.md](CLAUDE.md)** guidelines, which includ
 - Following the specified Node.js and package manager requirements.
 - Maintaining the monorepo structure and ticketing system.
 - Providing session progress logs in `ticketing/work-in-progress/`.
+- Opening a GitHub Pull Request using the `gh` command for all changes.
+- Ensuring full builds and all tests pass before merging their PR to `main`.
 - Writing Root Cause Analysis (RCA) for any critical issues or regressions.
 - Following the established coding style and patterns.
 
@@ -37,7 +39,8 @@ While the project is AI-driven, human oversight and contributions are welcome. H
 1. **Pick a Task**: Tasks are tracked in **[FEATURES.md](ticketing/FEATURES.md)**.
 2. **Create a Session**: Start an agent session and document it in `ticketing/work-in-progress/`.
 3. **Implement & Test**: Follow the standard development lifecycle. Every change must be verified with tests.
-4. **Update Ticketing**: Mark the feature as "Done" in the ticketing system and provide a summary of the changes.
+4. **PR & Merge**: Open a Pull Request using `gh pr create`. Ensure the build passes, then merge directly to `main`.
+5. **Update Ticketing**: Mark the feature as "Done" in the ticketing system and provide a summary of the changes.
 
 ## License
 
