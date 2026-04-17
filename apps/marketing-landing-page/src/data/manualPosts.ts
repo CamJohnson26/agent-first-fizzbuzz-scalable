@@ -169,5 +169,58 @@ Stop wasting time. Start scaling. The FizzBuzz Dashboard is waiting for you.
 
 *#FizzBuzz #Scalability #RustLang #LeanProver #EnterpriseSoftware #GameChanger #Viral #TechLaunch*
     `
+  },
+  {
+    id: 'security-bulletin-xlsx-fix',
+    title: 'Security Bulletin: Rapid Response to High-Severity Vulnerabilities in SheetJS',
+    excerpt: 'At FizzBuzz Scalable, security isn\'t just a feature—it\'s our foundation. Discover how we identified and patched critical vulnerabilities in our Excel export engine within hours.',
+    date: 'April 17, 2026',
+    author: 'Security Response Team',
+    category: 'Engineering',
+    tags: ['Security', 'Vulnerability', 'Rapid Response', 'SheetJS'],
+    isMarkdown: true,
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+    content: `
+# 🛡️ Security First: Patched Critical Vulnerabilities in Our Export Engine
+
+At **FizzBuzz Scalable**, we maintain a "Zero Trust" architecture. This means we don't just secure our own code; we rigorously monitor every single dependency that powers our enterprise-grade algorithmic orchestration platform.
+
+## 🚨 The Challenge: Legacy Dependencies and Silent Obsolescence
+
+On April 16, 2026, our automated security scanners and manual audits identified two high-severity vulnerabilities in the \`xlsx\` (SheetJS) library, which powers our Excel export functionality:
+
+1.  **CVE-2023-30533 (Prototype Pollution):** A critical flaw that could allow an attacker to inject properties into the global \`Object.prototype\`, potentially leading to cross-site scripting (XSS) or remote code execution (RCE).
+2.  **CVE-2024-22363 (ReDoS):** A Regular Expression Denial of Service vulnerability that could be triggered by specially crafted workbooks, causing catastrophic backtracking and freezing the application.
+
+These vulnerabilities existed in the legacy NPM package \`xlsx@0.18.5\`. Interestingly, the maintainers of SheetJS had moved to a private CDN for newer versions, meaning standard package updates were no longer receiving these critical security patches.
+
+## ⚡ Our Response: Rapid Identification and Remediation
+
+Our "Agent-First" development philosophy allowed us to identify, analyze, and resolve this issue with unprecedented speed:
+
+*   **T+0 hours:** Vulnerabilities identified during a routine security sweep.
+*   **T+1 hour:** Root Cause Analysis (RCA-015) completed, identifying the shift from NPM to the SheetJS CDN.
+*   **T+2 hours:** Implementation of the fix, upgrading our \`web-dashboard\` to the latest secure version (**v0.20.2**) directly from the official SheetJS CDN.
+*   **T+3 hours:** Full regression testing completed with 100% pass rate.
+*   **T+4 hours:** Fix merged to production and this bulletin published.
+
+## 🛠️ Technical Details for Engineers
+
+We've moved our dependency from the legacy NPM registry to the official SheetJS CDN. Our \`package.json\` now reflects the secure, modern distribution:
+
+\`\`\`json
+"dependencies": {
+  "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+}
+\`\`\`
+
+## 💎 Our Commitment to Enterprise Security
+
+While many companies wait weeks or months to patch secondary dependencies, FizzBuzz Scalable operates on a different timeline. Our investors and clients trust us with their mission-critical logic because they know we are proactive, transparent, and relentless when it comes to security.
+
+> "Security is not a destination; it's a constant state of vigilance. At FizzBuzz Scalable, we don't just follow industry standards—we set them." – *Security Response Team*
+
+*#Security #CyberSecurity #SheetJS #VulnerabilityManagement #EnterpriseGrade #RapidResponse #ZeroTrust*
+    `
   }
 ];
