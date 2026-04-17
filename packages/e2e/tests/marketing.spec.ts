@@ -9,11 +9,9 @@ test.describe('Marketing Landing Page', () => {
     await expect(page).toHaveTitle(/FizzBuzz Scalable/);
   });
 
-  test('should show Coming Soon modal when clicking Start Free Trial', async ({ page }) => {
+  test('should redirect to Dashboard when clicking Start Free Trial', async ({ page }) => {
     await page.getByRole('button', { name: /Start Free Trial/i }).click();
-    await expect(page.getByRole('heading', { name: 'Coming Soon' })).toBeVisible();
-    await page.getByRole('button', { name: 'Got it' }).click();
-    await expect(page.getByRole('heading', { name: 'Coming Soon' })).not.toBeVisible();
+    await expect(page).toHaveURL(/agent-first-fizzbuzz-scalable-web-d\.vercel\.app/);
   });
 
   test('should navigate to Case Studies section', async ({ page }) => {

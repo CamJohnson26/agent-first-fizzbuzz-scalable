@@ -3,8 +3,12 @@ import { describe, it, expect, vi } from 'vitest';
 import App from './App';
 
 // Mock fetch
+<<<<<<< HEAD
 const fetchSpy = vi.fn();
 vi.stubGlobal('fetch', fetchSpy);
+=======
+global.fetch = vi.fn();
+>>>>>>> origin/main
 
 // Mock canvas-confetti
 vi.mock('canvas-confetti', () => ({
@@ -34,8 +38,14 @@ describe('Web Dashboard App', () => {
     render(<App />);
     expect(screen.getByText(/Range Computation/i)).toBeDefined();
   });
+<<<<<<< HEAD
   it('shows export options after generating range results', async () => {
     fetchSpy.mockImplementation((url: any) => {
+=======
+
+  it('shows export options after generating range results', async () => {
+    vi.mocked(fetch).mockImplementation((url: any) => {
+>>>>>>> origin/main
       const urlStr = typeof url === 'string' ? url : url.toString();
       if (urlStr.includes('/health')) {
         return Promise.resolve({ ok: true, json: async () => ({ status: 'ok', timestamp: new Date().toISOString() }) } as Response);

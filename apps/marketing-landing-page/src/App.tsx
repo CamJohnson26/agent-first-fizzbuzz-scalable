@@ -27,54 +27,6 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 
-interface ComingSoonModalProps {
-  isModalOpen: boolean;
-  closeModal: () => void;
-}
-
-const ComingSoonModal = ({ isModalOpen, closeModal }: ComingSoonModalProps) => (
-  <AnimatePresence>
-    {isModalOpen && (
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={closeModal}
-          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          role="dialog"
-          aria-modal="true"
-          className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-md w-full"
-        >
-          <button
-            onClick={closeModal}
-            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          <div className="text-center">
-            <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-              <Rocket className="w-8 h-8" />
-            </div>
-            <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-            <p className="text-muted-foreground mb-8">
-              We&apos;re putting the finishing touches on this feature. Join our waitlist to be the first to know when we launch!
-            </p>
-            <Button onClick={closeModal} className="w-full rounded-xl py-6">
-              Got it
-            </Button>
-          </div>
-        </motion.div>
-      </div>
-    )}
-  </AnimatePresence>
-);
-
 const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; closeModal: () => void }) => (
   <AnimatePresence>
     {study && (
@@ -92,7 +44,8 @@ const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; c
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           role="dialog"
           aria-label="Case Study"
-          className="relative bg-surface border border-border rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          aria-modal="true"
+          className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         >
           <button
             onClick={closeModal}
@@ -134,14 +87,15 @@ const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; c
 );
 
 export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const DASHBOARD_URL = 'https://agent-first-fizzbuzz-scalable-web-d.vercel.app/';
+  const handleComingSoonClick = () => {
+    window.location.href = DASHBOARD_URL;
+  };
 
   const selectedPost = blogPosts.find(p => p.id === selectedPostId);
   const selectedCaseStudy = caseStudies.find(s => s.id === selectedCaseStudyId);
@@ -176,7 +130,7 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
                   Coming Soon
                 </Button>
               </div>
@@ -266,17 +220,16 @@ export default function App() {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-8">Ready to be our next success story?</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Button variant="secondary" size="lg" className="rounded-2xl px-10 py-8 text-xl bg-white text-primary hover:bg-slate-100" onClick={openModal}>
+              <Button variant="secondary" size="lg" className="rounded-2xl px-10 py-8 text-xl bg-white text-primary hover:bg-slate-100" onClick={handleComingSoonClick}>
                 Coming Soon
               </Button>
-              <Button variant="outline" size="lg" className="rounded-2xl px-10 py-8 text-xl border-2 border-white text-white hover:bg-white/10" onClick={openModal}>
+              <Button variant="outline" size="lg" className="rounded-2xl px-10 py-8 text-xl border-2 border-white text-white hover:bg-white/10" onClick={handleComingSoonClick}>
                 Coming Soon
               </Button>
             </div>
           </div>
         </section>
         
-        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
         <CaseStudyModal 
           study={selectedCaseStudy} 
           closeModal={() => setSelectedCaseStudyId(null)} 
@@ -325,7 +278,7 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
                   Coming Soon
                 </Button>
               </div>
@@ -455,7 +408,6 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
       </div>
     );
   }
@@ -493,7 +445,7 @@ export default function App() {
                 >
                   Blog
                 </button>
-                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
                   Coming Soon
                 </Button>
               </div>
@@ -571,7 +523,6 @@ export default function App() {
             </main>
           </div>
         </div>
-        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
         <FizzBuzzChat />
       </div>
     );
@@ -622,7 +573,7 @@ export default function App() {
               >
                 Docs
               </button>
-              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={openModal}>
+              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleComingSoonClick}>
                 Coming Soon
               </Button>
             </div>
@@ -655,7 +606,7 @@ export default function App() {
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Button
                 size="lg"
-                onClick={openModal}
+                onClick={handleComingSoonClick}
                 className="rounded-2xl px-10 py-8 text-xl shadow-2xl shadow-primary/25 bg-primary hover:bg-primary/90 transition-all hover:scale-105 flex items-center justify-center gap-3"
               >
                 <Rocket className="h-6 w-6" />
@@ -664,7 +615,7 @@ export default function App() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={openModal}
+                onClick={handleComingSoonClick}
                 className="rounded-2xl px-10 py-8 text-xl border-2 hover:bg-surface transition-all flex items-center justify-center gap-3"
               >
                 <Terminal className="h-6 w-6" />
@@ -902,6 +853,7 @@ export default function App() {
                 features: ['Dedicated support engineer', 'SLA guarantees', 'SOC2/HIPAA compliance', 'Unlimited nodes'],
                 cta: 'Coming Soon',
                 variant: 'outline' as const,
+                disclosure: 'Paid in Crypto mining'
               },
             ].map((plan, i) => (
               <motion.div
@@ -924,6 +876,7 @@ export default function App() {
                   {plan.price !== 'Custom' && <span className="text-muted-foreground">/mo</span>}
                 </div>
                 <p className="text-muted-foreground mb-8 text-sm">{plan.desc}</p>
+                {plan.disclosure && <p className="text-[10px] text-muted-foreground/60 -mt-6 mb-6 font-medium italic">{plan.disclosure}</p>}
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feat, j) => (
                     <li key={j} className="flex items-center gap-2 text-sm">
@@ -932,7 +885,7 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.variant} className="w-full rounded-xl py-6" onClick={openModal}>
+                <Button variant={plan.variant} className="w-full rounded-xl py-6" onClick={handleComingSoonClick}>
                   {plan.cta}
                 </Button>
               </motion.div>
@@ -1017,7 +970,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-      <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
       <FizzBuzzChat />
     </div>
   );

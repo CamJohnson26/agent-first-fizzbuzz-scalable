@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import {
   Activity,
   Calculator,
@@ -8,6 +9,13 @@ import {
   CheckCircle,
   XCircle,
   CheckCircle2,
+  Download,
+  FileJson,
+  FileText,
+  FileSpreadsheet,
+  FileType,
+  Columns,
+  Rows,
 } from 'lucide-react';
 import {
   Button,
@@ -22,7 +30,7 @@ import {
   AlertDescription,
   cn,
 } from '@fizzbuzz/ui';
-import { NPSFeedback } from './components/NPSFeedback.js';
+import { NPSFeedback } from './components/NPSFeedback';
 import { 
   HealthResponse, 
   ComputeResponse, 
@@ -30,6 +38,7 @@ import {
   AnalyticsStats, 
   FizzBuzzEngine 
 } from '@fizzbuzz/types';
+import { exportResults, ExportFormat, ExportOrientation } from './utils/export';
 
 export default function App() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
@@ -46,9 +55,11 @@ export default function App() {
   const [showNPS, setShowNPS] = useState(false);
   const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
   const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
+  const [exportOrientation, setExportOrientation] = useState<ExportOrientation>('vertical');
 
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://agent-first-fizzbuzz-scalable-web-s.vercel.app';
-  const ANALYTICS_BASE = import.meta.env.VITE_ANALYTICS_BASE || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app';
+  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || 'https://agent-first-fizzbuzz-scalable-web-s.vercel.app';
+  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app';
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);
@@ -143,6 +154,12 @@ export default function App() {
       const data = (await res.json()) as RangeResponse & { error?: string | unknown[] };
       if (res.ok) {
         setRangeResults(data.results);
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#00ff00', '#0000ff', '#ff00ff', '#ffff00', '#00ffff']
+        });
       } else {
         setError(
           Array.isArray(data.error)
@@ -383,34 +400,105 @@ export default function App() {
                 </div>
                 <div className="sm:col-span-2 flex items-end">
                   <Button
-                    variant="secondary"
+                    variant="primary"
+                    size="lg"
                     onClick={handleRangeCompute}
-                    className="w-full"
+                    className="w-full shadow-lg shadow-primary/20 font-bold tracking-wide"
                   >
+                    <RefreshCw className="w-5 h-5 mr-2" />
                     Generate Range Results
                   </Button>
                 </div>
               </div>
 
               {rangeResults.length > 0 && (
-                <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 gap-3">
-                  {rangeResults.map((res, i) => (
-                    <Badge
-                      key={i}
-                      variant={
-                        res === 'Fizz'
-                          ? 'warning'
-                          : res === 'Buzz'
-                            ? 'secondary'
-                            : res === 'FizzBuzz'
-                              ? 'primary'
-                              : 'outline'
-                      }
-                      className="justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
+                <div className="space-y-6">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-4 bg-muted/50 rounded-xl border border-border">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Format:</span>
+                        <div className="flex bg-surface rounded-lg border border-border p-1">
+                          {[
+                            { id: 'csv', icon: FileType, label: 'CSV' },
+                            { id: 'json', icon: FileJson, label: 'JSON' },
+                            { id: 'pdf', icon: FileText, label: 'PDF' },
+                            { id: 'txt', icon: FileText, label: 'TXT' },
+                            { id: 'excel', icon: FileSpreadsheet, label: 'Excel' },
+                          ].map((f) => (
+                            <button
+                              key={f.id}
+                              onClick={() => setExportFormat(f.id as ExportFormat)}
+                              className={cn(
+                                "px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5",
+                                exportFormat === f.id 
+                                  ? "bg-primary text-primary-foreground shadow-sm" 
+                                  : "hover:bg-muted text-muted-foreground"
+                              )}
+                              title={f.label}
+                            >
+                              <f.icon className="w-3.5 h-3.5" />
+                              <span className="hidden sm:inline">{f.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Layout:</span>
+                        <div className="flex bg-surface rounded-lg border border-border p-1">
+                          {[
+                            { id: 'vertical', icon: Columns, label: 'Vertical' },
+                            { id: 'horizontal', icon: Rows, label: 'Horizontal' },
+                          ].map((o) => (
+                            <button
+                              key={o.id}
+                              onClick={() => setExportOrientation(o.id as ExportOrientation)}
+                              className={cn(
+                                "px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5",
+                                exportOrientation === o.id 
+                                  ? "bg-accent text-accent-foreground shadow-sm" 
+                                  : "hover:bg-muted text-muted-foreground"
+                              )}
+                              title={o.label}
+                            >
+                              <o.icon className="w-3.5 h-3.5" />
+                              <span className="hidden sm:inline">{o.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <Button 
+                      onClick={() => exportResults(rangeResults, rangeStart, exportFormat, exportOrientation)}
+                      variant="outline"
+                      className="w-full md:w-auto bg-surface"
                     >
-                      {res}
-                    </Badge>
-                  ))}
+                      <Download className="w-4 h-4 mr-2" />
+                      Export Results
+                    </Button>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 gap-3">
+                    {rangeResults.map((res, i) => (
+                      <Badge
+                        key={i}
+                        variant={
+                          res === 'Fizz'
+                            ? 'warning'
+                            : res === 'Buzz'
+                              ? 'secondary'
+                              : res === 'FizzBuzz'
+                                ? 'primary'
+                                : 'outline'
+                        }
+                        className="justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
+                      >
+                        <span className="text-xs opacity-50 mr-1.5 font-mono">{rangeStart + i}</span>
+                        {res}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               )}
             </CardContent>

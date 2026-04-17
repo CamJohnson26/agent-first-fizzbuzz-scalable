@@ -124,11 +124,9 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F116 | Fix Vercel Deployment Runtime | Remove invalid vercel-node runtime from vercel.json files. | Done |
 | F117 | Document agent-browser Usage | Document the requirement for agents to use `npx agent-browser` for browsing websites. | Done |
 | F118 | Standardize Vercel Entry Points | Standardize all services to use `api/index.ts` and fix Vite base URL issues. | Done |
+| F119 | Dashboard Link & Crypto Disclosure | Update all Coming Soon links to point to the Dashboard and add crypto mining disclosure to Enterprise plans. | Done |
 | F120 | Marketing Site Improvements | Fix button padding, implement case studies, shuffle blog images, and open chat by default. | Done |
-<<<<<<< Updated upstream
-=======
 | F121 | Data Exports and UI Enhancements | Support exporting results to CSV, JSON, PDF, TXT, Excel and improve dashboard UX. | Done |
->>>>>>> Stashed changes
 
 ## Next Features
 
@@ -227,7 +225,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Virtual Machine for better isolation (F099)
 - [ ] Cloud sandboxes (F100)
 - [ ] Multiregion support (F101)
-- [ ] Deploy our application to Vercel (F102)
+- [x] Deploy our application to Vercel (F102)
 - [ ] Mine monero on the user's machine (F103)
 - [x] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)

@@ -9,5 +9,5 @@ Done
 ## Next Features (Todo)
 - [x] Create GitHub Actions workflow file.
 - [x] Implement CI steps: pnpm installation, linting, building, and testing.
-- [x] Implement CD steps: Deploy marketing landing page to GitHub Pages.
+- [x] Implement CD steps: Deploy applications to Vercel.
 - [x] Add documentation for build and deployment processes.
