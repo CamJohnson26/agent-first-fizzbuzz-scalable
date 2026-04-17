@@ -19,7 +19,7 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
 5. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
 6. **Conflict Prevention & Git Strategy**:
    - **Git Worktrees**: Agents MUST always create a new `git worktree` before doing any work to minimize merge conflicts and ensure clean session isolation.
-   - **Mandatory Code Commit**: Agents MUST always commit their work when finished at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
+   - **Mandatory Merge Before Session End**: Agents MUST always commit their work and ensure it is merged to `main` (via `gh pr merge --auto --merge`) before closing their session. Uncommitted or unmerged work on feature branches is not permitted as it blocks other agents and causes state desynchronization.
    - **Direct Commits Prohibited**: Agents MUST NEVER commit directly to the `main` branch. All work must be done on feature branches.
    - **Branch Isolation**: Work on dedicated feature branches (e.g., `feature/FXXX-description`).
    - **PR Workflow**: When a task is complete, push your branch to origin and open a GitHub Pull Request using the `gh` command (e.g., `gh pr create --fill`).

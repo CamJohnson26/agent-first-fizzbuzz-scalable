@@ -13,6 +13,7 @@ AI agents must adhere to the **[CLAUDE.md](CLAUDE.md)** guidelines, which includ
 - Providing session progress logs in `ticketing/work-in-progress/`.
 - Opening a GitHub Pull Request using the `gh` command for all changes. Agents MUST NOT merge their PRs locally.
 - Ensuring full builds and all tests pass before scheduling an automatic merge via `gh pr merge --auto --merge`. Direct commits to `main` are prohibited.
+- **Mandatory Merge**: Every session MUST end with a merge (or auto-merge) to `main`. Leaving branches open is discouraged.
 - Writing Root Cause Analysis (RCA) for any critical issues or regressions.
 - Following the established coding style and patterns.
 
