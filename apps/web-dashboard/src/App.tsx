@@ -7,6 +7,7 @@ import {
   Terminal,
   CheckCircle,
   XCircle,
+  CheckCircle2,
 } from 'lucide-react';
 import {
   Button,
@@ -20,6 +21,7 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@fizzbuzz/ui';
+import { NPSFeedback } from './components/NPSFeedback.js';
 
 export default function App() {
   const [health, setHealth] = useState<{
@@ -38,6 +40,10 @@ export default function App() {
     totalLogs: number;
     logsByService: Record<string, number>;
   } | null>(null);
+  const [computeCount, setComputeCount] = useState(0);
+  const [showNPS, setShowNPS] = useState(false);
+  const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
+  const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
 
   const API_BASE = 'http://localhost:3000';
   const ANALYTICS_BASE = 'http://localhost:3001';
@@ -81,6 +87,11 @@ export default function App() {
       const data = await res.json();
       if (res.ok) {
         setComputeResult(data.result);
+        const nextCount = computeCount + 1;
+        setComputeCount(nextCount);
+        if (nextCount >= 3 && !hasSubmittedNPS) {
+          setShowNPS(true);
+        }
       } else {
         setError(data.error || 'Failed to compute');
       }
@@ -96,6 +107,11 @@ export default function App() {
       const data = await res.json();
       if (res.ok) {
         setRangeResults(data.results);
+        const nextCount = computeCount + 1;
+        setComputeCount(nextCount);
+        if (nextCount >= 3 && !hasSubmittedNPS) {
+          setShowNPS(true);
+        }
       } else {
         setError(
           Array.isArray(data.error)
@@ -106,6 +122,32 @@ export default function App() {
     } catch (_err) {
       setError('Connection refused. Is the web-server running?');
     }
+  };
+
+  const handleNPSSubmit = async (score: number, comment: string) => {
+    setShowNPS(false);
+    setHasSubmittedNPS(true);
+    try {
+      await fetch(`${ANALYTICS_BASE}/api/logs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: 'web-dashboard',
+          message: 'NPS Submission',
+          level: 'info',
+          metadata: { score, comment },
+        }),
+      });
+      setNpsFeedbackSent(true);
+      setTimeout(() => setNpsFeedbackSent(false), 5000);
+    } catch (_err) {
+      console.error('Failed to submit NPS:', _err);
+    }
+  };
+
+  const handleNPSDismiss = () => {
+    setShowNPS(false);
+    setHasSubmittedNPS(true); // Don't bug the user again in this session
   };
 
   return (
@@ -166,6 +208,14 @@ export default function App() {
             <XCircle className="w-4 h-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {npsFeedbackSent && (
+          <Alert variant="success" className="mb-8 border-primary bg-primary/5 text-primary">
+            <CheckCircle2 className="w-4 h-4" />
+            <AlertTitle>Thank you!</AlertTitle>
+            <AlertDescription>Your feedback has been submitted successfully.</AlertDescription>
           </Alert>
         )}
 
@@ -364,6 +414,10 @@ export default function App() {
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-muted-foreground text-sm border-t border-border mt-12">
         <p>© 2026 FizzBuzz Scalable Enterprise. All Rights Reserved.</p>
       </footer>
+
+      {showNPS && (
+        <NPSFeedback onSubmit={handleNPSSubmit} onDismiss={handleNPSDismiss} />
+      )}
     </div>
   );
 }
