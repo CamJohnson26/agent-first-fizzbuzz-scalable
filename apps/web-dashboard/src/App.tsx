@@ -100,6 +100,8 @@ export default function App() {
   };
 
   useEffect(() => {
+    console.log('[Dashboard] API_BASE:', API_BASE);
+    console.log('[Dashboard] ANALYTICS_BASE:', ANALYTICS_BASE);
     checkHealth();
     fetchStats();
     const interval = setInterval(fetchStats, 5000);
