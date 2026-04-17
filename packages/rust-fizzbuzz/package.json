@@ -5,7 +5,10 @@
   "main": "./dist/node/rust_fizzbuzz.js",
   "types": "./dist/node/rust_fizzbuzz.d.ts",
   "scripts": {
-    "build": "wasm-pack build --target nodejs --out-dir dist/node && rm -f dist/node/.gitignore dist/node/package.json"
+    "build": "rustup default stable && wasm-pack build --target nodejs --out-dir dist/node && rm -f dist/node/.gitignore dist/node/package.json"
+  },
+  "devDependencies": {
+    "wasm-pack": "^0.13.1"
   },
   "files": [
     "dist"

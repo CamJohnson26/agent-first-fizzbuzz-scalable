@@ -1,6 +1,7 @@
 {
   "extends": "@fizzbuzz/config/typescript/react",
   "compilerOptions": {
+    "types": ["vite/client"],
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true,
     "noEmit": true

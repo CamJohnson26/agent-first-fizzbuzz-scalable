@@ -1,7 +1,7 @@
 {
   "functions": {
     "src/index.ts": {
-      "runtime": "vercel-node@latest"
+      "memory": 1024
     }
   },
   "rewrites": [
