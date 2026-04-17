@@ -1,7 +1,7 @@
 import { blogPosts as manualPosts, BlogPost } from './manualPosts';
 import generatedPostsRaw from './generatedPosts.json';
 
-const generatedPosts: BlogPost[] = (generatedPostsRaw as any[]).map(post => ({
+const generatedPosts: BlogPost[] = (generatedPostsRaw as BlogPost[]).map(post => ({
   ...post,
   category: post.category as 'Engineering' | 'Product' | 'Company'
 }));

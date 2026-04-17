@@ -18,7 +18,7 @@ export const healthHandler = (req: Request, res: Response<HealthResponse>) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 };
 
-export const computeHandler = async (req: Request, res: Response<ComputeResponse | { error: any }>) => {
+export const computeHandler = async (req: Request, res: Response<ComputeResponse | { error: unknown }>) => {
   try {
     const { n, engine } = computeSchema.parse({ ...req.params, ...req.query });
     
@@ -43,7 +43,7 @@ export const computeHandler = async (req: Request, res: Response<ComputeResponse
   }
 };
 
-export const rangeHandler = async (req: Request, res: Response<RangeResponse | { error: any }>) => {
+export const rangeHandler = async (req: Request, res: Response<RangeResponse | { error: unknown }>) => {
   try {
     const { start, end, engine } = rangeSchema.parse(req.query);
     

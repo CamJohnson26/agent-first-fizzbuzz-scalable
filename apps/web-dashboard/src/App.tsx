@@ -130,13 +130,13 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}&engine=${engine}`);
-      const data = (await res.json()) as RangeResponse & { error?: string | any[] };
+      const data = (await res.json()) as RangeResponse & { error?: string | unknown[] };
       if (res.ok) {
         setRangeResults(data.results);
       } else {
         setError(
           Array.isArray(data.error)
-            ? (data.error[0] as any).message
+            ? (data.error[0] as { message: string }).message
             : data.error || 'Failed to compute range',
         );
       }

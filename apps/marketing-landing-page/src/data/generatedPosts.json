@@ -362,13 +362,8 @@
   },
   {
     "id": "rca-008-node-25-corepack-unbundling",
-<<<<<<< HEAD
     "title": "Node.js 25 Broke Our Builds! Here's the Fix You Need Now",
     "excerpt": "Solving the 'corepack: not found' mystery and how to properly enable pnpm on the latest Node.js runtime.",
-=======
-    "title": "Node.js 24 Broke Our Builds! Here's the Fix You Need Now",
-    "excerpt": "Solving the 'corepack' mystery: How we conquered the latest Node.js runtime challenge and kept our 100% uptime promise.",
->>>>>>> feature/node-24-lts-alignment
     "category": "Company",
     "type": "RCA",
     "status": "Resolved.",

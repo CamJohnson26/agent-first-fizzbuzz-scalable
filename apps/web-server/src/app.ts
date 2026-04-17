@@ -4,7 +4,7 @@ import { healthHandler, computeHandler, rangeHandler } from './handlers.js';
 
 const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'http://analytics-service:3001/api/logs';
 
-const forwardLog = async (message: string, metadata?: Record<string, any>) => {
+const forwardLog = async (message: string, metadata?: Record<string, unknown>) => {
   try {
     await fetch(ANALYTICS_SERVICE_URL, {
       method: 'POST',
