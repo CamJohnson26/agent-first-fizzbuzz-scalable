@@ -170,10 +170,10 @@ If you want to run individual apps in development mode:
 
 ```bash
 # Start the web server
-pnpm --filter @fizzbuzz/web-server dev
+turbo dev --filter @fizzbuzz/web-server
 
 # Start the dashboard
-pnpm --filter @fizzbuzz/web-dashboard dev
+turbo dev --filter @fizzbuzz/web-dashboard
 ```
 
 ---
@@ -183,15 +183,15 @@ pnpm --filter @fizzbuzz/web-dashboard dev
 Run the entire pipeline across all packages:
 
 ```bash
-pnpm build
-pnpm test
-pnpm lint
+turbo build
+turbo test
+turbo lint
 ```
 
 For individual packages:
 ```bash
-pnpm --filter <package-name> build
-pnpm --filter <package-name> test
+turbo build --filter <package-name>
+turbo test --filter <package-name>
 ```
 
 ---
