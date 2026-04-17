@@ -53,8 +53,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
   const [computeCount, setComputeCount] = useState(0);
-  const [showNPS, setShowNPS] = useState(true);
-  const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
+  const [showNPS, setShowNPS] = useState(false);
   const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
   const [exportOrientation, setExportOrientation] = useState<ExportOrientation>('vertical');
@@ -64,7 +63,6 @@ export default function App() {
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);
-    setHasSubmittedNPS(true);
     try {
       await fetch(`${ANALYTICS_BASE}/api/logs`, {
         method: 'POST',

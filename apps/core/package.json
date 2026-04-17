@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@fizzbuzz/core-logic": "workspace:*",
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
   },
   "devDependencies": {
     "@fizzbuzz/config": "workspace:*",

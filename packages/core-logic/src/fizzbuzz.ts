@@ -1,12 +1,12 @@
+import { injectable, inject } from 'tsyringe';
 import { 
   Rule, 
-  Arithmetic, 
   Composer, 
   Fallback, 
   Validator 
 } from './types.js';
 import { CheckedArithmetic } from './arithmetic.js';
-import { ResilientEngine, EngineConfig } from './engine.js';
+import { ResilientEngine } from './engine.js';
 import { RuleCompiler } from './compiler.js';
 
 /**
@@ -20,6 +20,11 @@ export interface FizzBuzzConfig {
 }
 
 /**
+ * Token for injecting FizzBuzzConfig.
+ */
+export const FIZZ_BUZZ_CONFIG = Symbol('FizzBuzzConfig');
+
+/**
  * Default configuration for the FizzBuzz service.
  */
 export const DEFAULT_CONFIG: FizzBuzzConfig = {
@@ -30,12 +35,22 @@ export const DEFAULT_CONFIG: FizzBuzzConfig = {
 };
 
 /**
- * Service for computing FizzBuzz sequences using the Generalized Rule Model (ADR 008).
+ * Interface for the FizzBuzz service.
  */
-export class FizzBuzzService {
+export interface IFizzBuzzService {
+  compute(n: number): string;
+  computeRange(start: number, end: number): string[];
+}
+
+/**
+ * Service for computing FizzBuzz sequences using the Generalized Rule Model (ADR 008)
+ * and Dependency Injection (ADR 011).
+ */
+@injectable()
+export class FizzBuzzService implements IFizzBuzzService {
   private engine: ResilientEngine<number>;
 
-  constructor(config: Partial<FizzBuzzConfig> = {}) {
+  constructor(@inject(FIZZ_BUZZ_CONFIG) config: Partial<FizzBuzzConfig> = {}) {
     const fullConfig = { ...DEFAULT_CONFIG, ...config };
     
     // Define rules based on ADR 008

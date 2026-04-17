@@ -96,12 +96,9 @@ describe('App', () => {
 
   it('redirects to dashboard when clicking relevant buttons', async () => {
     const user = userEvent.setup();
-    // @ts-ignore
     const originalLocation = window.location;
-    // @ts-ignore
-    delete window.location;
-    // @ts-ignore
-    window.location = { ...originalLocation, href: '' };
+    delete (window as any).location;
+    (window as any).location = { ...originalLocation, href: '' };
 
     render(<App />);
     
@@ -110,8 +107,7 @@ describe('App', () => {
     
     expect(window.location.href).toBe('https://agent-first-fizzbuzz-scalable-web-d.vercel.app/');
     
-    // @ts-ignore
-    window.location = originalLocation;
+    (window as any).location = originalLocation;
   });
 
   it('has a Twitter link that points to #', () => {

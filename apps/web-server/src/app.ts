@@ -1,6 +1,13 @@
+import 'reflect-metadata';
+import { container } from 'tsyringe';
 import express from 'express';
 import cors from 'cors';
-import { healthHandler, computeHandler, rangeHandler } from './handlers.js';
+import { FIZZ_BUZZ_CONFIG, DEFAULT_CONFIG } from '@fizzbuzz/core-logic';
+import { FizzBuzzHandler } from './handlers.js';
+
+// Register dependencies
+container.register(FIZZ_BUZZ_CONFIG, { useValue: DEFAULT_CONFIG });
+const handlers = container.resolve(FizzBuzzHandler);
 
 const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app/api/logs';
 
@@ -44,16 +51,16 @@ app.use((req, res, next) => {
 });
 
 // Health check endpoint
-app.get('/health', healthHandler);
+app.get('/health', handlers.healthHandler);
 
 app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'web-server' });
 });
 
 // FizzBuzz compute endpoint
-app.get('/compute/:n', computeHandler);
+app.get('/compute/:n', handlers.computeHandler);
 
 // FizzBuzz range compute endpoint
-app.get('/range', rangeHandler);
+app.get('/range', handlers.rangeHandler);
 
 export default app;

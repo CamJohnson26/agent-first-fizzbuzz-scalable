@@ -85,12 +85,18 @@ graph TD
         end
     end
 
+    subgraph DI_IoC [DI/IoC Framework]
+        DI[tsyringe Container]
+    end
+
     WD -- REST API --> WS
     LP -- Docs --> WS
-    WS -- Uses --> Generalized_Engine
+    WS -- Resolves --> DI
+    DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
-    CLI -- Uses --> Generalized_Engine
+    CLI -- Resolves --> DI
+    DI -- Injects --> Generalized_Engine
     Generalized_Engine -- Uses --> Assurance_Layer
     VA -- Proves --> CL
     LS -- Executes --> VA

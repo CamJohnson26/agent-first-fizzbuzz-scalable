@@ -16,6 +16,10 @@
     "test": "vitest run",
     "dev": "vitest"
   },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
+  },
   "devDependencies": {
     "@fizzbuzz/config": "workspace:*",
     "@types/node": "^22.0.0",
