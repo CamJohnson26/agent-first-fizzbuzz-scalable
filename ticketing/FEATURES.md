@@ -119,6 +119,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F111 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Done |
 | F112 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | Done |
 | F113 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
+| F114 | Update Agent PR Workflow | Update agent instructions for PR workflow using `gh` command and verification. | Done |
 
 ## Next Features
 
@@ -229,3 +230,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Code Quality - Remove 'any' types (F111)
 - [x] Prefer Turbo in Documentation (F112)
 - [x] Remove fnm References (F113)
+- [x] Update Agent PR Workflow (F114)
