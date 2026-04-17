@@ -7,6 +7,7 @@ This guide describes the AI-first development process and how agents should inte
 - **Node.js**: Use version specified in `.node-version`. This version is strictly enforced by `scripts/check-node-version.js` across all core operations.
 - **Environment Sync**: When updating the `.node-version` file, ensure all agents and developers synchronize their environment using a manager like `nvm`. **Agents MUST NEVER downgrade project version requirements to match an outdated local environment.** If the environment does not match, run `nvm install` (or equivalent) using the provided `.nvmrc` before executing any core operations.
 - **Package Manager**: Use `pnpm`.
+- **Browsing**: Use `npx agent-browser` for browsing websites to gather context or for testing.
 
 ## Agent Policy & Core Principles
 
