@@ -15,3 +15,8 @@ export const rangeSchema = z.object({
   message: 'Start must be less than or equal to end',
   path: ['start'],
 });
+
+// Chat schema
+export const chatSchema = z.object({
+  message: z.string().min(1).max(500),
+});

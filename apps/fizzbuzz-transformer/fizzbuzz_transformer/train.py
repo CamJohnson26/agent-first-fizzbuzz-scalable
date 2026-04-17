@@ -8,8 +8,8 @@ import os
 # Hyperparameters
 batch_size = 32
 block_size = 256
-max_iters = 2000
-eval_interval = 100
+max_iters = 300
+eval_interval = 50
 learning_rate = 1e-3
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 eval_iters = 20

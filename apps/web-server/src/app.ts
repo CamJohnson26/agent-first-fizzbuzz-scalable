@@ -65,4 +65,7 @@ app.get('/compute/:n', handlers.computeHandler);
 // FizzBuzz range compute endpoint
 app.get('/range', handlers.rangeHandler);
 
+// FizzBuzz transformer chat endpoint
+app.post('/chat', handlers.chatHandler);
+
 export default app;
