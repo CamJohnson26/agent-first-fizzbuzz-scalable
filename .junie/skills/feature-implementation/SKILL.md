@@ -7,6 +7,7 @@ This skill provides mandatory steps and templates for implementing features in t
 ### 1. Environment Verification
 - Check `.node-version` and ensure your environment matches. Run `nvm install` if necessary.
 - Use `pnpm` for package management (installing, adding dependencies) and `turbo` for task execution (build, test, lint).
+- Use `npx agent-browser` for browsing websites to gather context or for testing.
 
 ### 2. Isolation & Conflict Prevention
 - **Git Worktree**: Always create a new `git worktree` before starting work.
