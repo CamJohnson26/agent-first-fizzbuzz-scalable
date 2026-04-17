@@ -107,7 +107,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F099 | Virtual Machine for better isolation | Run computations in a dedicated VM for security. | Proposed |
 | F100 | Cloud sandboxes | Provision temporary cloud environments for testing. | Proposed |
 | F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
-| F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Proposed |
+| F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Done |
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
 | F104 | Survey popups | Gather user feedback through integrated survey components. | Done |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |

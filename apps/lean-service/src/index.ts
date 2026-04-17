@@ -46,6 +46,10 @@ app.get('/range', async (req, res: express.Response<RangeResponse | { error: str
   }
 });
 
-app.listen(port, () => {
-  console.log(`Lean service listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
+  app.listen(port, () => {
+    console.log(`Lean service listening on port ${port}`);
+  });
+}
+
+export default app;
