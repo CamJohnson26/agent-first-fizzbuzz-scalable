@@ -55,4 +55,37 @@ test.describe('Web Dashboard', () => {
     // but better to just check it's present
     await expect(page.getByText('Total Logs')).toBeVisible();
   });
+
+  test('should show offline status when health check fails', async ({ page }) => {
+    // Intercept health check and make it fail
+    await page.route('**/health', (route) => {
+      route.abort();
+    });
+
+    // Reload page to trigger a new health check
+    await page.reload();
+
+    // Check if it shows 'offline'
+    await expect(page.getByText('Server: offline')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('should manually refresh health status', async ({ page }) => {
+    // Wait for initial health check to be 'ok'
+    await expect(page.getByText('Server: ok')).toBeVisible();
+
+    // Intercept next health check and return 'offline'
+    await page.route('**/health', (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ status: 'offline', timestamp: new Date().toISOString() }),
+      });
+    });
+
+    // Click the refresh button (the one with the refresh icon)
+    await page.locator('header button').last().click();
+
+    // Now it should show 'offline' after the manual refresh
+    await expect(page.getByText('Server: offline')).toBeVisible();
+  });
 });

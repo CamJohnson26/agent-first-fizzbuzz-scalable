@@ -11,3 +11,6 @@ Done
 - [x] Write initial E2E tests
 - [x] Configure for monorepo
 - [x] Integrate into root CI/CD pipeline
+- [x] Expand coverage to FizzBuzz Chat
+- [x] Add dashboard error state and manual refresh tests
+- [x] Fix environment Node.js version compatibility

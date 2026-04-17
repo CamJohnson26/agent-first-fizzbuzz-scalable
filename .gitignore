@@ -9,3 +9,7 @@ dist
 .junie
 coverage
 pnpm-debug.log
+
+# Playwright
+packages/e2e/playwright-report/
+packages/e2e/test-results/
