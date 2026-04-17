@@ -36,8 +36,12 @@ Each application in the `apps/` directory is configured to be deployable as a st
 ### Express-based Services
 Services like `web-server`, `analytics-service`, and `lean-service` are configured to use an entry point at `api/index.ts`. This allows Vercel to treat the entire application as a single serverless function via the `rewrites` configuration in `vercel.json`. The `src/index.ts` file remains for local development.
 
-### Lean Service
-The `lean-service` relies on a compiled Lean binary. When deploying to Vercel, ensure the `LEAN_BINARY_PATH` environment variable is correctly set and that the binary is compatible with the Vercel execution environment (Amazon Linux 2).
+### Web Dashboard Configuration
+The web dashboard requires the following environment variables to be set in the Vercel dashboard for the production environment:
+- `VITE_API_BASE`: The URL of the `web-server` (e.g., `https://agent-first-fizzbuzz-scalable-web-s.vercel.app`)
+- `VITE_ANALYTICS_BASE`: The URL of the `analytics-service` (e.g., `https://agent-first-fizzbuzz-scalable-analy.vercel.app`)
+
+If these are not set, the dashboard will default to the predicted Vercel subdomains based on the project naming convention.
 
 ### Static Frontends
 The `marketing-landing-page` and `web-dashboard` use Vite and are configured with a `vercel.json` to support client-side routing (SPAs) by rewriting all non-file requests to `index.html`.

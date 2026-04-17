@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { healthHandler, computeHandler, rangeHandler } from './handlers.js';
 
-const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'http://localhost:3001/api/logs';
+const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app/api/logs';
 
 const forwardLog = async (message: string, metadata?: Record<string, unknown>) => {
   try {
