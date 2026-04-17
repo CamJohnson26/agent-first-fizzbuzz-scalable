@@ -16,11 +16,11 @@ app.use(express.json());
 
 const stats = {
   totalLogs: 0,
-  logsByService: {},
+  logsByService: {} as Record<string, number>,
 };
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', source: 'api/index.js (ESM)' });
+  res.json({ status: 'ok', source: 'api/index.ts (Self-Contained TS)' });
 });
 
 app.get('/stats', (req, res) => {
