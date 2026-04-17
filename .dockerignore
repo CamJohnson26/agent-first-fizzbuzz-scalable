@@ -10,6 +10,9 @@ dist
 coverage
 apps/*/dist
 packages/*/dist
+RCAs
+ticketing
+docs
 pnpm-lock.yaml
 pnpm-workspace.yaml
 !pnpm-lock.yaml
