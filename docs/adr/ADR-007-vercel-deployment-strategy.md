@@ -24,3 +24,6 @@ We will adopt the following strategy for Vercel deployment:
 ### Cons
 - Backend services may face "cold start" issues characteristic of serverless environments.
 - Each service requires manual setup of a project in Vercel (unless using Vercel CLI/API to automate).
+
+## Future Work
+- **Terraform Integration**: We plan to move the manual project configuration and environment variable management to Terraform to ensure better infrastructure consistency and automation.

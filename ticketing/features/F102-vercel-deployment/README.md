@@ -11,3 +11,4 @@ Done
 - [x] Refactor Express services for serverless compatibility
 - [x] Document the deployment strategy in ADR-007
 - [x] Create a Vercel deployment guide
+- [ ] Migrate Vercel infrastructure to Terraform
