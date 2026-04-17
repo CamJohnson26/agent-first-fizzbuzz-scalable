@@ -2,7 +2,7 @@
 
 - Date: 2026-04-16
 - Agent: Junie
-- Task: F124 - xlsx Security Upgrade (CVE-2023-30533, CVE-2024-22363)
+- Task: F125 - xlsx Security Upgrade (CVE-2023-30533, CVE-2024-22363)
 
 ## Objectives
 - [x] Upgrade xlsx to version 0.19.3 or higher (v0.20.2 installed)
