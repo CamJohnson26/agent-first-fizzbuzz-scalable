@@ -367,6 +367,9 @@ importers:
       '@fizzbuzz/config':
         specifier: workspace:*
         version: link:../config
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.17
       typescript:
         specifier: ^5.4.0
         version: 5.9.3
