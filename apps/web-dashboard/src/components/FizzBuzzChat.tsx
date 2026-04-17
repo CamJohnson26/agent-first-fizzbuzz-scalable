@@ -79,7 +79,7 @@ export function FizzBuzzChat({ apiBase }: FizzBuzzChatProps) {
                 onClick={() => setMessage("What is the fizzbuzz value of 15?")}
                 className="text-xs bg-muted hover:bg-muted/80 px-2 py-1 rounded border border-border transition-colors"
               >
-                "What is the fizzbuzz value of 15?"
+                &quot;What is the fizzbuzz value of 15?&quot;
               </button>
             </div>
           </div>

@@ -28,13 +28,13 @@ This skill provides mandatory steps and templates for implementing features in t
 ### 6. Full Implementation
 - Do not skip tests, documentation, or proper project structuring.
 - Always use the latest stable LTS versions of packages.
-- Ensure the project builds (`turbo build`) and tests pass (`turbo test`) before finishing.
+- Ensure the project linting (`turbo lint`), builds (`turbo build`), and tests (`turbo test`) pass before finishing.
 
 ### 7. Completion & Commitment
 - **Mandatory Merge Before Session End**: Always commit your work and ensure it is merged to `main` (via `gh pr merge --auto --merge`) before closing your session.
 - **Co-authored-by**: Include the `Co-authored-by: Junie <junie@jetbrains.com>` trailer in your commit message.
 - **Pull Request**: Push your branch to origin and open a GitHub PR using the `gh` command (e.g., `gh pr create --fill`) when the feature is ready.
-- **Review & Merge**: Verify that the build (`turbo build`) and tests (`turbo test`) pass. **NEVER merge the PR locally to `main`.** Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI passes, or wait for human review. You may review and respond to your own feedback to ensure quality.
+- **Review & Merge**: Verify that the linting (`turbo lint`), build (`turbo build`), and tests (`turbo test`) pass. **NEVER merge the PR locally to `main`.** Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI passes, or wait for human review. You may review and respond to your own feedback to ensure quality.
 - **Direct Commits Prohibited**: Direct commits to the `main` branch are strictly forbidden. All development must occur on feature branches.
 - **Session Cleanup**: Before finishing, ensure your session log in `ticketing/work-in-progress/` is updated and included in the merge.
 - If a critical bug was fixed, write an **RCA** (Root Cause Analysis) in `RCAs/`.
