@@ -20,24 +20,25 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@fizzbuzz/ui';
+import { 
+  HealthResponse, 
+  ComputeResponse, 
+  RangeResponse, 
+  AnalyticsStats, 
+  FizzBuzzEngine 
+} from '@fizzbuzz/types';
 
 export default function App() {
-  const [health, setHealth] = useState<{
-    status: string;
-    timestamp: string;
-  } | null>(null);
+  const [health, setHealth] = useState<HealthResponse | null>(null);
   const [loadingHealth, setLoadingHealth] = useState(false);
   const [computeValue, setComputeValue] = useState<number>(15);
   const [computeResult, setComputeResult] = useState<string | null>(null);
   const [rangeStart, setRangeStart] = useState<number>(1);
   const [rangeEnd, setRangeEnd] = useState<number>(15);
   const [rangeResults, setRangeResults] = useState<string[]>([]);
-  const [engine, setEngine] = useState<'js' | 'rust' | 'lean'>('js');
+  const [engine, setEngine] = useState<FizzBuzzEngine>('js');
   const [error, setError] = useState<string | null>(null);
-  const [stats, setStats] = useState<{
-    totalLogs: number;
-    logsByService: Record<string, number>;
-  } | null>(null);
+  const [stats, setStats] = useState<AnalyticsStats | null>(null);
 
   const API_BASE = 'http://localhost:3000';
   const ANALYTICS_BASE = 'http://localhost:3001';
@@ -47,7 +48,7 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/health`);
-      const data = await res.json();
+      const data = (await res.json()) as HealthResponse;
       setHealth(data);
     } catch (_err) {
       console.error('Failed to fetch health:', _err);
@@ -60,7 +61,7 @@ export default function App() {
   const fetchStats = async () => {
     try {
       const res = await fetch(`${ANALYTICS_BASE}/stats`);
-      const data = await res.json();
+      const data = (await res.json()) as AnalyticsStats;
       setStats(data);
     } catch (_err) {
       console.error('Failed to fetch stats:', _err);
@@ -78,7 +79,7 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/compute/${computeValue}?engine=${engine}`);
-      const data = await res.json();
+      const data = (await res.json()) as ComputeResponse & { error?: string };
       if (res.ok) {
         setComputeResult(data.result);
       } else {
@@ -93,13 +94,13 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}&engine=${engine}`);
-      const data = await res.json();
+      const data = (await res.json()) as RangeResponse & { error?: string | any[] };
       if (res.ok) {
         setRangeResults(data.results);
       } else {
         setError(
           Array.isArray(data.error)
-            ? data.error[0].message
+            ? (data.error[0] as any).message
             : data.error || 'Failed to compute range',
         );
       }
@@ -126,7 +127,7 @@ export default function App() {
               <select 
                 id="engine-select"
                 value={engine}
-                onChange={(e) => setEngine(e.target.value as 'js' | 'rust' | 'lean')}
+                onChange={(e) => setEngine(e.target.value as FizzBuzzEngine)}
                 className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
               >
                 <option value="js">JavaScript (Standard)</option>

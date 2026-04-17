@@ -59,8 +59,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F051 | React Server Components | Implement React Server Components. | Proposed |
 | F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Done |
 | F053 | Architectural Recommendations | Create recommendations for project architecture improvements. | Done |
-| F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Proposed |
-| F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Proposed |
+| F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Done |
+| F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Done |
 | F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | Done |
 | F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Proposed |
 | F058 | Global Error Handling | Centralized middleware and custom error classes for consistent API responses. | Proposed |
@@ -161,8 +161,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] React Server Components (F051)
 - [ ] Tailwind CSS for Marketing (F052)
 - [x] Architectural Recommendations (F053)
-- [ ] Centralized Configuration (F054)
-- [ ] Shared Type Definitions (F055)
+- [x] Centralized Configuration (F054)
+- [x] Shared Type Definitions (F055)
 - [x] Standardized Workspace Scripts (F056)
 - [ ] Backend Dependency Injection (F057)
 - [ ] Global Error Handling (F058)

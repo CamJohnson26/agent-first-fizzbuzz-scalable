@@ -4,6 +4,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { HealthResponse, ComputeResponse, RangeResponse } from '@fizzbuzz/types';
 
 const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -18,11 +19,11 @@ const port = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', service: 'lean-service' });
+app.get('/health', (req, res: express.Response<HealthResponse & { service: string }>) => {
+  res.json({ status: 'ok', service: 'lean-service', timestamp: new Date().toISOString() });
 });
 
-app.get('/compute/:n', async (req, res) => {
+app.get('/compute/:n', async (req, res: express.Response<ComputeResponse | { error: string }>) => {
   const n = req.params.n;
   try {
     const { stdout } = await execAsync(`${LEAN_BINARY_PATH} ${n}`);
@@ -33,7 +34,7 @@ app.get('/compute/:n', async (req, res) => {
   }
 });
 
-app.get('/range', async (req, res) => {
+app.get('/range', async (req, res: express.Response<RangeResponse | { error: string }>) => {
   const { start, end } = req.query;
   try {
     const { stdout } = await execAsync(`${LEAN_BINARY_PATH} range ${start} ${end}`);

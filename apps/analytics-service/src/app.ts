@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { z } from 'zod';
+import { AnalyticsStats } from '@fizzbuzz/types';
 
 const LogSchema = z.object({
   level: z.string().optional(),
@@ -15,9 +16,9 @@ export const createApp = () => {
   app.use(cors());
   app.use(express.json());
 
-  const stats = {
+  const stats: AnalyticsStats = {
     totalLogs: 0,
-    logsByService: {} as Record<string, number>,
+    logsByService: {},
   };
 
   app.get('/health', (req, res) => {
