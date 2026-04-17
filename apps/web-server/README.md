@@ -4,7 +4,8 @@ A robust, enterprise-grade web server providing FizzBuzz computation services vi
 
 ## Features
 
-- **RESTful API**: Simple endpoints for single and range computations.
+- **Multi-Engine Execution**: Seamlessly switch between TypeScript, Rust (WASM), and Lean 4 engines.
+- **RESTful API**: Simple endpoints for single and range computations with validation.
 - **Log Forwarding**: Asynchronously sends request metadata to the `analytics-service` for observability.
 - **Health Checks**: Standard `/health` endpoint for monitoring and orchestration.
 - **CORS Support**: Configured for secure access from multiple frontends.
@@ -51,14 +52,17 @@ Computes FizzBuzz for a single number.
 
 - **Parameters**:
   - `n` (number): The number to compute.
+- **Query Parameters**:
+  - `engine` (string): The computation engine to use (`typescript`, `rust`, `lean`). Defaults to `typescript`.
 
-### `GET /range?start=<start>&end=<end>`
+### `GET /range?start=<start>&end=<end>&engine=<engine>`
 
 Computes FizzBuzz for a range of numbers.
 
 - **Query Parameters**:
   - `start` (number): The start of the range.
   - `end` (number): The end of the range.
+  - `engine` (string): The computation engine to use (`typescript`, `rust`, `lean`). Defaults to `typescript`.
 
 ## Environment Variables
 
