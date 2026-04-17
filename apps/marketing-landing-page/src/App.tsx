@@ -43,8 +43,8 @@ const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; c
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           role="dialog"
-          aria-label="Case Study"
-          className="relative bg-surface border border-border rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          aria-modal="true"
+          className="relative bg-surface border border-border p-8 rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         >
           <button
             onClick={closeModal}
@@ -229,6 +229,10 @@ export default function App() {
           </div>
         </section>
         
+<<<<<<< HEAD
+=======
+        <ComingSoonModal isModalOpen={isModalOpen} closeModal={closeModal} />
+>>>>>>> origin/main
         <CaseStudyModal 
           study={selectedCaseStudy} 
           closeModal={() => setSelectedCaseStudyId(null)} 
