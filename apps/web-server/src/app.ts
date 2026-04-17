@@ -6,7 +6,7 @@ const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'https://agen
 
 const forwardLog = async (message: string, metadata?: Record<string, unknown>) => {
   try {
-    await fetch(ANALYTICS_SERVICE_URL, {
+    const res = await fetch(ANALYTICS_SERVICE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -16,6 +16,9 @@ const forwardLog = async (message: string, metadata?: Record<string, unknown>) =
         timestamp: new Date().toISOString(),
       }),
     });
+    if (!res.ok) {
+      console.warn(`Analytics service responded with status ${res.status}`);
+    }
   } catch (error) {
     console.error('Failed to forward log to analytics service:', error);
   }

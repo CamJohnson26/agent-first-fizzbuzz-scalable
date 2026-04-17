@@ -83,6 +83,13 @@ export default function App() {
       setHealth(data);
     } catch (_err) {
       console.error('Failed to fetch health:', _err);
+      if (_err instanceof Error) {
+        console.error('Error details:', {
+          message: _err.message,
+          name: _err.name,
+          stack: _err.stack
+        });
+      }
       setHealth({ status: 'offline', timestamp: new Date().toISOString() });
     } finally {
       setLoadingHealth(false);
