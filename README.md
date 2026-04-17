@@ -68,6 +68,7 @@ graph TD
 
         subgraph Service_Layer [Service Layer]
             WS[Web Server - Express]
+            DB[(SQLite - Persistence)]
             AS[Analytics Service - Express]
             LS[Lean Service - Express/Lean 4]
         end
@@ -91,6 +92,7 @@ graph TD
 
     WD -- REST API --> WS
     LP -- Docs --> WS
+    WS -- Persistence --> DB
     WS -- Resolves --> DI
     DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
@@ -106,7 +108,7 @@ graph TD
 
 - **`/apps`**:
   - `web-dashboard`: User-facing monitoring and computation interface with data export capabilities.
-  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines.
+  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines, integrated with **SQLite** for local persistence.
   - `lean-service`: Formal verification service wrapping the Lean 4 binary for high-fidelity proofs.
   - `analytics-service`: Centralized log collection and metrics engine for real-time observability.
   - `marketing-landing-page`: High-conversion project showcase with integrated blog and GDPR compliance.

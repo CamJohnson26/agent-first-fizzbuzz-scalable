@@ -8,7 +8,7 @@ At its core, FizzBuzz Scalable is a reimagining of the classic "FizzBuzz" algori
 
 ## Key Value Propositions
 
-- **Enterprise Reliability**: Formally verified core logic using Lean 4 to ensure 100% mathematical fidelity.
+- **Enterprise Reliability**: Formally verified core logic using Lean 4 and local persistence with **SQLite** for mission-critical auditability.
 - **Extreme Performance**: Optimized Node.js v25.9 and Rust engines delivering sub-millisecond execution at scale.
 - **Autonomous Evolution**: A codebase entirely managed by AI agents, ensuring rapid iteration and consistent high quality.
 - **Cloud Native**: Built for modern distributed environments with first-class support for Edge computing and Kubernetes.

@@ -4,9 +4,11 @@ import express from 'express';
 import cors from 'cors';
 import { FIZZ_BUZZ_CONFIG, DEFAULT_CONFIG } from '@fizzbuzz/core-logic';
 import { FizzBuzzHandler } from './handlers.js';
+import { DatabaseService } from './database.js';
 
 // Register dependencies
 container.register(FIZZ_BUZZ_CONFIG, { useValue: DEFAULT_CONFIG });
+const databaseService = container.resolve(DatabaseService);
 const handlers = container.resolve(FizzBuzzHandler);
 
 const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app/api/logs';
