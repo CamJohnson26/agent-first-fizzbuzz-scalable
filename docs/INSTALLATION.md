@@ -40,18 +40,18 @@ pnpm install
 
 ## Step 4: Initial Build
 
-Build all packages and applications in the workspace using Turbo.
+Build all packages and applications in the workspace.
 
 ```bash
-turbo build
+pnpm build
 ```
 
 ## Step 5: Verification
 
-Run the test suite using Turbo to ensure everything is set up correctly.
+Run the test suite to ensure everything is set up correctly.
 
 ```bash
-turbo test
+pnpm test
 ```
 
 ## Troubleshooting

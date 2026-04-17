@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@fizzbuzz/config/typescript/node",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",

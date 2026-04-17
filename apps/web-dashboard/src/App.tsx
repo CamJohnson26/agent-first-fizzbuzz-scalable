@@ -7,7 +7,6 @@ import {
   Terminal,
   CheckCircle,
   XCircle,
-  CheckCircle2,
 } from 'lucide-react';
 import {
   Button,
@@ -21,29 +20,25 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@fizzbuzz/ui';
-import { NPSFeedback } from './components/NPSFeedback.js';
+import { 
+  HealthResponse, 
+  ComputeResponse, 
+  RangeResponse, 
+  AnalyticsStats, 
+  FizzBuzzEngine 
+} from '@fizzbuzz/types';
 
 export default function App() {
-  const [health, setHealth] = useState<{
-    status: string;
-    timestamp: string;
-  } | null>(null);
+  const [health, setHealth] = useState<HealthResponse | null>(null);
   const [loadingHealth, setLoadingHealth] = useState(false);
   const [computeValue, setComputeValue] = useState<number>(15);
   const [computeResult, setComputeResult] = useState<string | null>(null);
   const [rangeStart, setRangeStart] = useState<number>(1);
   const [rangeEnd, setRangeEnd] = useState<number>(15);
   const [rangeResults, setRangeResults] = useState<string[]>([]);
-  const [engine, setEngine] = useState<'js' | 'rust' | 'lean'>('js');
+  const [engine, setEngine] = useState<FizzBuzzEngine>('js');
   const [error, setError] = useState<string | null>(null);
-  const [stats, setStats] = useState<{
-    totalLogs: number;
-    logsByService: Record<string, number>;
-  } | null>(null);
-  const [computeCount, setComputeCount] = useState(0);
-  const [showNPS, setShowNPS] = useState(false);
-  const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
-  const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
+  const [stats, setStats] = useState<AnalyticsStats | null>(null);
 
   const API_BASE = 'http://localhost:3000';
   const ANALYTICS_BASE = 'http://localhost:3001';
@@ -53,7 +48,7 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/health`);
-      const data = await res.json();
+      const data = (await res.json()) as HealthResponse;
       setHealth(data);
     } catch (_err) {
       console.error('Failed to fetch health:', _err);
@@ -66,7 +61,7 @@ export default function App() {
   const fetchStats = async () => {
     try {
       const res = await fetch(`${ANALYTICS_BASE}/stats`);
-      const data = await res.json();
+      const data = (await res.json()) as AnalyticsStats;
       setStats(data);
     } catch (_err) {
       console.error('Failed to fetch stats:', _err);
@@ -84,14 +79,9 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/compute/${computeValue}?engine=${engine}`);
-      const data = await res.json();
+      const data = (await res.json()) as ComputeResponse & { error?: string };
       if (res.ok) {
         setComputeResult(data.result);
-        const nextCount = computeCount + 1;
-        setComputeCount(nextCount);
-        if (nextCount >= 3 && !hasSubmittedNPS) {
-          setShowNPS(true);
-        }
       } else {
         setError(data.error || 'Failed to compute');
       }
@@ -104,50 +94,19 @@ export default function App() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/range?start=${rangeStart}&end=${rangeEnd}&engine=${engine}`);
-      const data = await res.json();
+      const data = (await res.json()) as RangeResponse & { error?: string | any[] };
       if (res.ok) {
         setRangeResults(data.results);
-        const nextCount = computeCount + 1;
-        setComputeCount(nextCount);
-        if (nextCount >= 3 && !hasSubmittedNPS) {
-          setShowNPS(true);
-        }
       } else {
         setError(
           Array.isArray(data.error)
-            ? data.error[0].message
+            ? (data.error[0] as any).message
             : data.error || 'Failed to compute range',
         );
       }
     } catch (_err) {
       setError('Connection refused. Is the web-server running?');
     }
-  };
-
-  const handleNPSSubmit = async (score: number, comment: string) => {
-    setShowNPS(false);
-    setHasSubmittedNPS(true);
-    try {
-      await fetch(`${ANALYTICS_BASE}/api/logs`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service: 'web-dashboard',
-          message: 'NPS Submission',
-          level: 'info',
-          metadata: { score, comment },
-        }),
-      });
-      setNpsFeedbackSent(true);
-      setTimeout(() => setNpsFeedbackSent(false), 5000);
-    } catch (_err) {
-      console.error('Failed to submit NPS:', _err);
-    }
-  };
-
-  const handleNPSDismiss = () => {
-    setShowNPS(false);
-    setHasSubmittedNPS(true); // Don't bug the user again in this session
   };
 
   return (
@@ -168,7 +127,7 @@ export default function App() {
               <select 
                 id="engine-select"
                 value={engine}
-                onChange={(e) => setEngine(e.target.value as 'js' | 'rust' | 'lean')}
+                onChange={(e) => setEngine(e.target.value as FizzBuzzEngine)}
                 className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
               >
                 <option value="js">JavaScript (Standard)</option>
@@ -208,14 +167,6 @@ export default function App() {
             <XCircle className="w-4 h-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        {npsFeedbackSent && (
-          <Alert variant="success" className="mb-8 border-primary bg-primary/5 text-primary">
-            <CheckCircle2 className="w-4 h-4" />
-            <AlertTitle>Thank you!</AlertTitle>
-            <AlertDescription>Your feedback has been submitted successfully.</AlertDescription>
           </Alert>
         )}
 
@@ -414,10 +365,6 @@ export default function App() {
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-muted-foreground text-sm border-t border-border mt-12">
         <p>© 2026 FizzBuzz Scalable Enterprise. All Rights Reserved.</p>
       </footer>
-
-      {showNPS && (
-        <NPSFeedback onSubmit={handleNPSSubmit} onDismiss={handleNPSDismiss} />
-      )}
     </div>
   );
 }

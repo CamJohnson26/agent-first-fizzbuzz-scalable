@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@fizzbuzz/config": "workspace:*",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
     "@testing-library/dom": "^10.4.1",
@@ -36,6 +37,7 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
+    "@fizzbuzz/types": "workspace:*",
     "@fizzbuzz/ui": "workspace:*",
     "clsx": "^2.1.0",
     "framer-motion": "^12.38.0",

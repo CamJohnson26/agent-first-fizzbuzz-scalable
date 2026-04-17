@@ -6,7 +6,7 @@ This skill provides mandatory steps and templates for implementing features in t
 
 ### 1. Environment Verification
 - Check `.node-version` and ensure your environment matches. Run `nvm install` if necessary.
-- Use `pnpm` for package management (installing, adding dependencies) and `turbo` for task execution (build, test, lint).
+- Use `pnpm` for all package operations.
 
 ### 2. Isolation & Conflict Prevention
 - **Git Worktree**: Always create a new `git worktree` before starting work.
@@ -27,10 +27,10 @@ This skill provides mandatory steps and templates for implementing features in t
 ### 6. Full Implementation
 - Do not skip tests, documentation, or proper project structuring.
 - Always use the latest stable LTS versions of packages.
-- Ensure the project builds (`turbo build`) and tests pass (`turbo test`) before finishing.
+- Ensure the project builds (`pnpm build`) and tests pass (`pnpm test`) before finishing.
 
 ### 7. Completion & Commitment
-- **Mandatory Commit, Merge & Push**: Always commit your work, merge to `main`, and push to the remote at the end of the session.
+- **Mandatory Commit**: Always commit your work at the end of the session.
 - **Co-authored-by**: Include the `Co-authored-by: Junie <junie@jetbrains.com>` trailer in your commit message.
 - If a critical bug was fixed, write an **RCA** (Root Cause Analysis) in `RCAs/`.
 

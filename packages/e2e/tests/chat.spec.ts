@@ -6,29 +6,23 @@ test.describe('FizzBuzz Chat', () => {
     await page.goto('http://localhost:5183/agent-first-fizzbuzz-scalable/');
   });
 
-  test('should be open by default', async ({ page }) => {
-    // By default, the chat window should be visible
-    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
+  test('should be closed by default', async ({ page }) => {
+    // By default, the chat window should not be visible
+    await expect(page.getByText('FizzBuzz Chat')).not.toBeVisible();
   });
 
-  test('should toggle when clicking the toggle button', async ({ page }) => {
-    // Check if the chat window is visible
-    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
-
-    // Click the toggle button to close the chat
+  test('should open when clicking the toggle button', async ({ page }) => {
+    // Click the toggle button to open the chat
     await page.getByTestId('chat-toggle').click();
     
-    // Check if the chat window is now hidden
-    await expect(page.getByText('FizzBuzz Chat')).not.toBeVisible();
-
-    // Click again to open
-    await page.getByTestId('chat-toggle').click();
+    // Check if the chat window is now visible
     await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
+    await expect(page.getByText(/How can I help you scale/i)).toBeVisible();
   });
 
   test('should send a message and receive a response', async ({ page }) => {
-    // Chat is already open by default
-    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
+    // Open the chat
+    await page.getByTestId('chat-toggle').click();
     
     // Type a message into the input
     const input = page.getByTestId('chat-input');
@@ -45,7 +39,8 @@ test.describe('FizzBuzz Chat', () => {
   });
 
   test('should close when clicking the close button', async ({ page }) => {
-    // Chat is already open by default
+    // Open the chat first
+    await page.getByTestId('chat-toggle').click();
     await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
     
     // Click the close button

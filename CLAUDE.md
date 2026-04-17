@@ -19,7 +19,7 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
 5. **Agent Integrity**: If an execution environment does not meet project requirements, the agent should attempt to upgrade the environment or clearly document the discrepancy, rather than modifying the project to match the inferior environment.
 6. **Conflict Prevention & Git Strategy**:
    - **Git Worktrees**: Agents MUST always create a new `git worktree` before doing any work to minimize merge conflicts and ensure clean session isolation.
-   - **Mandatory Code Commit & Push**: Agents MUST always commit their work, merge it to the `main` branch, and push to the remote repository when finished at the end of every session. Uncommitted or unpushed work is not permitted as it blocks other agents and causes state desynchronization.
+   - **Mandatory Code Commit**: Agents MUST always commit their work when finished at the end of every session. Uncommitted work is not permitted as it blocks other agents and causes state desynchronization.
    - **Branch Isolation**: When possible, work on dedicated feature branches before merging to `main`.
 
 ## Ticketing System Usage
@@ -120,9 +120,9 @@ It runs on every push to `main` and pull request.
 
 ### Local Build Commands
 - Environment setup: `nvm install && nvm use` (uses `.nvmrc`)
-- Full project build: `turbo build`
-- Full project test: `turbo test`
-- Filtered build: `turbo build --filter <package-name>`
+- Full project build: `pnpm build`
+- Full project test: `pnpm test`
+- Filtered build: `pnpm --filter <package-name> build`
 
 ## Code Conventions
 

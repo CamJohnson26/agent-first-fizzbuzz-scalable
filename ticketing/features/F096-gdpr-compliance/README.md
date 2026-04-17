@@ -1,12 +1,11 @@
-# Feature: GDPR Compliance
+# Feature: GDPR compliance
 
 ## Description
-Implement GDPR compliance for the marketing landing page, including a cookie consent banner and links to privacy information.
+Ensure the system meets data protection and privacy standards.
 
 ## Status
-Done
+Proposed
 
 ## Next Features (Todo)
-- [x] Cookie consent banner component
-- [x] Privacy policy page/section
-- [x] Integration with marketing landing page
+- [ ] Define requirements for GDPR compliance
+- [ ] Implement initial prototype

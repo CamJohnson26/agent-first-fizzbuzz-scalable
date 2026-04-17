@@ -2,7 +2,7 @@
   {
     "id": "adr-001-ticketing-system-structure",
     "title": "Why We Ditched Jira: Our Secret Weapon for 10x Team Velocity",
-    "excerpt": "Discover how our custom 'Agent-First' ticketing system enables lightning-fast development and seamless AI-human collaboration.",
+    "excerpt": "Discover how our custom 'Agent-First' ticketing system enables rapid development and seamless AI collaboration.",
     "category": "Engineering",
     "type": "ADR",
     "status": "Accepted",
@@ -21,7 +21,7 @@
   {
     "id": "adr-002-monorepo-foundation",
     "title": "One Repo to Rule Them All: How We Built the World's Fastest Monorepo",
-    "excerpt": "Inside the strategic decision to use Turborepo and pnpm for unmatched performance, zero-latency builds, and infinite scalability.",
+    "excerpt": "Inside our strategic decision to use Turborepo and pnpm for unmatched performance and scalability.",
     "category": "Engineering",
     "type": "ADR",
     "status": "Accepted",
@@ -39,8 +39,8 @@
   },
   {
     "id": "adr-003-primary-language-selection",
-    "title": "TypeScript vs. The World: Why We Bet Everything on Type-Safe Excellence",
-    "excerpt": "How standardizing on TypeScript across our entire stack ensures 100% logic fidelity and sub-millisecond global execution.",
+    "title": "TypeScript vs. The World: Why We Bet Everything on One Language",
+    "excerpt": "How standardizing on TypeScript across our entire stack ensures 100% fidelity and sub-millisecond latency.",
     "category": "Engineering",
     "type": "ADR",
     "status": "Accepted",
@@ -59,7 +59,7 @@
   {
     "id": "adr-004-fizzbuzz-chat-implementation",
     "title": "Building the Chatbot of Your Dreams with Zero Latency",
-    "excerpt": "How we integrated high-performance interactive features into our marketing engine in record time using modern React patterns.",
+    "excerpt": "How we integrated high-performance interactive features into our marketing site in record time.",
     "category": "Engineering",
     "type": "ADR",
     "status": "Accepted",
@@ -77,8 +77,8 @@
   },
   {
     "id": "rfc-001-monorepo-foundation",
-    "title": "The Monorepo Showdown: Why Turborepo is the Only Choice for Winners",
-    "excerpt": "Exploring the path to monorepo nirvana and why Turborepo is the secret sauce for our high-velocity engineering team.",
+    "title": "The Monorepo Showdown: Turborepo vs. The Rest",
+    "excerpt": "Exploring the different paths to monorepo nirvana and why Turborepo came out on top.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -96,8 +96,8 @@
   },
   {
     "id": "rfc-002-monorepo-improvements",
-    "title": "Scaling to Infinity: Our Blueprint for Flawless Package Management",
-    "excerpt": "How to manage 100+ packages with zero friction using our revolutionary centralized configuration strategy.",
+    "title": "Scaling to Infinity: Our Blueprint for Perfect Package Management",
+    "excerpt": "How to manage 100+ packages without losing your mind using our centralized configuration strategy.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -115,8 +115,8 @@
   },
   {
     "id": "rfc-003-backend-architecture",
-    "title": "Streaming Success: Handling Billions of Operations Without Breaking a Sweat",
-    "excerpt": "Deep dive into our elite backend architecture and how we use streaming to deliver sub-millisecond global logic at scale.",
+    "title": "Streaming Success: How We Handle Billions of Operations Without Breaking a Sweat",
+    "excerpt": "Deep dive into our backend architecture and how we use streaming to deliver sub-millisecond global logic.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -134,8 +134,8 @@
   },
   {
     "id": "rfc-004-frontend-architecture",
-    "title": "Beyond useState: Architecting React for Enterprise-Grade Dominance",
-    "excerpt": "Our journey to the perfect frontend architecture using shared UI libraries and high-performance state management.",
+    "title": "Beyond useState: Scaling React for Enterprise-Grade Dashboards",
+    "excerpt": "Our journey to the perfect frontend architecture using shared UI libraries and modern state management.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -153,8 +153,8 @@
   },
   {
     "id": "rfc-005-devops-infrastructure",
-    "title": "Zero-Downtime Deployments: Our Masterclass in DevOps Excellence",
-    "excerpt": "How we ship to the edge in seconds using hyper-optimized Docker images and integrated observability.",
+    "title": "Zero-Downtime Deployments: Our DevOps Masterclass",
+    "excerpt": "How we ship to the edge in seconds using optimized Docker images and integrated observability.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -172,8 +172,8 @@
   },
   {
     "id": "rfc-006-agent-optimizations",
-    "title": "The AI Revolution: Engineering a Codebase That Thinks Ahead",
-    "excerpt": "Agent-First engineering: The new frontier of software development and how we're leading the charge into the AI era.",
+    "title": "The AI Revolution: How We Built a Codebase That Writes Itself",
+    "excerpt": "Agent-First engineering: The new frontier of software development and how we're leading the charge.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -191,8 +191,8 @@
   },
   {
     "id": "rfc-007-agent-first-scalable-colors",
-    "title": "The Psychology of Color: Why Our UI Boosts Your Productivity",
-    "excerpt": "Designing for the AI era: How our emerald and cyan palette creates a high-performance environment for humans and machines.",
+    "title": "Psychology of Color: Why Our UI Makes You More Productive",
+    "excerpt": "Designing for the AI era: Why we chose emerald-500 and cyan-500 for our high-performance identity.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -211,7 +211,7 @@
   {
     "id": "rfc-008-security-scanner-integration",
     "title": "Sleep Better at Night: Our Unbreakable Security Pipeline",
-    "excerpt": "How we integrated automated security scanning to annihilate vulnerabilities before they even reach production.",
+    "excerpt": "How we integrated automated security scanning to stop vulnerabilities before they even happen.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Proposed",
@@ -230,7 +230,7 @@
   {
     "id": "rfc-035-analytics-service",
     "title": "Data is the New Gold: Tracking Every Move in Our Distributed Engine",
-    "excerpt": "Building a real-time analytics powerhouse to monitor and optimize billions of logic executions across the globe.",
+    "excerpt": "Building a real-time analytics powerhouse to monitor billions of logic executions globally.",
     "category": "Engineering",
     "type": "RFC",
     "status": "Published",
@@ -248,8 +248,8 @@
   },
   {
     "id": "rca-001-node-version-mismatch",
-    "title": "The Midnight Meltdown: How a Single Version Bump Taught Us Everything",
-    "excerpt": "When upgrading fails: Hard-won lessons from a critical Node.js version mismatch incident and how we built immunity to it.",
+    "title": "The Midnight Meltdown: How a Single Version Bump Almost Broke Everything",
+    "excerpt": "When upgrading fails: Lessons learned from a critical Node.js version mismatch incident.",
     "category": "Company",
     "type": "RCA",
     "status": "Completed",
@@ -267,8 +267,8 @@
   },
   {
     "id": "rca-002-node-version-reversion-incident",
-    "title": "The Ghost in the Machine: Hunting Down a Production Regression",
-    "excerpt": "Inside the high-stakes investigation of a mysterious version reversion that briefly impacted our global deployment pipeline.",
+    "title": "The Ghost in the Machine: Tracking Down a Production Regression",
+    "excerpt": "Inside the investigation of a mysterious version reversion that briefly impacted our deployment pipeline.",
     "category": "Company",
     "type": "RCA",
     "status": "Published",
@@ -287,7 +287,7 @@
   {
     "id": "rca-003-github-actions-deployment-failure",
     "title": "When CI/CD Goes Dark: How We Recovered from a Deployment Nightmare",
-    "excerpt": "A deep dive into our GitHub Actions failure and the ironclad fixes we implemented to guarantee 100% global uptime.",
+    "excerpt": "A deep dive into our GitHub Actions failure and the permanent fixes we implemented to ensure 100% uptime.",
     "category": "Company",
     "type": "RCA",
     "status": "Published",
@@ -305,8 +305,8 @@
   },
   {
     "id": "rca-004-pnpm-lockfile-desynchronization",
-    "title": "Dependency Hell: How We Fixed Our Most Annoying CI Bottleneck",
-    "excerpt": "How pnpm lockfile desynchronization was slowing us down and the automated shield we built to stop it forever.",
+    "title": "Dependency Hell: How We Fixed Our Most Annoying CI Bug",
+    "excerpt": "How pnpm lockfile desynchronization was slowing us down and the automated solution we built to stop it.",
     "category": "Company",
     "type": "RCA",
     "status": "Published",
@@ -324,8 +324,8 @@
   },
   {
     "id": "rca-005-accidental-documentation-deletion",
-    "title": "Where Did It Go? The Day We Nearly Lost Our Brain Trust",
-    "excerpt": "A high-stakes lesson in git safety and why our automated backup protocols are the ultimate insurance policy for your logic.",
+    "title": "Where Did It Go? The Day We Accidentally Deleted Our Most Important Doc",
+    "excerpt": "A lesson in git safety and why automated backups are your best friend.",
     "category": "Company",
     "type": "RCA",
     "status": "Published",
@@ -343,8 +343,8 @@
   },
   {
     "id": "rca-007-test-services-failure",
-    "title": "Broken Tests, Unbreakable Resolve: Fixing the Foundation of Our Build System",
-    "excerpt": "How we debugged a critical failure in our service testing suite to build the most resilient development environment in the industry.",
+    "title": "Broken Tests, Broken Dreams: Fixing the Foundation of Our Build System",
+    "excerpt": "How we debugged a critical failure in our service testing suite and improved our local development workflow.",
     "category": "Company",
     "type": "RCA",
     "status": "Resolved.",
@@ -363,7 +363,7 @@
   {
     "id": "rca-008-node-25-corepack-unbundling",
     "title": "Node.js 25 Broke Our Builds! Here's the Fix You Need Now",
-    "excerpt": "Solving the 'corepack' mystery: How we conquered the latest Node.js runtime challenge and kept our 100% uptime promise.",
+    "excerpt": "Solving the 'corepack: not found' mystery and how to properly enable pnpm on the latest Node.js runtime.",
     "category": "Company",
     "type": "RCA",
     "status": "Resolved.",
@@ -381,8 +381,8 @@
   },
   {
     "id": "rca-009-eslint-types-stub-error",
-    "title": "The TypeScript Error from Hell (And the One-Line Fix)",
-    "excerpt": "Why missing type definitions were stalling our builds and how we engineered a lightning-fast resolution.",
+    "title": "The TypeScript Error from Hell (and the One-Line Fix)",
+    "excerpt": "Why missing type definitions for eslint__js were breaking our builds and how version 9 changed everything.",
     "category": "Company",
     "type": "RCA",
     "status": "Resolved.",
@@ -401,7 +401,7 @@
   {
     "id": "rca-011-marketing-site-docker-404-and-test-failures",
     "title": "Missing in Action: Solving the Mystery of the 404 Landing Page",
-    "excerpt": "How a Docker configuration oversight briefly took our site offline—and the permanent safety nets we've built to ensure it never happens again.",
+    "excerpt": "How a Docker configuration oversight briefly took our marketing site offline (and our plan to never let it happen again).",
     "category": "Company",
     "type": "RCA",
     "status": "Completed",
@@ -420,7 +420,7 @@
   {
     "id": "rca-012-tailwind-styles-not-applying",
     "title": "The Day the UI Disappeared: Fixing Our Broken CSS Pipeline",
-    "excerpt": "How a missing Vite plugin and silent warnings led to a brief styling disaster—and how we engineered a permanent recovery.",
+    "excerpt": "How a missing Vite plugin and silent warnings led to an unstyled disaster (and how we fixed it).",
     "category": "Company",
     "type": "RCA",
     "status": "Completed",
@@ -439,7 +439,7 @@
   {
     "id": "rca-013-linter-broken-on-constant-binary-expressions",
     "title": "Why Your Linter is Right (Even When It's Annoying)",
-    "excerpt": "How a 'constant binary expression' error helped us reach a new level of code quality and architectural robustness.",
+    "excerpt": "How a 'constant binary expression' error helped us write cleaner, more robust test code.",
     "category": "Company",
     "type": "RCA",
     "status": "Completed",

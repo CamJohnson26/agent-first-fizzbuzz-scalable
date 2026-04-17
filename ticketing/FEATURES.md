@@ -59,8 +59,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F051 | React Server Components | Implement React Server Components. | Proposed |
 | F052 | Tailwind CSS for Marketing | Update the marketing page style to use Tailwind CSS. | Done |
 | F053 | Architectural Recommendations | Create recommendations for project architecture improvements. | Done |
-| F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Proposed |
-| F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Proposed |
+| F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Done |
+| F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Done |
 | F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | Done |
 | F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Proposed |
 | F058 | Global Error Handling | Centralized middleware and custom error classes for consistent API responses. | Proposed |
@@ -101,7 +101,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F093 | Blockchain option | Store FizzBuzz results on a decentralized ledger. | Proposed |
 | F094 | Service worker and PWA | Enable offline support and installable application features. | Proposed |
 | F095 | Trained model for fizzbuzz | A machine learning model to predict FizzBuzz results. | Proposed |
-| F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Done |
+| F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Proposed |
 | F097 | Redis caching layer | Add Redis for high-performance result caching. | Proposed |
 | F098 | Event queue | Implement an event-driven architecture using RabbitMQ or Kafka. | Proposed |
 | F099 | Virtual Machine for better isolation | Run computations in a dedicated VM for security. | Proposed |
@@ -109,14 +109,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
 | F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Proposed |
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
-| F104 | Survey popups | Gather user feedback through integrated survey components. | Done |
+| F104 | Survey popups | Gather user feedback through integrated survey components. | Proposed |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
-| F106 | [BUG] Security - Update Vite and esbuild | Fix moderate security vulnerabilities in vite and esbuild. | Proposed |
-| F107 | [BUG] Stability - Range Computation Limit | Add protection against large ranges to prevent OOM/DoS. | Proposed |
-| F108 | [BUG] UI/UX - Numeric Input NaN Handling | Handle empty numeric inputs gracefully in the dashboard. | Proposed |
-| F109 | Architecture - Env Configurable API URLs | Use environment variables for API endpoints in the dashboard. | Proposed |
-| F110 | Code Quality - Remove 'any' types | Fix lint warnings by replacing 'any' with proper types. | Proposed |
-| F111 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | In Progress |
 
 ## Next Features
 
@@ -167,8 +161,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] React Server Components (F051)
 - [ ] Tailwind CSS for Marketing (F052)
 - [x] Architectural Recommendations (F053)
-- [ ] Centralized Configuration (F054)
-- [ ] Shared Type Definitions (F055)
+- [x] Centralized Configuration (F054)
+- [x] Shared Type Definitions (F055)
 - [x] Standardized Workspace Scripts (F056)
 - [ ] Backend Dependency Injection (F057)
 - [ ] Global Error Handling (F058)
@@ -209,7 +203,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Blockchain option (F093)
 - [ ] Service worker and PWA (F094)
 - [ ] Trained model for fizzbuzz (F095)
-- [x] GDPR compliance (F096)
+- [ ] GDPR compliance (F096)
 - [ ] Redis caching layer (F097)
 - [ ] Event queue (F098)
 - [ ] Virtual Machine for better isolation (F099)
@@ -217,10 +211,5 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Multiregion support (F101)
 - [ ] Deploy our application to Vercel (F102)
 - [ ] Mine monero on the user's machine (F103)
-- [x] Survey popups (F104)
+- [ ] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
-- [ ] [BUG] Security - Update Vite and esbuild (F106)
-- [ ] [BUG] Stability - Range Computation Limit (F107)
-- [ ] [BUG] UI/UX - Numeric Input NaN Handling (F108)
-- [ ] Architecture - Env Configurable API URLs (F109)
-- [ ] Code Quality - Remove 'any' types (F110)
