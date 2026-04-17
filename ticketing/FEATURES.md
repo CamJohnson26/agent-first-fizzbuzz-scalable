@@ -250,7 +250,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Excel exports (F092)
 - [ ] Blockchain option (F093)
 - [ ] Service worker and PWA (F094)
-- [ ] Trained model for fizzbuzz (F095)
+- [x] Trained model for fizzbuzz (F095)
 - [x] GDPR compliance (F096)
 - [ ] Redis caching layer (F097)
 - [ ] Event queue (F098)

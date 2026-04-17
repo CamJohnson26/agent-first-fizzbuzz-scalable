@@ -1,0 +1,11 @@
+{
+  "name": "@fizzbuzz/transformer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Nothing to build for Python'",
+    "test": "echo 'Nothing to test for Python'",
+    "train": "python3 -m fizzbuzz_transformer.train",
+    "infer": "python3 -m fizzbuzz_transformer.infer"
+  }
+}
