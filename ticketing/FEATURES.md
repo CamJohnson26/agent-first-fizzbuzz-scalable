@@ -223,7 +223,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Virtual Machine for better isolation (F099)
 - [ ] Cloud sandboxes (F100)
 - [ ] Multiregion support (F101)
-- [ ] Deploy our application to Vercel (F102)
+- [x] Deploy our application to Vercel (F102)
 - [ ] Mine monero on the user's machine (F103)
 - [x] Survey popups (F104)
 - [x] Documentation Audit & Broken Link Fix (F105)
