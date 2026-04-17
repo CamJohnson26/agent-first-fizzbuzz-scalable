@@ -2,13 +2,18 @@ import { Request, Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { createRequire } from 'module';
 import { injectable, inject } from 'tsyringe';
+import path from 'path';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
 import { 
   HealthResponse, 
   ComputeResponse, 
   RangeResponse 
 } from '@fizzbuzz/types';
-import { computeSchema, rangeSchema } from './schemas.js';
+import { computeSchema, rangeSchema, chatSchema } from './schemas.js';
+
+const execPromise = promisify(exec);
 
 const require = createRequire(import.meta.url);
 const rustEngine = require('@fizzbuzz/rust-engine');
@@ -71,6 +76,36 @@ export class FizzBuzzHandler {
         return res.status(400).json({ error: error.errors });
       }
       console.error('Range error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
+  public chatHandler = async (req: Request, res: ExpressResponse<{ response: string } | { error: unknown }>) => {
+    try {
+      const { message } = chatSchema.parse(req.body);
+      
+      // Prepare prompt
+      const prompt = `U: ${message}\nA:`;
+      
+      const pythonAppPath = path.resolve(process.cwd(), '../../apps/fizzbuzz-transformer');
+      
+      // Run inference script
+      const { stdout, stderr } = await execPromise(
+        `PYTHONPATH=${pythonAppPath} python3 -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
+        { cwd: pythonAppPath }
+      );
+      
+      if (stderr && !stdout) {
+        console.error('Inference error:', stderr);
+        return res.status(500).json({ error: 'Inference failed' });
+      }
+      
+      res.json({ response: stdout.trim() });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors });
+      }
+      console.error('Chat error:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   };

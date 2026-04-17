@@ -24,7 +24,7 @@ To maintain a scalable and high-fidelity project, all agents must adhere to the 
    - **Direct Commits Prohibited**: Agents MUST NEVER commit directly to the `main` branch. All work must be done on feature branches.
    - **Branch Isolation**: Work on dedicated feature branches (e.g., `feature/FXXX-description`).
    - **PR Workflow**: When a task is complete, push your branch to origin and open a GitHub Pull Request using the `gh` command (e.g., `gh pr create --fill`).
-   - **Validation & Merging**: Ensure the full build (`turbo build`) and all tests (`turbo test`) pass. Agents MUST NOT merge their PRs locally. Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI requirements are met, or wait for human review.
+   - **Validation & Merging**: Ensure the full lint (`turbo lint`), build (`turbo build`), and all tests (`turbo test`) pass. Agents MUST NOT merge their PRs locally. Instead, use `gh pr merge --auto --merge` to schedule an automatic merge once CI requirements are met, or wait for human review.
    - **Review Feedback**: Agents are permitted to review and respond to their own review feedback to ensure high quality and resolve any lingering issues before final merge.
 
 ## Build and Deployment
@@ -38,6 +38,7 @@ It runs on every push to `main` and pull request.
 
 ### Local Build Commands
 - Environment setup: `nvm install && nvm use` (uses `.nvmrc`)
+- Full project lint: `turbo lint`
 - Full project build: `turbo build`
 - Full project test: `turbo test`
 - Filtered build: `turbo build --filter <package-name>`

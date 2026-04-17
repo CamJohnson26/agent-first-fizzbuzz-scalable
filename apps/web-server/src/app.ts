@@ -5,9 +5,11 @@ import cors from 'cors';
 import { FIZZ_BUZZ_CONFIG, DEFAULT_CONFIG } from '@fizzbuzz/core-logic';
 import { FizzBuzzHandler } from './handlers.js';
 import { EventHandler } from './event-handlers.js';
+import { DatabaseService } from './database.js';
 
 // Register dependencies
 container.register(FIZZ_BUZZ_CONFIG, { useValue: DEFAULT_CONFIG });
+container.resolve(DatabaseService);
 const handlers = container.resolve(FizzBuzzHandler);
 const eventHandlers = container.resolve(EventHandler);
 
@@ -69,5 +71,8 @@ app.get('/range', handlers.rangeHandler);
 app.post('/events', eventHandlers.pushHandler);
 app.get('/events', eventHandlers.popHandler);
 app.get('/events/stats', eventHandlers.statsHandler);
+
+// FizzBuzz transformer chat endpoint
+app.post('/chat', handlers.chatHandler);
 
 export default app;

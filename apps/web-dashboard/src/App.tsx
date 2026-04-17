@@ -6,6 +6,7 @@ import {
   List,
   RefreshCw,
   Terminal,
+  Bot,
   CheckCircle,
   XCircle,
   CheckCircle2,
@@ -40,6 +41,7 @@ import {
   FizzBuzzEngine 
 } from '@fizzbuzz/types';
 import { exportResults, ExportFormat, ExportOrientation } from './utils/export';
+import { FizzBuzzChat } from './components/FizzBuzzChat';
 
 export default function App() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
@@ -513,6 +515,45 @@ export default function App() {
             </CardContent>
           </Card>
         </div>
+
+        {/* AI Assistant Section */}
+        <section className="mt-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-primary/10 text-primary rounded-lg">
+              <Bot className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-bold">FizzBuzz AI Assistant</h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <FizzBuzzChat apiBase={API_BASE} />
+            </div>
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Terminal className="w-5 h-5" />
+                    About the Model
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground space-y-4">
+                  <p>
+                    This assistant is powered by a custom-trained lightweight Transformer model (~0.8M parameters).
+                  </p>
+                  <p>
+                    It was trained specifically on FizzBuzz chat datasets to understand user queries and provide step-by-step reasoning.
+                  </p>
+                  <div className="bg-muted p-3 rounded-md font-mono text-xs">
+                    Architecture: Decoder-only Transformer<br/>
+                    Embeddings: 128<br/>
+                    Layers: 4<br/>
+                    Heads: 4
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center text-muted-foreground text-sm border-t border-border mt-12">

@@ -5,6 +5,7 @@ A robust, enterprise-grade web server providing FizzBuzz computation services vi
 ## Features
 
 - **Multi-Engine Execution**: Seamlessly switch between TypeScript, Rust (WASM), and Lean 4 engines.
+- **Local Persistence**: Integrated SQLite database using `better-sqlite3` for local data storage and future event queuing.
 - **RESTful API**: Simple endpoints for single and range computations with validation.
 - **Log Forwarding**: Asynchronously sends request metadata to the `analytics-service` for observability.
 - **Health Checks**: Standard `/health` endpoint for monitoring and orchestration.
@@ -70,3 +71,4 @@ Computes FizzBuzz for a range of numbers.
 |----------|-------------|---------|
 | `PORT` | The port the server listens on | `3000` |
 | `ANALYTICS_SERVICE_URL` | Endpoint for log forwarding | `http://analytics-service:3001/api/logs` |
+| `DATABASE_PATH` | Path to the SQLite database file | `data/fizzbuzz.db` |

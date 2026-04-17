@@ -15,6 +15,12 @@ This represents a significant milestone in the evolution of software development
 
 ---
 
+## 🔄 Replacing Legacy SaaS
+
+Are you tired of bloated, expensive, and unreliable legacy FizzBuzz solutions? **Agent-First FizzBuzz Scalable** is the modern alternative designed to [replace legacy SaaS](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition) with a high-performance, formally verified, and autonomous engine.
+
+---
+
 ## 🌐 Live Demo
 
 The **Marketing Landing Page** is automatically deployed to **Vercel**.
@@ -68,6 +74,7 @@ graph TD
 
         subgraph Service_Layer [Service Layer]
             WS[Web Server - Express]
+            DB[(SQLite - Persistence)]
             AS[Analytics Service - Express]
             LS[Lean Service - Express/Lean 4]
         end
@@ -77,6 +84,9 @@ graph TD
         subgraph Generalized_Engine [Generalized Rule Engine]
             CL[Core Logic - TS]
             RE[Rust Engine - WASM]
+        end
+        subgraph Machine_Learning [AI & Machine Learning]
+            TF[FizzBuzz Transformer - Python/PyTorch]
         end
         subgraph Assurance_Layer [Assurance & Precision]
             ASV[Arithmetic Service]
@@ -89,8 +99,10 @@ graph TD
         DI[tsyringe Container]
     end
 
-    WD -- REST API --> WS
+    WD -- REST API/Chat --> WS
     LP -- Docs --> WS
+    WS -- Persistence --> DB
+    WS -- Inference --> TF
     WS -- Resolves --> DI
     DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
@@ -106,7 +118,7 @@ graph TD
 
 - **`/apps`**:
   - `web-dashboard`: User-facing monitoring and computation interface with data export capabilities.
-  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines.
+  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines, integrated with **SQLite** for local persistence.
   - `lean-service`: Formal verification service wrapping the Lean 4 binary for high-fidelity proofs.
   - `analytics-service`: Centralized log collection and metrics engine for real-time observability.
   - `marketing-landing-page`: High-conversion project showcase with integrated blog and GDPR compliance.

@@ -132,6 +132,33 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F124 | Generalized FizzBuzz ADRs | Research and document the architectural shift to a generalized, scalable, and resilient rule evaluation system. | Done |
 | F125 | xlsx Security Upgrade | High severity security fix for SheetJS (CVE-2023-30533, CVE-2024-22363). | Done |
 | F126 | Favicon Synchronization | Sync favicons with marketing logo and colorize for each app. | In Progress |
+| F127 | Implement RBAC | Role-Based Access Control for secure system management. | Proposed |
+| F128 | Python package | Official Python package for easy FizzBuzz integration. | Proposed |
+| F129 | Go package | Official Go package for high-performance integrations. | Proposed |
+| F130 | CRDT | Conflict-free Replicated Data Types for distributed state. | Proposed |
+| F131 | State machine | Robust state machine for complex rule evaluations. | Proposed |
+| F132 | Other algorithm implementations | Support for various algorithmic patterns and extensions. | Proposed |
+| F133 | Status Page | Public status page for monitoring system health. | Proposed |
+| F134 | Captchas | Integrated captcha support to prevent bot abuse. | Proposed |
+| F135 | Multiuser support (join my session) | Collaborative real-time sessions for shared computation. | Proposed |
+| F136 | Deep link to blog posts | Enhanced navigation and SEO with deep linking. | Proposed |
+| F137 | XML | Support for XML data formats and transformation. | Proposed |
+| F138 | End to end encryption of fizz buzz | Secure end-to-end encryption for sensitive computations. | Proposed |
+| F139 | Error correcting codes | Implementation of ECC for reliable data transmission. | Proposed |
+| F140 | zkSnarks | Zero-knowledge proofs for privacy-preserving verification. | Proposed |
+| F141 | Anti distillation | Techniques to prevent code distillation and tampering. | Proposed |
+| F142 | DRM | Digital Rights Management for proprietary algorithms. | Proposed |
+| F143 | Anti piracy | Robust measures to protect against unauthorized usage. | Proposed |
+| F144 | Our own queuing system built on Turso | Custom, scalable queuing solution leveraging Turso. | Proposed |
+| F145 | Turso | Native integration with Turso for edge database capabilities. | Proposed |
+| F146 | Play DOOM | Embedded DOOM support for system stress testing and fun. | Proposed |
+| F147 | What's the Buzz: Tip of the day | Dynamic "Tip of the Day" component for user engagement. | Proposed |
+| F148 | Graphql API | Modern GraphQL endpoint for flexible data querying. | Proposed |
+| F149 | gRPC calls | High-performance gRPC support for inter-service communication. | Proposed |
+| F150 | Embedding vectors for each number | AI-ready vector embeddings for advanced number analysis. | Proposed |
+| F151 | Microservices | Architecture transition to specialized microservices. | Proposed |
+| F152 | Elastic Search | Advanced search and indexing capabilities with Elasticsearch. | Proposed |
+| F153 | Sharding | Database sharding for horizontal scaling and performance. | Proposed |
 
 ## Next Features
 
@@ -223,7 +250,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Excel exports (F092)
 - [ ] Blockchain option (F093)
 - [ ] Service worker and PWA (F094)
-- [ ] Trained model for fizzbuzz (F095)
+- [x] Trained model for fizzbuzz (F095)
 - [x] GDPR compliance (F096)
 - [ ] Redis caching layer (F097)
 - [ ] Event queue (F098)
@@ -254,3 +281,31 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Dashboard Navigation Improvements (F123)
 - [x] Generalized FizzBuzz ADRs (F124)
 - [x] xlsx Security Upgrade (F125)
+- [ ] Favicon Synchronization (F126)
+- [ ] Implement RBAC (F127)
+- [ ] Python package (F128)
+- [ ] Go package (F129)
+- [ ] CRDT (F130)
+- [ ] State machine (F131)
+- [ ] Other algorithm implementations (F132)
+- [ ] Status Page (F133)
+- [ ] Captchas (F134)
+- [ ] Multiuser support (join my session) (F135)
+- [ ] Deep link to blog posts (F136)
+- [ ] XML (F137)
+- [ ] End to end encryption of fizz buzz (F138)
+- [ ] Error correcting codes (F139)
+- [ ] zkSnarks (F140)
+- [ ] Anti distillation (F141)
+- [ ] DRM (F142)
+- [ ] Anti piracy (F143)
+- [ ] Our own queuing system built on Turso (F144)
+- [ ] Turso (F145)
+- [ ] Play DOOM (F146)
+- [ ] What's the Buzz: Tip of the day (F147)
+- [ ] Graphql API (F148)
+- [ ] gRPC calls (F149)
+- [ ] Embedding vectors for each number (F150)
+- [ ] Microservices (F151)
+- [ ] Elastic Search (F152)
+- [ ] Sharding (F153)
