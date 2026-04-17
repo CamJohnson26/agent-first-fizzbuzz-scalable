@@ -34,7 +34,7 @@
     "tailwindcss": "^4.2.2",
     "typescript": "^5.4.0",
     "vite": "^8.0.8",
-    "vitest": "^1.4.0"
+    "vitest": "^4.1.4"
   },
   "dependencies": {
     "@fizzbuzz/types": "workspace:*",
