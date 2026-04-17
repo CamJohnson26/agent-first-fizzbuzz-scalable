@@ -50,14 +50,14 @@ describe('App', () => {
     expect(await screen.findByRole('heading', { level: 1, name: /Inside/i })).toBeDefined();
     
     // Check if blog posts are rendered
-    expect(screen.getByText(/Building for Scale/i)).toBeDefined();
+    expect(screen.getByText(/The Architecture of Speed/i)).toBeDefined();
     
     // Click a post
-    const postTitle = screen.getByText(/Building for Scale/i);
+    const postTitle = screen.getByText(/The Architecture of Speed/i);
     await user.click(postTitle);
     
     // Check if post content is rendered
-    expect(await screen.findByText(/The Monorepo Challenge/i)).toBeDefined();
+    expect(await screen.findByText(/Our Strategic Command Center/i)).toBeDefined();
     
     const backToAllPosts = screen.getByRole('button', { name: /Back to all posts/i });
     await user.click(backToAllPosts);

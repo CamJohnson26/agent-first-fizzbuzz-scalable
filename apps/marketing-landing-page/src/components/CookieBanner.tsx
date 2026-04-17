@@ -13,23 +13,39 @@ export function CookieBanner({ onAccept, onDecline, onPrivacyPolicyClick }: Cook
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
-      return () => clearTimeout(timer);
+    try {
+      const consent = typeof localStorage !== 'undefined' ? localStorage.getItem('cookie-consent') : null;
+      if (!consent) {
+        const timer = setTimeout(() => {
+          setIsVisible(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+      }
+    } catch (e) {
+      console.warn('LocalStorage not available', e);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('cookie-consent', 'accepted');
+      }
+    } catch (e) {
+      console.warn('LocalStorage not available', e);
+    }
     setIsVisible(false);
     onAccept();
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('cookie-consent', 'declined');
+      }
+    } catch (e) {
+      console.warn('LocalStorage not available', e);
+    }
     setIsVisible(false);
     onDecline();
   };
