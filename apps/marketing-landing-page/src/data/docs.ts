@@ -312,15 +312,36 @@ When an event occurs, FizzBuzz Scalable will send a \`POST\` request to your con
     category: 'Legal',
     content: `# Privacy Policy
 
+Last updated: April 16, 2026
+
 Your privacy is important to us. It is FizzBuzz Scalable's policy to respect your privacy regarding any information we may collect from you across our website.
 
 ## 1. Information We Collect
 
 ### Log Data
-When you visit our website, our servers may automatically log the standard data provided by your web browser.
+When you visit our website, our servers may automatically log the standard data provided by your web browser. It may include your device's Internet Protocol (IP) address, your browser type and version, the pages you visit, the time and date of your visit, the time spent on each page, and other details.
 
 ### Device Data
-We may also collect data about the device you're using to access our website.
+We may also collect data about the device you're using to access our website. This data may include the device type, operating system, unique device identifiers, device settings, and geo-location data.
+
+## 2. GDPR Compliance (General Data Protection Regulation)
+
+We are committed to complying with the GDPR. For users in the European Economic Area (EEA), we process your personal data based on your consent or our legitimate interests.
+
+### Your Rights under GDPR:
+- **Right to Access**: You can request copies of your personal data.
+- **Right to Rectification**: You can request that we correct any information you believe is inaccurate.
+- **Right to Erasure**: You can request that we erase your personal data under certain conditions.
+- **Right to Restrict Processing**: You can request that we restrict the processing of your personal data.
+- **Right to Data Portability**: You can request that we transfer the data that we have collected to another organization.
+
+## 3. Cookie Policy
+
+We use cookies to enhance your experience, analyze our traffic, and for security purposes. You can choose to accept or decline cookies through our cookie consent banner or your browser settings.
+
+## 4. Contact Us
+
+If you have any questions about our privacy practices or your personal information, please contact us at privacy@fizzbuzz-scalable.com.
 `
   },
   {

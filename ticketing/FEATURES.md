@@ -101,7 +101,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F093 | Blockchain option | Store FizzBuzz results on a decentralized ledger. | Proposed |
 | F094 | Service worker and PWA | Enable offline support and installable application features. | Proposed |
 | F095 | Trained model for fizzbuzz | A machine learning model to predict FizzBuzz results. | Proposed |
-| F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Proposed |
+| F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Done |
 | F097 | Redis caching layer | Add Redis for high-performance result caching. | Proposed |
 | F098 | Event queue | Implement an event-driven architecture using RabbitMQ or Kafka. | Proposed |
 | F099 | Virtual Machine for better isolation | Run computations in a dedicated VM for security. | Proposed |
@@ -203,7 +203,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Blockchain option (F093)
 - [ ] Service worker and PWA (F094)
 - [ ] Trained model for fizzbuzz (F095)
-- [ ] GDPR compliance (F096)
+- [x] GDPR compliance (F096)
 - [ ] Redis caching layer (F097)
 - [ ] Event queue (F098)
 - [ ] Virtual Machine for better isolation (F099)
