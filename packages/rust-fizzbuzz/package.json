@@ -7,6 +7,9 @@
   "scripts": {
     "build": "wasm-pack build --target nodejs --out-dir dist/node && rm -f dist/node/.gitignore dist/node/package.json"
   },
+  "devDependencies": {
+    "wasm-pack": "^0.13.1"
+  },
   "files": [
     "dist"
   ]
