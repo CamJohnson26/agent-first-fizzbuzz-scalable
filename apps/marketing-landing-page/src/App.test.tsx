@@ -70,20 +70,24 @@ describe('App', () => {
     expect(screen.getAllByText(/Gold Standard/i)).toBeDefined();
   });
 
-  it('opens "Coming Soon" modal when clicking relevant buttons', async () => {
+  it('redirects to dashboard when clicking relevant buttons', async () => {
     const user = userEvent.setup();
+    // @ts-ignore
+    const originalLocation = window.location;
+    // @ts-ignore
+    delete window.location;
+    // @ts-ignore
+    window.location = { ...originalLocation, href: '' };
+
     render(<App />);
     
     const startFreeTrialButtons = screen.getAllByRole('button', { name: /Coming Soon|Start Free Trial/i });
     await user.click(startFreeTrialButtons[0]);
     
-    const modalText = screen.getByText(/We're putting the finishing touches/i);
-    expect(modalText).toBeDefined();
+    expect(window.location.href).toBe('https://agent-first-fizzbuzz-scalable-web-d.vercel.app/');
     
-    const closeButton = screen.getByRole('button', { name: /Got it/i });
-    await user.click(closeButton);
-    
-    await waitForElementToBeRemoved(() => screen.queryByText(/We're putting the finishing touches/i));
+    // @ts-ignore
+    window.location = originalLocation;
   });
 
   it('has a Twitter link that points to #', () => {

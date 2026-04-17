@@ -124,6 +124,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F116 | Fix Vercel Deployment Runtime | Remove invalid vercel-node runtime from vercel.json files. | Done |
 | F117 | Document agent-browser Usage | Document the requirement for agents to use `npx agent-browser` for browsing websites. | Done |
 | F118 | Standardize Vercel Entry Points | Standardize all services to use `api/index.ts` and fix Vite base URL issues. | Done |
+| F119 | Dashboard Link & Crypto Disclosure | Update all Coming Soon links to point to the Dashboard and add crypto mining disclosure to Enterprise plans. | Done |
 
 ## Next Features
 
