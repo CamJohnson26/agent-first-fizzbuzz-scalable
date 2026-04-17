@@ -1,4 +1,4 @@
-# Feature: Dashboard Navigation Improvements (F122)
+# Feature: Dashboard Navigation Improvements (F123)
 
 ## Description
 Improve navigation between the marketing landing page and the web dashboard by updating button text and adding backlinks. Also includes fixes for E2E tests and UI improvements.

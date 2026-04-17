@@ -2,7 +2,7 @@
 
 - Date: 2026-04-16
 - Agent: Junie
-- Task: F122 Dashboard Navigation (Marketing page button text and Dashboard backlink)
+- Task: F123 Dashboard Navigation (Marketing page button text and Dashboard backlink)
 
 ## Objectives
 - [x] Update "Coming Soon" button to "Dashboard" on marketing landing page
