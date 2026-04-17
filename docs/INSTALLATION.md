@@ -20,14 +20,11 @@ cd agent-first-fizzbuzz-scalable
 
 ## Step 2: Environment Setup
 
-We recommend using a version manager like `nvm` or `fnm` to manage your Node.js version.
+We recommend using a version manager like `nvm` to manage your Node.js version.
 
 ```bash
 # Using NVM
 nvm install && nvm use
-
-# Using FNM
-fnm use --install-if-missing
 ```
 
 ## Step 3: Install Dependencies
