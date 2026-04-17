@@ -24,38 +24,36 @@ const forwardLog = async (message: string, metadata?: Record<string, unknown>) =
   }
 };
 
-export const createApp = () => {
-  const app = express();
-  app.use(cors());
-  app.use(express.json());
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-  // Logging middleware
-  app.use((req, res, next) => {
-    const start = Date.now();
-    res.on('finish', () => {
-      const duration = Date.now() - start;
-      forwardLog(`Request ${req.method} ${req.url}`, {
-        method: req.method,
-        url: req.url,
-        statusCode: res.statusCode,
-        duration: `${duration}ms`,
-      });
+// Logging middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    forwardLog(`Request ${req.method} ${req.url}`, {
+      method: req.method,
+      url: req.url,
+      statusCode: res.statusCode,
+      duration: `${duration}ms`,
     });
-    next();
   });
+  next();
+});
 
-  // Health check endpoint
-  app.get('/health', healthHandler);
+// Health check endpoint
+app.get('/health', healthHandler);
 
-  app.get('/', (req, res) => {
-    res.json({ status: 'ok', service: 'web-server' });
-  });
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', service: 'web-server' });
+});
 
-  // FizzBuzz compute endpoint
-  app.get('/compute/:n', computeHandler);
+// FizzBuzz compute endpoint
+app.get('/compute/:n', computeHandler);
 
-  // FizzBuzz range compute endpoint
-  app.get('/range', rangeHandler);
+// FizzBuzz range compute endpoint
+app.get('/range', rangeHandler);
 
-  return app;
-};
+export default app;

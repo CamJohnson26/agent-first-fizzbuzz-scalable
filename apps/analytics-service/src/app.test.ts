@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import { createApp } from './app';
+import app from './app.js';
 
 describe('Analytics Service', () => {
-  const app = createApp();
 
   it('should return health status', async () => {
     const response = await request(app).get('/health');

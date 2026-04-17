@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import { createApp } from './app.js';
+import app from './app.js';
 
 describe('Web Server Integration Tests', () => {
-  const app = createApp();
 
   it('GET /health should return 200 and ok status', async () => {
     const response = await request(app).get('/health');
