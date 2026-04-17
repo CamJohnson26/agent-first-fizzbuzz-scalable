@@ -1,8 +1,6 @@
 {
   "extends": "@fizzbuzz/config/typescript/node",
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "Node",
     "outDir": "./dist",
     "rootDir": "./src"
   },
