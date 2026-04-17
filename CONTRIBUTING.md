@@ -22,7 +22,7 @@ While the project is AI-driven, human oversight and contributions are welcome. H
 
 ## Prerequisites
 
-- **Node.js**: Check `.node-version` for the required version. Use `nvm` or `fnm` for management.
+- **Node.js**: Check `.node-version` for the required version. Use `nvm` for management.
 - **pnpm**: Our primary package manager.
 - **Docker**: For running services and tests. Ensure your user has permissions to the Docker daemon:
   ```bash

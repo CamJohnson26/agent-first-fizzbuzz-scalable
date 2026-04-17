@@ -10,6 +10,6 @@ Done
 - [x] Identify latest Node.js version (v25.9.0)
 - [x] Update .node-version to 25.9.0
 - [x] Update package.json engines.node requirement
-- [x] Update README.md with upgrade instructions (nvm/fnm)
+- [x] Update README.md with upgrade instructions (nvm)
 - [x] Update CLAUDE.md with environment sync policy
 - [x] Verify runtime enforcement script

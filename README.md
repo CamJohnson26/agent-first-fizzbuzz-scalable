@@ -131,7 +131,6 @@ Follow these steps to get the entire FizzBuzz ecosystem running on your local ma
 We recommend using a Node.js version manager to ensure you match our strict requirements.
 
 - **NVM**: `nvm install && nvm use` (uses `.nvmrc`)
-- **FNM**: `fnm use --install-if-missing`
 
 ### 2. Enable pnpm
 
