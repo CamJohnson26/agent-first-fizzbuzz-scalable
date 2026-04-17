@@ -53,7 +53,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
   const [computeCount, setComputeCount] = useState(0);
-  const [showNPS, setShowNPS] = useState(false);
+  const [showNPS, setShowNPS] = useState(true);
   const [hasSubmittedNPS, setHasSubmittedNPS] = useState(false);
   const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
@@ -137,9 +137,6 @@ export default function App() {
         setComputeResult(data.result);
         const nextCount = computeCount + 1;
         setComputeCount(nextCount);
-        if (nextCount >= 3 && !hasSubmittedNPS) {
-          setShowNPS(true);
-        }
       } else {
         setError(data.error || 'Failed to compute');
         setComputeResult(null);
@@ -228,7 +225,7 @@ export default function App() {
               size="sm"
               onClick={checkHealth}
               disabled={loadingHealth}
-              className="p-2 rounded-lg"
+              className="h-9 w-9 p-0 rounded-lg flex items-center justify-center"
             >
               <RefreshCw
                 className={`w-5 h-5 ${loadingHealth ? 'animate-spin' : ''}`}
@@ -417,9 +414,9 @@ export default function App() {
                     variant="primary"
                     size="lg"
                     onClick={handleRangeCompute}
-                    className="w-full shadow-lg shadow-primary/20 font-bold tracking-wide"
+                    className="w-full shadow-lg shadow-primary/20 font-bold tracking-wide gap-2"
                   >
-                    <RefreshCw className="w-5 h-5 mr-2" />
+                    <RefreshCw className="w-5 h-5" />
                     Generate Range Results
                   </Button>
                 </div>
@@ -486,9 +483,9 @@ export default function App() {
                     <Button 
                       onClick={() => exportResults(rangeResults, rangeStart, exportFormat, exportOrientation)}
                       variant="outline"
-                      className="w-full md:w-auto bg-surface"
+                      className="w-full md:w-auto bg-surface gap-2"
                     >
-                      <Download className="w-4 h-4 mr-2" />
+                      <Download className="w-4 h-4" />
                       Export Results
                     </Button>
                   </div>
