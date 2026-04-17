@@ -125,6 +125,10 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F117 | Document agent-browser Usage | Document the requirement for agents to use `npx agent-browser` for browsing websites. | Done |
 | F118 | Standardize Vercel Entry Points | Standardize all services to use `api/index.ts` and fix Vite base URL issues. | Done |
 | F120 | Marketing Site Improvements | Fix button padding, implement case studies, shuffle blog images, and open chat by default. | Done |
+<<<<<<< Updated upstream
+=======
+| F121 | Data Exports and UI Enhancements | Support exporting results to CSV, JSON, PDF, TXT, Excel and improve dashboard UX. | Done |
+>>>>>>> Stashed changes
 
 ## Next Features
 
