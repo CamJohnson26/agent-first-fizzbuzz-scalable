@@ -6,23 +6,25 @@ test.describe('FizzBuzz Chat', () => {
     await page.goto('http://localhost:5183/agent-first-fizzbuzz-scalable/');
   });
 
-  test('should be closed by default', async ({ page }) => {
-    // By default, the chat window should not be visible
+  test('should be open by default', async ({ page }) => {
+    // By default, the chat window should be visible
+    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
+  });
+
+  test('should close when clicking the toggle button if open', async ({ page }) => {
+    // Chat is open by default
+    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
+
+    // Click the toggle button to close the chat
+    await page.getByTestId('chat-toggle').click();
+    
+    // Check if the chat window is now hidden
     await expect(page.getByText('FizzBuzz Chat')).not.toBeVisible();
   });
 
-  test('should open when clicking the toggle button', async ({ page }) => {
-    // Click the toggle button to open the chat
-    await page.getByTestId('chat-toggle').click();
-    
-    // Check if the chat window is now visible
-    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
-    await expect(page.getByText(/How can I help you scale/i)).toBeVisible();
-  });
-
   test('should send a message and receive a response', async ({ page }) => {
-    // Open the chat
-    await page.getByTestId('chat-toggle').click();
+    // Chat is open by default
+    await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
     
     // Type a message into the input
     const input = page.getByTestId('chat-input');
@@ -39,8 +41,7 @@ test.describe('FizzBuzz Chat', () => {
   });
 
   test('should close when clicking the close button', async ({ page }) => {
-    // Open the chat first
-    await page.getByTestId('chat-toggle').click();
+    // Chat is open by default
     await expect(page.getByText('FizzBuzz Chat')).toBeVisible();
     
     // Click the close button

@@ -127,6 +127,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F119 | Dashboard Link & Crypto Disclosure | Update all Coming Soon links to point to the Dashboard and add crypto mining disclosure to Enterprise plans. | Done |
 | F120 | Marketing Site Improvements | Fix button padding, implement case studies, shuffle blog images, and open chat by default. | Done |
 | F121 | Data Exports and UI Enhancements | Support exporting results to CSV, JSON, PDF, TXT, Excel and improve dashboard UX. | Done |
+| F122 | Dashboard Navigation Improvements | Improve navigation between marketing page and web dashboard. | Done |
 
 ## Next Features
 
@@ -242,3 +243,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Fix Vercel Deployment Runtime (F116)
 - [x] Document agent-browser Usage (F117)
 - [x] Standardize Vercel Entry Points (F118)
+- [x] Dashboard Navigation Improvements (F122)

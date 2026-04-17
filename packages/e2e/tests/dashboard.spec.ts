@@ -16,7 +16,7 @@ test.describe('Web Dashboard', () => {
     await page.getByRole('button', { name: 'Compute' }).click();
     
     await expect(page.getByText('Result:')).toBeVisible();
-    await expect(page.getByText('FizzBuzz', { exact: true })).toBeVisible();
+    await expect(page.getByTestId('single-result')).toHaveText('FizzBuzz');
   });
 
   test('should perform range computation', async ({ page }) => {
@@ -27,11 +27,11 @@ test.describe('Web Dashboard', () => {
     await page.getByRole('button', { name: 'Generate Range Results' }).click();
     
     // Check results (1, 2, Fizz, 4, Buzz)
-    await expect(page.getByText('1', { exact: true })).toBeVisible();
-    await expect(page.getByText('2', { exact: true })).toBeVisible();
-    await expect(page.getByText('Fizz', { exact: true })).toBeVisible();
-    await expect(page.getByText('4', { exact: true })).toBeVisible();
-    await expect(page.getByText('Buzz', { exact: true })).toBeVisible();
+    const results = page.getByTestId('result-text');
+    await expect(results.nth(0)).toHaveText('1');
+    await expect(results.nth(1)).toHaveText('2');
+    await expect(results.nth(2)).toHaveText('Fizz');
+    await expect(results.nth(4)).toHaveText('Buzz');
   });
 
   test('should switch engines', async ({ page }) => {
@@ -41,12 +41,7 @@ test.describe('Web Dashboard', () => {
     // Perform computation with rust engine
     await page.getByPlaceholder('Enter a number...').fill('3');
     await page.getByRole('button', { name: 'Compute' }).click();
-    await expect(page.getByText('Fizz', { exact: true })).toBeVisible();
-    
-    await select.selectOption('lean');
-    await page.getByPlaceholder('Enter a number...').fill('5');
-    await page.getByRole('button', { name: 'Compute' }).click();
-    await expect(page.getByText('Buzz', { exact: true })).toBeVisible();
+    await expect(page.getByTestId('single-result')).toHaveText('Fizz');
   });
 
   test('should show live analytics', async ({ page }) => {

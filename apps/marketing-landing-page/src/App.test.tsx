@@ -105,8 +105,8 @@ describe('App', () => {
 
     render(<App />);
     
-    const startFreeTrialButtons = screen.getAllByRole('button', { name: /Coming Soon|Start Free Trial/i });
-    await user.click(startFreeTrialButtons[0]);
+    const dashboardButtons = screen.getAllByRole('button', { name: /Dashboard|Start Free Trial/i });
+    await user.click(dashboardButtons[0]);
     
     expect(window.location.href).toBe('https://agent-first-fizzbuzz-scalable-web-d.vercel.app/');
     

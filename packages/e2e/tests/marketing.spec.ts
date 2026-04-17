@@ -14,6 +14,11 @@ test.describe('Marketing Landing Page', () => {
     await expect(page).toHaveURL(/agent-first-fizzbuzz-scalable-web-d\.vercel\.app/);
   });
 
+  test('should redirect to Dashboard when clicking Dashboard button in nav', async ({ page }) => {
+    await page.getByRole('button', { name: /Dashboard/i }).first().click();
+    await expect(page).toHaveURL(/agent-first-fizzbuzz-scalable-web-d\.vercel\.app/);
+  });
+
   test('should navigate to Case Studies section', async ({ page }) => {
     await page.getByRole('button', { name: 'Case Studies' }).click();
     await expect(page.getByRole('heading', { name: 'Enterprise Case Studies' })).toBeVisible();
