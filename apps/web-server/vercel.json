@@ -6,8 +6,8 @@
         "../../packages/rust-fizzbuzz/dist/node/*.wasm",
         "data/fizzbuzz_model.onnx",
         "data/tokenizer_mapping.json",
-        "data/*.wasm",
-        "data/*.mjs"
+        "data/ort-wasm-simd-threaded.wasm",
+        "data/ort-wasm-simd-threaded.mjs"
       ]
     }
   },
