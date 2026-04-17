@@ -1,6 +1,6 @@
-import express from 'express';
-import cors from 'cors';
-import { z } from 'zod';
+const express = require('express');
+const cors = require('cors');
+const { z } = require('zod');
 
 const LogSchema = z.object({
   level: z.string().optional(),
@@ -16,11 +16,11 @@ app.use(express.json());
 
 const stats = {
   totalLogs: 0,
-  logsByService: {} as Record<string, number>,
+  logsByService: {},
 };
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', source: 'api/index.ts' });
+  res.json({ status: 'ok', source: 'api/index.js (CJS)' });
 });
 
 app.get('/stats', (req, res) => {
@@ -42,4 +42,4 @@ app.post('/api/logs', (req, res) => {
   res.status(202).json({ status: 'received' });
 });
 
-export default app;
+module.exports = app;
