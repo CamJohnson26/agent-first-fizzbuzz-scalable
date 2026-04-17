@@ -1,7 +1,6 @@
-import express from 'express';
-import cors from 'cors';
-import { z } from 'zod';
-import { AnalyticsStats } from '@fizzbuzz/types';
+const express = require('express');
+const cors = require('cors');
+const { z } = require('zod');
 
 const LogSchema = z.object({
   level: z.string().optional(),
@@ -11,12 +10,12 @@ const LogSchema = z.object({
   metadata: z.record(z.unknown()).optional(),
 });
 
-export const createApp = () => {
+const createApp = () => {
   const app = express();
   app.use(cors());
   app.use(express.json());
 
-  const stats: AnalyticsStats = {
+  const stats = {
     totalLogs: 0,
     logsByService: {},
   };
@@ -47,3 +46,5 @@ export const createApp = () => {
 
   return app;
 };
+
+module.exports = { createApp };
