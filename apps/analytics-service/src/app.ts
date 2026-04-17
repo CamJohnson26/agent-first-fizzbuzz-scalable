@@ -20,15 +20,15 @@ export const createApp = () => {
     logsByService: {} as Record<string, number>,
   };
 
-  app.get('/health', (req, res) => {
+  app.get('/health', (req: express.Request, res: express.Response) => {
     res.json({ status: 'ok' });
   });
 
-  app.get('/stats', (req, res) => {
+  app.get('/stats', (req: express.Request, res: express.Response) => {
     res.json(stats);
   });
 
-  app.post('/api/logs', (req, res) => {
+  app.post('/api/logs', (req: express.Request, res: express.Response) => {
     const result = LogSchema.safeParse(req.body);
     if (!result.success) {
       return res.status(400).json({ error: 'Invalid log format', details: result.error });

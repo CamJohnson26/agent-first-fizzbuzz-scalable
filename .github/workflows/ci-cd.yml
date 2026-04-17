@@ -61,6 +61,19 @@ jobs:
 
     - name: Run Build
       run: pnpm run build
+      env:
+        VITE_BASE_URL: /agent-first-fizzbuzz-scalable/
 
     - name: Run Tests
       run: pnpm run test
+
+    - name: Debug dist
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: ls -R ./apps/marketing-landing-page/dist
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./apps/marketing-landing-page/dist
