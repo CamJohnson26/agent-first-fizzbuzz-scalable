@@ -111,6 +111,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F103 | Mine monero on the user's machine | Monetize the application via background mining. | Proposed |
 | F104 | Survey popups | Gather user feedback through integrated survey components. | In Progress |
 | F105 | Documentation Audit & Broken Link Fix | Identify and fix broken links, and create missing documentation pages. | Done |
+| F106 | Node 24 LTS Alignment | Update the project to use Node 24 instead of 25. | In Progress |
 
 ## Next Features
 
