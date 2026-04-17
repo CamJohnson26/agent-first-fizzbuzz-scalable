@@ -125,6 +125,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F117 | Document agent-browser Usage | Document the requirement for agents to use `npx agent-browser` for browsing websites. | Done |
 | F118 | Standardize Vercel Entry Points | Standardize all services to use `api/index.ts` and fix Vite base URL issues. | Done |
 | F120 | Marketing Site Improvements | Fix button padding, implement case studies, shuffle blog images, and open chat by default. | Done |
+| F121 | FizzBuzz Dashboard Live Blog Post | Write a clickbaity blog post about the FizzBuzz Dashboard being live. | Done |
 
 ## Next Features
 
@@ -240,3 +241,5 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Fix Vercel Deployment Runtime (F116)
 - [x] Document agent-browser Usage (F117)
 - [x] Standardize Vercel Entry Points (F118)
+- [x] Marketing Site Improvements (F120)
+- [x] FizzBuzz Dashboard Live Blog Post (F121)
