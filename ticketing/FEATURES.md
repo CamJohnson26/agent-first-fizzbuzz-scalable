@@ -120,6 +120,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F112 | Prefer Turbo in Documentation | Update all documentation to prefer turbo commands over pnpm directly for task execution. | Done |
 | F113 | Remove fnm References | Remove all mentions and recommendations of fnm from the project. | Done |
 | F114 | Update Agent PR Workflow | Update agent instructions for PR workflow using `gh` command and verification. | Done |
+| F115 | Enforce Mandatory PRs and Forbid Direct Commits | Strictly forbid direct commits to `main` and local merges; enforce GitHub PRs and auto-merge. | In Progress |
 
 ## Next Features
 
@@ -231,3 +232,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Prefer Turbo in Documentation (F112)
 - [x] Remove fnm References (F113)
 - [x] Update Agent PR Workflow (F114)
+- [x] Enforce Mandatory PRs and Forbid Direct Commits (F115)
