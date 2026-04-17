@@ -129,6 +129,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F121 | Data Exports and UI Enhancements | Support exporting results to CSV, JSON, PDF, TXT, Excel and improve dashboard UX. | Done |
 | F122 | Create Agent Skills | Create automated agent skills for issue scanning, cleanup, releases, and marketing. | Done |
 | F123 | Dashboard Navigation Improvements | Improve navigation between marketing page and web dashboard. | Done |
+| F124 | Generalized FizzBuzz ADRs | Research and document the architectural shift to a generalized, scalable, and resilient rule evaluation system. | Done |
 
 ## Next Features
 
@@ -249,3 +250,4 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Data Exports and UI Enhancements (F121)
 - [x] Create Agent Skills (F122)
 - [x] Dashboard Navigation Improvements (F123)
+- [x] Generalized FizzBuzz ADRs (F124)
