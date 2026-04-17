@@ -1,6 +1,6 @@
-import { createApp } from '../src/app.js';
+import express from 'express';
 
-const app = createApp();
+const app = express();
+app.get('/health', (req, res) => res.json({ status: 'ok', source: 'api/index.ts' }));
 
-export const handler = app;
 export default app;
