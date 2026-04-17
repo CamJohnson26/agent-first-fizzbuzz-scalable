@@ -1,4 +1,4 @@
-import * as ort from 'onnxruntime-node';
+import * as ort from 'onnxruntime-web';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -26,6 +26,9 @@ export class AIInferenceService {
     if (this.session && this.tokenizer) return;
 
     try {
+      // Configure WASM paths for onnxruntime-web in Node.js
+      ort.env.wasm.wasmPaths = path.dirname(this.modelPath) + '/';
+      
       const modelBuffer = fs.readFileSync(this.modelPath);
       this.session = await ort.InferenceSession.create(modelBuffer);
       const tokenizerData = fs.readFileSync(this.tokenizerPath, 'utf8');

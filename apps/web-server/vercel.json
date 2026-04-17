@@ -5,7 +5,9 @@
       "includeFiles": [
         "../../packages/rust-fizzbuzz/dist/node/*.wasm",
         "data/fizzbuzz_model.onnx",
-        "data/tokenizer_mapping.json"
+        "data/tokenizer_mapping.json",
+        "data/*.wasm",
+        "data/*.mjs"
       ]
     }
   },
