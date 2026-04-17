@@ -4,11 +4,13 @@ A modern, responsive web application for monitoring and interacting with the Fiz
 
 ## Features
 
-- **Interactive UI**: Compute FizzBuzz values directly from your browser.
-- **Range Explorer**: View FizzBuzz results for large ranges of numbers.
-- **System Health**: Monitor the health status of the `web-server`.
-- **Live Analytics**: Real-time log monitoring from the `analytics-service`.
-- **Enterprise Design**: Built with Tailwind CSS and a dedicated component library.
+- **Multi-Engine Computation**: Select between TypeScript, Rust (WASM), and Lean 4 engines for computation.
+- **Enterprise Data Exports**: Export computation results to CSV, JSON, PDF, and Excel for offline analysis.
+- **Range Explorer**: View FizzBuzz results for large ranges of numbers with optimized rendering.
+- **Interactive UI**: Compute single values directly from your browser with real-time feedback.
+- **System Health**: Monitor the health status of the `web-server` and engine availability.
+- **Live Analytics**: Real-time log monitoring and NPS feedback integration.
+- **Enterprise Design**: Built with Tailwind CSS 4 and a dedicated shared UI component library.
 
 ## Tech Stack
 

@@ -6,6 +6,8 @@ A professional, high-conversion landing page for the Agent-First FizzBuzz Scalab
 
 - **Modern UI**: Clean, responsive design built for enterprise visibility.
 - **AI-First Showcase**: Highlighting the autonomous nature of the project.
+- **Company Blog**: Integrated blog for project updates and high-impact messaging.
+- **GDPR Compliance**: Built-in cookie consent banner and privacy documentation.
 - **CI/CD Integrated**: Automated deployments to Vercel.
 - **Tailwind CSS 4**: Utilizing the latest in utility-first CSS performance.
 

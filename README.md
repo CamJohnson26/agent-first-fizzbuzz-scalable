@@ -35,13 +35,14 @@ timeline
         Core Implementation : Core Logic (F007), Web Server (F019)
         Web Dashboard : Frontend App (F009), UI Library (F060)
     section 2026 Q2 - Expansion
-        Observability : Analytics Service (F035), Real-time Stats
-        High Performance : Rust Engine (F043), WASM Integration
-        Reliability : Formal Verification (F042), Security Scanning (F045)
-    section 2026 Q3 - Future
-        Scalability : Distributed Engine (F008), Kubernetes (F033)
-        AI Integration : AI Agent Service (F010), Optimization Agent
-        Experience : Next.js Migration (F050), Dark Mode (F073)
+        Observability : Analytics Service (F035), Security Scanning (F045)
+        High Performance : Rust Engine (F043), WASM Integration (F081)
+        Reliability : Formal Verification (F042), GDPR Compliance (F096)
+        Experience : Multi-engine UI (F082), Company Blog (F083)
+    section 2026 Q3 - Scalability
+        Cloud Readiness : Vercel Deployment (F102), Architecture Audit (F105)
+        Enterprise Data : Data Exports (F121), Survey Integration (F104)
+        Security Hardening : Dependency Updates (F107), Type Safety (F111)
     section 2026 Q4 - Ecosystem
         Mobile : React Native App (F069)
         Desktop : Electron App (F070)
@@ -58,25 +59,30 @@ Built on a robust, scalable monorepo architecture using **Turborepo** and **pnpm
 
 ```mermaid
 graph TD
-    subgraph Client_Layer [Client Layer]
-        WD[Web Dashboard - React 19]
-        LP[Marketing Landing Page - React 19]
-        CLI[Core CLI - Node.js 24]
-    end
+    subgraph Hosting [Cloud Infrastructure - Vercel]
+        subgraph Client_Layer [Client Layer]
+            WD[Web Dashboard - React 19]
+            LP[Marketing Landing Page - React 19]
+            CLI[Core CLI - Node.js 24]
+        end
 
-    subgraph Service_Layer [Service Layer]
-        WS[Web Server - Express]
-        AS[Analytics Service - Express]
-        LS[Lean Service - Express/Lean 4]
+        subgraph Service_Layer [Service Layer]
+            WS[Web Server - Express]
+            AS[Analytics Service - Express]
+            LS[Lean Service - Express/Lean 4]
+        end
     end
 
     subgraph Logic_Layer [Logic Layer]
         CL[Core Logic - Shared Package]
+        RE[Rust Engine - WASM]
         VA[Verified Algorithms - Lean 4]
     end
 
     WD -- REST API --> WS
+    LP -- Docs --> WS
     WS -- Uses --> CL
+    WS -- Uses --> RE
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
     CLI -- Uses --> CL
@@ -87,30 +93,72 @@ graph TD
 ### Component Breakdown
 
 - **`/apps`**:
-  - `web-dashboard`: User-facing monitoring and computation interface.
-  - `web-server`: Enterprise API serving FizzBuzz results.
-  - `lean-service`: Formal verification service wrapping the Lean 4 binary.
-  - `analytics-service`: Centralized log collection and metrics engine.
-  - `marketing-landing-page`: High-conversion project showcase.
-  - `core`: Command-line interface for direct interaction.
+  - `web-dashboard`: User-facing monitoring and computation interface with data export capabilities.
+  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines.
+  - `lean-service`: Formal verification service wrapping the Lean 4 binary for high-fidelity proofs.
+  - `analytics-service`: Centralized log collection and metrics engine for real-time observability.
+  - `marketing-landing-page`: High-conversion project showcase with integrated blog and GDPR compliance.
+  - `core`: Command-line interface for direct interaction with the FizzBuzz logic.
 - **`/packages`**:
-  - `core-logic`: The heart of the system, shared across all services.
-  - `ui`: Shared React component library and design system.
+  - `core-logic`: The heart of the system, shared TypeScript implementation of FizzBuzz.
+  - `rust-fizzbuzz`: High-performance Rust implementation compiled to WebAssembly.
+  - `ui`: Shared React component library based on Tailwind CSS 4.
   - `verified-algorithms`: Formally verified implementations in Lean 4.
-- **`/scripts`**: Tooling for environment enforcement, build automation, and security.
-- **`/ticketing`**: Our autonomous task management system.
+  - `types`: Centralized TypeScript definitions and API contracts.
+  - `config`: Shared ESLint, Prettier, and TypeScript configurations.
+- **`/scripts`**: Tooling for environment enforcement, build automation, and security scanning.
+- **`/ticketing`**: Our autonomous task management system for tracking AI agent progress.
 
 ---
 
 ## ✨ Features Overview
 
-- 🚀 **High-Performance Computation**: Optimized FizzBuzz logic capable of handling massive ranges with minimal latency.
+- 🚀 **High-Performance Multi-Engine Computation**: Optimized FizzBuzz logic with TypeScript, Rust (WASM), and Lean 4 engines.
 - 📊 **Real-Time Observability**: Integrated analytics service that monitors system usage and performance metrics.
 - 🧪 **Comprehensive E2E Testing**: Integrated Playwright test suite for cross-application verification of user flows and backend integration.
 - 🛡️ **Formal Verification**: Core algorithms are verified using the Lean 4 theorem solver for mission-critical reliability.
+- 📁 **Enterprise Data Exports**: Support for exporting computation results to CSV, JSON, PDF, and Excel formats.
+- 🍪 **GDPR Compliance**: Fully compliant marketing site with cookie consent management and detailed privacy policies.
 - 🤖 **Autonomous Development**: 100% of the codebase is managed by AI agents, ensuring a consistent and high-fidelity implementation.
 - 📦 **Modern Monorepo**: Built with Turborepo for lightning-fast builds and pnpm for efficient dependency management.
-- 🎨 **Enterprise UI**: A unified design system using Tailwind CSS 4 and React 19 Server Components.
+- 🎨 **Enterprise UI**: A unified design system using Tailwind CSS 4 and React 19.
+
+---
+
+## 🛠 Tech Stack
+
+Our system leverages modern, high-performance technologies across the entire stack:
+
+- **Languages**: 
+  - **TypeScript**: Primary language for web services and frontend.
+  - **Rust**: High-performance engine compiled to WebAssembly for heavy computations.
+  - **Lean 4**: Formal verification of core algorithms.
+- **Frontend**: 
+  - **React 19**: Next-generation UI library.
+  - **Tailwind CSS 4**: Utility-first CSS framework for modern styling.
+  - **Framer Motion**: Production-ready animations.
+- **Backend**: 
+  - **Node.js 24**: Stable and secure runtime.
+  - **Express**: Fast, unopinionated web framework.
+  - **Zod**: Type-safe schema validation.
+- **Infrastructure**: 
+  - **Turborepo**: High-performance build system for monorepos.
+  - **Vercel**: Edge-first cloud deployment and hosting.
+  - **GitHub Actions**: Automated CI/CD pipelines.
+- **Testing**: 
+  - **Vitest**: Blazing fast unit and integration testing.
+  - **Playwright**: Reliable end-to-end testing for modern web apps.
+
+---
+
+## 🤖 Agent-First Principles
+
+This project is built and maintained by autonomous AI agents. We adhere to strict principles to ensure code quality and scalability:
+
+1. **Mandatory RCA (Root Cause Analysis)**: Any critical bug requires a documented RCA in the `RCAs/` folder.
+2. **AI-First Workflows**: Using specialized Agent Skills (like `feature-implementation`) for all development tasks.
+3. **Strict Environment Enforcement**: Automated checks ensure all agents work in a synchronized, modern environment.
+4. **Collision Prevention**: Mandatory use of `git worktree` and automated PR merging via GitHub CLI.
 
 ---
 
