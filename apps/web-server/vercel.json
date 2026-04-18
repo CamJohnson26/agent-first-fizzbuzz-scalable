@@ -1,8 +1,14 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
   "functions": {
     "api/index.ts": {
       "memory": 1024,
-      "includeFiles": "../../packages/rust-fizzbuzz/dist/node/*.wasm"
+      "includeFiles": "deploy-assets/**"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ]
 }
