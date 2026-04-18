@@ -1,8 +1,6 @@
 {
   "extends": "@fizzbuzz/config/typescript/node",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
     "lib": ["ESNext", "DOM"]
