@@ -39,6 +39,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Global error handling for debugging
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+});
+
 // Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();

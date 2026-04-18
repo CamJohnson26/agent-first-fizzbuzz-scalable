@@ -1,8 +1,10 @@
-import * as ort from 'onnxruntime-node';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { injectable, singleton } from 'tsyringe';
+
+// We use dynamic import for onnxruntime-node to prevent app crash if native binaries are missing
+let ort: any = null;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +28,16 @@ export class AIInferenceService {
     if (this.session && this.tokenizer) return;
 
     try {
+      if (!ort) {
+        console.log('[AI Service] Loading onnxruntime-node...');
+        try {
+          ort = await import('onnxruntime-node');
+        } catch (err) {
+          console.error('[AI Service] Failed to load onnxruntime-node. AI features will be disabled.', err);
+          throw new Error('AI runtime not available');
+        }
+      }
+
       console.log(`[AI Service] Initializing with model at: ${this.modelPath}`);
       
       if (!fs.existsSync(this.modelPath)) {

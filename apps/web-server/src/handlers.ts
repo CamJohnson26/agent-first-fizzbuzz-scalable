@@ -1,7 +1,7 @@
 import { Request, Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { createRequire } from 'module';
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject, container } from 'tsyringe';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
 import { 
   HealthResponse, 
@@ -17,8 +17,7 @@ const rustEngine = require('@fizzbuzz/rust-engine');
 @injectable()
 export class FizzBuzzHandler {
   constructor(
-    @inject(FizzBuzzService) private fizzBuzzService: FizzBuzzService,
-    @inject(AIInferenceService) private aiService: AIInferenceService
+    @inject(FizzBuzzService) private fizzBuzzService: FizzBuzzService
   ) {}
 
   public healthHandler = (req: Request, res: ExpressResponse<HealthResponse>) => {
@@ -84,7 +83,9 @@ export class FizzBuzzHandler {
       // Prepare prompt
       const prompt = `U: ${message}\nA:`;
       
-      const response = await this.aiService.generate(prompt);
+      // Resolve AI service lazily to prevent startup issues
+      const aiService = container.resolve(AIInferenceService);
+      const response = await aiService.generate(prompt);
       
       res.json({ response });
     } catch (error) {
