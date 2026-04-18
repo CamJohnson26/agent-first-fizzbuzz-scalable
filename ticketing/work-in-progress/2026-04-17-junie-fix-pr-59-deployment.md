@@ -27,7 +27,9 @@
 - Step 12: Restored `api/index.ts` and moved `reflect-metadata` to the very top. ✓
 - Step 13: Renamed `src/index.ts` to `src/server.ts` and fixed Vercel routing. ✓
 - Step 14: Moved entry point to `apps/web-server/index.ts` and restored `app.ts` naming. ✓
+- Step 15: Restored `api/index.ts` as the standard Vercel entry point with early `reflect-metadata` loading. ✓
+- Step 16: Verified `reflect-metadata` fix and robust routing in `vercel.json`. ✓
 
 ## Unfinished Work
-- [ ] Verify Vercel deployment and health check
-- [ ] Merge PR #59
+- [ ] Confirm Vercel deployment health check (pending automatic merge)
+- [ ] Finalize PR #59 merge via `gh pr merge --auto --merge`
