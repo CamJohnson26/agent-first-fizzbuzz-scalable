@@ -17,6 +17,8 @@
 - Step 2: Identified build failure due to missing namespace `ort` in `ai-service.ts`. ✓
 - Step 3: Fixed the type error by using `import type * as ONNX from 'onnxruntime-node'`. ✓
 - Step 4: Verified build, lint, and tests pass locally with Node v24.14.1. ✓
+- Step 5: Identified `includeFiles` error in `vercel.json` due to symlinked `node_modules`. ✓
+- Step 6: Simplified `vercel.json` to avoid symlinked paths and included missing `v86-images`. ✓
 
 ## Unfinished Work
 - [ ] Push changes and verify Vercel deployment
