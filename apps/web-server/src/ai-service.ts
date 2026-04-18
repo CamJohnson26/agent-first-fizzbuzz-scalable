@@ -62,7 +62,7 @@ export class AIInferenceService {
     await this.init();
     if (!this.session) throw new Error('Inference session not initialized');
 
-    const tokens = this.encode(prompt);
+    let tokens = this.encode(prompt);
     
     for (let i = 0; i < maxNewTokens; i++) {
       const inputTokens = tokens.slice(-this.blockSize);
