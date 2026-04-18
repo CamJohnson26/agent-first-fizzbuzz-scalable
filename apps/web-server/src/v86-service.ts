@@ -1,7 +1,11 @@
 import v86pkg from "v86";
 const V86 = (v86pkg as any).V86 || v86pkg;
 import path from "path";
+import { fileURLToPath } from 'url';
 import { singleton } from "tsyringe";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const LUA_QUEUE_SCRIPT = `
 local queue = {}
@@ -44,8 +48,8 @@ export class V86Service {
   }
 
   private async startEmulator() {
-    const imagesPath = path.join(process.cwd(), "v86-images");
-    const wasmPath = path.join(process.cwd(), "node_modules/v86/build/v86.wasm");
+    const imagesPath = path.resolve(__dirname, "../v86-images");
+    const wasmPath = path.join(imagesPath, "v86.wasm");
 
     console.log("[V86] Starting emulator...");
     this.emulator = new V86({

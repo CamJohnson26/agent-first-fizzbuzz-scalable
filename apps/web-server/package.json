@@ -15,7 +15,7 @@
     "dev": "tsx src/index.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "postinstall": "node scripts/prune-onnx.js"
+    "postinstall": "node scripts/prune-onnx.js && node scripts/copy-assets.js"
   },
   "dependencies": {
     "@fizzbuzz/core-logic": "workspace:*",

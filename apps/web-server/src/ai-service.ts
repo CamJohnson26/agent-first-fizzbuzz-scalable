@@ -21,8 +21,8 @@ interface TokenizerMapping {
 export class AIInferenceService {
   private session: ONNX.InferenceSession | null = null;
   private tokenizer: TokenizerMapping | null = null;
-  private readonly modelPath = path.join(process.cwd(), 'data/fizzbuzz_model.onnx');
-  private readonly tokenizerPath = path.join(process.cwd(), 'data/tokenizer_mapping.json');
+  private readonly modelPath = path.resolve(__dirname, '../data/fizzbuzz_model.onnx');
+  private readonly tokenizerPath = path.resolve(__dirname, '../data/tokenizer_mapping.json');
   private readonly blockSize = 256;
 
   private async init() {
