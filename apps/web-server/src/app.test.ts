@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import app from './app.js';
+import app from './core-app.js';
 
 describe('Web Server Integration Tests', () => {
 
