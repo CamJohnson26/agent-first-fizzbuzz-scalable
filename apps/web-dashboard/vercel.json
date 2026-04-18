@@ -1,4 +1,8 @@
 {
+  "buildCommand": "cd ../.. && pnpm build --filter=@fizzbuzz/web-dashboard",
+  "installCommand": "cd ../.. && pnpm install",
+  "devCommand": "pnpm dev",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
