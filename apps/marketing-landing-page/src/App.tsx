@@ -25,11 +25,6 @@ import {
   User,
   Tag,
   ArrowLeft,
-  Menu,
-  Database,
-  Layers,
-  FileJson,
-  ShieldAlert,
 } from 'lucide-react';
 
 const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; closeModal: () => void }) => (
@@ -91,181 +86,11 @@ const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; c
   </AnimatePresence>
 );
 
-const Nav = ({ activeSection, setActiveSection, handleDashboardClick, isMenuOpen, setIsMenuOpen }: { 
-  activeSection: string; 
-  setActiveSection: (section: any) => void; 
-  handleDashboardClick: () => void;
-  isMenuOpen: boolean;
-  setIsMenuOpen: (open: boolean) => void;
-}) => (
-  <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between h-16 items-center">
-        <button 
-          onClick={() => {
-            setActiveSection('home');
-            setIsMenuOpen(false);
-          }}
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-        >
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <Terminal className="text-primary-foreground w-5 h-5" />
-          </div>
-          <span className="text-xl font-bold text-foreground tracking-tight">
-            FizzBuzz <span className="text-primary">Scalable</span>
-          </span>
-        </button>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-muted-foreground hover:text-primary transition-colors p-2"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        <div className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() => {
-              setActiveSection('home');
-              setTimeout(() => {
-                const el = document.getElementById('features');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
-            }}
-            className="text-muted-foreground hover:text-primary transition-colors font-medium"
-          >
-            Features
-          </button>
-          <button
-            onClick={() => setActiveSection('case-studies')}
-            className={`font-medium transition-colors ${activeSection === 'case-studies' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
-          >
-            Case Studies
-          </button>
-          <button
-            onClick={() => setActiveSection('blog')}
-            className={`font-medium transition-colors ${activeSection === 'blog' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
-          >
-            Blog
-          </button>
-          <button
-            onClick={() => {
-              setActiveSection('home');
-              setTimeout(() => {
-                const el = document.getElementById('pricing');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
-            }}
-            className="text-muted-foreground hover:text-primary transition-colors font-medium"
-          >
-            Pricing
-          </button>
-          <button
-            onClick={() => setActiveSection('docs')}
-            className={`font-medium transition-colors ${activeSection === 'docs' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
-          >
-            Docs
-          </button>
-          <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
-            Dashboard
-          </Button>
-        </div>
-      </div>
-    </div>
-
-    {/* Mobile Navigation Dropdown */}
-    <AnimatePresence>
-      {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
-        >
-          <div className="px-4 pt-2 pb-6 space-y-2">
-            <button
-              onClick={() => {
-                setActiveSection('home');
-                setIsMenuOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('features');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => {
-                setActiveSection('case-studies');
-                setIsMenuOpen(false);
-              }}
-              className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
-            >
-              Case Studies
-            </button>
-            <button
-              onClick={() => {
-                setActiveSection('blog');
-                setIsMenuOpen(false);
-              }}
-              className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
-            >
-              Blog
-            </button>
-            <button
-              onClick={() => {
-                setActiveSection('home');
-                setIsMenuOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('pricing');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => {
-                setActiveSection('docs');
-                setIsMenuOpen(false);
-              }}
-              className="w-full text-left block px-3 py-4 text-base font-medium text-muted-foreground hover:text-primary hover:bg-surface rounded-xl transition-all"
-            >
-              Docs
-            </button>
-            <div className="pt-4">
-              <Button 
-                variant="primary" 
-                size="lg" 
-                className="w-full rounded-2xl shadow-lg shadow-primary/30" 
-                onClick={() => {
-                  handleDashboardClick();
-                  setIsMenuOpen(false);
-                }}
-              >
-                Dashboard
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </nav>
-);
-
 export default function App() {
   const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const DASHBOARD_URL = 'https://agent-first-fizzbuzz-scalable-web-d.vercel.app/';
   const handleDashboardClick = () => {
@@ -278,13 +103,40 @@ export default function App() {
   if (activeSection === 'case-studies') {
     return (
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
-        <Nav 
-          activeSection={activeSection} 
-          setActiveSection={setActiveSection} 
-          handleDashboardClick={handleDashboardClick} 
-          isMenuOpen={isMenuOpen} 
-          setIsMenuOpen={setIsMenuOpen} 
-        />
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => setActiveSection('home')}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => setActiveSection('home')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Back to Home
+                </button>
+                <button
+                  onClick={() => setActiveSection('blog')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Blog
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
 
         <header className="py-24 bg-surface/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -390,13 +242,49 @@ export default function App() {
   if (activeSection === 'blog') {
     return (
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
-        <Nav 
-          activeSection={activeSection} 
-          setActiveSection={setActiveSection} 
-          handleDashboardClick={handleDashboardClick} 
-          isMenuOpen={isMenuOpen} 
-          setIsMenuOpen={setIsMenuOpen} 
-        />
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => {
+                  setActiveSection('home');
+                  setSelectedPostId(null);
+                }}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => {
+                    setActiveSection('home');
+                    setSelectedPostId(null);
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Back to Home
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveSection('blog');
+                    setSelectedPostId(null);
+                  }}
+                  className={`${!selectedPostId ? 'text-primary' : 'text-muted-foreground'} hover:text-primary transition-colors font-medium`}
+                >
+                  Blog
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <AnimatePresence mode="wait">
@@ -530,13 +418,40 @@ export default function App() {
 
     return (
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
-        <Nav 
-          activeSection={activeSection} 
-          setActiveSection={setActiveSection} 
-          handleDashboardClick={handleDashboardClick} 
-          isMenuOpen={isMenuOpen} 
-          setIsMenuOpen={setIsMenuOpen} 
-        />
+        <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <button 
+                onClick={() => setActiveSection('home')}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Terminal className="text-primary-foreground w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-foreground tracking-tight">
+                  FizzBuzz <span className="text-primary">Scalable</span>
+                </span>
+              </button>
+              <div className="hidden md:flex items-center space-x-8">
+                <button
+                  onClick={() => setActiveSection('home')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Back to Home
+                </button>
+                <button
+                  onClick={() => setActiveSection('blog')}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  Blog
+                </button>
+                <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                  Dashboard
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col md:flex-row gap-12">
@@ -615,13 +530,56 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
-      <Nav 
-        activeSection={activeSection} 
-        setActiveSection={setActiveSection} 
-        handleDashboardClick={handleDashboardClick} 
-        isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen} 
-      />
+      {/* Navigation */}
+      <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Terminal className="text-primary-foreground w-5 h-5" />
+              </div>
+              <span className="text-xl font-bold text-foreground tracking-tight">
+                FizzBuzz <span className="text-primary">Scalable</span>
+              </span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#features"
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Features
+              </a>
+              <button
+                onClick={() => setActiveSection('case-studies')}
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Case Studies
+              </button>
+              <button
+                onClick={() => setActiveSection('blog')}
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Blog
+              </button>
+              <a
+                href="#pricing"
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Pricing
+              </a>
+              <button
+                onClick={() => setActiveSection('docs')}
+                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                Docs
+              </button>
+              <Button variant="primary" size="md" className="rounded-full shadow-lg shadow-primary/30 px-6 py-2" onClick={handleDashboardClick}>
+                Dashboard
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <header className="py-32 relative overflow-hidden">
@@ -633,7 +591,7 @@ export default function App() {
             className="text-center"
           >
             <Badge variant="secondary" className="mb-6 px-4 py-1">
-              v1.2.0 Engine • Enterprise Grade
+              v24.14.1 Engine • Enterprise Grade
             </Badge>
             <h1 className="text-6xl md:text-8xl font-extrabold text-foreground tracking-tighter mb-8 leading-[1.1]">
               The Gold Standard for <br />
@@ -740,7 +698,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -750,11 +708,12 @@ export default function App() {
                   <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/10">
                     <Server className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    v86 Virtualization
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    Edge Orchestration
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Isolated x86 Linux environments for secure, sandboxed execution of mission-critical logic.
+                  <p className="text-muted-foreground leading-relaxed">
+                    Deploy FizzBuzz logic across distributed global nodes with 
+                    unified control and sub-millisecond propagation.
                   </p>
                 </CardContent>
               </Card>
@@ -767,13 +726,14 @@ export default function App() {
               <Card className="bg-surface/50 border-border hover:border-secondary/50 transition-all h-full group">
                 <CardContent className="p-8 pt-8">
                   <div className="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-lg shadow-secondary/10">
-                    <ShieldCheck className="w-7 h-7" />
+                    <Lock className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Lean 4 Verification
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    SOC2 Compliance
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Formally verified algorithms using the Lean 4 theorem prover for mathematical certainty.
+                  <p className="text-muted-foreground leading-relaxed">
+                    Enterprise-ready security with end-to-end encryption and 
+                    comprehensive audit logging for all operations.
                   </p>
                 </CardContent>
               </Card>
@@ -784,110 +744,16 @@ export default function App() {
               transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
             >
               <Card className="bg-surface/50 border-border hover:border-accent/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
+                <CardContent className="pt-8">
                   <div className="w-14 h-14 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 shadow-lg shadow-accent/10">
-                    <Database className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    SQLite Persistence
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Enterprise-grade local storage with SQLite for high-performance audit logs and history.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.3 }}
-            >
-              <Card className="bg-surface/50 border-border hover:border-primary/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
-                  <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/10">
-                    <Zap className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    WASM Rust Engine
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Lightning-fast computations using a specialized Rust implementation compiled to WebAssembly.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
-            >
-              <Card className="bg-surface/50 border-border hover:border-secondary/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
-                  <div className="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-lg shadow-secondary/10">
-                    <Layers className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Modular Rule Model
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Decoupled logic, predicates, and renderers for ultimate flexibility and extensibility.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.5 }}
-            >
-              <Card className="bg-surface/50 border-border hover:border-accent/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
-                  <div className="w-14 h-14 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 shadow-lg shadow-accent/10">
-                    <FileJson className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Enterprise Exports
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Seamless export of computation results to CSV, JSON, PDF, and Excel formats.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.6 }}
-            >
-              <Card className="bg-surface/50 border-border hover:border-primary/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
-                  <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/10">
-                    <ShieldAlert className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    GDPR Compliance
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Integrated cookie management and automated privacy controls for global regulatory compliance.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.7 }}
-            >
-              <Card className="bg-surface/50 border-border hover:border-secondary/50 transition-all h-full group">
-                <CardContent className="p-8 pt-8">
-                  <div className="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300 shadow-lg shadow-secondary/10">
                     <Workflow className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Autonomous Dev
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    Advanced Pipelines
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    100% agent-driven implementation using modern AI-first workflows and automated skills.
+                  <p className="text-muted-foreground leading-relaxed">
+                    Integrate seamlessly into existing CI/CD workflows with our 
+                    robust API and native DevOps toolchain support.
                   </p>
                 </CardContent>
               </Card>

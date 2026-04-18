@@ -27,7 +27,6 @@ This skill provides mandatory steps and templates for implementing features in t
 
 ### 6. Full Implementation
 - Do not skip tests, documentation, or proper project structuring.
-- Always update the root `README.md` features list and the `marketing-landing-page` features section for any significant new feature.
 - Always use the latest stable LTS versions of packages.
 - Ensure the project linting (`turbo lint`), builds (`turbo build`), and tests (`turbo test`) pass before finishing.
 
