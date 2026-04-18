@@ -1,11 +1,11 @@
 {
   "functions": {
-    "index.ts": {
+    "api/index.ts": {
       "memory": 1024,
       "includeFiles": "{data/**,v86-images/**,../../packages/rust-fizzbuzz/dist/node/*.wasm}"
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.ts" }
+    { "source": "/(.*)", "destination": "/api/index.ts" }
   ]
 }
