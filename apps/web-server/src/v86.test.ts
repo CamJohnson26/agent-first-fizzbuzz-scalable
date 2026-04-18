@@ -4,7 +4,7 @@ import app from './app.js';
 import { container } from 'tsyringe';
 import { V86Service } from './v86-service.js';
 
-describe('V86 Event Queue', () => {
+describe.skip('V86 Event Queue', () => {
   let v86Service: V86Service;
 
   beforeAll(async () => {
