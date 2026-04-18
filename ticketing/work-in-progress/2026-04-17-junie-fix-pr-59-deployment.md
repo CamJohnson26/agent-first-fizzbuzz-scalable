@@ -25,6 +25,7 @@
 - Step 10: Simplified Vercel entry point to `src/index.ts` and removed `api/index.ts`. ✓
 - Step 11: Identified `reflect-metadata` loading issue and 404 with `src/index.ts`. ✓
 - Step 12: Restored `api/index.ts` and moved `reflect-metadata` to the very top. ✓
+- Step 13: Renamed `src/index.ts` to `src/server.ts` and fixed Vercel routing. ✓
 
 ## Unfinished Work
 - [ ] Verify Vercel deployment and health check

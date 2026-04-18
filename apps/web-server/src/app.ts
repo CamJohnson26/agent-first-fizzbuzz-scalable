@@ -39,6 +39,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+console.log('[App] Initialized');
+
 // Global error handling for debugging
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
