@@ -4,8 +4,5 @@
       "memory": 1024,
       "includeFiles": "../../packages/rust-fizzbuzz/dist/node/*.wasm"
     }
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "api/index.ts" }
-  ]
+  }
 }
