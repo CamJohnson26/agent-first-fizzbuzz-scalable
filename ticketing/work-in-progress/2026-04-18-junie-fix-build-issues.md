@@ -18,7 +18,8 @@
 - Step 5: Updated `web-dashboard` and `marketing-landing-page` to use environment variables for API base URLs. ✓
 - Step 6: Updated `playwright.config.ts` to provide local URLs for E2E tests. ✓
 - Step 7: Increased E2E timeouts to accommodate VM boot time. ✓
-- Step 8: Verified all tests pass. ✓
+- Step 8: Synced and committed `apps/web-server/vercel.json` as requested. ✓
+- Step 9: Verified all tests pass and pushed to feature branch. ✓
 
 ## Unfinished Work
-- None. All issues fixed.
+- Merge to `main` skipped per user instruction ("main is broken").
