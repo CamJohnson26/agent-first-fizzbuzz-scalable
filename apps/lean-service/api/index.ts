@@ -1,11 +1,6 @@
-import app from '../src/index.js';
+import express from 'express';
+import app from '../src/index';
 
-const port = process.env.PORT || 3002;
-
-if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
-  app.listen(port, () => {
-    console.log(`Lean service listening on port ${port}`);
-  });
+export default function handler(req: express.Request, res: express.Response) {
+  return app(req, res);
 }
-
-export default app;
