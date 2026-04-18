@@ -11,8 +11,8 @@
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "postinstall": "node scripts/prune-onnx.js && node scripts/copy-assets.js"

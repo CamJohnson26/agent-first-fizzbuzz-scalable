@@ -23,6 +23,8 @@
 - Step 8: Implemented `copy-assets.js` to ensure `v86.wasm` is bundled. ✓
 - Step 9: Updated `v86-service.ts` and `ai-service.ts` for robust asset path resolution. ✓
 - Step 10: Simplified Vercel entry point to `src/index.ts` and removed `api/index.ts`. ✓
+- Step 11: Identified `reflect-metadata` loading issue and 404 with `src/index.ts`. ✓
+- Step 12: Restored `api/index.ts` and moved `reflect-metadata` to the very top. ✓
 
 ## Unfinished Work
 - [ ] Verify Vercel deployment and health check
