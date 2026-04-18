@@ -19,7 +19,11 @@
 - Step 4: Verified build, lint, and tests pass locally with Node v24.14.1. ✓
 - Step 5: Identified `includeFiles` error in `vercel.json` due to symlinked `node_modules`. ✓
 - Step 6: Simplified `vercel.json` to avoid symlinked paths and included missing `v86-images`. ✓
+- Step 7: Identified `v86.wasm` path issues and missing `v86` module diagnostics. ✓
+- Step 8: Implemented `copy-assets.js` to ensure `v86.wasm` is bundled. ✓
+- Step 9: Updated `v86-service.ts` and `ai-service.ts` for robust asset path resolution. ✓
+- Step 10: Simplified Vercel entry point to `src/index.ts` and removed `api/index.ts`. ✓
 
 ## Unfinished Work
-- [ ] Push changes and verify Vercel deployment
+- [ ] Verify Vercel deployment and health check
 - [ ] Merge PR #59
