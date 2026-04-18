@@ -16,7 +16,6 @@ import {
   Zap,
   Globe,
   CheckCircle2,
-  Lock,
   Workflow,
   Server,
   X,
