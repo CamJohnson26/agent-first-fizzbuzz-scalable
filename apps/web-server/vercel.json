@@ -2,11 +2,7 @@
   "functions": {
     "api/index.ts": {
       "memory": 1024,
-      "includeFiles": [
-        "../../packages/rust-fizzbuzz/dist/node/*.wasm",
-        "data/fizzbuzz_model.onnx",
-        "data/tokenizer_mapping.json"
-      ]
+      "includeFiles": "../../packages/rust-fizzbuzz/dist/node/*.wasm"
     }
   },
   "rewrites": [
