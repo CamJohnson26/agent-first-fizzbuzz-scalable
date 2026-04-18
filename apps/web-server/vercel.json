@@ -2,12 +2,7 @@
   "functions": {
     "api/index.ts": {
       "memory": 1024,
-      "maxDuration": 60,
-      "includeFiles": [
-        "data/**",
-        "v86-images/**",
-        "../../packages/rust-fizzbuzz/dist/node/*.wasm"
-      ]
+      "includeFiles": "{data/**,v86-images/**,../../packages/rust-fizzbuzz/dist/node/*.wasm}"
     }
   },
   "rewrites": [
