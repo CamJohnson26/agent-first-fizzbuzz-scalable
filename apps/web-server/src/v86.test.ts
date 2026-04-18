@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
-import app from './core-app.js';
+import app from './app.js';
 import { container } from 'tsyringe';
 import { V86Service } from './v86-service.js';
 
