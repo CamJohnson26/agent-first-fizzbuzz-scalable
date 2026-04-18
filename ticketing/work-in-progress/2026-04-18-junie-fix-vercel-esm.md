@@ -11,6 +11,8 @@
 - [x] Fix imports in `api/index.ts` to be compatible with Vercel's Node.js builder
 - [x] Add `api/package.json` with `{"type": "module"}` to force ESM behavior
 - [x] Update `tsconfig.json` and `tsconfig.build.json` to correctly handle `api/` folder
+- [x] (Attempt 3) Add `"type": "module"` to root `package.json` and rename scripts to `.cjs`
+- [x] (Attempt 3) Rename `api/index.ts` to `api/index.mts` for all backend services
 - [x] Verify build locally via `turbo build`
 - [x] Commit, push, and update PR 68
 
@@ -22,8 +24,9 @@
 - Step 5: (Attempt 2) Re-added `.js` extensions for ESM compliance.
 - Step 6: (Attempt 2) Added `api/package.json` with `{"type": "module"}` for all backend services.
 - Step 7: (Attempt 2) Updated `tsconfig.json` and `tsconfig.build.json` to include `api/` while avoiding `rootDir` conflicts.
-- Step 8: Verified builds locally via `turbo build`.
-- Step 9: Pushed updates to PR 68.
+- Step 8: (Attempt 3) Moved `type: module` to root `package.json` and renamed `api/index.ts` to `api/index.mts`.
+- Step 9: Verified builds and scripts locally.
+- Step 10: Pushed updates to PR 68.
 
 ## Unfinished Work
 - None.
