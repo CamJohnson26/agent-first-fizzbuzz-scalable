@@ -77,7 +77,6 @@ graph TD
             DB[(SQLite - Persistence)]
             AS[Analytics Service - Express]
             LS[Lean Service - Express/Lean 4]
-            VM[v86 Virtual Machine - Linux]
         end
     end
 
@@ -105,8 +104,6 @@ graph TD
     WS -- Persistence --> DB
     WS -- Inference --> TF
     WS -- Resolves --> DI
-    WS -- Manages/Serial --> VM
-    VM -- Runs --> EQ[Lua Event Queue]
     DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
@@ -121,7 +118,7 @@ graph TD
 
 - **`/apps`**:
   - `web-dashboard`: User-facing monitoring and computation interface with data export capabilities.
-  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines, integrated with **SQLite** for local persistence and **v86** for emulated event processing.
+  - `web-server`: Enterprise API serving FizzBuzz results using multiple high-performance engines, integrated with **SQLite** for local persistence.
   - `lean-service`: Formal verification service wrapping the Lean 4 binary for high-fidelity proofs.
   - `analytics-service`: Centralized log collection and metrics engine for real-time observability.
   - `marketing-landing-page`: High-conversion project showcase with integrated blog and GDPR compliance.
@@ -138,23 +135,20 @@ graph TD
 
 ---
 
-## ✨ Key Features
+## ✨ Features Overview
 
-- 🚀 **Core Rule Model (F007/F124)**: A modular, generalized rule engine that decouples logic, predicates, and renderers (ADR 008, ADR 012).
-- 🏎️ **WASM Rust Engine (F043)**: Lightning-fast computations using a specialized Rust implementation compiled to WebAssembly (ADR 009).
-- 🛡️ **Lean 4 Formal Verification (F042/F080)**: Mission-critical algorithms formally verified for mathematical precision and reliability.
-- 🖥️ **v86 Virtual Machine Isolation (F099)**: Secure, emulated x86 Linux environment for isolated execution and sandbox processing.
-- 📪 **v86 Emulated Event Queue (F098)**: Lightweight asynchronous event processing running inside the emulated VM, accessible via serial.
-- 🗄️ **SQLite Persistence (F041)**: Enterprise-grade local data storage for computation history, system settings, and audit logs.
-- 📊 **Analytics Service (F035)**: Centralized observability and real-time performance monitoring across all services.
-- 🧪 **Playwright E2E Testing (F048)**: Comprehensive end-to-end testing suite ensuring reliability across all applications and user flows.
-- 📂 **Enterprise Data Exports (F121)**: Seamless export of computation results to CSV, JSON, PDF, TXT, and Excel formats.
-- 🍪 **GDPR Compliance (F096)**: Full regulatory compliance with integrated cookie management and automated privacy controls.
-- 🤖 **Autonomous Development (F122)**: 100% agent-driven implementation using modern AI-first workflows and automated skills.
-- 📦 **Turborepo Monorepo (F006)**: High-performance monorepo foundation with pnpm workspaces and optimized CI/CD pipelines.
-- 🎨 **Unified Design System (F028)**: A centralized UI component library using Tailwind CSS 4 and React 19 for consistent UX.
-- 📝 **Company Blog (F083)**: Integrated blog platform for project updates, technical articles, and community engagement.
-- 🗳️ **Survey Integration (F104)**: Built-in feedback mechanisms and NPS solicitation to drive continuous improvement (ADR 006).
+- 🚀 **Generalized Rule-Based Computation**: A modular engine (ADR 008) that decouples rules, predicates, and renderers for ultimate flexibility.
+- 🧮 **Precision Arithmetic Services**: Pluggable arithmetic backends (ADR 009) including BigInt and Checked 64-bit to prevent silent failures.
+- 🛡️ **Resilient & Fault-Tolerant**: Integrated rule integrity checks (SHA-256), state resynchronization, and cross-checking evaluators (ADR 010).
+- 🏎️ **High-Performance Multi-Engine**: Optimized FizzBuzz logic with TypeScript, Rust (WASM), and Lean 4 engines.
+- 📊 **Real-Time Observability**: Integrated analytics service that monitors system usage and performance metrics.
+- 🧪 **Comprehensive E2E Testing**: Integrated Playwright test suite for cross-application verification of user flows and backend integration.
+- 🛡️ **Formal Verification**: Core algorithms are verified using the Lean 4 theorem solver for mission-critical reliability.
+- 📁 **Enterprise Data Exports**: Support for exporting computation results to CSV, JSON, PDF, and Excel formats.
+- 🍪 **GDPR Compliance**: Fully compliant marketing site with cookie consent management and detailed privacy policies.
+- 🤖 **Autonomous Development**: 100% of the codebase is managed by AI agents, ensuring a consistent and high-fidelity implementation.
+- 📦 **Modern Monorepo**: Built with Turborepo for lightning-fast builds and pnpm for efficient dependency management.
+- 🎨 **Enterprise UI**: A unified design system using Tailwind CSS 4 and React 19.
 
 ---
 
