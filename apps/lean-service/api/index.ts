@@ -1,5 +1,5 @@
 import express from 'express';
-import app from '../src/index';
+import app from '../src/index.js';
 
 export default function handler(req: express.Request, res: express.Response) {
   return app(req, res);
