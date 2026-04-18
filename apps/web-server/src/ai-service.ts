@@ -1,4 +1,4 @@
-import * as ort from 'onnxruntime-web';
+import * as ort from 'onnxruntime-node';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -27,13 +27,6 @@ export class AIInferenceService {
 
     try {
       console.log(`[AI Service] Initializing with model at: ${this.modelPath}`);
-      console.log(`[AI Service] Current working directory: ${process.cwd()}`);
-      console.log(`[AI Service] __dirname: ${__dirname}`);
-      
-      // Configure WASM paths for onnxruntime-web in Node.js
-      const wasmDir = path.dirname(this.modelPath);
-      console.log(`[AI Service] Setting WASM path to: ${wasmDir}`);
-      ort.env.wasm.wasmPaths = wasmDir + '/';
       
       if (!fs.existsSync(this.modelPath)) {
         throw new Error(`Model file not found at ${this.modelPath}`);
