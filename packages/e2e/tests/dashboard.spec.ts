@@ -7,12 +7,10 @@ test.describe('Web Dashboard', () => {
 
   test('should show server status as ok', async ({ page }) => {
     // Wait for the server status to be 'ok'
-    await expect(page.getByText('Server: ok')).toBeVisible({ timeout: 30000 });
+    await expect(page.getByText('Server: ok')).toBeVisible({ timeout: 10000 });
   });
 
   test('should perform single computation', async ({ page }) => {
-    // Wait for initial health check to be 'ok' before starting
-    await expect(page.getByText('Server: ok')).toBeVisible({ timeout: 30000 });
     const input = page.getByPlaceholder('Enter a number...');
     await input.fill('15');
     await page.getByRole('button', { name: 'Compute' }).click();
@@ -68,7 +66,7 @@ test.describe('Web Dashboard', () => {
 
   test('should manually refresh health status', async ({ page }) => {
     // Wait for initial health check to be 'ok'
-    await expect(page.getByText('Server: ok')).toBeVisible({ timeout: 30000 });
+    await expect(page.getByText('Server: ok')).toBeVisible();
 
     // Intercept next health check and return 'offline'
     await page.route('**/health', (route) => {

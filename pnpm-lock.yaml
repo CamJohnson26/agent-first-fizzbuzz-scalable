@@ -342,9 +342,6 @@ importers:
       tsyringe:
         specifier: ^4.8.0
         version: 4.10.0
-      v86:
-        specifier: ^0.5.327
-        version: 0.5.327
       zod:
         specifier: ^3.22.4
         version: 3.25.76
@@ -3364,9 +3361,6 @@ packages:
 
   utrie@1.0.2:
     resolution: {integrity: sha512-1MLa5ouZiOmQzUbjbu9VmjLzn1QLXBhwpUa7kdLUQK+KQ5KA9I1vk5U4YHe/X2Ch7PYnJfWuWT+VbuxbGwljhw==}
-
-  v86@0.5.327:
-    resolution: {integrity: sha512-I6MSv+j616Z3O0kvVjd9V7m3pc6Y3EM87iMBdXJ65fQsvCFk5iRHf9nYovCjzFzF3fK3sZSsp8+JS6+LFQdcoQ==}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -6912,8 +6906,6 @@ snapshots:
     dependencies:
       base64-arraybuffer: 1.0.2
     optional: true
-
-  v86@0.5.327: {}
 
   vary@1.1.2: {}
 

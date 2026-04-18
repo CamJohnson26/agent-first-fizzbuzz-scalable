@@ -23,14 +23,14 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: [
     {
-      command: 'VITE_API_BASE=http://localhost:3000 VITE_DASHBOARD_URL=http://localhost:5184 pnpm --filter marketing-landing-page dev --port 5183',
+      command: 'pnpm --filter marketing-landing-page dev --port 5183',
       url: 'http://localhost:5183/agent-first-fizzbuzz-scalable/',
       reuseExistingServer: true,
       stdout: 'pipe',
       stderr: 'pipe',
     },
     {
-      command: 'VITE_API_BASE=http://localhost:3000 VITE_ANALYTICS_BASE=http://localhost:3001 pnpm --filter @fizzbuzz/web-dashboard dev --port 5184',
+      command: 'pnpm --filter @fizzbuzz/web-dashboard dev --port 5184',
       url: 'http://localhost:5184',
       reuseExistingServer: true,
       stdout: 'pipe',
