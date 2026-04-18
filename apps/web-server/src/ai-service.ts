@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { injectable, singleton } from 'tsyringe';
+import type * as ONNX from 'onnxruntime-node';
 
 // We use dynamic import for onnxruntime-node to prevent app crash if native binaries are missing
 let ort: any = null;
@@ -18,7 +19,7 @@ interface TokenizerMapping {
 @singleton()
 @injectable()
 export class AIInferenceService {
-  private session: ort.InferenceSession | null = null;
+  private session: ONNX.InferenceSession | null = null;
   private tokenizer: TokenizerMapping | null = null;
   private readonly modelPath = path.join(process.cwd(), 'data/fizzbuzz_model.onnx');
   private readonly tokenizerPath = path.join(process.cwd(), 'data/tokenizer_mapping.json');
