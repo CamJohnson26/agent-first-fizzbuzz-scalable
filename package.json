@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "agent-first-fizzbuzz-scalable",
   "private": true,
   "engines": {
@@ -8,9 +7,9 @@
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
   "scripts": {
-    "preinstall": "node scripts/check-node-version.cjs",
+    "preinstall": "node scripts/check-node-version.js",
     "prepare": "pnpm --version",
-    "check-node": "node scripts/check-node-version.cjs",
+    "check-node": "node scripts/check-node-version.js",
     "build": "pnpm run check-node && turbo run build",
     "dev": "pnpm run check-node && turbo run dev",
     "lint": "pnpm run check-node && turbo run lint",

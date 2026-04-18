@@ -3,12 +3,12 @@
   "installCommand": "cd ../.. && pnpm install",
   "devCommand": "pnpm dev",
   "functions": {
-    "api/index.mts": {
+    "api/index.ts": {
       "memory": 1024,
       "includeFiles": "../../packages/rust-fizzbuzz/dist/node/*.wasm"
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "api/index.mts" }
+    { "source": "/(.*)", "destination": "api/index.ts" }
   ]
 }

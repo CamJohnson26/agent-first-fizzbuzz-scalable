@@ -3,11 +3,11 @@
   "installCommand": "cd ../.. && pnpm install",
   "devCommand": "pnpm dev",
   "functions": {
-    "api/index.mts": {
+    "api/index.ts": {
       "memory": 1024
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "api/index.mts" }
+    { "source": "/(.*)", "destination": "api/index.ts" }
   ]
 }
