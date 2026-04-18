@@ -1,8 +1,9 @@
-import v86pkg from "v86";
-const V86 = (v86pkg as any).V86 || v86pkg;
 import path from "path";
 import { fileURLToPath } from 'url';
 import { singleton } from "tsyringe";
+
+// We use dynamic import for v86 to prevent app crash if native binaries are missing
+let V86: any = null;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,6 +49,17 @@ export class V86Service {
   }
 
   private async startEmulator() {
+    if (!V86) {
+      console.log("[V86] Loading v86 module...");
+      try {
+        const v86pkg = await import("v86");
+        V86 = (v86pkg as any).V86 || v86pkg.default || v86pkg;
+      } catch (err: any) {
+        console.error("[V86] Failed to load v86 module:", err);
+        throw new Error(`v86 module not available: ${err.message}`);
+      }
+    }
+
     const imagesPath = path.resolve(__dirname, "../v86-images");
     const wasmPath = path.join(imagesPath, "v86.wasm");
 
