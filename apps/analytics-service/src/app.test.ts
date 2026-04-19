@@ -2,48 +2,43 @@ import { describe, it, expect } from 'vitest';
 import request from 'supertest';
 import app from './app.js';
 
-describe('Analytics Service', () => {
+describe('Web Server Integration Tests', () => {
 
-  it('should return health status', async () => {
+  it('GET /health should return 200 and ok status', async () => {
     const response = await request(app).get('/health');
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ status: 'ok' });
+    expect(response.body).toHaveProperty('status', 'ok');
+    expect(response.body).toHaveProperty('timestamp');
   });
 
-  it('should return initial stats', async () => {
-    const response = await request(app).get('/stats');
+  it('GET /compute/:n should return 200 and correct result for valid input', async () => {
+    const response = await request(app).get('/compute/15');
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ totalLogs: 0, logsByService: {} });
+    expect(response.body).toEqual({ n: 15, result: 'FizzBuzz', engine: 'js' });
   });
 
-  it('should receive logs and update stats', async () => {
-    const logData = {
-      message: 'Test log',
-      service: 'test-service',
-      level: 'info'
-    };
-
-    const postResponse = await request(app)
-      .post('/api/logs')
-      .send(logData);
-    expect(postResponse.status).toBe(202);
-    expect(postResponse.body).toEqual({ status: 'received' });
-
-    const statsResponse = await request(app).get('/stats');
-    expect(statsResponse.body.totalLogs).toBe(1);
-    expect(statsResponse.body.logsByService['test-service']).toBe(1);
-  });
-
-  it('should return 400 for invalid log format', async () => {
-    const invalidLog = {
-      message: 'Incomplete log'
-      // missing service
-    };
-
-    const response = await request(app)
-      .post('/api/logs')
-      .send(invalidLog);
+  it('GET /compute/:n should return 400 for invalid input', async () => {
+    const response = await request(app).get('/compute/abc');
     expect(response.status).toBe(400);
-    expect(response.body.error).toBe('Invalid log format');
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('GET /range should return 200 and correct results for valid query', async () => {
+    const response = await request(app).get('/range?start=1&end=5');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      start: 1,
+      end: 5,
+      results: ['1', '2', 'Fizz', '4', 'Buzz'],
+      engine: 'js',
+    });
+  });
+
+  it('GET /range should return 400 for invalid query (start > end)', async () => {
+    const response = await request(app).get('/range?start=10&end=5');
+    expect(response.status).toBe(400);
+    expect(response.body.error[0].message).toBe(
+      'Start must be less than or equal to end',
+    );
   });
 });

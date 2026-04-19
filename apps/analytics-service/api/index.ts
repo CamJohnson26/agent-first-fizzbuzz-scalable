@@ -1,3 +1,4 @@
+import express from 'express';
 import app from '../src/app.js';
 
 export default function handler(req: express.Request, res: express.Response) {
