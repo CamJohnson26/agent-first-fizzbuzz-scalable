@@ -2,10 +2,6 @@ import { Request, Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { createRequire } from 'module';
 import { injectable, inject } from 'tsyringe';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
-import { promisify } from 'util';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
 import { Logger } from './logger.js';
 import { 
@@ -14,8 +10,6 @@ import {
   RangeResponse 
 } from '@fizzbuzz/types';
 import { computeSchema, rangeSchema, chatSchema } from './schemas.js';
-
-const execPromise = promisify(exec);
 
 const require = createRequire(import.meta.url);
 const rustEngine = require('@fizzbuzz/rust-engine');
@@ -86,37 +80,31 @@ export class FizzBuzzHandler {
   public chatHandler = async (req: Request, res: ExpressResponse<{ response: string } | { error: unknown }>) => {
     try {
       const { message } = chatSchema.parse(req.body);
+      const TRANSFORMER_SERVICE_URL = process.env.TRANSFORMER_SERVICE_URL || 'http://localhost:3003';
       
-      // Prepare prompt
       const prompt = `U: ${message}\nA:`;
     
-      const __dirname = path.dirname(fileURLToPath(import.meta.url));
-      const pythonAppPath = process.env.TRANSFORMER_PATH || path.resolve(__dirname, '../../fizzbuzz-transformer');
-      const pythonBin = process.env.PYTHON_PATH || 'python3';
-      
-      // Run inference script
       try {
-        const { stdout, stderr } = await execPromise(
-          `PYTHONPATH=${pythonAppPath} ${pythonBin} -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
-          { cwd: pythonAppPath }
-        );
-        
-        if (stderr && !stdout) {
-          this.logger.error('Inference error:', stderr);
-          return res.status(500).json({ error: 'Inference failed' });
+        const transformerRes = await fetch(`${TRANSFORMER_SERVICE_URL}/infer`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt })
+        });
+
+        if (!transformerRes.ok) {
+          const errorData = await transformerRes.json() as { error?: string };
+          this.logger.error('Transformer service error:', errorData);
+          return res.status(500).json({ error: errorData.error || 'Inference failed' });
         }
-        
-        res.json({ response: stdout.trim() });
-      } catch (execError: unknown) {
-        const error = execError as Error;
-        // Fallback for missing dependencies in demo environments
-        if (error.message && (error.message.includes('ModuleNotFoundError') || error.message.includes('not found'))) {
-          this.logger.warn('Transformer failed due to missing environment/dependency, using fallback response', { error: error.message });
-          return res.json({ 
-            response: `[DEMO FALLBACK] FizzBuzz reasoning: '${message}' is interesting. In a real environment with PyTorch, I would use the transformer model to give you a detailed answer!` 
-          });
-        }
-        throw execError;
+
+        const data = await transformerRes.json() as { response: string };
+        res.json({ response: data.response });
+      } catch (fetchError: unknown) {
+        const error = fetchError as Error;
+        this.logger.warn('Transformer service unreachable, using fallback response', { error: error.message });
+        return res.json({ 
+          response: `[DEMO FALLBACK] FizzBuzz reasoning: '${message}' is interesting. In a real environment with PyTorch, I would use the transformer model to give you a detailed answer!` 
+        });
       }
     } catch (error) {
       if (error instanceof z.ZodError) {

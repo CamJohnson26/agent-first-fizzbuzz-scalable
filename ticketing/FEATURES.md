@@ -160,6 +160,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F152 | Elastic Search | Advanced search and indexing capabilities with Elasticsearch. | Proposed |
 | F153 | Sharding | Database sharding for horizontal scaling and performance. | Proposed |
 | F154 | Fly.io Migration | Migrate all apps and packages from Vercel to fly.io for better scalability and VM support. | Done |
+| F155 | Fly.io Stability Fix | Resolve machine crashes and OOM by increasing memory and optimizing chat feature. | Done |
 
 ## Next Features
 
