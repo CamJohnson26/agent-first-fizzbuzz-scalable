@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { injectable, inject } from 'tsyringe';
 import { V86Service } from './v86-service.js';
+import { Logger } from './logger.js';
 
 @injectable()
 export class EventHandler {
   constructor(
-    @inject(V86Service) private v86Service: V86Service
+    @inject(V86Service) private v86Service: V86Service,
+    @inject(Logger) private logger: Logger
   ) {}
 
   public pushHandler = async (req: Request, res: Response) => {
@@ -17,6 +19,7 @@ export class EventHandler {
     if (success) {
       res.json({ status: 'pushed', event });
     } else {
+      this.logger.warn('Failed to push event to V86 queue', { event });
       res.status(503).json({ error: 'Event queue not ready' });
     }
   };

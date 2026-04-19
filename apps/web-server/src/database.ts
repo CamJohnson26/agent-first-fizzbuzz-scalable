@@ -1,14 +1,17 @@
 import 'reflect-metadata';
-import { singleton } from 'tsyringe';
+import { singleton, inject } from 'tsyringe';
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import { Logger } from './logger.js';
 
 @singleton()
 export class DatabaseService {
   private db: Database.Database;
 
-  constructor() {
+  constructor(
+    @inject(Logger) private logger: Logger
+  ) {
     let dbPath = process.env.DATABASE_PATH;
     
     if (!dbPath) {
@@ -25,7 +28,7 @@ export class DatabaseService {
         try {
           fs.mkdirSync(dbDir, { recursive: true });
         } catch (error) {
-          console.warn(`Failed to create database directory: ${dbDir}`, error);
+          this.logger.warn(`Failed to create database directory: ${dbDir}`, { error });
           dbPath = ':memory:';
         }
       }
@@ -34,7 +37,7 @@ export class DatabaseService {
     try {
       this.db = new Database(dbPath);
     } catch (error) {
-      console.error(`Failed to open database at ${dbPath}, falling back to :memory:`, error);
+      this.logger.error(`Failed to open database at ${dbPath}, falling back to :memory:`, error);
       this.db = new Database(':memory:');
     }
     this.initialize();

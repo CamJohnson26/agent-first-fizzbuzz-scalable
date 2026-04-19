@@ -6,6 +6,7 @@ import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
+import { Logger } from './logger.js';
 import { 
   HealthResponse, 
   ComputeResponse, 
@@ -21,7 +22,8 @@ const rustEngine = require('@fizzbuzz/rust-engine');
 @injectable()
 export class FizzBuzzHandler {
   constructor(
-    @inject(FizzBuzzService) private fizzBuzzService: FizzBuzzService
+    @inject(FizzBuzzService) private fizzBuzzService: FizzBuzzService,
+    @inject(Logger) private logger: Logger
   ) {}
 
   public healthHandler = (req: Request, res: ExpressResponse<HealthResponse>) => {
@@ -49,7 +51,7 @@ export class FizzBuzzHandler {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
       }
-      console.error('Compute error:', error);
+      this.logger.error('Compute error:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -75,7 +77,7 @@ export class FizzBuzzHandler {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
       }
-      console.error('Range error:', error);
+      this.logger.error('Range error:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -96,7 +98,7 @@ export class FizzBuzzHandler {
       );
       
       if (stderr && !stdout) {
-        console.error('Inference error:', stderr);
+        this.logger.error('Inference error:', stderr);
         return res.status(500).json({ error: 'Inference failed' });
       }
       
@@ -105,7 +107,7 @@ export class FizzBuzzHandler {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
       }
-      console.error('Chat error:', error);
+      this.logger.error('Chat error:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   };
