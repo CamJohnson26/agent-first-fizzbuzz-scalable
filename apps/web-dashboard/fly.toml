@@ -1,14 +1,14 @@
 # fly.toml app configuration file generated for agent-first-fizzbuzz-web-dashboard
 
 app = "agent-first-fizzbuzz-web-dashboard"
-primary_region = "sea"
+primary_region = "sjc"
 
 [http_service]
   internal_port = 80
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 1
+  min_machines_running = 0
   processes = ["app"]
 
 [build]

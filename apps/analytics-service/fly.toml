@@ -1,7 +1,7 @@
 # fly.toml app configuration file generated for agent-first-fizzbuzz-analytics
 
 app = "agent-first-fizzbuzz-analytics"
-primary_region = "sea"
+primary_region = "sjc"
 
 [http_service]
   internal_port = 3001
