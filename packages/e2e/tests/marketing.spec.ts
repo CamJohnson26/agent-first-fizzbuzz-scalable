@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Marketing Landing Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5183/agent-first-fizzbuzz-scalable/');
+    await page.goto('http://localhost:5183/');
   });
 
   test('should have the correct title', async ({ page }) => {

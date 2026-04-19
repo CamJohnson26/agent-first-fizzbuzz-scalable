@@ -190,7 +190,7 @@ export default function App() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => window.location.href = 'https://agent-first-fizzbuzz-marketing.fly.dev/'}
+              onClick={() => window.location.href = '/'}
               className="gap-2 rounded-lg"
             >
               <Home className="w-4 h-4" />

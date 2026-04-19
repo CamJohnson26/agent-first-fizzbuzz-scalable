@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Web Dashboard', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5184');
+    // Dashboard is served at /dashboard/ in monolith
+    await page.goto('http://localhost:5184/dashboard/');
   });
 
   test('should show server status as ok', async ({ page }) => {

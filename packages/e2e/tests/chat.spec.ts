@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('FizzBuzz Chat', () => {
   test.beforeEach(async ({ page }) => {
     // Go to the marketing page where the chat component is located
-    await page.goto('http://localhost:5183/agent-first-fizzbuzz-scalable/');
+    await page.goto('http://localhost:5183/');
   });
 
   test('should be open by default', async ({ page }) => {
