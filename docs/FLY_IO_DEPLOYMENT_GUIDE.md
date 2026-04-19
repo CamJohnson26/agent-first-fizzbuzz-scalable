@@ -1,12 +1,27 @@
-# Fly.io Deployment Guide
+# Fly.io Deployment Guide (Consolidated Monolith)
 
-This guide explains how to deploy the individual services from this monorepo to Fly.io.
+This guide explains how to deploy the entire Agent-First FizzBuzz Scalable stack as a single consolidated Fly App.
+
+## Monolith Architecture
+
+To optimize for costs and performance, we use a "Monolith within a Container" strategy. A single Fly Machine runs an Nginx reverse proxy that routes traffic to multiple backend services and serves multiple static frontend applications.
+
+### Routing Table
+
+| Path | Target | Port | Type |
+|------|--------|------|------|
+| `/` | Marketing Landing Page | Nginx Static | Static |
+| `/dashboard/` | Web Dashboard | Nginx Static | Static |
+| `/api/` | Web Server (Express) | 3000 | API |
+| `/analytics/` | Analytics Service (Express) | 3001 | API |
+| `/lean/` | Lean Service (Express) | 3002 | API |
+| `/health` | Monolith Health Check | Nginx | Internal |
 
 ## General Strategy
 
-Each application in the `apps/` directory is configured as a standalone Fly App. We use `fly.toml` for configuration and Docker for containerization.
+We use a root `Dockerfile.monolith` that builds all applications in the monorepo and packages them into a single production image.
 
-### Deployment Process (per application)
+### Deployment Process
 
 1.  **Install `flyctl`**:
     ```bash
@@ -16,50 +31,38 @@ Each application in the `apps/` directory is configured as a standalone Fly App.
     ```bash
     fly auth login
     ```
-3.  **Navigate to the App Directory**:
+3.  **Deploy from Root**:
     ```bash
-    cd apps/<app-name>
+    fly deploy --config fly.toml .
     ```
-4.  **Create the Fly App** (if not already done):
-    ```bash
-    fly apps create agent-first-fizzbuzz-<app-short-name> --org personal
-    ```
-5.  **Deploy from Monorepo Root**:
-    From the root of the monorepo, run:
-    ```bash
-    fly deploy --config apps/<app-name>/fly.toml .
-    ```
-    *Note: We use the root as the build context because our Dockerfiles use `turbo prune` to handle monorepo dependencies.*
-
-### Application Details
-
-| App Name | Fly App Name | Internal Port |
-|----------|--------------|---------------|
-| `web-server` | `agent-first-fizzbuzz-web-server` | 3000 |
-| `analytics-service` | `agent-first-fizzbuzz-analytics` | 3001 |
-| `lean-service` | `agent-first-fizzbuzz-lean` | 3002 |
-| `marketing-landing-page` | `agent-first-fizzbuzz-marketing` | 80 |
-| `web-dashboard` | `agent-first-fizzbuzz-web-dashboard` | 80 |
-
-## Environment Variables
-
-Configure environment variables using `fly secrets set` or in the Fly Dashboard.
-
-- **For `web-dashboard`**:
-  - `VITE_API_BASE`: `https://agent-first-fizzbuzz-web-server.fly.dev`
-  - `VITE_ANALYTICS_BASE`: `https://agent-first-fizzbuzz-analytics.fly.dev`
-- **For `marketing-landing-page`**:
-  - `VITE_DASHBOARD_URL`: `https://agent-first-fizzbuzz-web-dashboard.fly.dev/`
 
 ## Automated Deployments
 
-We use GitHub Actions for automated deployments. On every push to `main`, the CI/CD pipeline deploys all 5 applications to Fly.io.
+We use GitHub Actions for automated deployments. On every push to `main`, the CI/CD pipeline builds the monolith image and deploys it to the `agent-first-fizzbuzz-scalable` app on Fly.io.
 
-Requirements for GitHub Actions:
-- `FLY_API_TOKEN` must be added to GitHub Repository Secrets.
+### GitHub Secrets Required
+- `FLY_API_TOKEN`: Obtain from `fly tokens create deploy`.
 
-## Benefits of Fly.io over Serverless (Vercel)
+## Local Development vs. Production
 
-- **Persistent VMs**: Our `web-server` can now maintain the state of its emulated v86 Virtual Machine, providing a persistent event queue.
-- **Zero Cold Starts**: Long-running machines eliminate the latency of spinning up the VM environment on every request.
-- **Full Control**: Direct access to CPU, memory, and networking configurations for high-performance execution.
+- **Local**: Services run on individual ports (3000, 3001, 3002, 5173, etc.). The `web-dashboard` uses Vite's proxy to reach the backends.
+- **Production**: All traffic goes through port 8080 (internal) / 443 (public). Routing is handled by Nginx based on the path prefix.
+
+## Infrastructure Components
+
+- **Nginx**: reverse proxy and static file server.
+- **scripts/start-monolith.sh**: Orchestration script that starts all Node.js backends and Nginx.
+- **Dockerfile.monolith**: Multi-stage build including Rust, Lean, Node.js, and Python/Torch.
+
+## Troubleshooting
+
+Check the logs of the consolidated machine:
+```bash
+fly logs --app agent-first-fizzbuzz-scalable
+```
+
+You can also use the internal health checks:
+```bash
+curl https://agent-first-fizzbuzz-scalable.fly.dev/health
+curl https://agent-first-fizzbuzz-scalable.fly.dev/api/health
+```

@@ -77,6 +77,6 @@ jobs:
 
     - name: Deploy Monolith to Fly.io
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config fly.monolith.toml .
+      run: flyctl deploy --remote-only --config fly.toml .
       env:
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
