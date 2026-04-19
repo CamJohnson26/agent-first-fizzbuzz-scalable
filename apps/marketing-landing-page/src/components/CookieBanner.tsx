@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, X } from 'lucide-react';
 
 interface CookieBannerProps {
-  onAccept: () => void;
-  onDecline: () => void;
+  onAccept?: () => void;
+  onDecline?: () => void;
   onPrivacyPolicyClick: () => void;
 }
 
@@ -35,7 +35,7 @@ export function CookieBanner({ onAccept, onDecline, onPrivacyPolicyClick }: Cook
       console.warn('LocalStorage not available', e);
     }
     setIsVisible(false);
-    onAccept();
+    onAccept?.();
   };
 
   const handleDecline = () => {
@@ -47,7 +47,7 @@ export function CookieBanner({ onAccept, onDecline, onPrivacyPolicyClick }: Cook
       console.warn('LocalStorage not available', e);
     }
     setIsVisible(false);
-    onDecline();
+    onDecline?.();
   };
 
   return (
