@@ -15,11 +15,7 @@ export class DatabaseService {
     let dbPath = process.env.DATABASE_PATH;
     
     if (!dbPath) {
-      if (process.env.VERCEL === '1') {
-        dbPath = ':memory:';
-      } else {
-        dbPath = path.join(process.cwd(), 'data', 'fizzbuzz.db');
-      }
+      dbPath = path.join(process.cwd(), 'data', 'fizzbuzz.db');
     }
 
     if (dbPath !== ':memory:') {

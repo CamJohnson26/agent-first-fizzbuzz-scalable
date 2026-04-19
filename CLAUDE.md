@@ -121,7 +121,7 @@ GitHub Actions workflow is located at `.github/workflows/ci-cd.yml`.
 It runs on every push to `main` and pull request.
 
 - **CI**: Runs lint, build, and test.
-- **CD**: Deploys applications to **Vercel** on push to `main`.
+- **CD**: Deploys applications to **Fly.io** on push to `main`.
 
 ### Local Build Commands
 - Environment setup: `nvm install && nvm use` (uses `.nvmrc`)

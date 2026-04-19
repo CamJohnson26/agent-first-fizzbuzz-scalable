@@ -23,9 +23,9 @@ Are you tired of bloated, expensive, and unreliable legacy FizzBuzz solutions? *
 
 ## 🌐 Live Demo
 
-The **Marketing Landing Page** is automatically deployed to **Vercel**.
+The **Marketing Landing Page** is automatically deployed to **Fly.io**.
 
-🔗 **[View Live Site](https://agent-first-fizzbuzz-scalable-marke.vercel.app/)**
+🔗 **[View Live Site](https://agent-first-fizzbuzz-marketing.fly.dev/)**
 
 ---
 
@@ -46,7 +46,7 @@ timeline
         Reliability : Formal Verification (F042), GDPR Compliance (F096)
         Experience : Multi-engine UI (F082), Company Blog (F083)
     section 2026 Q3 - Scalability
-        Cloud Readiness : Vercel Deployment (F102), Architecture Audit (F105)
+        Cloud Readiness : Fly.io Migration (F154), Architecture Audit (F105)
         Enterprise Data : Data Exports (F121), Survey Integration (F104)
         Security Hardening : Dependency Updates (F107), Type Safety (F111)
     section 2026 Q4 - Ecosystem
@@ -65,7 +65,7 @@ Built on a robust, scalable monorepo architecture using **Turborepo** and **pnpm
 
 ```mermaid
 graph TD
-    subgraph Hosting [Cloud Infrastructure - Vercel]
+    subgraph Hosting [Cloud Infrastructure - Fly.io]
         subgraph Client_Layer [Client Layer]
             WD[Web Dashboard - React 19]
             LP[Marketing Landing Page - React 19]
@@ -176,7 +176,8 @@ Our system leverages modern, high-performance technologies across the entire sta
   - **Zod**: Type-safe schema validation.
 - **Infrastructure**: 
   - **Turborepo**: High-performance build system for monorepos.
-  - **Vercel**: Edge-first cloud deployment and hosting.
+  - **Vercel**: Legacy cloud deployment and hosting.
+  - **Fly.io**: Modern persistent VM deployment and hosting.
   - **GitHub Actions**: Automated CI/CD pipelines.
 - **Testing**: 
   - **Vitest**: Blazing fast unit and integration testing.
@@ -280,10 +281,10 @@ turbo test --filter <package-name>
 
 The applications in this monorepo are designed for high-availability and scalable deployment.
 
-### Vercel (All Services)
-We use **Vercel** for hosting our applications and serverless backend services. The marketing landing page is automatically deployed to Vercel.
+### Fly.io (All Services)
+We use **Fly.io** for hosting our applications and persistent backend services. All applications are automatically deployed to Fly.io via GitHub Actions.
 
-Detailed instructions can be found in the **[Vercel Deployment Guide](docs/VERCEL_DEPLOYMENT_GUIDE.md)**.
+Detailed instructions can be found in the **[Fly.io Deployment Guide](docs/FLY_IO_DEPLOYMENT_GUIDE.md)**.
 
 ---
 

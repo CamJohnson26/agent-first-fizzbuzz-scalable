@@ -1,0 +1,20 @@
+# fly.toml app configuration file generated for agent-first-fizzbuzz-web-dashboard
+
+app = "agent-first-fizzbuzz-web-dashboard"
+primary_region = "sea"
+
+[http_service]
+  internal_port = 80
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[build]
+  dockerfile = "Dockerfile"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

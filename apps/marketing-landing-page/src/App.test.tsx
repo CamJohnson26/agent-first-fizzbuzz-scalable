@@ -105,7 +105,7 @@ describe('App', () => {
     const dashboardButtons = screen.getAllByRole('button', { name: /Dashboard|Start Free Trial/i });
     await user.click(dashboardButtons[0]);
     
-    expect(window.location.href).toBe('https://agent-first-fizzbuzz-scalable-web-d.vercel.app/');
+    expect(window.location.href).toBe('https://agent-first-fizzbuzz-web-dashboard.fly.dev/');
     
     (window as any).location = originalLocation;
   });
