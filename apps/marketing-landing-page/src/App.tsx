@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
@@ -94,6 +94,37 @@ export default function App() {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#blog/')) {
+        const postId = hash.substring(6);
+        setActiveSection('blog');
+        setSelectedPostId(postId);
+      } else if (hash === '#blog') {
+        setActiveSection('blog');
+        setSelectedPostId(null);
+      } else if (hash === '#case-studies') {
+        setActiveSection('case-studies');
+      } else if (hash.startsWith('#docs/')) {
+        const docId = hash.substring(6);
+        setActiveSection('docs');
+        setSelectedDocId(docId);
+      } else if (hash === '#docs') {
+        setActiveSection('docs');
+      } else if (hash === '#home' || hash === '' || hash === '#') {
+        setActiveSection('home');
+        setSelectedPostId(null);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
 
   const handlePrivacyPolicyClick = () => {
     setActiveSection('docs');
@@ -294,8 +325,7 @@ export default function App() {
             <div className="flex justify-between h-16 items-center">
               <button 
                 onClick={() => {
-                  setActiveSection('home');
-                  setSelectedPostId(null);
+                  window.location.hash = 'home';
                 }}
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity"
               >
@@ -309,8 +339,7 @@ export default function App() {
               <div className="hidden md:flex items-center space-x-8">
                 <button
                   onClick={() => {
-                    setActiveSection('home');
-                    setSelectedPostId(null);
+                    window.location.hash = 'home';
                   }}
                   className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
@@ -318,8 +347,7 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => {
-                    setActiveSection('blog');
-                    setSelectedPostId(null);
+                    window.location.hash = 'blog';
                   }}
                   className={`${!selectedPostId ? 'text-primary' : 'text-muted-foreground'} hover:text-primary transition-colors font-medium`}
                 >
@@ -348,21 +376,19 @@ export default function App() {
               >
                 <div className="px-4 py-6 space-y-4">
                   <button
-                    onClick={() => {
-                      setActiveSection('home');
-                      setSelectedPostId(null);
-                      setIsMenuOpen(false);
-                    }}
+                onClick={() => {
+                  window.location.hash = 'home';
+                  setIsMenuOpen(false);
+                }}
                     className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
                   >
                     Back to Home
                   </button>
                   <button
-                    onClick={() => {
-                      setActiveSection('blog');
-                      setSelectedPostId(null);
-                      setIsMenuOpen(false);
-                    }}
+                onClick={() => {
+                  window.location.hash = 'blog';
+                  setIsMenuOpen(false);
+                }}
                     className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
                   >
                     Blog
@@ -402,7 +428,7 @@ export default function App() {
                     <Card 
                       key={post.id} 
                       className="overflow-hidden hover:border-primary/50 transition-all cursor-pointer group flex flex-col"
-                      onClick={() => setSelectedPostId(post.id)}
+                      onClick={() => window.location.hash = `blog/${post.id}`}
                     >
                       <div className="aspect-video overflow-hidden">
                         <img 
@@ -444,7 +470,7 @@ export default function App() {
                 className="max-w-3xl mx-auto"
               >
                 <button 
-                  onClick={() => setSelectedPostId(null)}
+                  onClick={() => window.location.hash = 'blog'}
                   className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
                 >
                   <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -687,7 +713,7 @@ export default function App() {
                 Case Studies
               </button>
               <button
-                onClick={() => setActiveSection('blog')}
+                onClick={() => { window.location.hash = 'blog'; }}
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
                 Blog
@@ -740,7 +766,7 @@ export default function App() {
                   Case Studies
                 </button>
                 <button
-                  onClick={() => { setActiveSection('blog'); setIsMenuOpen(false); }}
+                  onClick={() => { window.location.hash = 'blog'; setIsMenuOpen(false); }}
                   className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
                 >
                   Blog

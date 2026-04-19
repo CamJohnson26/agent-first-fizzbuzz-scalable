@@ -14,6 +14,9 @@ export const rangeSchema = z.object({
 }).refine((data) => data.start <= data.end, {
   message: 'Start must be less than or equal to end',
   path: ['start'],
+}).refine((data) => (data.end - data.start + 1) <= 50000, {
+  message: 'Range size exceeds the maximum allowed limit of 50,000',
+  path: ['end'],
 });
 
 // Chat schema

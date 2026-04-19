@@ -42,6 +42,14 @@ describe('Web Server Integration Tests', () => {
     );
   });
 
+  it('GET /range should return 400 for range size > 50,000', async () => {
+    const response = await request(app).get('/range?start=1&end=50001');
+    expect(response.status).toBe(400);
+    expect(response.body.error[0].message).toBe(
+      'Range size exceeds the maximum allowed limit of 50,000',
+    );
+  });
+
   it('POST /chat should return 200 and a response for valid input', async () => {
     const response = await request(app)
       .post('/chat')
