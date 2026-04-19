@@ -9,5 +9,6 @@ Done
 ## Next Features (Todo)
 - [x] Create a `Dockerfile` for the demo webserver.
 - [x] Implement `docker-compose.yml` for local development.
+- [x] Fix Dockerfile to support Python transformer dependencies.
 - [ ] Optimize the Docker image size for faster deployments.
 - [ ] Configure environment variable injection for containers.

@@ -1,5 +1,4 @@
 __pycache__/
-*.pt
 .ipynb_checkpoints/
 dist/
 build/

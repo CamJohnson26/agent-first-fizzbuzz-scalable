@@ -1,14 +1,14 @@
 FROM node:24.14.1-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN apt-get update && apt-get install -y curl gcc libc6-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl gcc libc6-dev python3 python3-pip python3-venv && rm -rf /var/lib/apt/lists/*
 RUN npm install -g corepack@latest --force && corepack enable
 
 FROM base AS prune
 WORKDIR /usr/src/app
 COPY . .
 RUN pnpm install turbo --global
-RUN turbo prune --scope=@fizzbuzz/web-server --docker
+RUN turbo prune @fizzbuzz/web-server @fizzbuzz/transformer --docker
 
 FROM base AS build
 # Install Rust and wasm-pack
@@ -36,8 +36,21 @@ RUN --mount=type=cache,target=/root/.cargo/registry \
 RUN pnpm deploy --filter @fizzbuzz/web-server --prod /prod/web-server
 
 FROM node:24.14.1-slim
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=build /prod/web-server /app
+COPY --from=build /usr/src/app/apps/fizzbuzz-transformer /app/fizzbuzz-transformer
+# Copy the model file which is gitignored but needed for inference
+COPY apps/fizzbuzz-transformer/fizzbuzz_model.pt /app/fizzbuzz-transformer/fizzbuzz_model.pt
+
+# Setup venv and install torch
+RUN python3 -m venv /app/venv
+RUN /app/venv/bin/pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+
+ENV NODE_ENV=production
+ENV PYTHON_PATH=/app/venv/bin/python
+ENV TRANSFORMER_PATH=/app/fizzbuzz-transformer
+ENV TRANSFORMER_MODEL_PATH=/app/fizzbuzz-transformer/fizzbuzz_model.pt
 
 EXPOSE 3000
 CMD [ "node", "dist/index.js" ]
