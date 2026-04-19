@@ -12,6 +12,10 @@ cd /app/analytics-service && node dist/index.js &
 echo "Starting Lean Service..."
 cd /app/lean-service && node dist/index.js &
 
+# Start Transformer Service
+echo "Starting Transformer Service..."
+/app/venv/bin/python -m fizzbuzz_transformer.server 3003 &
+
 # Start Nginx
 echo "Starting Nginx..."
 nginx -c /app/nginx.conf -g "daemon off;"
