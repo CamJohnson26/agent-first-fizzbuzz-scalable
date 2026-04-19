@@ -88,7 +88,7 @@ export class CounterEngine<T> implements Engine<T> {
         // Initial counter: n % d
         // We need a way to do modulo in generalized arithmetic
         // Let's assume arithmetic has 'modulo' too
-        const mod = (this.config.arithmetic as any).modulo?.(current, divisor);
+        const mod = this.config.arithmetic.modulo?.(current, divisor);
         if (mod !== undefined) {
           this.counters.set(rule.id, mod);
         }

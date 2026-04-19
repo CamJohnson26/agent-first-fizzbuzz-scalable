@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Lightbulb, X, Zap } from 'lucide-react';
 import { Button, Card, CardHeader, CardTitle, CardContent, cn } from '@fizzbuzz/ui';
 
+function getRandomTip() {
+  const num = Math.floor(Math.random() * 1000) + 1;
+  let result = '';
+  if (num % 15 === 0) result = 'FizzBuzz';
+  else if (num % 3 === 0) result = 'Fizz';
+  else if (num % 5 === 0) result = 'Buzz';
+  else result = num.toString();
+  return { number: num, result };
+}
+
 export function TipOfTheDay() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [tip, setTip] = useState<{ number: number; result: string } | null>(null);
+  const [isOpen, setIsOpen] = useState(true);
+  const [tip, setTip] = useState<{ number: number; result: string }>(getRandomTip);
 
-  useEffect(() => {
-    generateTip();
-  }, []);
-
-  const generateTip = () => {
-    const num = Math.floor(Math.random() * 1000) + 1;
-    let result = '';
-    if (num % 15 === 0) result = 'FizzBuzz';
-    else if (num % 3 === 0) result = 'Fizz';
-    else if (num % 5 === 0) result = 'Buzz';
-    else result = num.toString();
-    
-    setTip({ number: num, result });
+  const generateTip = useCallback(() => {
+    setTip(getRandomTip());
     setIsOpen(true);
-  };
+  }, []);
 
   return (
     <>
@@ -30,7 +29,7 @@ export function TipOfTheDay() {
         className="gap-2 border-primary/20 hover:bg-primary/5 text-primary"
       >
         <Lightbulb className="w-4 h-4" />
-        What's the buzz?
+        What&apos;s the buzz?
       </Button>
 
       {isOpen && (

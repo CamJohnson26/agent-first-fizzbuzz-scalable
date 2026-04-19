@@ -7,6 +7,9 @@ export class BigIntArithmetic implements Arithmetic<bigint> {
   isDivisible(n: bigint, divisor: bigint): boolean {
     return n % divisor === 0n;
   }
+  modulo(n: bigint, divisor: bigint): bigint {
+    return n % divisor;
+  }
   toString(n: bigint): string {
     return n.toString();
   }
@@ -21,6 +24,9 @@ export class CheckedArithmetic implements Arithmetic<number> {
       throw new Error(`Precision loss detected: ${n} is not a safe integer`);
     }
     return n % divisor === 0;
+  }
+  modulo(n: number, divisor: number): number {
+    return n % divisor;
   }
   toString(n: number): string {
     return n.toString();

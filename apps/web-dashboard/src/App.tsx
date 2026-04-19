@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
 import {
   Activity,
@@ -44,6 +44,9 @@ import {
 import { exportResults, ExportFormat, ExportOrientation } from './utils/export';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
 
+const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || '/api';
+const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || '/analytics';
+
 export default function App() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [loadingHealth, setLoadingHealth] = useState(false);
@@ -60,9 +63,6 @@ export default function App() {
   const [npsFeedbackSent, setNpsFeedbackSent] = useState(false);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
   const [exportOrientation, setExportOrientation] = useState<ExportOrientation>('vertical');
-
-  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || '/api';
-  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || '/analytics';
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);
@@ -88,7 +88,7 @@ export default function App() {
     setShowNPS(false);
   };
 
-  const checkHealth = async () => {
+  const checkHealth = useCallback(async () => {
     setLoadingHealth(true);
     setError(null);
     try {
@@ -108,9 +108,9 @@ export default function App() {
     } finally {
       setLoadingHealth(false);
     }
-  };
+  }, []);
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
       const res = await fetch(`${ANALYTICS_BASE}/stats`);
       const data = (await res.json()) as AnalyticsStats;
@@ -118,7 +118,7 @@ export default function App() {
     } catch (_err) {
       console.error('Failed to fetch stats:', _err);
     }
-  };
+  }, []);
 
   useEffect(() => {
     console.log('[Dashboard] API_BASE:', API_BASE);
@@ -128,7 +128,7 @@ export default function App() {
     setShowNPS(true);
     const interval = setInterval(fetchStats, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [checkHealth, fetchStats]);
 
   const handleCompute = async () => {
     setError(null);
