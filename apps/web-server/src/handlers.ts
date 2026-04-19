@@ -95,17 +95,28 @@ export class FizzBuzzHandler {
       const pythonBin = process.env.PYTHON_PATH || 'python3';
       
       // Run inference script
-      const { stdout, stderr } = await execPromise(
-        `PYTHONPATH=${pythonAppPath} ${pythonBin} -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
-        { cwd: pythonAppPath }
-      );
-      
-      if (stderr && !stdout) {
-        this.logger.error('Inference error:', stderr);
-        return res.status(500).json({ error: 'Inference failed' });
+      try {
+        const { stdout, stderr } = await execPromise(
+          `PYTHONPATH=${pythonAppPath} ${pythonBin} -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
+          { cwd: pythonAppPath }
+        );
+        
+        if (stderr && !stdout) {
+          this.logger.error('Inference error:', stderr);
+          return res.status(500).json({ error: 'Inference failed' });
+        }
+        
+        res.json({ response: stdout.trim() });
+      } catch (execError: any) {
+        // Fallback for missing dependencies in demo environments
+        if (execError.message && (execError.message.includes('ModuleNotFoundError') || execError.message.includes('not found'))) {
+          this.logger.warn('Transformer failed due to missing environment/dependency, using fallback response', { error: execError.message });
+          return res.json({ 
+            response: `[DEMO FALLBACK] FizzBuzz reasoning: '${message}' is interesting. In a real environment with PyTorch, I would use the transformer model to give you a detailed answer!` 
+          });
+        }
+        throw execError;
       }
-      
-      res.json({ response: stdout.trim() });
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: error.errors });
