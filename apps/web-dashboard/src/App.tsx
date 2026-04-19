@@ -33,6 +33,7 @@ import {
   cn,
 } from '@fizzbuzz/ui';
 import { NPSFeedback } from './components/NPSFeedback';
+import { TipOfTheDay } from './components/TipOfTheDay';
 import { 
   HealthResponse, 
   ComputeResponse, 
@@ -124,6 +125,7 @@ export default function App() {
     console.log('[Dashboard] ANALYTICS_BASE:', ANALYTICS_BASE);
     checkHealth();
     fetchStats();
+    setShowNPS(true);
     const interval = setInterval(fetchStats, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -187,6 +189,7 @@ export default function App() {
             </h1>
           </div>
           <div className="flex items-center gap-4">
+            <TipOfTheDay />
             <Button
               variant="outline"
               size="sm"

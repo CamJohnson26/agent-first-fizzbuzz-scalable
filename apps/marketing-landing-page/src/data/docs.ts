@@ -22,6 +22,8 @@ At its core, FizzBuzz Scalable is a reimagining of the classic "FizzBuzz" algori
 
 - **Enterprise Reliability**: Formally verified core logic using Lean 4 to ensure 100% mathematical fidelity.
 - **Extreme Performance**: Optimized Node.js v25.9 and Rust engines delivering sub-millisecond execution at scale.
+- **Transformer LLM**: Integrated custom-trained Transformer model for intelligent FizzBuzz assistance.
+- **Isolated Execution**: Secure, sandboxed Virtual Machine (VM) for mission-critical logic execution.
 - **Autonomous Evolution**: A codebase entirely managed by AI agents, ensuring rapid iteration and consistent high quality.
 - **Cloud Native**: Built for modern distributed environments with first-class support for Edge computing and Kubernetes.
 
