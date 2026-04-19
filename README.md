@@ -77,6 +77,7 @@ graph TD
             DB[(SQLite - Persistence)]
             AS[Analytics Service - Express]
             LS[Lean Service - Express/Lean 4]
+            VM[Virtual Machine - Execution Env]
         end
     end
 
@@ -107,6 +108,7 @@ graph TD
     DI -- Injects --> Generalized_Engine
     WS -- Async Logs --> AS
     WS -- Verified Compute --> LS
+    WS -- Isolated Execution --> VM
     CLI -- Resolves --> DI
     DI -- Injects --> Generalized_Engine
     Generalized_Engine -- Uses --> Assurance_Layer
@@ -149,6 +151,7 @@ graph TD
 - 🤖 **Autonomous Development**: 100% of the codebase is managed by AI agents, ensuring a consistent and high-fidelity implementation.
 - 📦 **Modern Monorepo**: Built with Turborepo for lightning-fast builds and pnpm for efficient dependency management.
 - 🎨 **Enterprise UI**: A unified design system using Tailwind CSS 4 and React 19.
+- 🤖 **Transformer LLM**: Integrated custom-trained Transformer model for intelligent FizzBuzz assistance.
 
 ---
 

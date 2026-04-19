@@ -14,8 +14,8 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 'building-for-scale-turborepo',
-    title: 'Building for Scale: Why We Chose a Turborepo Foundation',
-    excerpt: 'Discover how our architectural choices enable rapid development and high-fidelity algorithmic execution at enterprise scale.',
+    title: 'STOP Using Multiple Repos! Our New Monorepo Just Changed the Game!',
+    excerpt: 'Think multiple repos are the way to go? Think again! We just switched to a Turborepo foundation and the results are ABSOLUTELY INSANE. You won\'t believe the velocity!',
     date: 'April 10, 2026',
     author: 'Engineering Team',
     category: 'Engineering',
@@ -41,8 +41,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 'future-of-node-js-25',
-    title: 'Living at the Edge: Why Node.js 24.14.1 is Our Competitive Advantage',
-    excerpt: 'While others are stuck in the past, we\'re building the future. Discover how our standardized Node.js 24 stack delivers the sub-millisecond latency our enterprise clients demand.',
+    title: 'Node.js 24 is HERE and It\'s a TOTAL Game Changer!',
+    excerpt: 'Is your stack stuck in the past? We just upgraded to Node.js 24.14.1 and it\'s giving us an UNFAIR competitive advantage. Here\'s why you need to switch NOW!',
     date: 'April 12, 2026',
     author: 'CTO Office',
     category: 'Engineering',
@@ -68,8 +68,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 'design-for-agents',
-    title: 'Design for Agents: Creating a Visual Identity for the AI Era',
-    excerpt: 'How we developed a standardized color palette that speaks to both humans and the AI agents that power our platform.',
+    title: 'The AI Revolution is HERE: Is Your UI Ready for the Future?',
+    excerpt: 'Designing for humans is SO 2024. Our new AI-first design system is DOMINATING the industry. Don\'t get left behind—see how we\'re building the future of visual identity!',
     date: 'April 14, 2026',
     author: 'Design Team',
     category: 'Product',
@@ -172,8 +172,8 @@ Stop wasting time. Start scaling. The FizzBuzz Dashboard is waiting for you.
   },
   {
     id: 'security-bulletin-xlsx-fix',
-    title: 'Security Bulletin: Rapid Response to High-Severity Vulnerabilities in SheetJS',
-    excerpt: 'At FizzBuzz Scalable, security isn\'t just a feature—it\'s our foundation. Discover how we identified and patched critical vulnerabilities in our Excel export engine within hours.',
+    title: 'SHOCKING: This One Simple Fix Saved Our Enterprise XLSX Exports!',
+    excerpt: 'A critical security flaw was hiding in our Excel exports, but we CRUSHED it. Read our full bulletin to see how we secured our data and why you might be at risk too!',
     date: 'April 17, 2026',
     author: 'Security Response Team',
     category: 'Engineering',
@@ -225,14 +225,14 @@ While many companies wait weeks or months to patch secondary dependencies, FizzB
   },
   {
     id: 'generalized-rule-model-launch',
-    title: 'Beyond the Loop: Implementing the Generalized Rule Model for Infinite Scalability',
-    excerpt: 'We\'ve officially decoupled logic from execution. Explore how our new Generalized Rule Model, Precision Arithmetic, and Resilience layers are setting a new standard for algorithmic integrity.',
+    title: 'WE DID IT! The World\'s Most Powerful Rule Model is FINALLY Launching!',
+    excerpt: 'Architecture, Rust, and PURE POWER. Our new Generalized Rule Model is officially LIVE and it\'s faster than anything you\'ve ever seen. The competition is shaking!',
     date: 'April 16, 2026',
     author: 'Engineering Team',
     category: 'Engineering',
     tags: ['ADR', 'Architecture', 'Rust', 'Resilience'],
     isMarkdown: true,
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
     content: `
 # 🌌 The Future of Logic is Generalized: Announcing ADRs 008-010
 
