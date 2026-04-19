@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, waitForElementToBeRemoved, within } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, waitForElementToBeRemoved, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
@@ -114,5 +114,19 @@ describe('App', () => {
     render(<App />);
     const twitterLink = screen.getByRole('link', { name: /Twitter/i });
     expect(twitterLink.getAttribute('href')).toBe('#');
+  });
+
+  it('shows the cookie banner after 1 second', async () => {
+    vi.useFakeTimers();
+    render(<App />);
+    
+    expect(screen.queryByText(/Cookie Consent/i)).toBeNull();
+
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByText(/Cookie Consent/i)).toBeDefined();
+    vi.useRealTimers();
   });
 });

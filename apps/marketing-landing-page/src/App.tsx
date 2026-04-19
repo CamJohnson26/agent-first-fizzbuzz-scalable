@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button, Badge, Card, CardContent } from '@fizzbuzz/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FizzBuzzChat } from './components/FizzBuzzChat';
+import { CookieBanner } from './components/CookieBanner';
 import { blogPosts } from './data/blogPosts';
 import { docPages } from './data/docs';
 import { caseStudies, CaseStudy } from './data/caseStudies';
@@ -93,6 +94,12 @@ export default function App() {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handlePrivacyPolicyClick = () => {
+    setActiveSection('docs');
+    setSelectedDocId('privacy');
+    window.scrollTo(0, 0);
+  };
 
   const DASHBOARD_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_DASHBOARD_URL) || '/dashboard/';
   const handleDashboardClick = () => {
@@ -274,6 +281,7 @@ export default function App() {
           closeModal={() => setSelectedCaseStudyId(null)} 
         />
         <FizzBuzzChat />
+        <CookieBanner onPrivacyPolicyClick={handlePrivacyPolicyClick} />
       </div>
     );
   }
@@ -491,7 +499,8 @@ export default function App() {
             )}
           </AnimatePresence>
         </main>
-
+        <FizzBuzzChat />
+        <CookieBanner onPrivacyPolicyClick={handlePrivacyPolicyClick} />
       </div>
     );
   }
@@ -645,6 +654,7 @@ export default function App() {
           </div>
         </div>
         <FizzBuzzChat />
+        <CookieBanner onPrivacyPolicyClick={handlePrivacyPolicyClick} />
       </div>
     );
   }
@@ -1149,6 +1159,7 @@ export default function App() {
         </div>
       </footer>
       <FizzBuzzChat />
+      <CookieBanner onPrivacyPolicyClick={handlePrivacyPolicyClick} />
     </div>
   );
 }
