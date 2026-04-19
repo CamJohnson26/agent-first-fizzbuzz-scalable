@@ -80,8 +80,8 @@ test.describe('Web Dashboard', () => {
       });
     });
 
-    // Click the refresh button (the one with the refresh icon)
-    await page.locator('header button').last().click();
+    // Click the refresh button
+    await page.getByRole('button', { name: 'Refresh health status' }).click();
 
     // Now it should show 'offline' after the manual refresh
     await expect(page.getByText('Server: offline')).toBeVisible();

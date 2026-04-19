@@ -74,10 +74,10 @@ describe('App', () => {
     expect(await screen.findByRole('heading', { level: 1, name: /Inside/i })).toBeDefined();
     
     // Check if blog posts are rendered
-    expect(screen.getByText(/Building for Scale/i)).toBeDefined();
+    expect(screen.getByText(/STOP Using Multiple Repos/i)).toBeDefined();
     
     // Click a post
-    const postTitle = screen.getByText(/Building for Scale/i);
+    const postTitle = screen.getByText(/STOP Using Multiple Repos/i);
     await user.click(postTitle);
     
     // Check if post content is rendered

@@ -82,7 +82,7 @@ export class CounterEngine<T> implements Engine<T> {
     for (const rule of this.config.rules) {
       // Assuming rules have metadata with 'divisor' for counter optimization
       if (rule.metadata?.divisor) {
-        const divisor = rule.metadata.divisor;
+        const divisor = rule.metadata.divisor as T;
         this.divisors.set(rule.id, divisor);
         
         // Initial counter: n % d
