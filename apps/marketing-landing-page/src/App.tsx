@@ -25,6 +25,7 @@ import {
   User,
   Tag,
   ArrowLeft,
+  Menu,
 } from 'lucide-react';
 
 const CaseStudyModal = ({ study, closeModal }: { study: CaseStudy | undefined; closeModal: () => void }) => (
@@ -91,6 +92,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<'home' | 'case-studies' | 'docs' | 'blog'>('home');
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const DASHBOARD_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_DASHBOARD_URL) || '/dashboard/';
   const handleDashboardClick = () => {
@@ -134,8 +136,45 @@ export default function App() {
                   Dashboard
                 </Button>
               </div>
+              <button
+                className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
+              >
+                <div className="px-4 py-6 space-y-4">
+                  <button
+                    onClick={() => { setActiveSection('home'); setIsMenuOpen(false); }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Back to Home
+                  </button>
+                  <button
+                    onClick={() => { setActiveSection('blog'); setIsMenuOpen(false); }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Blog
+                  </button>
+                  <div className="pt-4">
+                    <Button variant="primary" size="lg" className="w-full rounded-xl shadow-lg shadow-primary/30" onClick={() => { handleDashboardClick(); setIsMenuOpen(false); }}>
+                      Dashboard
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         <header className="py-24 bg-surface/30">
@@ -282,8 +321,53 @@ export default function App() {
                   Dashboard
                 </Button>
               </div>
+              <button
+                className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
+              >
+                <div className="px-4 py-6 space-y-4">
+                  <button
+                    onClick={() => {
+                      setActiveSection('home');
+                      setSelectedPostId(null);
+                      setIsMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Back to Home
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveSection('blog');
+                      setSelectedPostId(null);
+                      setIsMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Blog
+                  </button>
+                  <div className="pt-4">
+                    <Button variant="primary" size="lg" className="w-full rounded-xl shadow-lg shadow-primary/30" onClick={() => { handleDashboardClick(); setIsMenuOpen(false); }}>
+                      Dashboard
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -449,8 +533,45 @@ export default function App() {
                   Dashboard
                 </Button>
               </div>
+              <button
+                className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
+              >
+                <div className="px-4 py-6 space-y-4">
+                  <button
+                    onClick={() => { setActiveSection('home'); setIsMenuOpen(false); }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Back to Home
+                  </button>
+                  <button
+                    onClick={() => { setActiveSection('blog'); setIsMenuOpen(false); }}
+                    className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  >
+                    Blog
+                  </button>
+                  <div className="pt-4">
+                    <Button variant="primary" size="lg" className="w-full rounded-xl shadow-lg shadow-primary/30" onClick={() => { handleDashboardClick(); setIsMenuOpen(false); }}>
+                      Dashboard
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -577,8 +698,65 @@ export default function App() {
                 Dashboard
               </Button>
             </div>
+            <button
+              className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
+            >
+              <div className="px-4 py-6 space-y-4">
+                <a
+                  href="#features"
+                  className="block text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Features
+                </a>
+                <button
+                  onClick={() => { setActiveSection('case-studies'); setIsMenuOpen(false); }}
+                  className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                >
+                  Case Studies
+                </button>
+                <button
+                  onClick={() => { setActiveSection('blog'); setIsMenuOpen(false); }}
+                  className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                >
+                  Blog
+                </button>
+                <a
+                  href="#pricing"
+                  className="block text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Pricing
+                </a>
+                <button
+                  onClick={() => { setActiveSection('docs'); setIsMenuOpen(false); }}
+                  className="block w-full text-left text-lg font-medium text-muted-foreground hover:text-primary px-2"
+                >
+                  Docs
+                </button>
+                <div className="pt-4">
+                  <Button variant="primary" size="lg" className="w-full rounded-xl shadow-lg shadow-primary/30" onClick={() => { handleDashboardClick(); setIsMenuOpen(false); }}>
+                    Dashboard
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}

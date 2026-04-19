@@ -33,8 +33,8 @@ export function TipOfTheDay() {
       </Button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <Card className="w-full max-w-md shadow-2xl border-primary/20 animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 bg-background/95 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+          <Card className="w-full max-w-md shadow-2xl border-primary/20 animate-in zoom-in-95 duration-200 my-8 md:my-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xl font-bold flex items-center gap-2">
                 <Zap className="w-5 h-5 text-primary fill-primary/20" />

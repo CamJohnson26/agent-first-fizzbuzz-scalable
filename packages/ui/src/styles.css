@@ -11,6 +11,7 @@
   --color-accent-foreground: var(--color-slate-50);
 
   --color-background: var(--color-slate-950);
+  --color-surface: var(--color-slate-900);
   --color-foreground: var(--color-slate-50);
 
   --color-muted: var(--color-slate-800);
