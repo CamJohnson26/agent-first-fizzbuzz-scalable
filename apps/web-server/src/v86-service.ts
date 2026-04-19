@@ -1,5 +1,5 @@
 import v86pkg from "v86";
-const V86 = (v86pkg as any).V86 || v86pkg;
+const V86 = v86pkg.V86;
 import path from "path";
 import fs from "fs";
 import { singleton, inject } from "tsyringe";
