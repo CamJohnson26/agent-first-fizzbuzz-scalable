@@ -75,32 +75,8 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: superfly/flyctl-actions/setup-flyctl@master
 
-    - name: Deploy Web Server
+    - name: Deploy Monolith to Fly.io
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config apps/web-server/fly.toml .
-      env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
-    - name: Deploy Analytics Service
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config apps/analytics-service/fly.toml .
-      env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
-    - name: Deploy Lean Service
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config apps/lean-service/fly.toml .
-      env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
-    - name: Deploy Marketing Landing Page
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config apps/marketing-landing-page/fly.toml .
-      env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
-    - name: Deploy Web Dashboard
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: flyctl deploy --remote-only --config apps/web-dashboard/fly.toml .
+      run: flyctl deploy --remote-only --config fly.toml .
       env:
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

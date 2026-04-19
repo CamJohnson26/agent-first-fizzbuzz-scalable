@@ -45,4 +45,4 @@ turbo preview
 ## Deployment
 
 This application is automatically deployed to Fly.io on every push to the `main` branch.
-The live version can be found at: [https://agent-first-fizzbuzz-marketing.fly.dev/](https://agent-first-fizzbuzz-marketing.fly.dev/)
+The live version can be found at: [https://agent-first-fizzbuzz-scalable.fly.dev/](https://agent-first-fizzbuzz-scalable.fly.dev/)

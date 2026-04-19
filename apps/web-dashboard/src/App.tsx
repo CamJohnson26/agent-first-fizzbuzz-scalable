@@ -60,8 +60,8 @@ export default function App() {
   const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
   const [exportOrientation, setExportOrientation] = useState<ExportOrientation>('vertical');
 
-  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || 'https://agent-first-fizzbuzz-web-server.fly.dev';
-  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || 'https://agent-first-fizzbuzz-analytics.fly.dev';
+  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || '/api';
+  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || '/analytics';
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);

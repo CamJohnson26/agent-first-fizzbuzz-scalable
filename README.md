@@ -25,7 +25,7 @@ Are you tired of bloated, expensive, and unreliable legacy FizzBuzz solutions? *
 
 The **Marketing Landing Page** is automatically deployed to **Fly.io**.
 
-🔗 **[View Live Site](https://agent-first-fizzbuzz-marketing.fly.dev/)**
+🔗 **[View Live Site](https://agent-first-fizzbuzz-scalable.fly.dev/)**
 
 ---
 

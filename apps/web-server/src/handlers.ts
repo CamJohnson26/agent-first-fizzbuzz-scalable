@@ -89,11 +89,12 @@ export class FizzBuzzHandler {
       // Prepare prompt
       const prompt = `U: ${message}\nA:`;
       
-      const pythonAppPath = path.resolve(process.cwd(), '../../apps/fizzbuzz-transformer');
+      const pythonAppPath = process.env.TRANSFORMER_PATH || path.resolve(process.cwd(), '../../apps/fizzbuzz-transformer');
+      const pythonBin = process.env.PYTHON_PATH || 'python3';
       
       // Run inference script
       const { stdout, stderr } = await execPromise(
-        `PYTHONPATH=${pythonAppPath} python3 -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
+        `PYTHONPATH=${pythonAppPath} ${pythonBin} -m fizzbuzz_transformer.infer --prompt "${prompt.replace(/"/g, '\\"')}"`,
         { cwd: pythonAppPath }
       );
       

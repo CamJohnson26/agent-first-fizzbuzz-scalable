@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 
-const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'https://agent-first-fizzbuzz-analytics.fly.dev/api/logs';
+const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'http://localhost:3001/api/logs';
 
 @singleton()
 export class Logger {
