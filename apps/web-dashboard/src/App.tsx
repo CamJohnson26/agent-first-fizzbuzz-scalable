@@ -199,19 +199,6 @@ export default function App() {
               <Home className="w-4 h-4" />
               <span className="hidden sm:inline">Back to Marketing</span>
             </Button>
-            <div className="flex items-center gap-2 bg-surface border border-border px-2 sm:px-3 py-1.5 rounded-lg">
-              <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden lg:inline">Engine:</label>
-              <select 
-                id="engine-select"
-                value={engine}
-                onChange={(e) => setEngine(e.target.value as FizzBuzzEngine)}
-                className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
-              >
-                <option value="js">JavaScript (Standard)</option>
-                <option value="rust">Rust (Lightning Fast)</option>
-                <option value="lean">Lean (Formal Verification)</option>
-              </select>
-            </div>
             <Badge 
               variant={health?.status === 'ok' ? 'success' : 'error'}
               className="flex items-center px-2 sm:px-3 py-1 gap-1.5"
@@ -236,6 +223,19 @@ export default function App() {
               />
             </Button>
           </div>
+        </div>
+        <div className="flex items-center gap-2 bg-surface border border-border px-2 sm:px-3 py-1.5 rounded-lg">
+          <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden lg:inline">Engine:</label>
+          <select
+              id="engine-select"
+              value={engine}
+              onChange={(e) => setEngine(e.target.value as FizzBuzzEngine)}
+              className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
+          >
+            <option value="js" className="bg-surface">JavaScript (Standard)</option>
+            <option value="rust" className="bg-surface">Rust (Lightning Fast)</option>
+            <option value="lean" className="bg-surface">Lean (Formal Verification)</option>
+          </select>
         </div>
       </header>
 
