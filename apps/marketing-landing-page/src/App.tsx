@@ -92,7 +92,7 @@ export default function App() {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [selectedDocId, setSelectedDocId] = useState<string>('introduction');
 
-  const DASHBOARD_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_DASHBOARD_URL) || 'https://agent-first-fizzbuzz-web-dashboard.fly.dev/';
+  const DASHBOARD_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_DASHBOARD_URL) || '/dashboard/';
   const handleDashboardClick = () => {
     window.location.href = DASHBOARD_URL;
   };
