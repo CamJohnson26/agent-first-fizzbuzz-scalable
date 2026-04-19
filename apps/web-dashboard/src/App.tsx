@@ -185,7 +185,7 @@ export default function App() {
               <Terminal className="text-primary-foreground w-6 h-6" />
             </div>
             <h1 className="text-2xl font-bold tracking-tight">
-              FizzBuzz <span className="text-primary">Dashboard</span>
+              FizzBuzz <span className="text-primary hidden sm:inline">Dashboard</span>
             </h1>
           </div>
           <div className="flex items-center gap-4">
@@ -194,13 +194,13 @@ export default function App() {
               variant="outline"
               size="sm"
               onClick={() => window.location.href = '/'}
-              className="gap-2 rounded-lg"
+              className="flex items-center gap-2 rounded-lg"
             >
               <Home className="w-4 h-4" />
               <span className="hidden sm:inline">Back to Marketing</span>
             </Button>
-            <div className="flex items-center gap-2 bg-surface border border-border px-3 py-1.5 rounded-lg">
-              <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Engine:</label>
+            <div className="flex items-center gap-2 bg-surface border border-border px-2 sm:px-3 py-1.5 rounded-lg">
+              <label htmlFor="engine-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden lg:inline">Engine:</label>
               <select 
                 id="engine-select"
                 value={engine}
@@ -214,14 +214,14 @@ export default function App() {
             </div>
             <Badge 
               variant={health?.status === 'ok' ? 'success' : 'error'}
-              className="px-3 py-1 gap-1.5"
+              className="flex items-center px-2 sm:px-3 py-1 gap-1.5"
             >
               {health?.status === 'ok' ? (
                 <CheckCircle className="w-3.5 h-3.5" />
               ) : (
                 <XCircle className="w-3.5 h-3.5" />
               )}
-              Server: {health?.status || 'checking...'}
+              <span className="hidden md:inline">Server: </span>{health?.status || 'checking...'}
             </Badge>
             <Button
               variant="ghost"
@@ -363,7 +363,7 @@ export default function App() {
                   />
                 </div>
                 <div className="flex items-end">
-                  <Button onClick={handleCompute} className="w-full sm:w-auto">
+                  <Button onClick={handleCompute} className="w-full sm:w-auto flex items-center justify-center">
                     Compute
                   </Button>
                 </div>
@@ -418,7 +418,7 @@ export default function App() {
                     variant="primary"
                     size="lg"
                     onClick={handleRangeCompute}
-                    className="w-full shadow-lg shadow-primary/20 font-bold tracking-wide gap-2"
+                    className="w-full flex items-center justify-center shadow-lg shadow-primary/20 font-bold tracking-wide gap-2"
                   >
                     <RefreshCw className="w-5 h-5" />
                     Generate Range Results
@@ -487,7 +487,7 @@ export default function App() {
                     <Button 
                       onClick={() => exportResults(rangeResults, rangeStart, exportFormat, exportOrientation)}
                       variant="outline"
-                      className="w-full md:w-auto bg-surface gap-2"
+                      className="w-full md:w-auto flex items-center justify-center bg-surface gap-2"
                     >
                       <Download className="w-4 h-4" />
                       Export Results
@@ -507,7 +507,7 @@ export default function App() {
                                 ? 'primary'
                                 : 'outline'
                         }
-                        className="justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
+                        className="flex items-center justify-center py-2 text-sm shadow-sm hover:scale-105 transition-transform"
                       >
                         <span className="text-xs opacity-50 mr-1.5 font-mono">{rangeStart + i}</span>
                         <span data-testid="result-text">{res}</span>

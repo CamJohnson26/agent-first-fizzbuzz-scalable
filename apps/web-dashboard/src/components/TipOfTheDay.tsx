@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { Lightbulb, X, Zap } from 'lucide-react';
 import { Button, Card, CardHeader, CardTitle, CardContent, cn } from '@fizzbuzz/ui';
 
@@ -13,7 +14,7 @@ function getRandomTip() {
 }
 
 export function TipOfTheDay() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [tip, setTip] = useState<{ number: number; result: string }>(getRandomTip);
 
   const generateTip = useCallback(() => {
@@ -26,15 +27,15 @@ export function TipOfTheDay() {
       <Button
         variant="outline"
         onClick={generateTip}
-        className="gap-2 border-primary/20 hover:bg-primary/5 text-primary"
+        className="flex items-center gap-2 border-primary/20 hover:bg-primary/5 text-primary"
       >
         <Lightbulb className="w-4 h-4" />
-        What&apos;s the buzz?
+        <span className="hidden sm:inline">What&apos;s the buzz?</span>
       </Button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 bg-background/95 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
-          <Card className="w-full max-w-md shadow-2xl border-primary/20 animate-in zoom-in-95 duration-200 my-8 md:my-0">
+      {isOpen && createPortal(
+        <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+          <Card className="w-full max-w-[calc(100vw-2rem)] sm:max-w-md shadow-2xl border border-primary/30 bg-surface animate-in zoom-in-95 duration-200 my-4 sm:my-8">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xl font-bold flex items-center gap-2">
                 <Zap className="w-5 h-5 text-primary fill-primary/20" />
@@ -49,8 +50,8 @@ export function TipOfTheDay() {
                 <X className="w-4 h-4" />
               </Button>
             </CardHeader>
-            <CardContent className="pt-4 space-y-6 text-center">
-              <div className="p-8 bg-muted/50 rounded-2xl border border-border flex flex-col items-center justify-center space-y-4">
+            <CardContent className="pt-4 space-y-6 text-center px-3 sm:px-6">
+              <div className="p-4 sm:p-8 bg-muted/40 rounded-xl sm:rounded-2xl border border-border flex flex-col items-center justify-center space-y-3 sm:space-y-4">
                 <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">Random Number</span>
                 <span className="text-6xl font-black text-foreground tabular-nums tracking-tighter">{tip?.number}</span>
               </div>
@@ -72,12 +73,13 @@ export function TipOfTheDay() {
                 Did you know? Our enterprise-grade engine verified this result in under 0.001ms!
               </p>
               
-              <Button onClick={() => setIsOpen(false)} className="w-full mt-4">
+              <Button onClick={() => setIsOpen(false)} className="w-full mt-4 flex items-center justify-center">
                 Awesome!
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
