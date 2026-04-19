@@ -1,9 +1,11 @@
 import v86pkg from "v86";
 const V86 = (v86pkg as any).V86 || v86pkg;
 import path from "path";
-import { singleton } from "tsyringe";
+import fs from "fs";
+import { singleton, inject } from "tsyringe";
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
+import { Logger } from './logger.js';
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -46,7 +48,9 @@ export class V86Service {
   private responseQueue: ((val: string) => void)[] = [];
   private currentResponse = "";
 
-  constructor() {
+  constructor(
+    @inject(Logger) private logger: Logger
+  ) {
     this.startEmulator();
   }
 
@@ -56,20 +60,40 @@ export class V86Service {
     try {
         wasmPath = require.resolve("v86/build/v86.wasm");
     } catch (e) {
-        console.warn("[V86] Failed to resolve v86.wasm via require.resolve, falling back to process.cwd()");
+        this.logger.warn("[V86] Failed to resolve v86.wasm via require.resolve, falling back to process.cwd()");
         wasmPath = path.join(process.cwd(), "node_modules/v86/build/v86.wasm");
     }
 
-    console.log("[V86] Starting emulator...");
-    this.emulator = new V86({
-      bios: { url: path.join(imagesPath, "seabios.bin") },
-      bzimage: { url: path.join(imagesPath, "bzImage") },
-      wasm_path: wasmPath,
-      cmdline: "console=ttyS0 tsc=reliable mitigations=off random.trust_cpu=on",
-      autostart: true,
-      memory_size: 128 * 1024 * 1024,
-      uart1: true,
+    const biosPath = path.join(imagesPath, "seabios.bin");
+    const kernelPath = path.join(imagesPath, "bzImage");
+
+    this.logger.log("[V86] Emulator configuration:", {
+        wasmPath,
+        biosPath,
+        kernelPath,
+        existsWasm: fs.existsSync(wasmPath),
+        existsBios: fs.existsSync(biosPath),
+        existsKernel: fs.existsSync(kernelPath),
+        cwd: process.cwd(),
+        dirname: __dirname,
     });
+
+    try {
+        this.logger.log("[V86] Initializing V86...");
+        this.emulator = new V86({
+            bios: { url: biosPath },
+            bzimage: { url: kernelPath },
+            wasm_path: wasmPath,
+            cmdline: "console=ttyS0 tsc=reliable mitigations=off random.trust_cpu=on",
+            autostart: true,
+            memory_size: 128 * 1024 * 1024,
+            uart1: true,
+        });
+        this.logger.log("[V86] Emulator instance created.");
+    } catch (error) {
+        this.logger.error("[V86] CRITICAL ERROR: Failed to create emulator instance:", error);
+        return;
+    }
 
     let bootOutput = "";
     this.emulator.bus.register("serial0-output-byte", (byte: number) => {
@@ -77,7 +101,7 @@ export class V86Service {
         bootOutput += char;
         if (bootOutput.endsWith("~% ") && !this.isReady && !this.isInjecting) {
             this.isInjecting = true;
-            console.log("[V86] VM Booted, injecting Lua queue...");
+            this.logger.log("[V86] VM Booted (detected prompt), injecting Lua queue...");
             this.injectLuaQueue();
         }
     });
@@ -87,13 +111,17 @@ export class V86Service {
         if (char === "\r") return;
         if (char === "\n") {
             const response = this.currentResponse.trim();
-            console.log("[V86] Serial1 line received:", response);
+            this.logger.log("[V86] Serial1 line received:", { response });
             this.currentResponse = "";
             const resolve = this.responseQueue.shift();
             if (resolve) resolve(response);
         } else {
             this.currentResponse += char;
         }
+    });
+
+    this.emulator.bus.register("cpu-event-halt", () => {
+        this.logger.error("[V86] CPU HALTED");
     });
   }
 
@@ -107,24 +135,28 @@ export class V86Service {
     ];
     
     for (const cmd of cmds) {
+        this.logger.log(`[V86] Injecting command: ${cmd}`);
         this.emulator.serial0_send(cmd + "\n");
         await new Promise(r => setTimeout(r, 500));
     }
     
     this.isReady = true;
-    console.log("[V86] Lua queue running.");
+    this.logger.log("[V86] Lua queue running.");
   }
 
   public async push(event: string): Promise<boolean> {
     if (!this.isReady) {
-      console.log("[V86] Push failed: VM not ready");
+      this.logger.log("[V86] Push failed: VM not ready");
       return false;
     }
     for (let i = 0; i < 3; i++) {
-        console.log(`[V86] Sending PUSH to queue (attempt ${i + 1}):`, event);
+        this.logger.log(`[V86] Sending PUSH to queue (attempt ${i + 1}):`, { event });
         const res = await this.sendToQueue(`PUSH ${event}`);
-        console.log(`[V86] Push response (attempt ${i + 1}):`, res);
+        this.logger.log(`[V86] Push response (attempt ${i + 1}):`, { res });
         if (res === "OK") return true;
+        if (res === "TIMEOUT" || res === "ERROR") {
+            this.logger.warn(`[V86] Push attempt ${i + 1} failed with ${res}`);
+        }
         await new Promise(r => setTimeout(r, 1000));
     }
     return false;
@@ -133,10 +165,11 @@ export class V86Service {
   public async pop(): Promise<string | null> {
     if (!this.isReady) return null;
     for (let i = 0; i < 3; i++) {
-        console.log(`[V86] Sending POP to queue (attempt ${i + 1})`);
+        this.logger.log(`[V86] Sending POP to queue (attempt ${i + 1})`);
         const res = await this.sendToQueue("POP");
-        console.log(`[V86] Pop response (attempt ${i + 1}):`, res);
-        if (res === "TIMEOUT") {
+        this.logger.log(`[V86] Pop response (attempt ${i + 1}):`, { res });
+        if (res === "TIMEOUT" || res === "ERROR") {
+            this.logger.warn(`[V86] Pop attempt ${i + 1} failed with ${res}`);
             await new Promise(r => setTimeout(r, 1000));
             continue;
         }
@@ -149,9 +182,10 @@ export class V86Service {
     if (!this.isReady) return 0;
     for (let i = 0; i < 3; i++) {
         const res = await this.sendToQueue("COUNT");
-        if (res !== "TIMEOUT") {
+        if (res !== "TIMEOUT" && res !== "ERROR") {
             return parseInt(res, 10) || 0;
         }
+        this.logger.warn(`[V86] Count attempt ${i + 1} failed with ${res}`);
         await new Promise(r => setTimeout(r, 1000));
     }
     return 0;
@@ -163,6 +197,7 @@ export class V86Service {
 
       const timeout = setTimeout(() => {
           if (resolved) return;
+          this.logger.warn(`[V86] Queue command timeout after 5s: ${cmd}`);
           resolved = true;
           const index = this.responseQueue.indexOf(resolver);
           if (index > -1) this.responseQueue.splice(index, 1);
@@ -177,8 +212,19 @@ export class V86Service {
       };
       this.responseQueue.push(resolver);
 
-      const bytes = Buffer.from("\n" + cmd + "\n");
-      this.emulator.serial_send_bytes(1, bytes);
+      try {
+          const bytes = Buffer.from("\n" + cmd + "\n");
+          this.emulator.serial_send_bytes(1, bytes);
+      } catch (error) {
+          this.logger.error(`[V86] Failed to send bytes to serial1: ${error}`);
+          if (!resolved) {
+              resolved = true;
+              clearTimeout(timeout);
+              const index = this.responseQueue.indexOf(resolver);
+              if (index > -1) this.responseQueue.splice(index, 1);
+              resolve("ERROR");
+          }
+      }
     });
   }
 
