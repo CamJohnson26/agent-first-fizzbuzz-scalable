@@ -44,5 +44,5 @@ turbo preview
 
 ## Deployment
 
-This application is automatically deployed to Vercel on every push to the `main` branch.
-The live version can be found at: [https://agent-first-fizzbuzz-scalable-marke.vercel.app/](https://agent-first-fizzbuzz-scalable-marke.vercel.app/)
+This application is automatically deployed to Fly.io on every push to the `main` branch.
+The live version can be found at: [https://agent-first-fizzbuzz-marketing.fly.dev/](https://agent-first-fizzbuzz-marketing.fly.dev/)
