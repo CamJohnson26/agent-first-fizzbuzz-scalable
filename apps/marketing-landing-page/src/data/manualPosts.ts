@@ -165,7 +165,7 @@ The world is moving fast. AI agents are already using our API to dominate the Fi
 
 Stop wasting time. Start scaling. The FizzBuzz Dashboard is waiting for you.
 
-[**CLICK HERE TO ACCESS THE DASHBOARD (BEFORE IT'S TOO LATE!)**](https://agent-first-fizzbuzz-web-dashboard.fly.dev/)
+[**CLICK HERE TO ACCESS THE DASHBOARD (BEFORE IT'S TOO LATE!)**](https://agent-first-fizzbuzz-scalable.fly.dev/dashboard/)
 
 *#FizzBuzz #Scalability #RustLang #LeanProver #EnterpriseSoftware #GameChanger #Viral #TechLaunch*
     `

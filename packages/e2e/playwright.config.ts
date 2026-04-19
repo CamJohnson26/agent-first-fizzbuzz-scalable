@@ -24,7 +24,7 @@ export default defineConfig({
   webServer: [
     {
       command: 'VITE_API_BASE=http://localhost:3000 VITE_DASHBOARD_URL=http://localhost:5184 pnpm --filter marketing-landing-page dev --port 5183',
-      url: 'http://localhost:5183/agent-first-fizzbuzz-scalable/',
+      url: 'http://localhost:5183/',
       reuseExistingServer: true,
       stdout: 'pipe',
       stderr: 'pipe',

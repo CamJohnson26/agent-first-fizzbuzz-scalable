@@ -58,7 +58,7 @@ export class V86Service {
     let wasmPath: string;
     try {
         wasmPath = require.resolve("v86/build/v86.wasm");
-    } catch (e) {
+    } catch (_e) {
         this.logger.warn("[V86] Failed to resolve v86.wasm via require.resolve, falling back to process.cwd()");
         wasmPath = path.join(process.cwd(), "node_modules/v86/build/v86.wasm");
     }

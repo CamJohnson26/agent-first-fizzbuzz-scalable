@@ -62,7 +62,7 @@ jobs:
     - name: Run Build
       run: pnpm run build
       env:
-        VITE_BASE_URL: /agent-first-fizzbuzz-scalable/
+        VITE_BASE_URL: /
 
     - name: Run Tests
       run: pnpm run test
