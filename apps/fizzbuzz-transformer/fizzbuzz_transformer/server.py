@@ -28,6 +28,17 @@ else:
     ).to(device)
     model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
+    
+    # Optimize model with torch.compile if available
+    # DISABLED: causes too much overhead in this demo env
+    # if hasattr(torch, "compile"):
+    #     print("Compiling model for faster inference...")
+    #     try:
+    #         model = torch.compile(model)
+    #         print("Model compiled successfully.")
+    #     except Exception as e:
+    #         print(f"Failed to compile model: {e}")
+    
     print("Model loaded successfully.")
 
 class TransformerHandler(BaseHTTPRequestHandler):
