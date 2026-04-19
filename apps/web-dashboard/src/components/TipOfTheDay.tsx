@@ -13,7 +13,7 @@ function getRandomTip() {
 }
 
 export function TipOfTheDay() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [tip, setTip] = useState<{ number: number; result: string }>(getRandomTip);
 
   const generateTip = useCallback(() => {

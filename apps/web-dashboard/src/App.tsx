@@ -228,6 +228,7 @@ export default function App() {
               size="sm"
               onClick={checkHealth}
               disabled={loadingHealth}
+              aria-label="Refresh health status"
               className="h-9 w-9 p-0 rounded-lg flex items-center justify-center"
             >
               <RefreshCw
