@@ -41,4 +41,13 @@ describe('Web Server Integration Tests', () => {
       'Start must be less than or equal to end',
     );
   });
+
+  it('POST /chat should return 200 and a response for valid input', async () => {
+    const response = await request(app)
+      .post('/chat')
+      .send({ message: 'What is 15?' });
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('response');
+    expect(typeof response.body.response).toBe('string');
+  }, 30000);
 });

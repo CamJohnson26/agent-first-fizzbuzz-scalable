@@ -59,8 +59,8 @@ export class V86Service {
     try {
         wasmPath = require.resolve("v86/build/v86.wasm");
     } catch (_e) {
-        this.logger.warn("[V86] Failed to resolve v86.wasm via require.resolve, falling back to process.cwd()");
-        wasmPath = path.join(process.cwd(), "node_modules/v86/build/v86.wasm");
+        this.logger.warn("[V86] Failed to resolve v86.wasm via require.resolve, falling back to relative path from __dirname");
+        wasmPath = path.resolve(__dirname, "../node_modules/v86/build/v86.wasm");
     }
 
     const biosPath = path.join(imagesPath, "seabios.bin");

@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { singleton, inject } from 'tsyringe';
 import Database from 'better-sqlite3';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { Logger } from './logger.js';
 
@@ -15,7 +16,8 @@ export class DatabaseService {
     let dbPath = process.env.DATABASE_PATH;
     
     if (!dbPath) {
-      dbPath = path.join(process.cwd(), 'data', 'fizzbuzz.db');
+      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      dbPath = path.resolve(__dirname, '../data', 'fizzbuzz.db');
     }
 
     if (dbPath !== ':memory:') {
