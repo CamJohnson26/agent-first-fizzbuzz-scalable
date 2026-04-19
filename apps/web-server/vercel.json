@@ -1,8 +1,8 @@
 {
   "buildCommand": "cd ../.. && pnpm build --filter=@fizzbuzz/web-server",
   "installCommand": "cd ../.. && pnpm install",
-  "devCommand": "pnpm dev",
   "outputDirectory": "dist",
+  "devCommand": "pnpm dev",
   "functions": {
     "api/index.ts": {
       "memory": 1024,

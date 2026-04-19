@@ -1,4 +1,7 @@
 {
+  "buildCommand": "cd ../.. && pnpm build --filter=@fizzbuzz/lean-service",
+  "installCommand": "cd ../.. && pnpm install",
+  "devCommand": "pnpm dev",
   "functions": {
     "api/index.ts": {
       "memory": 1024

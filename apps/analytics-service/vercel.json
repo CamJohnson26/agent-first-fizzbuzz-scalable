@@ -1,11 +1,14 @@
 {
   "buildCommand": "cd ../.. && pnpm build --filter=@fizzbuzz/analytics-service",
   "installCommand": "cd ../.. && pnpm install",
-  "devCommand": "pnpm dev",
   "outputDirectory": "dist",
+  "devCommand": "pnpm dev",
   "functions": {
     "api/index.ts": {
       "memory": 1024
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "api/index.ts" }
+  ]
 }

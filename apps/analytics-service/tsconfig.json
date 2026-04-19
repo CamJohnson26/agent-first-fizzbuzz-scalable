@@ -2,8 +2,9 @@
   "extends": "@fizzbuzz/config/typescript/node",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "lib": ["ESNext", "DOM"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "api/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"]
 }
