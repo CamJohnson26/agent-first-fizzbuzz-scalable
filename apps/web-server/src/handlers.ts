@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { createRequire } from 'module';
 import { injectable, inject } from 'tsyringe';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import { FizzBuzzService } from '@fizzbuzz/core-logic';
@@ -88,8 +89,9 @@ export class FizzBuzzHandler {
       
       // Prepare prompt
       const prompt = `U: ${message}\nA:`;
-      
-      const pythonAppPath = process.env.TRANSFORMER_PATH || path.resolve(process.cwd(), '../../apps/fizzbuzz-transformer');
+    
+      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      const pythonAppPath = process.env.TRANSFORMER_PATH || path.resolve(__dirname, '../../fizzbuzz-transformer');
       const pythonBin = process.env.PYTHON_PATH || 'python3';
       
       // Run inference script
