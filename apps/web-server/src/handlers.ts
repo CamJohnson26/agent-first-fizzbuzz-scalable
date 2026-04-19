@@ -107,10 +107,11 @@ export class FizzBuzzHandler {
         }
         
         res.json({ response: stdout.trim() });
-      } catch (execError: any) {
+      } catch (execError: unknown) {
+        const error = execError as Error;
         // Fallback for missing dependencies in demo environments
-        if (execError.message && (execError.message.includes('ModuleNotFoundError') || execError.message.includes('not found'))) {
-          this.logger.warn('Transformer failed due to missing environment/dependency, using fallback response', { error: execError.message });
+        if (error.message && (error.message.includes('ModuleNotFoundError') || error.message.includes('not found'))) {
+          this.logger.warn('Transformer failed due to missing environment/dependency, using fallback response', { error: error.message });
           return res.json({ 
             response: `[DEMO FALLBACK] FizzBuzz reasoning: '${message}' is interesting. In a real environment with PyTorch, I would use the transformer model to give you a detailed answer!` 
           });

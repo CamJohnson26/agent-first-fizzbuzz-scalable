@@ -97,8 +97,8 @@ describe('App', () => {
   it('redirects to dashboard when clicking relevant buttons', async () => {
     const user = userEvent.setup();
     const originalLocation = window.location;
-    delete (window as any).location;
-    (window as any).location = { ...originalLocation, href: '' };
+    delete (window as unknown as { location: unknown }).location;
+    (window as unknown as { location: Record<string, unknown> }).location = { ...originalLocation, href: '' };
 
     render(<App />);
     
@@ -107,7 +107,7 @@ describe('App', () => {
     
     expect(window.location.href).toBe('/dashboard/');
     
-    (window as any).location = originalLocation;
+    (window as unknown as { location: unknown }).location = originalLocation;
   });
 
   it('has a Twitter link that points to #', () => {

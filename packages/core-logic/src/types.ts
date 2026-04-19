@@ -7,7 +7,7 @@ export interface Rule<T> {
   predicate: Predicate<T>;
   renderer: Renderer<T>;
   priority: number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export type Predicate<T> = (input: T, arithmetic: Arithmetic<T>) => boolean;
@@ -15,6 +15,7 @@ export type Renderer<T> = (input: T) => string;
 
 export interface Arithmetic<T> {
   isDivisible(n: T, divisor: T): boolean;
+  modulo?(n: T, divisor: T): T;
   toString(n: T): string;
 }
 

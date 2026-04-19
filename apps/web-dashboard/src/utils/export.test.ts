@@ -19,7 +19,7 @@ vi.mock('xlsx', () => ({
 }));
 
 vi.mock('jspdf', () => {
-  const MockjsPDF = vi.fn().mockImplementation(function (this: any) {
+  const MockjsPDF = vi.fn().mockImplementation(function (this: Record<string, unknown>) {
     this.text = vi.fn();
     this.save = vi.fn();
     this.internal = {

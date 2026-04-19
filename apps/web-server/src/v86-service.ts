@@ -41,7 +41,7 @@ end
 
 @singleton()
 export class V86Service {
-  private emulator: any;
+  private emulator: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   private isReady = false;
   private isInjecting = false;
   private responseQueue: ((val: string) => void)[] = [];

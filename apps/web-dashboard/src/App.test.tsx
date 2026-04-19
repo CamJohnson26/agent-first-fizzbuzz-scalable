@@ -35,8 +35,8 @@ describe('Web Dashboard App', () => {
     expect(screen.getByText(/Range Computation/i)).toBeDefined();
   });
   it('shows export options after generating range results', async () => {
-    fetchSpy.mockImplementation((url: any) => {
-      const urlStr = typeof url === 'string' ? url : url.toString();
+    fetchSpy.mockImplementation((url: RequestInfo | URL) => {
+      const urlStr = url.toString();
       if (urlStr.includes('/health')) {
         return Promise.resolve({ ok: true, json: async () => ({ status: 'ok', timestamp: new Date().toISOString() }) } as Response);
       }
