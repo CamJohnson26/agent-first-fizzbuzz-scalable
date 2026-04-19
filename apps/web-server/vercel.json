@@ -6,7 +6,7 @@
   "functions": {
     "api/index.ts": {
       "memory": 1024,
-      "includeFiles": "../../packages/rust-fizzbuzz/dist/node/*.wasm"
+      "includeFiles": "{../../packages/rust-fizzbuzz/dist/node/*.wasm,../../node_modules/v86/build/v86.wasm,../v86-images/**/*}"
     }
   },
   "rewrites": [
