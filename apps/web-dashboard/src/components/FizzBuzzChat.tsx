@@ -136,7 +136,7 @@ export function FizzBuzzChat({ apiBase }: FizzBuzzChatProps) {
         <button
           onClick={handleSend}
           disabled={loading || !message.trim()}
-          className="bg-primary text-primary-foreground p-2.5 rounded-xl hover:opacity-90 disabled:opacity-50 transition-all shadow-sm active:scale-95"
+          className="bg-primary text-primary-foreground p-2.5 rounded-xl hover:opacity-90 disabled:opacity-50 transition-all shadow-sm active:scale-95 flex items-center justify-center"
         >
           <Send size={18} />
         </button>

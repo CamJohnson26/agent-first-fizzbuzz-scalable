@@ -31,7 +31,7 @@ export function NPSFeedback({ onSubmit, onDismiss }: NPSFeedbackProps) {
   };
 
   return (
-    <Card className="fixed bottom-6 right-6 w-96 shadow-2xl border-primary/20 animate-in slide-in-from-bottom-10 duration-500 z-50">
+    <Card className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 w-full sm:w-96 max-w-[100vw] shadow-2xl border border-primary/20 animate-in slide-in-from-bottom-10 duration-500 z-50 rounded-b-none sm:rounded-lg">
       <CardHeader className="pb-2 flex flex-row items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="p-1.5 bg-primary/10 text-primary rounded-lg">
@@ -83,10 +83,10 @@ export function NPSFeedback({ onSubmit, onDismiss }: NPSFeedbackProps) {
               autoFocus
             />
             <div className="flex gap-2">
-              <Button onClick={handleSubmit} className="flex-1">
+              <Button onClick={handleSubmit} className="flex-1 flex items-center justify-center">
                 Submit Feedback
               </Button>
-              <Button variant="ghost" onClick={() => setStep('score')} size="sm">
+              <Button variant="ghost" onClick={() => setStep('score')} size="sm" className="flex items-center justify-center">
                 Back
               </Button>
             </div>
