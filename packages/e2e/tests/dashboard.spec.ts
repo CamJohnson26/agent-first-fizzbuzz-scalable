@@ -4,6 +4,12 @@ test.describe('Web Dashboard', () => {
   test.beforeEach(async ({ page }) => {
     // Dashboard is served at /dashboard/ in monolith
     await page.goto('http://localhost:5184/dashboard/');
+
+    // Close "Tip of the Day" modal if it appears
+    const closeButton = page.getByRole('button', { name: 'Awesome!' });
+    if (await closeButton.isVisible()) {
+      await closeButton.click();
+    }
   });
 
   test('should show server status as ok', async ({ page }) => {
