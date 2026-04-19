@@ -71,9 +71,36 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: ls -R ./apps/marketing-landing-page/dist
 
-    - name: Deploy to GitHub Pages
+    - name: Deploy to Fly.io
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./apps/marketing-landing-page/dist
+      uses: superfly/flyctl-actions/setup-flyctl@master
+
+    - name: Deploy Web Server
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: flyctl deploy --remote-only --config apps/web-server/fly.toml .
+      env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+    - name: Deploy Analytics Service
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: flyctl deploy --remote-only --config apps/analytics-service/fly.toml .
+      env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+    - name: Deploy Lean Service
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: flyctl deploy --remote-only --config apps/lean-service/fly.toml .
+      env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+    - name: Deploy Marketing Landing Page
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: flyctl deploy --remote-only --config apps/marketing-landing-page/fly.toml .
+      env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+    - name: Deploy Web Dashboard
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: flyctl deploy --remote-only --config apps/web-dashboard/fly.toml .
+      env:
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

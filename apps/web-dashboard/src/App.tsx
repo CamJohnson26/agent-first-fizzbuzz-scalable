@@ -60,8 +60,8 @@ export default function App() {
   const [exportFormat, setExportFormat] = useState<ExportFormat>('csv');
   const [exportOrientation, setExportOrientation] = useState<ExportOrientation>('vertical');
 
-  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || 'https://agent-first-fizzbuzz-scalable-web-s.vercel.app';
-  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || 'https://agent-first-fizzbuzz-scalable-analy.vercel.app';
+  const API_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE) || 'https://agent-first-fizzbuzz-web-server.fly.dev';
+  const ANALYTICS_BASE = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ANALYTICS_BASE) || 'https://agent-first-fizzbuzz-analytics.fly.dev';
 
   const handleNPSSubmit = async (score: number, comment: string) => {
     setShowNPS(false);
@@ -190,7 +190,7 @@ export default function App() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => window.location.href = 'https://agent-first-fizzbuzz-scalable-marke.vercel.app/'}
+              onClick={() => window.location.href = 'https://agent-first-fizzbuzz-marketing.fly.dev/'}
               className="gap-2 rounded-lg"
             >
               <Home className="w-4 h-4" />

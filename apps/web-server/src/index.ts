@@ -12,7 +12,7 @@ process.on('uncaughtException', (error) => {
 
 const port = process.env.PORT || 3000;
 
-if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
+if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1' || process.env.FLY_APP_NAME) {
   app.listen(port, () => {
     console.log(`Webserver listening on port ${port}`);
   });
