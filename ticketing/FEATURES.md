@@ -33,7 +33,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F025 | Webserver Unit Test Suite | Develop a comprehensive unit test suite for the demo webserver. | Done |
 | F026 | CI Unit Test Integration | Integrate and run unit tests automatically in the CI/CD pipeline. | Done |
 | F027 | Marketing Landing Page | Create a professional marketing landing page for the project. | Done |
-| F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Done |
+| F028 | Component Library & Design System | Build a unified component library and design system for the UI. | Proposed |
 | F029 | Ticketing System UI | Develop a user interface for the project's ticketing system. | Proposed |
 | F030 | Dockerize Webserver | Create Docker configuration for the core services and demo webserver. | Done |
 | F031 | Terraform Infrastructure | Set up Infrastructure as Code (IaC) using Terraform for deployment. | Proposed |
@@ -46,7 +46,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F038 | Accessibility Compliance | Ensure the system meets accessibility standards. | Proposed |
 | F039 | OO vs Functional Implementations | Split implementations into object-oriented and functional versions. | Proposed |
 | F040 | FizzBuzz MCP | Implement a Model Context Protocol (MCP) server for FizzBuzz. | Proposed |
-| F041 | SQLite Integration | Add SQLite for local data storage and persistence. | Done |
+| F041 | SQLite Integration | Add SQLite for local data storage and persistence. | Proposed |
 | F042 | Lean Theorem Solver Verification | Create a version of FizzBuzz verified by the Lean theorem solver. | Done |
 | F043 | Rust Implementation | Develop a lightning fast Rust version of FizzBuzz. | Done |
 | F044 | TSConfig Lockdown | Enforce strict TypeScript configurations for better type safety. | Proposed |
@@ -62,7 +62,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F054 | Centralized Configuration | Create internal packages for base configurations (TS, ESLint, Prettier). | Done |
 | F055 | Shared Type Definitions | Create a shared types package for API contracts and domain entities. | Done |
 | F056 | Standardized Workspace Scripts | Uniform scripts across all packages for predictable build/test/lint. | Done |
-| F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Done |
+| F057 | Backend Dependency Injection | Implement DI/IoC in web services for better testability and modularity. | Proposed |
 | F058 | Global Error Handling | Centralized middleware and custom error classes for consistent API responses. | Proposed |
 | F059 | Streamed Responses | Implement NDJSON/SSE for large range computations to prevent OOM. | Proposed |
 | F060 | UI Component Library | Extract reusable components from apps into a shared UI package. | Proposed |
@@ -103,8 +103,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 | F095 | Trained model for fizzbuzz | A machine learning model to predict FizzBuzz results. | Proposed |
 | F096 | GDPR compliance | Ensure the system meets data protection and privacy standards. | Done |
 | F097 | Redis caching layer | Add Redis for high-performance result caching. | Proposed |
-| F098 | v86 Emulated Event Queue | Lightweight event-driven architecture using Lua inside a v86 Linux VM. | Done |
-| F099 | Virtual Machine Isolation | Run critical components in a dedicated v86 VM for security and isolation. | Done |
+| F098 | Event queue | Implement an event-driven architecture using RabbitMQ or Kafka. | Proposed |
+| F099 | Virtual Machine for better isolation | Run computations in a dedicated VM for security. | Proposed |
 | F100 | Cloud sandboxes | Provision temporary cloud environments for testing. | Proposed |
 | F101 | Multiregion support | Deploy services across multiple geographic regions. | Proposed |
 | F102 | Deploy our application to Vercel | Streamline deployment process using Vercel. | Done |
@@ -184,7 +184,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Webserver Unit Test Suite (F025)
 - [x] CI Unit Test Integration (F026)
 - [x] Marketing Landing Page (F027)
-- [x] Component Library & Design System (F028)
+- [ ] Component Library & Design System (F028)
 - [ ] Ticketing System UI (F029)
 - [x] Dockerize Webserver (F030)
 - [ ] Terraform Infrastructure (F031)
@@ -197,7 +197,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [ ] Accessibility Compliance (F038)
 - [ ] OO vs Functional Implementations (F039)
 - [ ] FizzBuzz MCP (F040)
-- [x] SQLite Integration (F041)
+- [ ] SQLite Integration (F041)
 - [x] Lean Theorem Solver Verification (F042)
 - [x] Rust Implementation (F043)
 - [ ] TSConfig Lockdown (F044)
@@ -213,7 +213,7 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Centralized Configuration (F054)
 - [x] Shared Type Definitions (F055)
 - [x] Standardized Workspace Scripts (F056)
-- [x] Backend Dependency Injection (F057)
+- [ ] Backend Dependency Injection (F057)
 - [ ] Global Error Handling (F058)
 - [ ] Streamed Responses (F059)
 - [ ] UI Component Library (F060)
@@ -254,8 +254,8 @@ This file tracks candidates for new high-level features for the Agent-First Fizz
 - [x] Trained model for fizzbuzz (F095)
 - [x] GDPR compliance (F096)
 - [ ] Redis caching layer (F097)
-- [x] v86 Emulated Event Queue (F098)
-- [x] Virtual Machine Isolation (F099)
+- [ ] Event queue (F098)
+- [ ] Virtual Machine for better isolation (F099)
 - [ ] Cloud sandboxes (F100)
 - [ ] Multiregion support (F101)
 - [x] Deploy our application to Vercel (F102)
