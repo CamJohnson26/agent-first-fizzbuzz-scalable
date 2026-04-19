@@ -1,15 +1,21 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { DatabaseService } from './database.js';
+import { Logger } from './logger.js';
 import fs from 'fs';
 import path from 'path';
 
 describe('DatabaseService', () => {
   let dbService: DatabaseService;
   const testDbPath = ':memory:';
+  const mockLogger = {
+    log: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
+  } as unknown as Logger;
 
   beforeEach(() => {
     process.env.DATABASE_PATH = testDbPath;
-    dbService = new DatabaseService();
+    dbService = new DatabaseService(mockLogger);
   });
 
   afterEach(() => {
@@ -39,7 +45,7 @@ describe('DatabaseService', () => {
     }
     
     process.env.DATABASE_PATH = tempDbPath;
-    const service = new DatabaseService();
+    const service = new DatabaseService(mockLogger);
     
     expect(fs.existsSync(tempDir)).toBe(true);
     
