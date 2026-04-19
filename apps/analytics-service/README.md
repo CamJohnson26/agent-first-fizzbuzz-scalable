@@ -1,22 +1,20 @@
-# FizzBuzz Web Server
+# Analytics Service
 
-A robust, enterprise-grade web server providing FizzBuzz computation services via a RESTful API.
+A lightweight service for collecting and analyzing logs from other services in the FizzBuzz ecosystem.
 
 ## Features
 
-- **Multi-Engine Execution**: Seamlessly switch between TypeScript, Rust (WASM), and Lean 4 engines.
-- **Local Persistence**: Integrated SQLite database using `better-sqlite3` for local data storage and future event queuing.
-- **RESTful API**: Simple endpoints for single and range computations with validation.
-- **Log Forwarding**: Asynchronously sends request metadata to the `analytics-service` for observability.
-- **Health Checks**: Standard `/health` endpoint for monitoring and orchestration.
-- **CORS Support**: Configured for secure access from multiple frontends.
+- **Log Collection**: Receives logs via a POST `/api/logs` endpoint.
+- **Real-time Stats**: Provides basic metrics (total logs, logs per service) via the `/stats` endpoint.
+- **Validation**: Uses Zod for strict schema validation of incoming log data.
+- **Dockerized**: Fully configured for containerized deployment.
 
 ## Tech Stack
 
 - **Runtime**: Node.js 24.14.1
 - **Framework**: Express.js
-- **Validation**: Zod (via `@fizzbuzz/web-server` internal logic)
-- **Logic Engine**: `@fizzbuzz/core-logic`
+- **Validation**: Zod
+- **Testing**: Vitest (planned)
 
 ## Getting Started
 
@@ -32,7 +30,7 @@ pnpm install
 turbo dev
 ```
 
-The server will be available at `http://localhost:3000`.
+The service will be available at `http://localhost:3001`.
 
 ### Build
 
@@ -43,32 +41,41 @@ turbo start
 
 ## API Reference
 
+### `POST /api/logs`
+
+Forwards a log message to the analytics service.
+
+**Body:**
+
+```json
+{
+  "service": "web-server",
+  "message": "Request GET /compute/15",
+  "metadata": {
+    "method": "GET",
+    "url": "/compute/15",
+    "statusCode": 200,
+    "duration": "5ms"
+  },
+  "timestamp": "2026-04-14T23:31:00Z"
+}
+```
+
+### `GET /stats`
+
+Returns aggregated log statistics.
+
+**Response:**
+
+```json
+{
+  "totalLogs": 42,
+  "logsByService": {
+    "web-server": 42
+  }
+}
+```
+
 ### `GET /health`
 
-Returns the health status of the service.
-
-### `GET /compute/:n`
-
-Computes FizzBuzz for a single number.
-
-- **Parameters**:
-  - `n` (number): The number to compute.
-- **Query Parameters**:
-  - `engine` (string): The computation engine to use (`typescript`, `rust`, `lean`). Defaults to `typescript`.
-
-### `GET /range?start=<start>&end=<end>&engine=<engine>`
-
-Computes FizzBuzz for a range of numbers.
-
-- **Query Parameters**:
-  - `start` (number): The start of the range.
-  - `end` (number): The end of the range.
-  - `engine` (string): The computation engine to use (`typescript`, `rust`, `lean`). Defaults to `typescript`.
-
-## Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PORT` | The port the server listens on | `3000` |
-| `ANALYTICS_SERVICE_URL` | Endpoint for log forwarding | `http://analytics-service:3001/api/logs` |
-| `DATABASE_PATH` | Path to the SQLite database file | `data/fizzbuzz.db` |
+Basic health check endpoint.
